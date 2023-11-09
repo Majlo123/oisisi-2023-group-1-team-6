@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using CLI.Model;
 using StudentskaSluzba.Serialization;
 namespace StudentskaSluzba.Model;
 
@@ -31,12 +32,12 @@ class Student : ISerializable
 
     public List<Subject> Subjects { get; set; }
 
+
     public Student()
     {
         Subjects = new List<Subject>();
-
     }
-   
+
 
 
 
