@@ -17,7 +17,7 @@ namespace StudentskaSluzba.Model;
 
     public Address Address { get; set; }
 
-    public long PhoneNumber { get; set; }
+    public string PhoneNumber { get; set; }
 
     public string Email { get; set; }
 
@@ -36,7 +36,7 @@ namespace StudentskaSluzba.Model;
         Subjects = new List<Subject>();
     }
 
-    public Professor(string surname, string name, DateOnly date, Address address, long phonenumber, string email, int id, string title, int workyear)
+    public Professor(string surname, string name, DateOnly date, Address address, string phonenumber, string email, int id, string title, int workyear)
     {
         Surname = surname;
         Name = name;
@@ -57,7 +57,7 @@ namespace StudentskaSluzba.Model;
             Name,
             Date.ToString(),
             Address.ToString(),
-            PhoneNumber.ToString(),
+            PhoneNumber,
             Email,
             Id.ToString(),
             Title,
@@ -75,7 +75,7 @@ namespace StudentskaSluzba.Model;
         Address.Number = int.Parse(values[4]);
         Address.City = values[5];
         Address.State = values[6];
-        PhoneNumber = int.Parse(values[7]);
+        PhoneNumber = values[7];
         Email = values[8];
         Id = int.Parse(values[9]);
         Title = values[10];
@@ -88,7 +88,7 @@ namespace StudentskaSluzba.Model;
         sb.Append($"NAME: {Name}, ");
         sb.Append($"DATE OF BIRTH: {Date}, ");
         sb.Append($"ADDRESS: {Address}, ");
-        sb.Append($"PHONE NUMBER: {PhoneNumber.ToString()}, ");
+        sb.Append($"PHONE NUMBER: {PhoneNumber}, ");
         sb.Append($"EMAIL: {Email}, ");
         sb.Append($"ID: {Id.ToString()}, ");
         sb.Append($"TITLE: {Title}, ");
