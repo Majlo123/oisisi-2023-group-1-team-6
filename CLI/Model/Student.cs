@@ -97,7 +97,7 @@ class Student : ISerializable
         sb.Append($"STUDDY YEAR STATUS: {Status.ToString()}, ");
         sb.Append($"AVARAGE GRADE: {AvarageGrade.ToString()}, ");
         sb.Append("SUBJECTS:");
-        //sb.AppendJoin(", ", Subjects.Select(subject => subject.Name)); ovo se primenjuje posle pravljenja klase subject
+        sb.AppendJoin(", ", Subjects.Select(subject => subject.Name)); ovo se primenjuje posle pravljenja klase subject
        
         return sb.ToString();
     }
