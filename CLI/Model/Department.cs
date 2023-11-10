@@ -63,7 +63,8 @@ namespace CLI.Model
             sb.Append($"Department ID: {DepartmentID}, ");
             sb.Append($"Department name: {DepartmentName}, ");
             sb.Append($"Department boss: {DepartmentBoss}, ");
-
+            sb.Append("List of proffesors:");
+            sb.AppendJoin(", ", Professors.Select(professor => professor.Name),", ", Professors.Select(professor => professor.Surname));
             return sb.ToString();
         }
 
