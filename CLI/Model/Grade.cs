@@ -8,7 +8,7 @@ using StudentskaSluzba.Serialization;
 using StudentskaSluzba.Storage;
 using StudentskaSluzba.Model;
 
-enum Grades { SIX = 6, SEVEN = 7, EIGHT = 8, NINE = 9, TEN = 10 };
+public enum Grades { SIX = 6, SEVEN = 7, EIGHT = 8, NINE = 9, TEN = 10 };
 
 namespace CLI.Model
 {
