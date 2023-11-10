@@ -11,7 +11,7 @@ using StudentskaSluzba.Model;
 
 namespace CLI.Model
 {
-    class Department : ISerializable
+    public class Department : ISerializable
     {
 
         public int DepartmentID { get; set; }

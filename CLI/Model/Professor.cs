@@ -7,7 +7,7 @@ using CLI.Model;
 using StudentskaSluzba.Serialization;
 namespace StudentskaSluzba.Model;
 
-    internal class Professor : ISerializable
+    public  class Professor : ISerializable
     {
     public string Surname { get; set; }
 

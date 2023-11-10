@@ -10,12 +10,12 @@ using System.Xml.Linq;
 using StudentskaSluzba.Serialization;
 using StudentskaSluzba.Model;
 
-enum Semester { Summer, Winter };
+public enum Semester { Summer, Winter };
 
 namespace CLI.Model
 {
 
-    class Subject : ISerializable
+    public class Subject : ISerializable
     {
 
         public int subjectId { get; set; }

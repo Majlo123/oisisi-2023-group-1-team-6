@@ -7,7 +7,7 @@ using StudentskaSluzba.Serialization;
 
 namespace CLI.Model
 {
-    class Index : ISerializable
+    public class Index : ISerializable
     {
         public string AbbreviationOfMajor { get; set; }
 

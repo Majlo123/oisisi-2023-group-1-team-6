@@ -12,7 +12,7 @@ enum Grades { SIX = 6, SEVEN = 7, EIGHT = 8, NINE = 9, TEN = 10 };
 
 namespace CLI.Model
 {
-    class Grade : ISerializable
+    public class Grade : ISerializable
     {
         public Student StudentWhoPassed {  get; set; }
 
