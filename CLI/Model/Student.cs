@@ -22,7 +22,7 @@ public class Student : ISerializable
 
     public string Email { get; set; }
 
-    public int Id { get; set; }
+    public Index Id { get; set; }
 
     public int YearOfStudy { get; set; }
 
@@ -41,7 +41,7 @@ public class Student : ISerializable
         FailedSubjects = new List<Subject>();
     }
 
-    public Student(string surname, string name, DateOnly date, Address address, long phonenumber, string email, int id, int yearofstudy, finance status, float avaragegrade)
+    public Student(string surname, string name, DateOnly date, Address address, long phonenumber, string email, Index id, int yearofstudy, finance status, float avaragegrade)
     {
         Surname = surname;
         Name = name;
@@ -78,14 +78,19 @@ public class Student : ISerializable
     {
         Surname = values[0];
         Name = values[1];
-        Date = DateOnly.ParseExact(values[2], "dd-MM-yyyy");//pitaj
-        Address.State = values[3];//pitaj
-        PhoneNumber = int.Parse(values[4]);
-        Email = values[5];
-        Id = int.Parse(values[6]);
-        YearOfStudy = int.Parse(values[7]);
-        Status = (finance)int.Parse(values[8]);
-        AvarageGrade = int.Parse(values[9]);
+        Date = DateOnly.ParseExact(values[2], "dd-MM-yyyy");
+        Address.Street = values[3];
+        Address.Number = int.Parse(values[4]);
+        Address.City = values[5];
+        Address.State = values[6];
+        PhoneNumber = int.Parse(values[7]);
+        Email = values[8];
+        Id.AbbreviationOfMajor = values[9];
+        Id.MarkOfMajor = int.Parse(values[10]);
+        Id.YearOfEnrollment = int.Parse(values[11]);
+        YearOfStudy = int.Parse(values[12]);
+        Status = (finance)int.Parse(values[13]);
+        AvarageGrade = int.Parse(values[14]);
     }
     public override string ToString()
     {

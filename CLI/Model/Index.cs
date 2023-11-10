@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CLI.Model;
 using StudentskaSluzba.Serialization;
-
-namespace CLI.Model
+namespace StudentskaSluzba.Model;
 {
     public class Index : ISerializable
     {
