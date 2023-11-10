@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using System.Windows.Controls;
 using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
 
@@ -22,22 +21,32 @@ namespace StudentskaSluzba.DAO
             _students = _storage.Load();
         
         }
-        private int GenerateId()
+       /* private int GenerateId()
         {
             if(_students.Count == 0) { return 0; }
             return _students[^1].Id;
 
-        }
+        }*/
         private Student? GetStudentById(int id)
         {
             return _students.Find(s => s.Id == id);
         }
-        public Student addStudent(Student student)
+        public void addStudent(Student student)
         {
-            student.Id = GenerateId(); 
+            bool exists = _students.Contains(student);
+            if (exists) return;
+            //student.Id = GenerateId(); 
             _students.Add(student);
             _storage.Save(_students);
-            return student;
+        }
+
+        public void removeStudent(int id)
+        {
+            Student? student = GetStudentById(id);
+            if (student == null) return;
+
+            _students.Remove(student);
+            _storage.Save(_students);
         }
         public Student? UpdateStudent(Student student)
         {
@@ -55,12 +64,22 @@ namespace StudentskaSluzba.DAO
             oldStudent.PassedSubjects= student.PassedSubjects;
             oldStudent.FailedSubjects= student.FailedSubjects;
 
+            _storage.Save(_students);
             return student;
 
         }
-        public List<Student> GetAllStudents()
+        
+        public List<Student> getAllStudents()
         {
             return _students;
+        }
+        public List<Student> GetAllStudents(int page, int pageSize)
+        {
+            IEnumerable<Student> students = _students;
+
+            students = _students.Skip((page-1)*pageSize).Take(pageSize);
+
+            return students.ToList();
         }
     }
 }

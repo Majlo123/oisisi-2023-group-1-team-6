@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CLI.Model;
 using StudentskaSluzba.Serialization;
-namespace StudentskaSluzba.Model;
-{
+namespace StudentskaSluzba.Model{
     public class Index : ISerializable
     {
         public string AbbreviationOfMajor { get; set; }

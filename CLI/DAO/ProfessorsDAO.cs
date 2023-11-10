@@ -22,27 +22,32 @@ namespace GUI.DAO
             _professors = _storage.Load();
 
         }
-        private int GenerateId()
-        {
-            if (_professors.Count == 0) { return 0; }
-            return _professors[^1].Id;
-
-        }
         private Professor? GetProfessorById(int id)
         {
             return _professors.Find(p => p.Id == id);
         }
-        public Professor addStudent(Professor professor)
+        public void addProfessor(Professor professor)
         {
-            professor.Id = GenerateId();
+            bool exists = _professors.Contains(professor);
+            if (exists) return;
+
+            //professor.Id = GenerateId();
             _professors.Add(professor);
             _storage.Save(_professors);
-            return professor;
         }
-        public Professor? UpdateProfessor(Professor professor)
+
+        public void removeProfessor(int id)
+        {
+            Professor? professor = GetProfessorById(id);
+            if (professor != null) return;
+
+            _professors.Remove(professor);
+            _storage.Save(_professors);
+        }
+        public void UpdateProfessor(Professor professor)
         {
             Professor? oldProfessor = GetProfessorById(professor.Id);
-            if (oldProfessor == null) { return null; }
+            if (oldProfessor == null) return;
             oldProfessor.Surname = professor.Surname;
             oldProfessor.Name = professor.Name;
             oldProfessor.Date = professor.Date;
@@ -55,13 +60,21 @@ namespace GUI.DAO
             oldProfessor.Subjects = professor.Subjects;
 
 
-
-            return professor;
+            _storage.Save(_professors);
 
         }
         public List<Professor> GetAllProfessors()
         {
             return _professors;
+        }
+
+        public List<Professor> GetAllProfessors(int page, int pageSize)
+        {
+            IEnumerable < Professor > professor = _professors;
+
+            professor = _professors.Skip((page - 1) * pageSize).Take(pageSize);
+
+            return professor.ToList();
         }
     }
 }
