@@ -14,15 +14,17 @@ public class Student : ISerializable
 
     public string Name { get; set; }
 
+    public int Id {  get; set; }
+
     public DateOnly Date { get; set; }
 
     public Address Address { get; set; }
 
-    public long PhoneNumber { get; set; }
+    public string PhoneNumber { get; set; }
 
     public string Email { get; set; }
 
-    public Index Id { get; set; }
+    public Index Index { get; set; }
 
     public int YearOfStudy { get; set; }
 
@@ -41,15 +43,16 @@ public class Student : ISerializable
         FailedSubjects = new List<Subject>();
     }
 
-    public Student(string surname, string name, DateOnly date, Address address, long phonenumber, string email, Index id, int yearofstudy, finance status, float avaragegrade)
+    public Student(string surname, string name,int id, DateOnly date, Address address, string phonenumber, string email, Index index, int yearofstudy, finance status, float avaragegrade)
     {
         Surname = surname;
         Name = name;
+        Id = id;
         Date = date;
         Address = address;
         PhoneNumber = phonenumber;
         Email = email;
-        Id = id;
+        Index = index;
         YearOfStudy = yearofstudy;
         Status = status;
         AvarageGrade = avaragegrade;
@@ -62,11 +65,12 @@ public class Student : ISerializable
         {
             Surname,
             Name,
+            Id.ToString(),
             Date.ToString(),
             Address.ToString(),
-            PhoneNumber.ToString(),
+            PhoneNumber,
             Email,
-            Id.ToString(),
+            Index.ToString(),
             YearOfStudy.ToString(),
             Status.ToString(),
             AvarageGrade.ToString(),
@@ -78,30 +82,32 @@ public class Student : ISerializable
     {
         Surname = values[0];
         Name = values[1];
-        Date = DateOnly.ParseExact(values[2], "dd-MM-yyyy");
-        Address.Street = values[3];
-        Address.Number = int.Parse(values[4]);
-        Address.City = values[5];
-        Address.State = values[6];
-        PhoneNumber = int.Parse(values[7]);
-        Email = values[8];
-        Id.AbbreviationOfMajor = values[9];
-        Id.MarkOfMajor = int.Parse(values[10]);
-        Id.YearOfEnrollment = int.Parse(values[11]);
-        YearOfStudy = int.Parse(values[12]);
-        Status = (finance)int.Parse(values[13]);
-        AvarageGrade = int.Parse(values[14]);
+        Id = int.Parse(values[2]);
+        Date = DateOnly.ParseExact(values[3], "dd-MM-yyyy");
+        Address.Street = values[4];
+        Address.Number = int.Parse(values[5]);
+        Address.City = values[6];
+        Address.State = values[7];
+        PhoneNumber = values[8];
+        Email = values[9];
+        Index.AbbreviationOfMajor = values[10];
+        Index.MarkOfMajor = int.Parse(values[11]);
+        Index.YearOfEnrollment = int.Parse(values[12]);
+        YearOfStudy = int.Parse(values[13]);
+        Status = (finance)int.Parse(values[14]);
+        AvarageGrade = int.Parse(values[15]);
     }
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
         sb.Append($"SURNAME: {Surname}, ");
         sb.Append($"NAME: {Name}, ");
+        sb.Append($"ID: {Id.ToString()}, ");
         sb.Append($"DATE OF BIRTH: {Date.ToString()}, ");
         sb.Append($"ADDRESS: {Address.ToString()}, ");
         sb.Append($"PHONE NUMBER: {PhoneNumber.ToString()}, ");
         sb.Append($"EMAIL: {Email}, ");
-        sb.Append($"INDEX NUMBER: {Id.ToString()}, ");
+        sb.Append($"INDEX NUMBER: {Index.ToString()}, ");
         sb.Append($"YEAR OF STUDY: {YearOfStudy.ToString()}, ");
         sb.Append($"STUDDY YEAR STATUS: {Status.ToString()}, ");
         sb.Append($"AVERAGE GRADE: {AvarageGrade.ToString()}, ");
