@@ -8,7 +8,7 @@ using StudentskaSluzba.Serialization;
 
 namespace CLI.Model
 {
-    class Grade
+    class Grade : ISerializable
     {
         public Student StudentWhoPassed {  get; set; }
 

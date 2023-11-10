@@ -10,7 +10,8 @@ using System.Xml.Linq;
 
 namespace CLI.Model
 {
-    class Department{
+    class Department : ISerializable
+    {
 
         public int DepartmentID { get; set; }
 
