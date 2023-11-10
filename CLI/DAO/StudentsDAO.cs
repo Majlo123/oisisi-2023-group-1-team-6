@@ -9,7 +9,7 @@ using StudentskaSluzba.Storage;
 
 
 
-namespace CLI.DAO
+namespace StudentskaSluzba.DAO
     
 {
     public class StudentsDAO 
