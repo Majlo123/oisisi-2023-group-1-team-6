@@ -14,9 +14,9 @@ class Student : ISerializable
 
     public string Name { get; set; }
 
-    public string Date { get; set; }
+    public DateTime Date { get; set; }
 
-    public string Address { get; set; }
+    public Address Address { get; set; }
 
     public long PhoneNumber { get; set; }
 
@@ -41,7 +41,7 @@ class Student : ISerializable
         FailedSubjects = new List<Subject>();
     }
 
-    public Student(string surname, string name, string date, string address, long phonenumber, string email, int id, int yearofstudy, finance status, float avaragegrade)
+    public Student(string surname, string name, DateTime date, Address address, long phonenumber, string email, int id, int yearofstudy, finance status, float avaragegrade)
     {
         Surname = surname;
         Name = name;
@@ -62,8 +62,8 @@ class Student : ISerializable
         {
             Surname,
             Name,
-            Date,
-            Address,
+            Date.ToString(),
+            Address.ToString(),
             PhoneNumber.ToString(),
             Email,
             Id.ToString(),
@@ -78,8 +78,8 @@ class Student : ISerializable
     {
         Surname = values[0];
         Name = values[1];
-        Date = values[2];
-        Address = values[3];
+        Date = values[2];//pitaj
+        Address = values[3];//pitaj
         PhoneNumber = int.Parse(values[4]);
         Email = values[5];
         Id = int.Parse(values[6]);
@@ -107,5 +107,10 @@ class Student : ISerializable
 
 
         return sb.ToString();
+    }
+
+    public static implicit operator Student(string v)
+    {
+        throw new NotImplementedException();
     }
 }

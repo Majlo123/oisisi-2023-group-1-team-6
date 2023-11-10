@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using StudentskaSluzba.Storage;
 using StudentskaSluzba.Serialization;
+using StudentskaSluzba.Storage;
 using StudentskaSluzba.Model;
+
+enum Grades { SIX = 6, SEVEN = 7, EIGHT = 8, NINE = 9, TEN = 10 };
 
 namespace CLI.Model
 {
@@ -15,30 +18,27 @@ namespace CLI.Model
 
         public Subject subject { get; set; }
 
-        public enum Grades { SIX=6, SEVEN=7, EIGHT=8, NINE=9, TEN=10};
+        public Grades grades { get; set; }
 
-        public double date { get; set; }
+        public DateTime date { get; set; }
 
-        public Grade()
+
+        public Grade(Student studentWhoPassed, Subject subject, DateTime date, Grades grade )
         {
-            Grades ocena = Grades.SIX;
-            date = 0;
-        }
-
-        public Grade(Student studentWhoPassed, Subject subject, double date )
-        {
-            StudentWhoPassed = studentWhoPassed;
+            this.StudentWhoPassed = studentWhoPassed;
             this.subject = subject;
             this.date = date;
+            grades = grade;
         }
 
         public string[] ToCSV()
         {
             string[] csvValues =
             {
-                StudentWhoPassed,
+                StudentWhoPassed.ToString(),
                 subject.ToString(),
                 date.ToString(),
+                grades.ToString()
 
             };
 
@@ -48,8 +48,9 @@ namespace CLI.Model
         public void FromCSV(string[] values)
         {
             StudentWhoPassed = values[0];
-            subject = values[1];
-            date = int.Parse(values[2]);
+            subject = values[1];//pitacemo
+            date = int.Parse(values[2]);//pitacemo
+            grades = (Grades)int.Parse(values[3]);
 
         }
 
@@ -58,7 +59,8 @@ namespace CLI.Model
             StringBuilder sb = new StringBuilder();
             sb.Append($"Student who passed: {StudentWhoPassed}, ");
             sb.Append($"Subject Name: {subject}, ");
-            sb.Append($"Date: : {date.ToString()}, ");
+            sb.Append($"Date:  {date.ToString()}, ");
+            sb.Append($"Grade: {grades}");
 
             return sb.ToString();
         }

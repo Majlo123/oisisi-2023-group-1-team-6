@@ -13,9 +13,9 @@ namespace StudentskaSluzba.Model;
 
     public string Name { get; set; }
 
-    public string Date { get; set; }
+    public DateTime Date { get; set; }
 
-    public string Address { get; set; }
+    public Address Address { get; set; }
 
     public long PhoneNumber { get; set; }
 
@@ -24,7 +24,7 @@ namespace StudentskaSluzba.Model;
     public int Id { get; set; }
 
 
-    public string Title;
+    public string Title { get; set; }
 
     public int WorkYear { get; set; }
 
@@ -36,7 +36,7 @@ namespace StudentskaSluzba.Model;
         Subjects = new List<Subject>();
     }
 
-    public Professor(string surname, string name, string date, string address, long phonenumber, string email, int id, string title, int workyear)
+    public Professor(string surname, string name, DateTime date, Address address, long phonenumber, string email, int id, string title, int workyear)
     {
         Surname = surname;
         Name = name;
@@ -55,8 +55,8 @@ namespace StudentskaSluzba.Model;
         {
             Surname,
             Name,
-            Date,
-            Address,
+            Date.ToString(),
+            Address.ToString(),
             PhoneNumber.ToString(),
             Email,
             Id.ToString(),
