@@ -14,7 +14,7 @@ public class Student : ISerializable
 
     public string Name { get; set; }
 
-    public DateTime Date { get; set; }
+    public DateOnly Date { get; set; }
 
     public Address Address { get; set; }
 
@@ -41,7 +41,7 @@ public class Student : ISerializable
         FailedSubjects = new List<Subject>();
     }
 
-    public Student(string surname, string name, DateTime date, Address address, long phonenumber, string email, int id, int yearofstudy, finance status, float avaragegrade)
+    public Student(string surname, string name, DateOnly date, Address address, long phonenumber, string email, int id, int yearofstudy, finance status, float avaragegrade)
     {
         Surname = surname;
         Name = name;
