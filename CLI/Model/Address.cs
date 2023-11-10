@@ -7,7 +7,7 @@ using CLI.Model;
 using StudentskaSluzba.Serialization;
 namespace StudentskaSluzba.Model;
 
-    class Address
+    class Address : ISerializable
     {
     public string Street { get; set; }
 
