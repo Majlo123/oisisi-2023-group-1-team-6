@@ -92,8 +92,8 @@ public class Student : ISerializable
         StringBuilder sb = new StringBuilder();
         sb.Append($"SURNAME: {Surname}, ");
         sb.Append($"NAME: {Name}, ");
-        sb.Append($"DATE OF BIRTH: {Date}, ");
-        sb.Append($"ADDRESS: {Address}, ");
+        sb.Append($"DATE OF BIRTH: {Date.ToString()}, ");
+        sb.Append($"ADDRESS: {Address.ToString()}, ");
         sb.Append($"PHONE NUMBER: {PhoneNumber.ToString()}, ");
         sb.Append($"EMAIL: {Email}, ");
         sb.Append($"INDEX NUMBER: {Id.ToString()}, ");
