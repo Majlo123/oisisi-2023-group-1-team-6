@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
+//using System.Windows.Controls;
 using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
 
@@ -12,7 +12,7 @@ using StudentskaSluzba.Storage;
 namespace GUI.DAO
     
 {
-    class StudentsDAO 
+    public class StudentsDAO 
     {
         private readonly List<Student> _students;
         private readonly Storage<Student> _storage;
