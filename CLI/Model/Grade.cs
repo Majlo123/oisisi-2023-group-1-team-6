@@ -47,10 +47,11 @@ namespace CLI.Model
 
         public void FromCSV(string[] values)
         {
-            StudentWhoPassed.Id = int.Parse(values[0]);
-            subject.subjectId = int.Parse(values[1]);//pitacemo
-            date = DateOnly.ParseExact(values[2], "dd-MM-yyyy");//pitacemo
-            grades = (Grades)int.Parse(values[3]);
+            StudentWhoPassed.Surname = values[0];
+            StudentWhoPassed.Name = values[1];
+            subject.subjectId = int.Parse(values[2]);//pitacemo
+            date = DateOnly.ParseExact(values[3], "dd-MM-yyyy");//pitacemo
+            grades = (Grades)int.Parse(values[4]);
 
         }
 
