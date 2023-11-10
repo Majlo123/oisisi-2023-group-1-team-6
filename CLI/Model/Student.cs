@@ -7,8 +7,8 @@ using System.Xml.Linq;
 using CLI.Model;
 using StudentskaSluzba.Serialization;
 namespace StudentskaSluzba.Model;
-enum finance { B, S }
-class Student : ISerializable
+public enum finance { B, S }
+public class Student : ISerializable
 {
     public string Surname { get; set; }
 
