@@ -78,8 +78,8 @@ public class Student : ISerializable
     {
         Surname = values[0];
         Name = values[1];
-        Date = values[2];//pitaj
-        Address = values[3];//pitaj
+        Date = DateOnly.ParseExact(values[2], "dd-MM-yyyy");//pitaj
+        Address.State = values[3];//pitaj
         PhoneNumber = int.Parse(values[4]);
         Email = values[5];
         Id = int.Parse(values[6]);
