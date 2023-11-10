@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using StudentskaSluzba.Storage;
 using StudentskaSluzba.Serialization;
 using System.Xml.Linq;
+using StudentskaSluzba.Model;
 
 
 namespace CLI.Model
@@ -62,6 +63,8 @@ namespace CLI.Model
             sb.Append($"Department ID: {DepartmentID}, ");
             sb.Append($"Department name: {DepartmentName}, ");
             sb.Append($"Department boss: {DepartmentBoss}, ");
+
+            return sb.ToString();
         }
 
 

@@ -30,12 +30,15 @@ class Student : ISerializable
 
     public float AvarageGrade { get; set; }
 
-    public List<Subject> Subjects { get; set; }
+    public List<Subject> PassedSubjects { get; set; }
+
+    public List<Subject> FailedSubjects { get; set; }
 
 
     public Student()
     {
-        Subjects = new List<Subject>();
+        PassedSubjects = new List<Subject>();
+        FailedSubjects = new List<Subject>();
     }
 
     public Student(string surname, string name, string date, string address, long phonenumber, string email, int id, int yearofstudy, finance status, float avaragegrade)
@@ -50,7 +53,8 @@ class Student : ISerializable
         YearOfStudy = yearofstudy;
         Status = status;
         AvarageGrade = avaragegrade;
-        Subjects = new List<Subject>();
+        PassedSubjects = new List<Subject>();
+        FailedSubjects = new List<Subject>();
     }
     public string[] ToCSV()
     {
@@ -95,9 +99,11 @@ class Student : ISerializable
         sb.Append($"INDEX NUMBER: {Id.ToString()}, ");
         sb.Append($"YEAR OF STUDY: {YearOfStudy.ToString()}, ");
         sb.Append($"STUDDY YEAR STATUS: {Status.ToString()}, ");
-        sb.Append($"AVARAGE GRADE: {AvarageGrade.ToString()}, ");
-        sb.Append("SUBJECTS:");
-        sb.AppendJoin(", ", Subjects.Select(subject => subject.subjectName)); //ovo se primenjuje posle pravljenja klase subject
+        sb.Append($"AVERAGE GRADE: {AvarageGrade.ToString()}, ");
+        sb.Append("SUBJECTS PASSED:");
+        sb.AppendJoin(", ", PassedSubjects.Select(subject => subject.subjectName));
+        sb.Append($"SUBJECTS FAILED:");
+        sb.AppendJoin(", ", FailedSubjects.Select(subject => subject.subjectName));//ovo se primenjuje posle pravljenja klase subject
 
 
         return sb.ToString();

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StudentskaSluzba.Storage;
 using StudentskaSluzba.Serialization;
+using StudentskaSluzba.Model;
 
 namespace CLI.Model
 {

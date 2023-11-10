@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using CLI.Model;
 using System.Xml.Linq;
 using StudentskaSluzba.Serialization;
+using StudentskaSluzba.Model;
 
 
 namespace CLI.Model
