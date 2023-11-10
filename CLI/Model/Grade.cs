@@ -20,10 +20,10 @@ namespace CLI.Model
 
         public Grades grades { get; set; }
 
-        public DateTime date { get; set; }
+        public DateOnly date { get; set; }
 
 
-        public Grade(Student studentWhoPassed, Subject subject, DateTime date, Grades grade )
+        public Grade(Student studentWhoPassed, Subject subject, DateOnly date, Grades grade )
         {
             this.StudentWhoPassed = studentWhoPassed;
             this.subject = subject;
@@ -47,9 +47,9 @@ namespace CLI.Model
 
         public void FromCSV(string[] values)
         {
-            StudentWhoPassed = values[0];
-            subject = values[1];//pitacemo
-            date = int.Parse(values[2]);//pitacemo
+            StudentWhoPassed.Id = int.Parse(values[0]);
+            subject.subjectId = int.Parse(values[1]);//pitacemo
+            date = DateOnly.ParseExact(values[2], "dd-MM-yyyy");//pitacemo
             grades = (Grades)int.Parse(values[3]);
 
         }

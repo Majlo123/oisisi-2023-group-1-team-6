@@ -13,7 +13,7 @@ namespace StudentskaSluzba.Model;
 
     public string Name { get; set; }
 
-    public DateTime Date { get; set; }
+    public DateOnly Date { get; set; }
 
     public Address Address { get; set; }
 
@@ -36,7 +36,7 @@ namespace StudentskaSluzba.Model;
         Subjects = new List<Subject>();
     }
 
-    public Professor(string surname, string name, DateTime date, Address address, long phonenumber, string email, int id, string title, int workyear)
+    public Professor(string surname, string name, DateOnly date, Address address, long phonenumber, string email, int id, string title, int workyear)
     {
         Surname = surname;
         Name = name;
@@ -70,8 +70,8 @@ namespace StudentskaSluzba.Model;
     {
         Surname = values[0];
         Name = values[1];
-        Date = values[2];
-        Address = values[3];
+        Date = DateOnly.ParseExact(values[2], "dd-MM-yyyy");
+        Address.State = values[3];
         PhoneNumber = int.Parse(values[4]);
         Email = values[5];
         Id = int.Parse(values[6]);
