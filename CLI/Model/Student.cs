@@ -109,8 +109,5 @@ public class Student : ISerializable
         return sb.ToString();
     }
 
-    public static implicit operator Student(string v)
-    {
-        throw new NotImplementedException();
-    }
+    
 }
