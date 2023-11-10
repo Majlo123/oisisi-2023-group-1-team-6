@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -91,7 +91,9 @@ namespace StudentskaSluzba.Model;
         sb.Append($"TITLE: {Title}, ");
         sb.Append($"WORK YEAR: {WorkYear.ToString()}, ");
         sb.Append("SUBJECTS:");
-        //sb.AppendJoin(", ", Subjects.Select(subject => subject.Name)); ovo se primenjuje posle pravljenja klase subject
+
+        sb.AppendJoin(", ", Subjects.Select(subject => subject.Name)); ovo se primenjuje posle pravljenja klase subject
+       
 
         return sb.ToString();
     }
