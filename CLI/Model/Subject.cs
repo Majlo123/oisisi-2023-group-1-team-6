@@ -23,7 +23,7 @@ namespace CLI.Model
 
         public int yearOfStudy {  get; set; }
 
-        public string professor {  get; set; }
+        public Professor professor {  get; set; }
 
         public int ESPBPoints { get; set; }
 
@@ -38,14 +38,14 @@ namespace CLI.Model
             subjectId = 0;
             subjectName = "";
             yearOfStudy = 0;
-            professor = "";
+            professor.ToString();
             semester.ToString();
             ESPBPoints = 0;
             StudentsPassed = new List<Student>();
             StudentsFailed = new List<Student>();
         }
 
-        public Subject(int subjectId, string subjectName, int yearOfStudy, string professor, int eSPBPoints, List<Student> studentsPassed, List<Student> studentsFailed)
+        public Subject(int subjectId, string subjectName, int yearOfStudy, Professor professor, int eSPBPoints, List<Student> studentsPassed, List<Student> studentsFailed)
         {
             subjectId = subjectId;
             subjectName = subjectName;
@@ -65,7 +65,7 @@ namespace CLI.Model
                 subjectName,
                 semester.ToString(),
                 yearOfStudy.ToString(),
-                professor,
+                professor.ToString(),
                 ESPBPoints.ToString()
                 //#pitaj za enum
 
@@ -80,8 +80,9 @@ namespace CLI.Model
             subjectName = values[1];
             yearOfStudy = int.Parse(values[2]);
             semester = (Semester)int.Parse(values[3]);
-            professor = values[4];
-            ESPBPoints = int.Parse(values[5]);
+            professor.Name = values[4];
+            professor.Surname = values[5];
+            ESPBPoints = int.Parse(values[6]);
         }
 
         public override string ToString()

@@ -71,12 +71,15 @@ namespace StudentskaSluzba.Model;
         Surname = values[0];
         Name = values[1];
         Date = DateOnly.ParseExact(values[2], "dd-MM-yyyy");
-        Address.State = values[3];
-        PhoneNumber = int.Parse(values[4]);
-        Email = values[5];
-        Id = int.Parse(values[6]);
-        Title = values[7];
-        WorkYear=int.Parse(values[8]);
+        Address.Street = values[3];
+        Address.Number = int.Parse(values[4]);
+        Address.City = values[5];
+        Address.State = values[6];
+        PhoneNumber = int.Parse(values[7]);
+        Email = values[8];
+        Id = int.Parse(values[9]);
+        Title = values[10];
+        WorkYear=int.Parse(values[11]);
     }
     public override string ToString()
     {
