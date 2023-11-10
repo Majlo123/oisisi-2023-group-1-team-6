@@ -92,7 +92,7 @@ namespace StudentskaSluzba.Model;
         sb.Append($"WORK YEAR: {WorkYear.ToString()}, ");
         sb.Append("SUBJECTS:");
 
-        sb.AppendJoin(", ", Subjects.Select(subject => subject.Name)); ovo se primenjuje posle pravljenja klase subject
+        sb.AppendJoin(", ", Subjects.Select(subject => subject.Name)); 
        
 
         return sb.ToString();
