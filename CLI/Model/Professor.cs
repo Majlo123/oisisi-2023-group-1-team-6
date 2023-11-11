@@ -70,7 +70,7 @@ namespace StudentskaSluzba.Model;
     {
         Surname = values[0];
         Name = values[1];
-        Date = DateOnly.ParseExact(values[2], "dd-MM-yyyy");
+        Date = DateOnly.ParseExact(values[2], "M/d/yyyy");
         Address.Street = values[3];
         Address.Number = int.Parse(values[4]);
         Address.City = values[5];
