@@ -24,7 +24,7 @@ namespace StudentskaSluzba.Console
         private void PrintStudent(List<Student> students)
         {
             System.Console.WriteLine("Students: ");
-            string header = $"Surname {"",12} | Name {"",21} | Date {"",15} | Address {"",30} | Phone number {"",20} | Email {"",20} | Index {"",20} | Year {"",2} | Status {"",2} | Average {"",5} | Passed subjects {"",30} | Failed subjects {"",30}";
+            string header = " ";
             System.Console.WriteLine(header);
             foreach (Student s in students)
             {
@@ -54,7 +54,7 @@ namespace StudentskaSluzba.Console
             
 
             System.Console.WriteLine("Enter date of birth: ");
-            DateOnly date = DateOnly.ParseExact(System.Console.ReadLine(), "dd-MM-yyyy");
+            DateOnly date = DateOnly.ParseExact(System.Console.ReadLine(), "dd.M.yyyy");
 
             System.Console.WriteLine("Enter address(state): ");
             string state = System.Console.ReadLine();

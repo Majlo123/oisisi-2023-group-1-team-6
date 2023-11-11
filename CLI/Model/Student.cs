@@ -29,7 +29,7 @@ public class Student : ISerializable
 
     public string Status { get; set; }
 
-    public float AvarageGrade { get; set; }
+    public int AvarageGrade { get; set; }
 
     public List<Subject> PassedSubjects { get; set; }
 
@@ -42,7 +42,7 @@ public class Student : ISerializable
         FailedSubjects = new List<Subject>();
     }
 
-    public Student(string surname, string name,int id, DateOnly date, Address address, string phonenumber, string email, Index index, int yearofstudy, string status, float avaragegrade)
+    public Student(string surname, string name,int id, DateOnly date, Address address, string phonenumber, string email, Index index, int yearofstudy, string status, int avaragegrade)
     {
         Surname = surname;
         Name = name;
@@ -79,22 +79,16 @@ public class Student : ISerializable
 
     public void FromCSV(string[] values)
     {
+        
         Surname = values[0];
         Name = values[1];
         Id = int.Parse(values[2]);
-        Date = DateOnly.ParseExact(values[3], "dd-MM-yyyy");
-        Address.Street = values[4];
-        Address.Number = int.Parse(values[5]);
-        Address.City = values[6];
-        Address.State = values[7];
-        PhoneNumber = values[8];
-        Email = values[9];
-        Index.AbbreviationOfMajor = values[10];
-        Index.MarkOfMajor = int.Parse(values[11]);
-        Index.YearOfEnrollment = int.Parse(values[12]);
-        YearOfStudy = int.Parse(values[13]);
-        Status = values[14];
-        AvarageGrade = int.Parse(values[15]);
+        Date = DateOnly.ParseExact(values[3], "M/dd/yyyy");
+        PhoneNumber = values[4];
+        Email = values[5];
+        YearOfStudy = int.Parse(values[6]);
+        Status = values[7];
+        AvarageGrade = int.Parse(values[8]);
     }
     public override string ToString()
     {
@@ -103,10 +97,8 @@ public class Student : ISerializable
         sb.Append($"NAME: {Name}, ");
         sb.Append($"ID: {Id.ToString()}, ");
         sb.Append($"DATE OF BIRTH: {Date.ToString()}, ");
-        sb.Append($"ADDRESS: {Address.ToString()}, ");
         sb.Append($"PHONE NUMBER: {PhoneNumber.ToString()}, ");
         sb.Append($"EMAIL: {Email}, ");
-        sb.Append($"INDEX NUMBER: {Index.ToString()}, ");
         sb.Append($"YEAR OF STUDY: {YearOfStudy.ToString()}, ");
         sb.Append($"STUDDY YEAR STATUS: {Status}, ");
         sb.Append($"AVERAGE GRADE: {AvarageGrade.ToString()}, ");
