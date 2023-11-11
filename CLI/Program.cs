@@ -1,2 +1,15 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using StudentskaSluzba.DAO;
+using StudentskaSluzba.Console;
+
+
+namespace StudentskaSluzba;
+
+class Program
+{
+    static void Main()
+    {
+        StudentsDAO students = new StudentsDAO();
+        ConsoleView view = new ConsoleView(students);
+        view.RunMenu();
+    }
+}

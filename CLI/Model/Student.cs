@@ -7,7 +7,6 @@ using System.Xml.Linq;
 using CLI.Model;
 using StudentskaSluzba.Serialization;
 namespace StudentskaSluzba.Model;
-public enum finance { B, S }
 public class Student : ISerializable
 {
     public string Surname { get; set; }
@@ -28,7 +27,7 @@ public class Student : ISerializable
 
     public int YearOfStudy { get; set; }
 
-    public finance Status;
+    public string Status { get; set; }
 
     public float AvarageGrade { get; set; }
 
@@ -43,7 +42,7 @@ public class Student : ISerializable
         FailedSubjects = new List<Subject>();
     }
 
-    public Student(string surname, string name,int id, DateOnly date, Address address, string phonenumber, string email, Index index, int yearofstudy, finance status, float avaragegrade)
+    public Student(string surname, string name,int id, DateOnly date, Address address, string phonenumber, string email, Index index, int yearofstudy, string status, float avaragegrade)
     {
         Surname = surname;
         Name = name;
@@ -94,7 +93,7 @@ public class Student : ISerializable
         Index.MarkOfMajor = int.Parse(values[11]);
         Index.YearOfEnrollment = int.Parse(values[12]);
         YearOfStudy = int.Parse(values[13]);
-        Status = (finance)int.Parse(values[14]);
+        Status = values[14];
         AvarageGrade = int.Parse(values[15]);
     }
     public override string ToString()
@@ -109,7 +108,7 @@ public class Student : ISerializable
         sb.Append($"EMAIL: {Email}, ");
         sb.Append($"INDEX NUMBER: {Index.ToString()}, ");
         sb.Append($"YEAR OF STUDY: {YearOfStudy.ToString()}, ");
-        sb.Append($"STUDDY YEAR STATUS: {Status.ToString()}, ");
+        sb.Append($"STUDDY YEAR STATUS: {Status}, ");
         sb.Append($"AVERAGE GRADE: {AvarageGrade.ToString()}, ");
         sb.Append("SUBJECTS PASSED:");
         sb.AppendJoin(", ", PassedSubjects.Select(subject => subject.subjectName));

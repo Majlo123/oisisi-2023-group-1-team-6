@@ -31,22 +31,24 @@ namespace StudentskaSluzba.DAO
         {
             return _students.Find(s => s.Id == id);
         }
-        public void addStudent(Student student)
+        public Student addStudent(Student student)
         {
             bool exists = _students.Contains(student);
-            if (exists) return;
+            if (exists) return null;
             //student.Id = GenerateId(); 
             _students.Add(student);
             _storage.Save(_students);
+            return student;
         }
 
-        public void removeStudent(int id)
+        public Student removeStudent(int id)
         {
             Student? student = GetStudentById(id);
-            if (student == null) return;
+            if (student == null) return null;
 
             _students.Remove(student);
             _storage.Save(_students);
+            return student;
         }
         public Student? UpdateStudent(Student student)
         {
