@@ -84,6 +84,8 @@ public class Student : ISerializable
         Date = DateOnly.ParseExact(values[3], "M/d/yyyy");
         PhoneNumber = values[4];
         Email = values[5];
+        //NECE DA CITA NISTA IZ ADRESE I INDEXA IMA EXCEPTION
+        //(PROBAJ PREKO LISTE)
         YearOfStudy = int.Parse(values[6]);
         Status = values[7];
         AvarageGrade = int.Parse(values[8]);
@@ -97,6 +99,8 @@ public class Student : ISerializable
         sb.Append($"DATE OF BIRTH: {Date.ToString()}, ");
         sb.Append($"PHONE NUMBER: {PhoneNumber.ToString()}, ");
         sb.Append($"EMAIL: {Email}, ");
+        //NECE NISTA DA PISE IZ ADRESE I INDEXA IMA EXCEPTION
+        //(PROBAJ PREKO LISTE)
         sb.Append($"YEAR OF STUDY: {YearOfStudy.ToString()}, ");
         sb.Append($"STUDDY YEAR STATUS: {Status}, ");
         sb.Append($"AVERAGE GRADE: {AvarageGrade.ToString()}, ");
