@@ -55,7 +55,7 @@ namespace StudentskaSluzba.Console
             int id=ConsoleViewUtils.SafeInputInt(id1);
 
 
-            System.Console.WriteLine("Enter date of birth (in the format dd-M-yyyy): ");
+            System.Console.WriteLine("Enter date of birth (in the format M/dd/yyyy): ");
             DateOnly date = ConsoleViewUtils.SafeInputDateTime();
 
 

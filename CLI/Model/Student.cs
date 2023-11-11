@@ -66,10 +66,8 @@ public class Student : ISerializable
             Name,
             Id.ToString(),
             Date.ToString(),
-            Address.ToString(),
             PhoneNumber,
             Email,
-            Index.ToString(),
             YearOfStudy.ToString(),
             Status.ToString(),
             AvarageGrade.ToString(),
@@ -83,7 +81,7 @@ public class Student : ISerializable
         Surname = values[0];
         Name = values[1];
         Id = int.Parse(values[2]);
-        Date = DateOnly.ParseExact(values[3], "M/dd/yyyy");
+        Date = DateOnly.ParseExact(values[3], "M/d/yyyy");
         PhoneNumber = values[4];
         Email = values[5];
         YearOfStudy = int.Parse(values[6]);
