@@ -23,7 +23,7 @@ namespace StudentskaSluzba.Console
             return input;
         }
 
-        public static string SafeInputString(string input)
+        /*public static string SafeInputString(string input)
         {
             string rawInput = System.Console.ReadLine();
 
@@ -35,5 +35,6 @@ namespace StudentskaSluzba.Console
 
             return input;
         }
+        */
     }
 }

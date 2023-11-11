@@ -35,56 +35,57 @@ namespace StudentskaSluzba.Console
         private Student InputStudent()
         {
             System.Console.WriteLine("Enter student Surname: ");
-            string surname = "";
-            ConsoleViewUtils.SafeInputString(surname);
-
+            string surname = System.Console.ReadLine(); ;
+            while (surname =="")
+            {
+                System.Console.WriteLine("Enter valid string: ");
+                surname = System.Console.ReadLine();
+            }
             System.Console.WriteLine("Enter Name: ");
-            string name = "";
-            ConsoleViewUtils.SafeInputString(name);
-
+            string name = System.Console.ReadLine();
+            while (surname == "")
+            {
+                System.Console.WriteLine("Enter valid string: ");
+                surname = System.Console.ReadLine();
+            }
             System.Console.WriteLine("Enter id: ");
-            int id = 0;
-            ConsoleViewUtils.SafeInputInt(id);
+            int id1=0;
+            int id=ConsoleViewUtils.SafeInputInt(id1);
+            
 
             System.Console.WriteLine("Enter date of birth: ");
             DateOnly date = DateOnly.ParseExact(System.Console.ReadLine(), "dd-MM-yyyy");
 
             System.Console.WriteLine("Enter address(state): ");
-            string state = "";
-            ConsoleViewUtils.SafeInputString(state);
+            string state = System.Console.ReadLine();
             System.Console.WriteLine("Enter address(city): ");
-            string city = "";
-            ConsoleViewUtils.SafeInputString(city);
+            string city = System.Console.ReadLine();
             System.Console.WriteLine("Enter address(street): ");
-            string street = "";
-            ConsoleViewUtils.SafeInputString(street);
+            string street = System.Console.ReadLine();
             System.Console.WriteLine("Enter address(number): ");
-            int number = 0;
-            ConsoleViewUtils.SafeInputInt(number);
+            int number1 = 0;
+            int number=ConsoleViewUtils.SafeInputInt(number1);
             Address address = new Address(street, number, city, state);
 
             System.Console.WriteLine("Enter phone number: ");
-            string phone=null;
-            ConsoleViewUtils.SafeInputString(phone);
+            string phone = System.Console.ReadLine();
 
             System.Console.WriteLine("Enter email: ");
-            string email = null;
-            ConsoleViewUtils.SafeInputString(email);
+            string email = System.Console.ReadLine();
 
             System.Console.WriteLine("Enter abbreviation of major: ");
-            string abb = null;
-            ConsoleViewUtils.SafeInputString(abb);
+            string abb = System.Console.ReadLine();
             System.Console.WriteLine("Enter mark of major: ");
-            int mark = 0;
-            ConsoleViewUtils.SafeInputInt(mark);
+            int mark1 = 0;
+            int mark=ConsoleViewUtils.SafeInputInt(mark1);
             System.Console.WriteLine("Enter year of major: ");
-            int year = 0;
-            ConsoleViewUtils.SafeInputInt(year);
+            int year1 = 0;
+            int year=ConsoleViewUtils.SafeInputInt(year1);
             Model.Index index = new Model.Index(abb, mark, year);
 
             System.Console.WriteLine("Enter year of study: ");
-            int yearstudy = 0;
-            ConsoleViewUtils.SafeInputInt(yearstudy);
+            int yearstudy1 = 0;
+            int yearstudy=ConsoleViewUtils.SafeInputInt(yearstudy1);
 
             System.Console.WriteLine("Enter status(B or S): ");
             string status = System.Console.ReadLine();
@@ -95,8 +96,8 @@ namespace StudentskaSluzba.Console
             }
 
             System.Console.WriteLine("Enter average grade: ");
-            int avg = 0;
-            ConsoleViewUtils.SafeInputInt(avg);
+            int avg1 = 0;
+            int avg=ConsoleViewUtils.SafeInputInt(avg1);
 
 
             return new Student(surname, name, id, date, address, phone, email, index, yearstudy, status,avg);
@@ -105,10 +106,11 @@ namespace StudentskaSluzba.Console
         private int InputId()
         {
             System.Console.WriteLine("Enter student id: ");
-            int id = 0;
-            return ConsoleViewUtils.SafeInputInt(id);
+            int id1 = 0;
+            int id= ConsoleViewUtils.SafeInputInt(id1);
+            return id;
         }
-
+       
         public void RunMenu()
         {
             while (true)
@@ -126,7 +128,7 @@ namespace StudentskaSluzba.Console
             switch (input)
             {
                 case "1":
-                    ShowAllVehicles();
+                    ShowAllStudents();
                     break;
                 case "2":
                     AddStudent();
@@ -135,17 +137,17 @@ namespace StudentskaSluzba.Console
                     UpdateStudents();
                     break;
                 case "4":
-                    RemoveVehicle();
+                    RemoveStudent();
                     break;
             }
         }
 
-        private void ShowAllVehicles()
+        private void ShowAllStudents()
         {
             PrintStudent(_studentsDao.getAllStudents());
         }
 
-        private void RemoveVehicle()
+        private void RemoveStudent()
         {
             int id = InputId();
             Student? removedVehicle = _studentsDao.removeStudent(id);
@@ -163,8 +165,8 @@ namespace StudentskaSluzba.Console
             int id = InputId();
             Student student = InputStudent();
             student.Id = id;
-            Student? updatedVehicle = _studentsDao.UpdateStudent(student);
-            if (updatedVehicle == null)
+            Student? updatedStudent = _studentsDao.UpdateStudent(student);
+            if (updatedStudent == null)
             {
                 System.Console.WriteLine("Student not found");
                 return;
