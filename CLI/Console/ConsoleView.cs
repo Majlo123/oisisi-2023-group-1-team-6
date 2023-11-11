@@ -9,15 +9,18 @@ using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
+using CLI.Console;
 
 namespace StudentskaSluzba.Console
 {
     public class ConsoleView 
     {
         ConsoleViewStudent cvs;
+        ConsoleViewProfessor cvp;
         public ConsoleView()
         {
             cvs = new ConsoleViewStudent(new StudentsDAO());
+            cvp = new ConsoleViewProfessor(new ProfessorsDAO());
         }
         public void RunMenu()
         {
@@ -45,7 +48,7 @@ namespace StudentskaSluzba.Console
                     ProfessorShowMenu();
                     int userInput1 = int.Parse(System.Console.ReadLine());
                     if (userInput1 == 0 || userInput1 == null) break;
-                    StudentHandleMenuInput(userInput1);
+                    ProfessorHandleMenuInput(userInput1);
                     break;
                 case 3:
                     SubjectShowMenu();
@@ -99,6 +102,29 @@ namespace StudentskaSluzba.Console
                 case 5:
                     RunMenu();
                     break;
+            }
+        }
+
+        private void ProfessorHandleMenuInput(int input)
+        {
+            switch (input)
+            {
+                case 1:
+                    cvp.showAllProffesors();
+                    break;
+                case 2:
+                    cvp.AddProfessor();
+                    break;
+                case 3:
+                    cvp.UpdateProfessor();
+                    break;
+                case 4:
+                    cvp.removeProfessor();
+                    break;
+                case 5:
+                    RunMenu();
+                    break;
+
             }
         }
 

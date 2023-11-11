@@ -8,7 +8,7 @@ using StudentskaSluzba.Storage;
 
 
 
-namespace GUI.DAO
+namespace StudentskaSluzba.DAO
 
 {
     public class ProfessorsDAO
@@ -36,18 +36,19 @@ namespace GUI.DAO
             _storage.Save(_professors);
         }
 
-        public void removeProfessor(int id)
+        public Professor removeProfessor(int id)
         {
             Professor? professor = GetProfessorById(id);
-            if (professor != null) return;
+            if (professor != null) return null;
 
             _professors.Remove(professor);
             _storage.Save(_professors);
+            return professor;
         }
-        public void UpdateProfessor(Professor professor)
+        public Professor UpdateProfessor(Professor professor)
         {
             Professor? oldProfessor = GetProfessorById(professor.Id);
-            if (oldProfessor == null) return;
+            if (oldProfessor == null) return null;
             oldProfessor.Surname = professor.Surname;
             oldProfessor.Name = professor.Name;
             oldProfessor.Date = professor.Date;
@@ -59,8 +60,8 @@ namespace GUI.DAO
             oldProfessor.WorkYear = professor.WorkYear;
             oldProfessor.Subjects = professor.Subjects;
 
-
             _storage.Save(_professors);
+            return professor;
 
         }
         public List<Professor> GetAllProfessors()

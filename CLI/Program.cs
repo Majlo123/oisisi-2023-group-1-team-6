@@ -9,7 +9,7 @@ class Program
     static void Main()
     {
         StudentsDAO students = new StudentsDAO();
-        ConsoleView view = new ConsoleView(students);
+        ConsoleView view = new ConsoleView();
         view.RunMenu();
     }
 }

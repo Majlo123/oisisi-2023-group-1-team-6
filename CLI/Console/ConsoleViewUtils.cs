@@ -9,8 +9,10 @@ namespace StudentskaSluzba.Console
 {
     static class ConsoleViewUtils
     {
-        public static int SafeInputInt(int input)
+        public static int SafeInputInt()
         {
+
+            int input;
 
             string rawInput = System.Console.ReadLine();
 
@@ -39,8 +41,9 @@ namespace StudentskaSluzba.Console
 
             return input;
         }
-        /*public static string SafeInputString(string input)
+        public static string SafeInputString()
         {
+
             string rawInput = System.Console.ReadLine();
 
             while(rawInput == null)
@@ -49,8 +52,8 @@ namespace StudentskaSluzba.Console
                 rawInput = System.Console.ReadLine();
             }
 
-            return input;
+            return rawInput;
         }
-        */
+        
     }
 }

@@ -17,6 +17,7 @@ namespace StudentskaSluzba.DAO
         private readonly List<Department> _departments;
         private readonly Storage<Department> _storage;
 
+
         public DepartmentsDAO()
         {
             _storage = new Storage<Department>("departments.txt");

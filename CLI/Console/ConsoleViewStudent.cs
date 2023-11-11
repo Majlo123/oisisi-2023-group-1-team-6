@@ -47,8 +47,7 @@ namespace StudentskaSluzba.Console
                 surname = System.Console.ReadLine();
             }
             System.Console.WriteLine("Enter id: ");
-            int id1 = 0;
-            int id = ConsoleViewUtils.SafeInputInt(id1);
+            int id = ConsoleViewUtils.SafeInputInt();
 
 
             System.Console.WriteLine("Enter date of birth (in the format M/dd/yyyy): ");
@@ -63,8 +62,7 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("Enter address(street): ");
             string street = System.Console.ReadLine();
             System.Console.WriteLine("Enter address(number): ");
-            int number1 = 0;
-            int number = ConsoleViewUtils.SafeInputInt(number1);
+            int number = ConsoleViewUtils.SafeInputInt();
             Address address = new Address(street, number, city, state);
 
             System.Console.WriteLine("Enter phone number: ");
@@ -76,16 +74,13 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("Enter abbreviation of major: ");
             string abb = System.Console.ReadLine();
             System.Console.WriteLine("Enter mark of major: ");
-            int mark1 = 0;
-            int mark = ConsoleViewUtils.SafeInputInt(mark1);
+            int mark = ConsoleViewUtils.SafeInputInt();
             System.Console.WriteLine("Enter year of major: ");
-            int year1 = 0;
-            int year = ConsoleViewUtils.SafeInputInt(year1);
+            int year = ConsoleViewUtils.SafeInputInt();
             Model.Index index = new Model.Index(abb, mark, year);
 
             System.Console.WriteLine("Enter year of study: ");
-            int yearstudy1 = 0;
-            int yearstudy = ConsoleViewUtils.SafeInputInt(yearstudy1);
+            int yearstudy = ConsoleViewUtils.SafeInputInt();
 
             System.Console.WriteLine("Enter status(B or S): ");
             string status = System.Console.ReadLine();
@@ -96,8 +91,7 @@ namespace StudentskaSluzba.Console
             }
 
             System.Console.WriteLine("Enter average grade: ");
-            int avg1 = 0;
-            int avg = ConsoleViewUtils.SafeInputInt(avg1);
+            int avg = ConsoleViewUtils.SafeInputInt();
 
 
             return new Student(surname, name, id, date, address, phone, email, index, yearstudy, status, avg);
@@ -106,8 +100,7 @@ namespace StudentskaSluzba.Console
         public int InputId()
         {
             System.Console.WriteLine("Enter student id: ");
-            int id1 = 0;
-            int id = ConsoleViewUtils.SafeInputInt(id1);
+            int id = ConsoleViewUtils.SafeInputInt();
             return id;
         }
 
