@@ -1,1 +1,2 @@
-ss|ma|23|12/19/2022|STREET: 2, NUMBER: 2, CITY: 2, STATE: 2, |2|2|Abbreviation of major: 2, Mark of major: 2, Years of enrollment: 2, |2|S|23
+s|s|2|2/22/2002|2|2|2|s|2
+2|2|2|12/22/2002|2|2|2|s|2
