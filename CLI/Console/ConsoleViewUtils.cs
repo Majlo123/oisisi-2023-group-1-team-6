@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,22 @@ namespace StudentskaSluzba.Console
 
             return input;
         }
+        
+        public static DateOnly SafeInputDateTime()
+        {
+            DateOnly input;
 
+            string rawInput = System.Console.ReadLine() ?? string.Empty;
+
+            while (!DateOnly.TryParse(rawInput, out input))
+            {
+                System.Console.WriteLine("Not a valid date, try again: ");
+
+                rawInput = System.Console.ReadLine() ?? string.Empty;
+            }
+
+            return input;
+        }
         /*public static string SafeInputString(string input)
         {
             string rawInput = System.Console.ReadLine();

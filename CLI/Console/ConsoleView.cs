@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using StudentskaSluzba.Model;
 using StudentskaSluzba.DAO;
 using StudentskaSluzba.Storage;
+using System.Globalization;
+
 namespace StudentskaSluzba.Console
 {
     public class ConsoleView
@@ -51,10 +53,12 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("Enter id: ");
             int id1=0;
             int id=ConsoleViewUtils.SafeInputInt(id1);
-            
 
-            System.Console.WriteLine("Enter date of birth: ");
-            DateOnly date = DateOnly.ParseExact(System.Console.ReadLine(), "dd.M.yyyy");
+
+            System.Console.WriteLine("Enter date of birth (in the format dd-M-yyyy): ");
+            DateOnly date = ConsoleViewUtils.SafeInputDateTime();
+
+
 
             System.Console.WriteLine("Enter address(state): ");
             string state = System.Console.ReadLine();
