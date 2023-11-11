@@ -6,194 +6,182 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StudentskaSluzba.Model;
-using StudentskaSluzba.DAO;
 using StudentskaSluzba.Storage;
 using System.Globalization;
+using System.Security.Cryptography.X509Certificates;
 
 namespace StudentskaSluzba.Console
 {
-    public class ConsoleView
+    public class ConsoleView 
     {
-
-    
-        private readonly StudentsDAO _studentsDao;
-
-        public ConsoleView(StudentsDAO studentsDao)
+        ConsoleViewStudent cvs;
+        public ConsoleView()
         {
-            _studentsDao = studentsDao;
+            cvs = new ConsoleViewStudent(new StudentsDAO());
         }
-
-        private void PrintStudent(List<Student> students)
-        {
-            System.Console.WriteLine("Students: ");
-            string header = " ";
-            System.Console.WriteLine(header);
-            foreach (Student s in students)
-            {
-                System.Console.WriteLine(s);
-            }
-        }
-
-        private Student InputStudent()
-        {
-            System.Console.WriteLine("Enter student Surname: ");
-            string surname = System.Console.ReadLine(); ;
-            while (surname =="")
-            {
-                System.Console.WriteLine("Enter valid string: ");
-                surname = System.Console.ReadLine();
-            }
-            System.Console.WriteLine("Enter Name: ");
-            string name = System.Console.ReadLine();
-            while (surname == "")
-            {
-                System.Console.WriteLine("Enter valid string: ");
-                surname = System.Console.ReadLine();
-            }
-            System.Console.WriteLine("Enter id: ");
-            int id1=0;
-            int id=ConsoleViewUtils.SafeInputInt(id1);
-
-
-            System.Console.WriteLine("Enter date of birth (in the format M/dd/yyyy): ");
-            DateOnly date = ConsoleViewUtils.SafeInputDateTime();
-
-
-
-            System.Console.WriteLine("Enter address(state): ");
-            string state = System.Console.ReadLine();
-            System.Console.WriteLine("Enter address(city): ");
-            string city = System.Console.ReadLine();
-            System.Console.WriteLine("Enter address(street): ");
-            string street = System.Console.ReadLine();
-            System.Console.WriteLine("Enter address(number): ");
-            int number1 = 0;
-            int number=ConsoleViewUtils.SafeInputInt(number1);
-            Address address = new Address(street, number, city, state);
-
-            System.Console.WriteLine("Enter phone number: ");
-            string phone = System.Console.ReadLine();
-
-            System.Console.WriteLine("Enter email: ");
-            string email = System.Console.ReadLine();
-
-            System.Console.WriteLine("Enter abbreviation of major: ");
-            string abb = System.Console.ReadLine();
-            System.Console.WriteLine("Enter mark of major: ");
-            int mark1 = 0;
-            int mark=ConsoleViewUtils.SafeInputInt(mark1);
-            System.Console.WriteLine("Enter year of major: ");
-            int year1 = 0;
-            int year=ConsoleViewUtils.SafeInputInt(year1);
-            Model.Index index = new Model.Index(abb, mark, year);
-
-            System.Console.WriteLine("Enter year of study: ");
-            int yearstudy1 = 0;
-            int yearstudy=ConsoleViewUtils.SafeInputInt(yearstudy1);
-
-            System.Console.WriteLine("Enter status(B or S): ");
-            string status = System.Console.ReadLine();
-            while(status != "B" && status != "S" && status != "b" && status != "s")
-            {
-                System.Console.WriteLine("Enter valid string: ");
-                status = System.Console.ReadLine();
-            }
-
-            System.Console.WriteLine("Enter average grade: ");
-            int avg1 = 0;
-            int avg=ConsoleViewUtils.SafeInputInt(avg1);
-
-
-            return new Student(surname, name, id, date, address, phone, email, index, yearstudy, status,avg);
-        }
-
-        private int InputId()
-        {
-            System.Console.WriteLine("Enter student id: ");
-            int id1 = 0;
-            int id= ConsoleViewUtils.SafeInputInt(id1);
-            return id;
-        }
-       
         public void RunMenu()
         {
             while (true)
             {
                 ShowMenu();
-                string userInput = System.Console.ReadLine() ?? "0";
-                if (userInput == "0") break;
+                int userInput = int.Parse(System.Console.ReadLine());
+                if (userInput == 0 || userInput == null) break;
                 HandleMenuInput(userInput);
             }
         }
 
-
-        private void HandleMenuInput(string input)
+        
+        private void HandleMenuInput(int input)
         {
             switch (input)
             {
-                case "1":
-                    ShowAllStudents();
+                case 1:
+                    StudentsShowMenu();
+                    int userInput = int.Parse(System.Console.ReadLine());
+                    if (userInput == 0 || userInput == null) break;
+                    StudentHandleMenuInput(userInput);
                     break;
-                case "2":
-                    AddStudent();
+                case 2:
+                    ProfessorShowMenu();
+                    int userInput1 = int.Parse(System.Console.ReadLine());
+                    if (userInput1 == 0 || userInput1 == null) break;
+                    StudentHandleMenuInput(userInput1);
                     break;
-                case "3":
-                    UpdateStudents();
+                case 3:
+                    SubjectShowMenu();
+                    int userInput2 = int.Parse(System.Console.ReadLine());
+                    if (userInput2 == 0 || userInput2 == null) break;
+                    StudentHandleMenuInput(userInput2);
                     break;
-                case "4":
-                    RemoveStudent();
+                case 4:
+                    IndexShowMenu();
+                    int userInput3 = int.Parse(System.Console.ReadLine());
+                    if (userInput3 == 0 || userInput3 == null) break;
+                    StudentHandleMenuInput(userInput3);
+                    break;
+                case 5:
+                    ShowGradeMenu();
+                    int userInput4 = int.Parse(System.Console.ReadLine());
+                    if (userInput4 == 0 || userInput4 == null) break;
+                    StudentHandleMenuInput(userInput4);
+                    break;
+                case 6:
+                    ShowDeparmentMenu();
+                    int userInput5 = int.Parse(System.Console.ReadLine());
+                    if (userInput5 == 0 || userInput5 == null) break;
+                    StudentHandleMenuInput(userInput5);
+                    break;
+                case 7:
+                    ShowAddressMenu();
+                    int userInput6 = int.Parse(System.Console.ReadLine());
+                    if (userInput6 == 0 || userInput6 == null) break;
+                    StudentHandleMenuInput(userInput6);
                     break;
             }
         }
 
-        private void ShowAllStudents()
+        private void StudentHandleMenuInput(int input)
         {
-            PrintStudent(_studentsDao.getAllStudents());
-        }
-
-        private void RemoveStudent()
-        {
-            int id = InputId();
-            Student? removedVehicle = _studentsDao.removeStudent(id);
-            if (removedVehicle is null)
+            switch(input)
             {
-                System.Console.WriteLine("Student not found");
-                return;
+                case 1:
+                    cvs.ShowAllStudents();
+                    break;
+                case 2:
+                    cvs.AddStudent();
+                    break;
+                case 3:
+                    cvs.UpdateStudents();
+                    break;
+                case 4:
+                    cvs.RemoveStudent();
+                    break;
+                case 5:
+                    RunMenu();
+                    break;
             }
-
-            System.Console.WriteLine("Student removed");
         }
 
-        private void UpdateStudents()
+        private void ProfessorShowMenu()
         {
-            int id = InputId();
-            Student student = InputStudent();
-            student.Id = id;
-            Student? updatedStudent = _studentsDao.UpdateStudent(student);
-            if (updatedStudent == null)
-            {
-                System.Console.WriteLine("Student not found");
-                return;
-            }
-
-            System.Console.WriteLine("Student updated");
+            System.Console.WriteLine("\nChoose an option: ");
+            System.Console.WriteLine("1: Show All professors: ");
+            System.Console.WriteLine("2: Add professor: ");
+            System.Console.WriteLine("3: Update professor: ");
+            System.Console.WriteLine("4: Remove professor: ");
+            System.Console.WriteLine("5: Go back");
         }
-
-        private void AddStudent()
-        {
-            Student student = InputStudent();
-            _studentsDao.addStudent(student);
-            System.Console.WriteLine("Student added");
-        }
-
        
-        private void ShowMenu()
+        private void StudentsShowMenu()
         {
             System.Console.WriteLine("\nChoose an option: ");
             System.Console.WriteLine("1: Show All students");
             System.Console.WriteLine("2: Add student");
             System.Console.WriteLine("3: Update student");
             System.Console.WriteLine("4: Remove student");
+            System.Console.WriteLine("0: Go back");
+        }
+
+        private void SubjectShowMenu()
+        {
+            System.Console.WriteLine("\nChoose an option: ");
+            System.Console.WriteLine("1: Show All subjects");
+            System.Console.WriteLine("2: Add subject");
+            System.Console.WriteLine("3: Update subject");
+            System.Console.WriteLine("4: Remove subject");
+            System.Console.WriteLine("0: Go back");
+        }
+
+        private void IndexShowMenu()
+        {
+            System.Console.WriteLine("\nChoose an option: ");
+            System.Console.WriteLine("1: Show All indexes");
+            System.Console.WriteLine("2: Add index");
+            System.Console.WriteLine("3: Update index");
+            System.Console.WriteLine("4: Remove index");
+            System.Console.WriteLine("0: Go back");
+        }
+
+        private void ShowAddressMenu()
+        {
+            System.Console.WriteLine("\nChoose an option: ");
+            System.Console.WriteLine("1: Show All addresses");
+            System.Console.WriteLine("2: Add address");
+            System.Console.WriteLine("3: Update address");
+            System.Console.WriteLine("4: Remove address");
+            System.Console.WriteLine("0: Go back");
+        }
+
+        private void ShowDeparmentMenu()
+        {
+            System.Console.WriteLine("\nChoose an option: ");
+            System.Console.WriteLine("1: Show All departments");
+            System.Console.WriteLine("2: Add department");
+            System.Console.WriteLine("3: Update department");
+            System.Console.WriteLine("4: Remove department");
+            System.Console.WriteLine("0: Go back");
+        }
+
+        private void ShowGradeMenu()
+        {
+            System.Console.WriteLine("\nChoose an option: ");
+            System.Console.WriteLine("1: Show All grade");
+            System.Console.WriteLine("2: Add grade");
+            System.Console.WriteLine("3: Update grade");
+            System.Console.WriteLine("4: Remove grade");
+            System.Console.WriteLine("0: Go back");
+        }
+
+        private void ShowMenu()
+        {
+            System.Console.WriteLine("\nChoose an option: ");
+            System.Console.WriteLine("1: Student: ");
+            System.Console.WriteLine("2: Professor: ");
+            System.Console.WriteLine("3: Subject: ");
+            System.Console.WriteLine("4: Index: ");
+            System.Console.WriteLine("5: Grade: ");
+            System.Console.WriteLine("6: Department: ");
+            System.Console.WriteLine("7: Address: ");
             System.Console.WriteLine("0: Close");
         }
     }
