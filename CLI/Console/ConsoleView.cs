@@ -17,10 +17,12 @@ namespace StudentskaSluzba.Console
     {
         ConsoleViewStudent cvs;
         ConsoleViewProfessor cvp;
+        ConsoleViewDepartment cvd;
         public ConsoleView()
         {
             cvs = new ConsoleViewStudent(new StudentsDAO());
             cvp = new ConsoleViewProfessor(new ProfessorsDAO());
+            cvd= new ConsoleViewDepartment(new DepartmentsDAO());
         }
         public void RunMenu()
         {
@@ -72,7 +74,7 @@ namespace StudentskaSluzba.Console
                     ShowDeparmentMenu();
                     int userInput5 = int.Parse(System.Console.ReadLine());
                     if (userInput5 == 0 || userInput5 == null) break;
-                    StudentHandleMenuInput(userInput5);
+                    DepartmentHandleMenuInput(userInput5);
                     break;
                 case 7:
                     ShowAddressMenu();
@@ -127,7 +129,27 @@ namespace StudentskaSluzba.Console
 
             }
         }
-
+        private void DepartmentHandleMenuInput(int input)
+        {
+            switch (input)
+            {
+                case 1:
+                    cvd.ShowAllDepartment();
+                    break;
+                case 2:
+                    cvd.AddDepartment();
+                    break;
+                case 3:
+                    cvd.UpdateDepartments();
+                    break;
+                case 4:
+                    cvd.removeDepartment();
+                    break;
+                case 5:
+                    RunMenu();
+                    break;
+            }
+        }
         private void ProfessorShowMenu()
         {
             System.Console.WriteLine("\nChoose an option: ");

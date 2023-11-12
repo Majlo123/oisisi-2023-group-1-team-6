@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StudentskaSluzba.Model;
-using CLI.Model;
 using StudentskaSluzba.Storage;
 
 
@@ -38,13 +37,14 @@ namespace StudentskaSluzba.DAO
             _storage.Save(_departments);
         }
 
-        public void removeDepartments(int id)
+        public Department removeDepartment(int id)
         {
             Department? department = GetDepartmentById(id);
-            if (department == null) return;
+            if (department != null) return null;
 
             _departments.Remove(department);
             _storage.Save(_departments);
+            return department;
         }
         public Department? UpdateDepartment(Department department)
         {
@@ -74,5 +74,7 @@ namespace StudentskaSluzba.DAO
 
             return department.ToList();
         }
+       
     }
+       
 }

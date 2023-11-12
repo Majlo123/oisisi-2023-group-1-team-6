@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StudentskaSluzba.Storage;
-using StudentskaSluzba.Serialization;
 using System.Xml.Linq;
-using StudentskaSluzba.Model;
+using CLI.Model;
+using StudentskaSluzba.Serialization;
+namespace StudentskaSluzba.Model;
 
 
-namespace CLI.Model
-{
     public class Department : ISerializable
     {
 
@@ -64,7 +62,7 @@ namespace CLI.Model
             sb.Append($"Department name: {DepartmentName}, ");
             sb.Append($"Department boss: {DepartmentBoss}, ");
             sb.Append("List of proffesors:");
-            sb.AppendJoin(", ", Professors.Select(professor => professor.Name),", ", Professors.Select(professor => professor.Surname));
+            sb.AppendJoin(", ", Professors.Select(professor => professor.Id));
             return sb.ToString();
         }
 
@@ -72,4 +70,4 @@ namespace CLI.Model
 
 
     }
-}
+
