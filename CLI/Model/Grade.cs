@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StudentskaSluzba.Storage;
+using System.Xml.Linq;
+using CLI.Model;
 using StudentskaSluzba.Serialization;
-using StudentskaSluzba.Storage;
-using StudentskaSluzba.Model;
+namespace StudentskaSluzba.Model;
 
-public enum Grades { SIX = 6, SEVEN = 7, EIGHT = 8, NINE = 9, TEN = 10 };
-
-namespace CLI.Model
-{
     public class Grade : ISerializable
     {
+        public int Id { get; set; }
         public Student StudentWhoPassed {  get; set; }
 
         public Subject subject { get; set; }
 
-        public Grades grades { get; set; }
+        public string grades { get; set; }
 
         public DateOnly date { get; set; }
 
-
-        public Grade(Student studentWhoPassed, Subject subject, DateOnly date, Grades grade )
+        public Grade()
         {
+            grades= "";
+            Id = 0;
+            
+        }
+        public Grade(int Id,Student studentWhoPassed, Subject subject, DateOnly date, string grade )
+        {
+            this.Id = Id;
             this.StudentWhoPassed = studentWhoPassed;
             this.subject = subject;
             this.date = date;
@@ -35,10 +38,11 @@ namespace CLI.Model
         {
             string[] csvValues =
             {
+                Id.ToString(),
                 StudentWhoPassed.ToString(),
                 subject.ToString(),
                 date.ToString(),
-                grades.ToString()
+                grades
 
             };
 
@@ -47,17 +51,19 @@ namespace CLI.Model
 
         public void FromCSV(string[] values)
         {
-            StudentWhoPassed.Surname = values[0];
-            StudentWhoPassed.Name = values[1];
-            subject.subjectId = int.Parse(values[2]);//pitacemo
-            date = DateOnly.ParseExact(values[3], "dd-MM-yyyy");//pitacemo
-            grades = (Grades)int.Parse(values[4]);
+            Id = int.Parse(values[0]);
+            StudentWhoPassed.Surname = values[1];
+            StudentWhoPassed.Name = values[2];
+            subject.subjectId = int.Parse(values[3]);//pitacemo
+            date = DateOnly.ParseExact(values[4], "M/d/yyyy");//pitacemo
+            grades = values[5];
 
         }
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
+            sb.Append($"ID: {Id.ToString()}, ");
             sb.Append($"Student who passed: {StudentWhoPassed}, ");
             sb.Append($"Subject Name: {subject}, ");
             sb.Append($"Date:  {date.ToString()}, ");
@@ -66,4 +72,4 @@ namespace CLI.Model
             return sb.ToString();
         }
     }
-}
+
