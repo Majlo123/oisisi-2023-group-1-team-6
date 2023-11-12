@@ -9,6 +9,7 @@ using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
+using System.IO;
 
 
 namespace StudentskaSluzba.Console
@@ -110,7 +111,6 @@ namespace StudentskaSluzba.Console
             int id = InputId1();
             ProfessorsDAO professorDAO = new ProfessorsDAO();
             Professor professorToAdd = professorDAO.GetProfessorById(id);
-
             if (professorToAdd != null)
             {
                 int id1 = InputId();

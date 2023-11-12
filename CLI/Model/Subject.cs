@@ -10,7 +10,7 @@ using System.Xml.Linq;
 using StudentskaSluzba.Serialization;
 using StudentskaSluzba.Model;
 
-public enum Semester { Summer, Winter };
+
 
 namespace CLI.Model
 {
@@ -27,7 +27,7 @@ namespace CLI.Model
 
         public int ESPBPoints { get; set; }
 
-        public Semester semester { get; set; }
+        public string semester { get; set; }
 
         public List<Student> StudentsPassed { get; set; }
 
@@ -45,16 +45,16 @@ namespace CLI.Model
             StudentsFailed = new List<Student>();
         }
 
-        public Subject(int subjectId, string subjectName, int yearOfStudy, Professor professor, int eSPBPoints, List<Student> studentsPassed, List<Student> studentsFailed)
+        public Subject(int subjectId, string subjectName, int yearOfStudy,string semester, Professor professor, int eSPBPoints)
         {
             subjectId = subjectId;
             subjectName = subjectName;
             yearOfStudy = yearOfStudy;
             professor = professor;
-            semester.ToString();
+            semester = semester;
             ESPBPoints = eSPBPoints;
-            StudentsPassed = studentsPassed;
-            StudentsFailed = studentsFailed;
+            StudentsPassed = new List<Student>();
+            StudentsFailed = new List<Student>();
         }
 
         public string[] ToCSV()
@@ -79,7 +79,7 @@ namespace CLI.Model
             subjectId = int.Parse(values[0]);
             subjectName = values[1];
             yearOfStudy = int.Parse(values[2]);
-            semester = (Semester)int.Parse(values[3]);
+            semester = values[3];
             professor.Name = values[4];
             professor.Surname = values[5];
             ESPBPoints = int.Parse(values[6]);
@@ -92,7 +92,7 @@ namespace CLI.Model
             sb.Append($"SubjectName: {subjectName}, ");
             sb.Append($"Years of study: {yearOfStudy.ToString()}, ");
             sb.Append($"Professor: {professor}, ");
-            sb.Append($"Semester: {semester.ToString()}");
+            sb.Append($"Semester: {semester}");
             sb.Append($"ESPB Points: {ESPBPoints.ToString()}, ");
             sb.Append($"Students who passed: ");
             sb.AppendJoin(", ", StudentsPassed.Select(Student => Student.Name));

@@ -62,7 +62,7 @@ namespace StudentskaSluzba.Model;
             sb.Append($"Department name: {DepartmentName}, ");
             sb.Append($"Department boss: {DepartmentBoss}, ");
             sb.Append("List of proffesors:");
-            sb.AppendJoin(", ", Professors.Select(professor => professor.Id));
+            sb.AppendJoin(",proffesor:", Professors.Select(professor => professor.Id));
             return sb.ToString();
         }
 

@@ -36,6 +36,7 @@ namespace StudentskaSluzba.Model;
         Subjects = new List<Subject>();
     }
 
+    
     public Professor(string surname, string name, DateOnly date, Address address, string phonenumber, string email, int id, string title, int workyear)
     {
         Surname = surname;

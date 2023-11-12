@@ -42,13 +42,14 @@ namespace StudentskaSluzba.DAO
             _storage.Save(_subjects);
         }
 
-        public void removeSubject(int id)
+        public Subject removeSubject(int id)
         {
             Subject? subject = GetSubjectById(id);
-            if (subject == null) return;
+            if (subject == null) return null;
 
             _subjects.Remove(subject);
             _storage.Save(_subjects);
+            return subject;
         }
         public Subject? UpdateSubject(Subject subject)
         {
