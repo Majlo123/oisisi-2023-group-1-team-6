@@ -24,9 +24,19 @@ namespace StudentskaSluzba.DAO
 
         }
         
-        private Department? GetDepartmentById(int id)
+        public Department? GetDepartmentById(int id)
         {
             return _departments.Find(d => d.DepartmentID == id);
+        }
+        public Department GetOrCreateDepartment()
+        {
+                
+                Department newDepartment = new Department();
+            bool exists = _departments.Contains(newDepartment);
+            if(exists) { return null; }
+            return newDepartment;
+
+
         }
         public void addDepartment(Department department)
         {
@@ -46,6 +56,7 @@ namespace StudentskaSluzba.DAO
             _storage.Save(_departments);
             return department;
         }
+
         public Department? UpdateDepartment(Department department)
         {
             Department? oldDepartment = GetDepartmentById(department.DepartmentID);
@@ -56,7 +67,7 @@ namespace StudentskaSluzba.DAO
             oldDepartment.Professors = department.Professors;
 
 
-
+            
             _storage.Save(_departments);
             return department;
 

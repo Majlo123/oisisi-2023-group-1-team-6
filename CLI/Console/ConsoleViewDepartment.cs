@@ -59,6 +59,12 @@ namespace StudentskaSluzba.Console
             int id = ConsoleViewUtils.SafeInputInt();
             return id;
         }
+        public int InputId1()
+        {
+            System.Console.WriteLine("Enter Proffesor id: ");
+            int id = ConsoleViewUtils.SafeInputInt();
+            return id;
+        }
 
         public void ShowAllDepartment()
         {
@@ -98,6 +104,34 @@ namespace StudentskaSluzba.Console
             Department department = InputDepartment();
             _departmentsDao.addDepartment(department);
             System.Console.WriteLine("Department added");
+        }
+        public void AddProfessorToDepartment()
+        {
+            int id = InputId1();
+            ProfessorsDAO professorDAO = new ProfessorsDAO();
+            Professor professorToAdd = professorDAO.GetProfessorById(id);
+
+            if (professorToAdd != null)
+            {
+                int id1 = InputId();
+                DepartmentsDAO departmentsDAO = new DepartmentsDAO();
+                Department? departmentsToAdd = departmentsDAO.GetDepartmentById(id1);
+                if (departmentsToAdd == null)
+                {
+                    System.Console.WriteLine("Department not found");
+
+                }
+                else
+                {
+                    
+                    departmentsToAdd.Professors.Add(professorToAdd);
+                    System.Console.WriteLine($"Professor {professorToAdd.Name} added to the department.");
+                }
+            }
+            else
+            {
+                System.Console.WriteLine($"Professor with ID {id} does not exist.");
+            }
         }
 
     }

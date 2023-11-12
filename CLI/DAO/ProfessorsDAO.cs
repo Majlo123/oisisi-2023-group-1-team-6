@@ -22,7 +22,7 @@ namespace StudentskaSluzba.DAO
             _professors = _storage.Load();
 
         }
-        private Professor? GetProfessorById(int id)
+        public Professor? GetProfessorById(int id)
         {
             return _professors.Find(p => p.Id == id);
         }

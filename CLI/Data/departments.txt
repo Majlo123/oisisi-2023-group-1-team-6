@@ -1,1 +1,1 @@
-23|Katedra 1|Doros
+23|katedra 1|novi

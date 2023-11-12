@@ -146,6 +146,9 @@ namespace StudentskaSluzba.Console
                     cvd.removeDepartment();
                     break;
                 case 5:
+                    cvd.AddProfessorToDepartment();
+                    break;
+                case 6:
                     RunMenu();
                     break;
             }
@@ -207,6 +210,7 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("2: Add department");
             System.Console.WriteLine("3: Update department");
             System.Console.WriteLine("4: Remove department");
+            System.Console.WriteLine("5: Add professor to department");
             System.Console.WriteLine("0: Go back");
         }
 
