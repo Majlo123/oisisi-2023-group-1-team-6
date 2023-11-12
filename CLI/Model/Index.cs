@@ -14,14 +14,18 @@ namespace StudentskaSluzba.Model;
 
         public int YearOfEnrollment { get; set; }
 
+        public int IdIndex { get; set; }
+
         public Index() {
             AbbreviationOfMajor = "";
             MarkOfMajor = 0;
             YearOfEnrollment = 0;
+            IdIndex = 0;
         }
 
-        public Index(string abb, int mark, int year)
+        public Index(int id, string abb, int mark, int year)
         {
+            IdIndex = id;
             AbbreviationOfMajor = abb;
             MarkOfMajor = mark;
             YearOfEnrollment = year;
@@ -31,6 +35,7 @@ namespace StudentskaSluzba.Model;
         {
             string[] csvValues =
             {
+                IdIndex.ToString(),
                 AbbreviationOfMajor,
                 MarkOfMajor.ToString(),
                 YearOfEnrollment.ToString(),
@@ -42,15 +47,17 @@ namespace StudentskaSluzba.Model;
 
         public void FromCSV(string[] values)
         {
-            AbbreviationOfMajor = values[0];
-            MarkOfMajor = int.Parse(values[1]);
-            YearOfEnrollment = int.Parse(values[2]);
+            IdIndex = int.Parse(values[0]);
+            AbbreviationOfMajor = values[1];
+            MarkOfMajor = int.Parse(values[2]);
+            YearOfEnrollment = int.Parse(values[3]);
         }
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"{AbbreviationOfMajor}");
+            sb.Append($"{IdIndex}");
+            sb.Append($"|{AbbreviationOfMajor}");
             sb.Append($"|{MarkOfMajor.ToString()}");
             sb.Append($"|{YearOfEnrollment.ToString()}"); ;
 

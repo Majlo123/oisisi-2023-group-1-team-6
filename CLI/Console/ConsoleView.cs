@@ -19,12 +19,14 @@ namespace StudentskaSluzba.Console
         ConsoleViewProfessor cvp;
         ConsoleViewDepartment cvd;
         ConsoleViewSubject cvsub;
+        ConsoleViewIndex cvi;
         public ConsoleView()
         {
             cvs = new ConsoleViewStudent(new StudentsDAO());
             cvp = new ConsoleViewProfessor(new ProfessorsDAO());
             cvd= new ConsoleViewDepartment(new DepartmentsDAO());
             cvsub= new ConsoleViewSubject(new SubjectsDAO());
+            cvi = new ConsoleViewIndex(new IndexDAO());
         }
         public void RunMenu()
         {
@@ -64,7 +66,7 @@ namespace StudentskaSluzba.Console
                     IndexShowMenu();
                     int userInput3 = int.Parse(System.Console.ReadLine());
                     if (userInput3 == 0 || userInput3 == null) break;
-                    StudentHandleMenuInput(userInput3);
+                    IndexHandleMenuInput(userInput3);
                     break;
                 case 5:
                     ShowGradeMenu();
@@ -175,6 +177,28 @@ namespace StudentskaSluzba.Console
                     RunMenu();
                     break;
 
+            }
+        }
+
+        private void IndexHandleMenuInput(int input)
+        {
+            switch (input)
+            {
+                case 1:
+                    cvi.showAllIndexess();
+                    break;
+                case 2:
+                    cvi.AddIndex();
+                    break;
+                case 3:
+                    cvi.UpdateIndex();
+                    break;
+                case 4:
+                    cvi.removeIndex();
+                    break;
+                case 5:
+                    RunMenu();
+                    break;
             }
         }
         private void ProfessorShowMenu()

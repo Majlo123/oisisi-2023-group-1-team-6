@@ -87,10 +87,10 @@ public class Student : ISerializable
         Address = new Address(values[4], int.Parse(values[5]), values[6], values[7]);
         PhoneNumber = values[8];
         Email = values[9];
-        Index = new Index(values[10], int.Parse(values[11]), int.Parse(values[12]));
-        YearOfStudy = int.Parse(values[13]);
-        Status = values[14];
-        AvarageGrade = int.Parse(values[15]);
+        Index = new Index(int.Parse(values[10]), values[11], int.Parse(values[12]), int.Parse(values[13]));
+        YearOfStudy = int.Parse(values[14]);
+        Status = values[15];
+        AvarageGrade = int.Parse(values[16]);
     }
     public override string ToString()
     {

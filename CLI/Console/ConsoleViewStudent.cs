@@ -71,13 +71,15 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("Enter email: ");
             string email = System.Console.ReadLine();
 
+            System.Console.WriteLine("Enter id of index: ");
+            int idIndex = ConsoleViewUtils.SafeInputInt();
             System.Console.WriteLine("Enter abbreviation of major: ");
             string abb = System.Console.ReadLine();
             System.Console.WriteLine("Enter mark of major: ");
             int mark = ConsoleViewUtils.SafeInputInt();
             System.Console.WriteLine("Enter year of major: ");
             int year = ConsoleViewUtils.SafeInputInt();
-            Model.Index index = new Model.Index(abb, mark, year);
+            Model.Index index = new Model.Index(idIndex, abb, mark, year);
 
             System.Console.WriteLine("Enter year of study: ");
             int yearstudy = ConsoleViewUtils.SafeInputInt();
