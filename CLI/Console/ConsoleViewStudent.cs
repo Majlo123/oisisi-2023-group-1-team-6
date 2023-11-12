@@ -112,8 +112,8 @@ namespace StudentskaSluzba.Console
         public void RemoveStudent()
         {
             int id = InputId();
-            Student? removedVehicle = _studentsDao.removeStudent(id);
-            if (removedVehicle is null)
+            Student? removedStudent = _studentsDao.removeStudent(id);
+            if (removedStudent is null)
             {
                 System.Console.WriteLine("Student not found");
                 return;
