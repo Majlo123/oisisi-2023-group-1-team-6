@@ -79,7 +79,7 @@ namespace CLI.Model
             subjectId = int.Parse(values[0]);
             subjectName = values[1];
             yearOfStudy = int.Parse(values[2]);
-            semester = values[3];
+            semester = (values[3]);
             professor.Name = values[4];
             professor.Surname = values[5];
             ESPBPoints = int.Parse(values[6]);
@@ -92,7 +92,7 @@ namespace CLI.Model
             sb.Append($"SubjectName: {subjectName}, ");
             sb.Append($"Years of study: {yearOfStudy.ToString()}, ");
             sb.Append($"Professor: {professor}, ");
-            sb.Append($"Semester: {semester}");
+            sb.Append($"Semester: {semester.ToString()}");
             sb.Append($"ESPB Points: {ESPBPoints.ToString()}, ");
             sb.Append($"Students who passed: ");
             sb.AppendJoin(", ", StudentsPassed.Select(Student => Student.Name));
