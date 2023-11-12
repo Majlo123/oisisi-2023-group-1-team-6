@@ -33,11 +33,20 @@ namespace CLI.Console
 
         public Professor InputProfessor()
         {
-            System.Console.WriteLine("Enter name: ");
-            string name = ConsoleViewUtils.SafeInputString();
-
-            System.Console.WriteLine("Enter surname: ");
-            string surname = ConsoleViewUtils.SafeInputString();
+            System.Console.WriteLine("Enter proffesor Surname: ");
+            string surname = System.Console.ReadLine(); ;
+            while (surname == "")
+            {
+                System.Console.WriteLine("Enter valid string: ");
+                surname = System.Console.ReadLine();
+            }
+            System.Console.WriteLine("Enter proffesor Name: ");
+            string name = System.Console.ReadLine();
+            while (surname == "")
+            {
+                System.Console.WriteLine("Enter valid string: ");
+                surname = System.Console.ReadLine();
+            }
 
             System.Console.WriteLine("Enter date of birth: ");
             DateOnly date = ConsoleViewUtils.SafeInputDateTime();
