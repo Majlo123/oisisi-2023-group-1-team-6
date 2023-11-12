@@ -50,11 +50,11 @@ namespace StudentskaSluzba.Model;
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append($"STREET: {Street}, ");
-        sb.Append($"NUMBER: {Number.ToString()}, ");
-        sb.Append($"CITY: {City}, ");
-        sb.Append($"STATE: {State}, ");
-        
+        sb.Append($"{Street}");
+        sb.Append($"|{Number.ToString()}");
+        sb.Append($"|{City}");
+        sb.Append($"|{State}");
+
 
         return sb.ToString();
     }

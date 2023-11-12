@@ -66,8 +66,10 @@ public class Student : ISerializable
             Name,
             Id.ToString(),
             Date.ToString(),
+            Address.ToString(),
             PhoneNumber,
             Email,
+            Index.ToString(),
             YearOfStudy.ToString(),
             Status.ToString(),
             AvarageGrade.ToString(),
@@ -82,13 +84,13 @@ public class Student : ISerializable
         Name = values[1];
         Id = int.Parse(values[2]);
         Date = DateOnly.ParseExact(values[3], "M/d/yyyy");
-        PhoneNumber = values[4];
-        Email = values[5];
-        //NECE DA CITA NISTA IZ ADRESE I INDEXA IMA EXCEPTION
-        //(PROBAJ PREKO LISTE)
-        YearOfStudy = int.Parse(values[6]);
-        Status = values[7];
-        AvarageGrade = int.Parse(values[8]);
+        Address = new Address(values[4], int.Parse(values[5]), values[6], values[7]);
+        PhoneNumber = values[8];
+        Email = values[9];
+        Index = new Index(values[10], int.Parse(values[11]), int.Parse(values[12]));
+        YearOfStudy = int.Parse(values[13]);
+        Status = values[14];
+        AvarageGrade = int.Parse(values[15]);
     }
     public override string ToString()
     {
@@ -97,10 +99,10 @@ public class Student : ISerializable
         sb.Append($"NAME: {Name}, ");
         sb.Append($"ID: {Id.ToString()}, ");
         sb.Append($"DATE OF BIRTH: {Date.ToString()}, ");
+        sb.Append($"ADDRESS: {Address.ToString()}, ");
         sb.Append($"PHONE NUMBER: {PhoneNumber.ToString()}, ");
         sb.Append($"EMAIL: {Email}, ");
-        //NECE NISTA DA PISE IZ ADRESE I INDEXA IMA EXCEPTION
-        //(PROBAJ PREKO LISTE)
+        sb.Append($"INDEX: {Index.ToString()}, ");
         sb.Append($"YEAR OF STUDY: {YearOfStudy.ToString()}, ");
         sb.Append($"STUDDY YEAR STATUS: {Status}, ");
         sb.Append($"AVERAGE GRADE: {AvarageGrade.ToString()}, ");

@@ -50,9 +50,9 @@ namespace StudentskaSluzba.Model;
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"Abbreviation of major: {AbbreviationOfMajor}, ");
-            sb.Append($"Mark of major: {MarkOfMajor.ToString()}, ");
-            sb.Append($"Years of enrollment: {YearOfEnrollment.ToString()}, ");
+            sb.Append($"{AbbreviationOfMajor}");
+            sb.Append($"|{MarkOfMajor.ToString()}");
+            sb.Append($"|{YearOfEnrollment.ToString()}"); ;
 
             return sb.ToString();
         }
