@@ -127,16 +127,17 @@ namespace StudentskaSluzba.Console
         public void UpdateStudents()
         {
             int id = InputId();
-            Student student = InputStudent();
-            student.Id = id;
-            Student? updatedStudent = _studentsDao.UpdateStudent(student);
-            if (updatedStudent == null)
+            StudentsDAO studentsDAO = new StudentsDAO();
+            Student studentToAdd = studentsDAO.GetStudentById(id);
+            if (studentToAdd == null)
             {
                 System.Console.WriteLine("Student not found");
                 return;
             }
-
-            System.Console.WriteLine("Student updated");
+            System.Console.WriteLine("Student found");
+            Student department = InputStudent();
+            _studentsDao.addStudent(department);
+            System.Console.WriteLine("Department updated");
         }
 
         public void AddStudent()
