@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
 323|mata|3|summer|Veljko|Petrovic|3
 3|srpski|4|winter|Veljko|Petrovic|2
 4|srbijanski|1|summer|Veljko|Petrovic|3
+=======
+23|mata|3|summer|SURNAME: Petrovic, NAME: Veljko, DATE OF BIRTH: 9/14/1980, ADDRESS: 4|kralja petra|4|novi sad|srbija, PHONE NUMBER: 8940921, EMAIL: veljkopetrovic@uns.ac.rs, ID: 4, TITLE: profesor, WORK YEAR: 3, SUBJECTS:|3
+>>>>>>> Stashed changes

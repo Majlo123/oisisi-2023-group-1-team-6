@@ -1,1 +1,6 @@
+<<<<<<< Updated upstream
 paunovic|nikola|4|8/10/2002|0|divlji zapad|4|cimanje nasilje|sipurske livade|843021921|niklapaunovic15@gmail.com|5|ra|87|2021|3|b|7
+=======
+bogdanovic|mihajlo|23|9/19/2002|1|filipa visnjica|2|novi sad|serbia|325125|b|12|ra|64|2021|3|s|6
+s|s|2|9/19/2002|2|2|2|2|2|2|2|2|2|2|2|2|s|2
+>>>>>>> Stashed changes

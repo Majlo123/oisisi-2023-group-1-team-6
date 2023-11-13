@@ -1,2 +1,7 @@
+<<<<<<< Updated upstream
 0|nikola|paunovic
 0|Fizika|Milka
+=======
+2|Operativni|Veljko
+3|novi|miroljub
+>>>>>>> Stashed changes

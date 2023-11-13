@@ -17,6 +17,7 @@ namespace StudentskaSluzba.DAO
         {
             _storage = new Storage<Grade>("grades.txt");
             _grade = _storage.Load();
+
         }
 
         public Grade? GetGradeById(int id)

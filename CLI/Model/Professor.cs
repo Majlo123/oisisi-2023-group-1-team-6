@@ -30,7 +30,11 @@ namespace StudentskaSluzba.Model;
 
     public List<Subject> Subjects { get; set; }
 
+<<<<<<< Updated upstream
     
+=======
+   
+>>>>>>> Stashed changes
     public Professor()
     {
         Subjects = new List<Subject>();

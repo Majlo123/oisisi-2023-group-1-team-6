@@ -58,15 +58,25 @@ namespace StudentskaSluzba.Console
             Professor professorToAdd = professorDAO.GetProfessorById(id1);
             while (professorToAdd == null)
             {
+                
                 System.Console.WriteLine("This proffesor doesn't exist: ");
                 System.Console.WriteLine("Enter proffesor id: ");
                 id1 = ConsoleViewUtils.SafeInputInt();
                 ProfessorsDAO professorDAO1 = new ProfessorsDAO();
+<<<<<<< Updated upstream
                 professorToAdd = professorDAO.GetProfessorById(id1);
             } 
             Professor professor = new Professor(professorToAdd.Surname,professorToAdd.Name,
                 professorToAdd.Date,professorToAdd.Address,professorToAdd.PhoneNumber,
                 professorToAdd.Email,professorToAdd.Id,professorToAdd.Title,professorToAdd.WorkYear);
+=======
+                professorToAdd = professorDAO1.GetProfessorById(id1);
+            }
+            Professor professor = new Professor(professorToAdd.Surname, professorToAdd.Name, professorToAdd.Date,
+                professorToAdd.Address, professorToAdd.PhoneNumber,professorToAdd.Email,professorToAdd.Id,
+                professorToAdd.Title, professorToAdd.WorkYear);
+            
+>>>>>>> Stashed changes
             System.Console.WriteLine("Enter ESPB points: ");
             int espb = ConsoleViewUtils.SafeInputInt();
 
