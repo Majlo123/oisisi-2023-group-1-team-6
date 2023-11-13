@@ -35,7 +35,7 @@ namespace StudentskaSluzba.Console
 
         }
 
-        public Department InputGrade()
+        /*public Grade InputGrade()
         {
             System.Console.WriteLine("Enter Grade ID: ");
             int id = ConsoleViewUtils.SafeInputInt();
@@ -77,8 +77,8 @@ namespace StudentskaSluzba.Console
                 subject = System.Console.ReadLine();
             }
 
-            return new Grade(id,student,subject1,date);
-        }
+            return new Grade(id,subject,subject1,date,grade);
+        }*/
 
         public int InputId()
         {
@@ -93,74 +93,47 @@ namespace StudentskaSluzba.Console
             return id;
         }
 
-        public void ShowAllDepartment()
+        public void ShowAllGrades()
         {
-            PrintDepartment(_departmentsDao.getAllDepartments());
+            PrintGrades(_gradesDao.GetAllGrade());
         }
 
-        public void removeDepartment()
+        public void removeGrade()
         {
-            int DepartmentId = InputId();
-            Department? removedDepartment = _departmentsDao.removeDepartment(DepartmentId);
-            if (removedDepartment is null)
+            int GradeId = InputId();
+            Grade? removedGrade = _gradesDao.removeGrade(GradeId);
+            if (removedGrade is null)
             {
-                System.Console.WriteLine("Department not found");
+                System.Console.WriteLine("Grade not found");
                 return;
             }
 
-            System.Console.WriteLine("Department removed");
+            System.Console.WriteLine("Grade removed");
         }
 
-        public void UpdateDepartments()
+        /*public void UpdateGrade()
         {
 
             int id = InputId();
-            DepartmentsDAO departmentsDAO = new DepartmentsDAO();
-            Department departmentToAdd = departmentsDAO.GetDepartmentById(id);
-            if (departmentToAdd == null)
+            Grade grade = InputGrade();
+            grade.Id = id;
+            Grade updatedGrade = _gradesDao.UpdateGrade(grade);
+            if (updatedGrade == null)
             {
-                System.Console.WriteLine("Department not found");
+                System.Console.WriteLine("Grade not found");
                 return;
             }
-            System.Console.WriteLine("Department found");
-            Department department = InputDepartment();
-            _departmentsDao.addDepartment(department);
-            System.Console.WriteLine("Department updated");
-        }
 
-        public void AddDepartment()
+            System.Console.WriteLine("Grade updated");
+        }*/
+
+        /*public void AddGrade()
         {
-            Department department = InputDepartment();
-            _departmentsDao.addDepartment(department);
-            System.Console.WriteLine("Department added");
-        }
-        public void AddProfessorToDepartment()
-        {
-            int id = InputId1();
-            ProfessorsDAO professorDAO = new ProfessorsDAO();
-            Professor professorToAdd = professorDAO.GetProfessorById(id);
-            if (professorToAdd != null)
-            {
-                int id1 = InputId();
-                DepartmentsDAO departmentsDAO = new DepartmentsDAO();
-                Department? departmentsToAdd = departmentsDAO.GetDepartmentById(id1);
-                if (departmentsToAdd == null)
-                {
-                    System.Console.WriteLine("Department not found");
-
-                }
-                else
-                {
-
-                    departmentsToAdd.Professors.Add(professorToAdd);
-                    System.Console.WriteLine($"Professor {professorToAdd.Name} added to the department.");
-                }
-            }
-            else
-            {
-                System.Console.WriteLine($"Professor with ID {id} does not exist.");
-            }
-        }
+            Grade grade = InputGrade();
+            _gradesDao.addGrade(grade);
+            System.Console.WriteLine("Grade added");
+        }*/
+        
 
     }
 }

@@ -53,18 +53,11 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("Enter date of birth (in the format M/dd/yyyy): ");
             DateOnly date = ConsoleViewUtils.SafeInputDateTime();
 
+            AddressDAO ad = new AddressDAO();
+            ConsoleViewAddress cva = new ConsoleViewAddress(ad);
 
-            System.Console.WriteLine("Enter address(id): ");
-            int id1 = ConsoleViewUtils.SafeInputInt();
-            System.Console.WriteLine("Enter address(state): ");
-            string state = System.Console.ReadLine();
-            System.Console.WriteLine("Enter address(city): ");
-            string city = System.Console.ReadLine();
-            System.Console.WriteLine("Enter address(street): ");
-            string street = System.Console.ReadLine();
-            System.Console.WriteLine("Enter address(number): ");
-            int number = ConsoleViewUtils.SafeInputInt();
-            Address address = new Address(id1, street, number, city, state);
+            cva.AddAddress();
+            int ida = cva.getIdAddress();
 
             System.Console.WriteLine("Enter phone number: ");
             string phone = System.Console.ReadLine();

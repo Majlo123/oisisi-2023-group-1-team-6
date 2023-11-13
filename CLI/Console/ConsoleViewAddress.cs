@@ -18,6 +18,20 @@ namespace StudentskaSluzba.Console
             _addressDao = addressDao;
         }
 
+        private Address temp;
+        public void addAdresa()
+        {
+            Address adresa = InputAddress();
+            _addressDao.addAddress(adresa);
+            System.Console.WriteLine(adresa);
+            temp = adresa;
+        }
+
+        public int getIdAddress()
+        {
+            return temp.id;
+        }
+
         public void PrintAddress(List<Address> address)
         {
             System.Console.WriteLine("Address: ");
