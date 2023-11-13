@@ -21,12 +21,12 @@ namespace StudentskaSluzba.DAO
             _students = _storage.Load();
         
         }
-       /* private int GenerateId()
+        private int GenerateId()
         {
             if(_students.Count == 0) { return 0; }
             return _students[^1].Id;
 
-        }*/
+        }
         public Student? GetStudentById(int id)
         {
             return _students.Find(s => s.Id == id);

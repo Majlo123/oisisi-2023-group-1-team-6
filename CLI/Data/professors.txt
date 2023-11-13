@@ -1,2 +1,1 @@
-marko|markovic|2/2/2002|s|2|s|afaf|23124|222|9|mata|20
-nikolic|marko|2/19/2002|Kraljevica Marka|3|Novi Sad|Serbia|413614124|afdafgaf|3|Novi|3
+Petrovic|Veljko|9/14/1980|4|kralja petra|4|novi sad|srbija|8940921|veljkopetrovic@uns.ac.rs|4|profesor|3

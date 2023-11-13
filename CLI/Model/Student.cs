@@ -84,13 +84,13 @@ public class Student : ISerializable
         Name = values[1];
         Id = int.Parse(values[2]);
         Date = DateOnly.ParseExact(values[3], "M/d/yyyy");
-        Address = new Address(values[4], int.Parse(values[5]), values[6], values[7]);
-        PhoneNumber = values[8];
-        Email = values[9];
-        Index = new Index(int.Parse(values[10]), values[11], int.Parse(values[12]), int.Parse(values[13]));
-        YearOfStudy = int.Parse(values[14]);
-        Status = values[15];
-        AvarageGrade = int.Parse(values[16]);
+        Address = new Address(int.Parse(values[4]), values[5], int.Parse(values[6]), values[7], values[8]);
+        PhoneNumber = values[9];
+        Email = values[10];
+        Index = new Index(int.Parse(values[11]), values[12], int.Parse(values[13]), int.Parse(values[14]));
+        YearOfStudy = int.Parse(values[15]);
+        Status = values[16];
+        AvarageGrade = int.Parse(values[17]);
     }
     public override string ToString()
     {

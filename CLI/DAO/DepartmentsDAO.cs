@@ -28,16 +28,6 @@ namespace StudentskaSluzba.DAO
         {
             return _departments.Find(d => d.DepartmentID == id);
         }
-        public Department GetOrCreateDepartment()
-        {
-                
-                Department newDepartment = new Department();
-            bool exists = _departments.Contains(newDepartment);
-            if(exists) { return null; }
-            return newDepartment;
-
-
-        }
         public void addDepartment(Department department)
         {
             bool exists = _departments.Contains(department);
