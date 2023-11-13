@@ -54,7 +54,8 @@ namespace StudentskaSluzba.Console
             DateOnly date = ConsoleViewUtils.SafeInputDateTime();
 
 
-
+            System.Console.WriteLine("Enter address(id): ");
+            int id1 = ConsoleViewUtils.SafeInputInt();
             System.Console.WriteLine("Enter address(state): ");
             string state = System.Console.ReadLine();
             System.Console.WriteLine("Enter address(city): ");
@@ -63,7 +64,7 @@ namespace StudentskaSluzba.Console
             string street = System.Console.ReadLine();
             System.Console.WriteLine("Enter address(number): ");
             int number = ConsoleViewUtils.SafeInputInt();
-            Address address = new Address(street, number, city, state);
+            Address address = new Address(id1, street, number, city, state);
 
             System.Console.WriteLine("Enter phone number: ");
             string phone = System.Console.ReadLine();

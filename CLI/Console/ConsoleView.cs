@@ -10,6 +10,7 @@ using StudentskaSluzba.Storage;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using CLI.Console;
+using System.Runtime.CompilerServices;
 
 namespace StudentskaSluzba.Console
 {
@@ -20,13 +21,15 @@ namespace StudentskaSluzba.Console
         ConsoleViewDepartment cvd;
         ConsoleViewSubject cvsub;
         ConsoleViewIndex cvi;
+        ConsoleViewAddress cva;
         public ConsoleView()
         {
             cvs = new ConsoleViewStudent(new StudentsDAO());
             cvp = new ConsoleViewProfessor(new ProfessorsDAO());
-            cvd= new ConsoleViewDepartment(new DepartmentsDAO());
+            cvd = new ConsoleViewDepartment(new DepartmentsDAO());
             cvsub= new ConsoleViewSubject(new SubjectsDAO());
             cvi = new ConsoleViewIndex(new IndexDAO());
+            cva = new ConsoleViewAddress(new AddressDAO());
         }
         public void RunMenu()
         {
@@ -84,7 +87,7 @@ namespace StudentskaSluzba.Console
                     ShowAddressMenu();
                     int userInput6 = int.Parse(System.Console.ReadLine());
                     if (userInput6 == 0 || userInput6 == null) break;
-                    StudentHandleMenuInput(userInput6);
+                    AddressHandleMenuInput(userInput6);
                     break;
             }
         }
@@ -197,6 +200,29 @@ namespace StudentskaSluzba.Console
                     cvi.removeIndex();
                     break;
                 case 5:
+                    RunMenu();
+                    break;
+            }
+ 
+        }
+
+        private void AddressHandleMenuInput(int input)
+        {
+            switch (input)
+            {
+                case 1:
+                    cva.ShowAllAddresses();
+                    break;
+                case 2:
+                    cva.AddAddress();
+                    break;
+                case 3:
+                    cva.UpdateAddresses();
+                    break;
+                case 4:
+                    cva.removeAddress();
+                    break;
+                case 0:
                     RunMenu();
                     break;
             }

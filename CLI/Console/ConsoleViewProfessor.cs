@@ -51,6 +51,8 @@ namespace CLI.Console
             System.Console.WriteLine("Enter date of birth: ");
             DateOnly date = ConsoleViewUtils.SafeInputDateTime();
 
+            System.Console.WriteLine("Enter address id: ");
+            int id = ConsoleViewUtils.SafeInputInt();
             System.Console.WriteLine("Enter address(state): ");
             string state = ConsoleViewUtils.SafeInputString();
             System.Console.WriteLine("Enter address(city): ");
@@ -59,7 +61,7 @@ namespace CLI.Console
             string street = ConsoleViewUtils.SafeInputString(); ;
             System.Console.WriteLine("Enter address(number): ");
             int number = ConsoleViewUtils.SafeInputInt();
-            Address address = new Address(street,number,city,state);
+            Address address = new Address(id, street,number,city,state);
 
             System.Console.WriteLine("Enter phone number: ");
             string phone = ConsoleViewUtils.SafeInputString(); ;
@@ -68,7 +70,7 @@ namespace CLI.Console
             string email = ConsoleViewUtils.SafeInputString();
 
             System.Console.WriteLine("Enter id: ");
-            int id = ConsoleViewUtils.SafeInputInt();
+            int id1 = ConsoleViewUtils.SafeInputInt();
 
             System.Console.WriteLine("Enter title: ");
             string title = ConsoleViewUtils.SafeInputString(); ;
@@ -76,7 +78,7 @@ namespace CLI.Console
             System.Console.WriteLine("Enter years of working: ");
             int years = ConsoleViewUtils.SafeInputInt();
 
-            Professor professor = new Professor(surname, name, date, address, phone, email, id, title, years);
+            Professor professor = new Professor(surname, name, date, address, phone, email, id1, title, years);
 
             System.Console.WriteLine("Enter subjects he teaches.When done, press 0: ");
             string subjectName = "";

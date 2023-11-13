@@ -11,6 +11,7 @@ namespace StudentskaSluzba.Model
 
     public class Address : ISerializable
     {
+        public int id { get; set; }
         public string Street { get; set; }
 
         public int Number { get; set; }
@@ -19,10 +20,18 @@ namespace StudentskaSluzba.Model
 
         public string State { get; set; }
 
-
-
-        public Address(string street, int number, string city, string state)
+        public Address()
         {
+            id = 0;
+            Street = "";
+            Number = 0;
+            City = "";
+            State = "";
+        }
+
+        public Address(int id1, string street, int number, string city, string state)
+        {
+            id = id1;
             Street = street;
             Number = number;
             City = city;
@@ -33,26 +42,30 @@ namespace StudentskaSluzba.Model
         {
             string[] csvValues =
             {
+            id.ToString(),
             Street,
             Number.ToString(),
             City,
             State,
-        };
+            };
+
             return csvValues;
         }
 
         public void FromCSV(string[] values)
         {
-            Street = values[0];
-            Number = int.Parse(values[1]);
-            City = values[2];
-            State = values[3];
+            id = int.Parse(values[0]);
+            Street = values[1];
+            Number = int.Parse(values[2]);
+            City = values[3];
+            State = values[4];
 
         }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"{Street}");
+            sb.Append($"{id}");
+            sb.Append($"|{Street}");
             sb.Append($"|{Number.ToString()}");
             sb.Append($"|{City}");
             sb.Append($"|{State}");
