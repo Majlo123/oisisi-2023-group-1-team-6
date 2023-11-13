@@ -38,25 +38,23 @@ namespace CLI.Model
             subjectId = 0;
             subjectName = "";
             yearOfStudy = 0;
-            professor.ToString();
-            semester.ToString();
             ESPBPoints = 0;
             StudentsPassed = new List<Student>();
             StudentsFailed = new List<Student>();
         }
-        public Subject(string subjectName)
+        public Subject(string subjectname)
         {
             
-            subjectName = subjectName;
+            subjectName = subjectname;
 
         }
-        public Subject(int subjectId, string subjectName, int yearOfStudy,string semester, Professor professor, int eSPBPoints)
+        public Subject(int subjectid, string subjectname, int yearofstudy,string Semester, Professor Professor, int eSPBPoints)
         {
-            subjectId = subjectId;
-            subjectName = subjectName;
-            yearOfStudy = yearOfStudy;
-            professor = professor;
-            semester = semester;
+            subjectId = subjectid;
+            subjectName = subjectname;
+            yearOfStudy = yearofstudy;
+            semester = Semester;
+            professor = Professor;
             ESPBPoints = eSPBPoints;
             StudentsPassed = new List<Student>();
             StudentsFailed = new List<Student>();
@@ -68,11 +66,12 @@ namespace CLI.Model
             {
                 subjectId.ToString(),
                 subjectName,
-                semester.ToString(),
                 yearOfStudy.ToString(),
-                professor.ToString(),
+                semester,
+                professor.Name.ToString(),
+                professor.Surname.ToString(),
                 ESPBPoints.ToString()
-                //#pitaj za enum
+               
 
             };
 
@@ -85,8 +84,28 @@ namespace CLI.Model
             subjectName = values[1];
             yearOfStudy = int.Parse(values[2]);
             semester = (values[3]);
-            professor.Name = values[4];
-            professor.Surname = values[5];
+            Professor professor=new Professor(values[4], values[5]);
+            
+            /*Address address = new Address
+            {
+                State = values[7], 
+                Street = values[9],
+                Number = int.Parse(values[10])
+                                     
+            };
+
+            
+            Professor professorToAdd = new Professor(
+                values[4], 
+                values[5], 
+                DateOnly.ParseExact(values[6], "M/d/yyyy"),
+                address,   
+                values[11], 
+                values[12], 
+                int.Parse(values[13]), 
+                values[14], 
+                int.Parse(values[15]) 
+            );*/
             ESPBPoints = int.Parse(values[6]);
         }
 
@@ -96,8 +115,8 @@ namespace CLI.Model
             sb.Append($"SubjectId: {subjectId.ToString()}, ");
             sb.Append($"SubjectName: {subjectName}, ");
             sb.Append($"Years of study: {yearOfStudy.ToString()}, ");
-            sb.Append($"Professor: {professor}, ");
-            sb.Append($"Semester: {semester.ToString()}");
+            sb.Append($"Semester: {semester}");
+            sb.Append($"Professor: {professor.Name.ToString()} {professor.Surname.ToString()}, ");
             sb.Append($"ESPB Points: {ESPBPoints.ToString()}, ");
             sb.Append($"Students who passed: ");
             sb.AppendJoin(", ", StudentsPassed.Select(Student => Student.Name));

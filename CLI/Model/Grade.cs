@@ -25,12 +25,12 @@ namespace StudentskaSluzba.Model;
             Id = 0;
             
         }
-        public Grade(int Id,Student studentWhoPassed, Subject subject, DateOnly date, string grade )
+        public Grade(int id,Student studentWhoPassed, Subject Subject, DateOnly Date, string grade )
         {
-            this.Id = Id;
-            this.StudentWhoPassed = studentWhoPassed;
-            this.subject = subject;
-            this.date = date;
+            Id = id;
+            StudentWhoPassed = studentWhoPassed;
+            subject = Subject;
+            date = date;
             grades = grade;
         }
 

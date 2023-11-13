@@ -53,11 +53,18 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("Enter date of birth (in the format M/dd/yyyy): ");
             DateOnly date = ConsoleViewUtils.SafeInputDateTime();
 
-            AddressDAO ad = new AddressDAO();
-            ConsoleViewAddress cva = new ConsoleViewAddress(ad);
+            System.Console.WriteLine("Enter address(id): ");
+            int id1 = ConsoleViewUtils.SafeInputInt();
+            System.Console.WriteLine("Enter address(state): ");
+            string state = System.Console.ReadLine();
+            System.Console.WriteLine("Enter address(city): ");
+            string city = System.Console.ReadLine();
+            System.Console.WriteLine("Enter address(street): ");
 
-            cva.AddAddress();
-            int ida = cva.getIdAddress();
+            string street = System.Console.ReadLine();
+            System.Console.WriteLine("Enter address(number): ");
+            int number = ConsoleViewUtils.SafeInputInt();
+            Address address = new Address(id1,street, number, city, state);
 
             System.Console.WriteLine("Enter phone number: ");
             string phone = System.Console.ReadLine();
@@ -121,16 +128,17 @@ namespace StudentskaSluzba.Console
         public void UpdateStudents()
         {
             int id = InputId();
-            Student student = InputStudent();
-            student.Id = id;
-            Student? updatedIndex = _studentsDao.UpdateStudent(student);
-            if (updatedIndex == null)
+            StudentsDAO studentsDAO = new StudentsDAO();
+            Student studentToAdd = studentsDAO.GetStudentById(id);
+            if (studentToAdd == null)
             {
                 System.Console.WriteLine("Student not found");
                 return;
             }
-
-            System.Console.WriteLine("Student updated");
+            System.Console.WriteLine("Student found");
+            Student department = InputStudent();
+            _studentsDao.addStudent(department);
+            System.Console.WriteLine("Department updated");
         }
 
         public void AddStudent()

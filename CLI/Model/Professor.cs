@@ -30,13 +30,18 @@ namespace StudentskaSluzba.Model;
 
     public List<Subject> Subjects { get; set; }
 
-
+    
     public Professor()
     {
         Subjects = new List<Subject>();
     }
 
-    
+    public Professor(string name, string surname) {
+        Name = name;
+        Surname = surname;
+        
+        
+    }
     public Professor(string surname, string name, DateOnly date, Address address, string phonenumber, string email, int id, string title, int workyear)
     {
         Surname = surname;
@@ -82,17 +87,17 @@ namespace StudentskaSluzba.Model;
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append($"SURNAME: {Surname}, ");
-        sb.Append($"NAME: {Name}, ");
-        sb.Append($"DATE OF BIRTH: {Date}, ");
-        sb.Append($"ADDRESS: {Address.ToString()}, ");
-        sb.Append($"PHONE NUMBER: {PhoneNumber}, ");
-        sb.Append($"EMAIL: {Email}, ");
-        sb.Append($"ID: {Id.ToString()}, ");
-        sb.Append($"TITLE: {Title}, ");
-        sb.Append($"WORK YEAR: {WorkYear.ToString()}, ");
+        sb.Append($"SURNAME:{Surname}|");
+        sb.Append($"NAME:{Name}|");
+        sb.Append($"DATE OF BIRTH:{Date}|");
+        sb.Append($"ADDRESS:{Address.ToString()}|");
+        sb.Append($"PHONE NUMBER:{PhoneNumber}|");
+        sb.Append($"EMAIL:{Email}|");
+        sb.Append($"ID:{Id.ToString()}|");
+        sb.Append($"TITLE:{Title}|");
+        sb.Append($"WORK YEAR:{WorkYear.ToString()}|");
         sb.Append("SUBJECTS:");
-        sb.AppendJoin(", ", Subjects.Select(subject => subject.subjectName));
+        sb.AppendJoin("|", Subjects.Select(subject => subject.subjectName));
 
         return sb.ToString();
     }
