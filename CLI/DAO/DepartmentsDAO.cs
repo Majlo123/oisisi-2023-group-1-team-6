@@ -40,7 +40,7 @@ namespace StudentskaSluzba.DAO
         public Department removeDepartment(int id)
         {
             Department? department = GetDepartmentById(id);
-            if (department != null) return null;
+            if (department == null) return null;
 
             _departments.Remove(department);
             _storage.Save(_departments);

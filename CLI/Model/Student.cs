@@ -66,9 +66,9 @@ public class Student : ISerializable
     {
         string[] csvValues =
         {
+            Id.ToString(),
             Surname,
             Name,
-            Id.ToString(),
             Date.ToString(),
             Address.ToString(),
             PhoneNumber,
@@ -83,10 +83,9 @@ public class Student : ISerializable
 
     public void FromCSV(string[] values)
     {
-        
-        Surname = values[0];
-        Name = values[1];
-        Id = int.Parse(values[2]);
+        Id = int.Parse(values[0]);
+        Surname = values[1];
+        Name = values[2];
         Date = DateOnly.ParseExact(values[3], "M/d/yyyy");
         Address = new Address(int.Parse(values[4]), values[5], int.Parse(values[6]), values[7], values[8]);
         PhoneNumber = values[9];
@@ -99,9 +98,9 @@ public class Student : ISerializable
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
+        sb.Append($"ID: {Id.ToString()}, ");
         sb.Append($"SURNAME: {Surname}, ");
         sb.Append($"NAME: {Name}, ");
-        sb.Append($"ID: {Id.ToString()}, ");
         sb.Append($"DATE OF BIRTH: {Date.ToString()}, ");
         sb.Append($"ADDRESS: {Address.ToString()}, ");
         sb.Append($"PHONE NUMBER: {PhoneNumber.ToString()}, ");

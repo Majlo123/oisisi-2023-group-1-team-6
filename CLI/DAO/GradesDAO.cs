@@ -37,7 +37,7 @@ namespace StudentskaSluzba.DAO
         public Grade removeGrade(int id)
         {
             Grade grade = GetGradeById(id);
-            if (grade != null)
+            if (grade == null)
             {
                 System.Console.WriteLine("There is no grade for this subject, select another one!");
                 return null;

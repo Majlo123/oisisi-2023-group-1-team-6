@@ -30,11 +30,6 @@ namespace StudentskaSluzba.Model;
 
     public List<Subject> Subjects { get; set; }
 
-<<<<<<< Updated upstream
-    
-=======
-   
->>>>>>> Stashed changes
     public Professor()
     {
         Subjects = new List<Subject>();
@@ -63,13 +58,13 @@ namespace StudentskaSluzba.Model;
     {
         string[] csvValues =
         {
+            Id.ToString(),
             Surname,
             Name,
             Date.ToString(),
             Address.ToString(),
             PhoneNumber,
             Email,
-            Id.ToString(),
             Title,
             WorkYear.ToString(),
         };
@@ -78,26 +73,26 @@ namespace StudentskaSluzba.Model;
 
     public void FromCSV(string[] values)
     {
-        Surname = values[0];
-        Name = values[1];
-        Date = DateOnly.ParseExact(values[2], "M/d/yyyy");
-        Address = new Address(int.Parse(values[3]), values[4], int.Parse(values[5]), values[6], values[7]);
-        PhoneNumber = values[8];
-        Email = values[9];
-        Id = int.Parse(values[10]);
+        Id = int.Parse(values[0]);
+        Surname = values[1];
+        Name = values[2];
+        Date = DateOnly.ParseExact(values[3], "M/d/yyyy");
+        Address = new Address(int.Parse(values[4]), values[5], int.Parse(values[6]), values[7], values[8]);
+        PhoneNumber = values[9];
+        Email = values[10];
         Title = values[11];
         WorkYear=int.Parse(values[12]);
     }
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
+        sb.Append($"ID:{Id.ToString()}|");
         sb.Append($"SURNAME:{Surname}|");
         sb.Append($"NAME:{Name}|");
         sb.Append($"DATE OF BIRTH:{Date}|");
         sb.Append($"ADDRESS:{Address.ToString()}|");
         sb.Append($"PHONE NUMBER:{PhoneNumber}|");
         sb.Append($"EMAIL:{Email}|");
-        sb.Append($"ID:{Id.ToString()}|");
         sb.Append($"TITLE:{Title}|");
         sb.Append($"WORK YEAR:{WorkYear.ToString()}|");
         sb.Append("SUBJECTS:");

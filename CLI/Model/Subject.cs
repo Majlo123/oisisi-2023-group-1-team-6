@@ -35,7 +35,6 @@ namespace CLI.Model
 
 
         public Subject() {
-<<<<<<< Updated upstream
             subjectId = 0;
             subjectName = "";
             yearOfStudy = 0;
@@ -56,20 +55,6 @@ namespace CLI.Model
             yearOfStudy = yearofstudy;
             semester = Semester;
             professor = Professor;
-=======
-            
-            StudentsPassed = new List<Student>();
-            StudentsFailed = new List<Student>();
-        }
-        
-        public Subject(int subjectid, string subjectname, int yearofstudy,string Semester, Professor Professor, int eSPBPoints)
-        {
-            subjectId = subjectid;
-            subjectName = subjectname;
-            yearOfStudy = yearofstudy;
-            professor = Professor;
-            semester = Semester;
->>>>>>> Stashed changes
             ESPBPoints = eSPBPoints;
             StudentsPassed = new List<Student>();
             StudentsFailed = new List<Student>();
@@ -83,16 +68,9 @@ namespace CLI.Model
                 subjectName,
                 yearOfStudy.ToString(),
                 semester,
-<<<<<<< Updated upstream
                 professor.Name,
                 professor.Surname,
                 ESPBPoints.ToString()
-               
-=======
-                professor.ToString(),
-                ESPBPoints.ToString()
-                
->>>>>>> Stashed changes
 
             };
 
@@ -105,51 +83,26 @@ namespace CLI.Model
             subjectName = values[1];
             yearOfStudy = int.Parse(values[2]);
             semester = (values[3]);
-<<<<<<< Updated upstream
-            Professor professor=new Professor(values[4], values[5]);
-            
-            /*Address address = new Address
-            {
-                State = values[7], 
-                Street = values[9],
-                Number = int.Parse(values[10])
-                                     
-            };
-
-            
-            Professor professorToAdd = new Professor(
-                values[4], 
-                values[5], 
-                DateOnly.ParseExact(values[6], "M/d/yyyy"),
-                address,   
-                values[11], 
-                values[12], 
-                int.Parse(values[13]), 
-                values[14], 
-                int.Parse(values[15]) 
-            );*/
-            ESPBPoints = int.Parse(values[6]);
-=======
             Address address = new Address
             {
                 Street = values[7],
                 Number = int.Parse(values[8]),
-                City = values[9],   
-                State = values[10]  
+                City = values[9],
+                State = values[10]
             };
-            Professor professorToAdd = new Professor(
-            values[4], // Surname
-            values[5], // Name
-            DateOnly.ParseExact(values[6], "M/d/yyyy"), // Date
-            address,   // Address
-            values[11], // PhoneNumber
-            values[12], // Email
-            int.Parse(values[13]), // Id
-            values[14], // Title
-            int.Parse(values[15]) // WorkYear
-   );
+            Professor professorToAdd = new Professor
+            {
+                Surname = values[4], // Surname
+                Name = values[5], // Name
+                Date = DateOnly.ParseExact(values[6], "M/d/yyyy"), // Date
+                Address = address,   // Address
+                PhoneNumber = values[11], // PhoneNumber
+                Email = values[12], // Email
+                Id = int.Parse(values[13]), // Id
+                Title = values[14], // Title
+                WorkYear = int.Parse(values[15]) // WorkYear
+            };
             ESPBPoints = int.Parse(values[16]);
->>>>>>> Stashed changes
         }
 
         public override string ToString()
@@ -158,14 +111,9 @@ namespace CLI.Model
             sb.Append($"SubjectId: {subjectId.ToString()}, ");
             sb.Append($"SubjectName: {subjectName}, ");
             sb.Append($"Years of study: {yearOfStudy.ToString()}, ");
-<<<<<<< Updated upstream
             sb.Append($"Semester: {semester}");
             //ne radi kad se ugasi terminal pa upali ponovo bilo sta osim prikaza
             //sb.AppendLine($"Professor: {professor.Name.ToString()} {professor.Surname.ToString()}, ");
-=======
-            sb.Append($"Semester: {semester} ");
-            sb.Append($"Professor: {professor.ToString()}, ");
->>>>>>> Stashed changes
             sb.Append($"ESPB Points: {ESPBPoints.ToString()}, ");
             sb.Append($"Students who passed: ");
             sb.AppendJoin(", ", StudentsPassed.Select(Student => Student.Name));

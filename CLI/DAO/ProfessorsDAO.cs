@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using StudentskaSluzba.Model;
@@ -39,11 +40,21 @@ namespace StudentskaSluzba.DAO
         public Professor removeProfessor(int id)
         {
             Professor? professor = GetProfessorById(id);
-            if (professor != null) return null;
+            if (professor == null) return null;
 
             _professors.Remove(professor);
             _storage.Save(_professors);
             return professor;
+
+            /*Model.Index index = GetIndexById(id);
+            if (index != null)
+            {
+                System.Console.WriteLine("There is no index with that Id, select another one!");
+                return null;
+            }
+            _index.Remove(index);
+            _storage.Save(_index);
+            return index;*/
         }
         public Professor UpdateProfessor(Professor professor)
         {

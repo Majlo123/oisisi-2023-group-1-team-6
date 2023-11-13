@@ -40,7 +40,7 @@ namespace StudentskaSluzba.DAO
         public Model.Index removeIndex(int id)
         {
             Model.Index index = GetIndexById(id);
-            if (index != null)
+            if (index == null)
             {
                 System.Console.WriteLine("There is no index with that Id, select another one!");
                 return null;

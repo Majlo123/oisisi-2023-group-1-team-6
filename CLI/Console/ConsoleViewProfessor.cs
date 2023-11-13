@@ -133,17 +133,18 @@ namespace CLI.Console
         public void UpdateProfessor()
         {
             int id = InputId();
-            ProfessorsDAO professorDAO = new ProfessorsDAO();
-            Professor professorToAdd = professorDAO.GetProfessorById(id);
-            if (professorToAdd == null)
+            Professor professor = InputProfessor();
+            professor.Id = id;
+            Professor? updatedProfessor = _professorsDao.UpdateProfessor(professor);
+            if (updatedProfessor == null)
             {
                 System.Console.WriteLine("Professor not found");
                 return;
             }
-            System.Console.WriteLine("Professor found");
-            Professor professor = InputProfessor();
-            _professorsDao.addProfessor(professor);
+
             System.Console.WriteLine("Professor updated");
+
+
         }
 
         public void AddProfessor()

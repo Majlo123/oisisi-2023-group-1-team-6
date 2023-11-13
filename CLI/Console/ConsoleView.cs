@@ -250,10 +250,6 @@ namespace StudentskaSluzba.Console
                     break;
             }
         }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
         private void ProfessorShowMenu()
         {
             System.Console.WriteLine("\nChoose an option: ");

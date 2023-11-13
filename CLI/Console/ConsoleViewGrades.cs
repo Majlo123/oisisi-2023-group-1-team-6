@@ -39,17 +39,15 @@ namespace StudentskaSluzba.Console
         {
             System.Console.WriteLine("Enter Grade ID: ");
             int id = ConsoleViewUtils.SafeInputInt();
-            System.Console.WriteLine("Enter student id which you want to grade: ");
-            int id1 = ConsoleViewUtils.SafeInputInt();
             StudentsDAO studentsDAO = new StudentsDAO();
-            Student studentToAdd = studentsDAO.GetStudentById(id1);
+            Student studentToAdd = studentsDAO.GetStudentById(id);
             while (studentToAdd == null)
             {
                 System.Console.WriteLine("This student doesn't exist: ");
                 System.Console.WriteLine("Enter student id: ");
-                id1 = ConsoleViewUtils.SafeInputInt();
+                id = ConsoleViewUtils.SafeInputInt();
                 StudentsDAO studentsDAO1 = new StudentsDAO();
-                studentToAdd = studentsDAO.GetStudentById(id1);
+                studentToAdd = studentsDAO.GetStudentById(id);
             }
             
             
@@ -68,21 +66,8 @@ namespace StudentskaSluzba.Console
                 SubjectsDAO subjectDAO1 = new SubjectsDAO();
                 subjectToAdd = subjectDAO.GetSubjectById(id2);
             }
-<<<<<<< Updated upstream
             Subject subject = new Subject(subjectToAdd.subjectId, subjectToAdd.subjectName, subjectToAdd.yearOfStudy,
                 subjectToAdd.semester, subjectToAdd.professor, subjectToAdd.ESPBPoints);
-=======
-            Student student = new Student(id,surname,name);
-            System.Console.WriteLine("Enter subject name which you want to grade: ");
-            string subject = System.Console.ReadLine();
-            
-            while (subject == "")
-            {
-                System.Console.WriteLine("Enter valid subject: ");
-                subject = System.Console.ReadLine();
-            }
-            Subject subject1 = new Subject();
->>>>>>> Stashed changes
             System.Console.WriteLine("Enter date of the exam");
             DateOnly date = ConsoleViewUtils.SafeInputDateTime();
             System.Console.WriteLine("Enter grade(must be from 6 to 10): ");
@@ -92,26 +77,15 @@ namespace StudentskaSluzba.Console
                 && grade.ToLower() != "nine" && grade.ToLower() != "ten")
             {
                 System.Console.WriteLine("Enter valid grade: ");
-<<<<<<< Updated upstream
                 grade = System.Console.ReadLine();
             }
 
             return new Grade(id,student,subject,date,grade);
-=======
-               grade = System.Console.ReadLine();
-            }
-
-            return new Grade(id,student,subject1,date,grade);
->>>>>>> Stashed changes
         }
 
         public int InputId()
         {
-<<<<<<< Updated upstream
             System.Console.WriteLine("Enter grade id: ");
-=======
-            System.Console.WriteLine("Enter Grade id: ");
->>>>>>> Stashed changes
             int id = ConsoleViewUtils.SafeInputInt();
             return id;
         }
@@ -125,7 +99,7 @@ namespace StudentskaSluzba.Console
         public void removeGrade()
         {
             int GradeId = InputId();
-<<<<<<< Updated upstream
+
             Grade? removedGrade = _gradesDao.removeGrade(GradeId);
             if (removedGrade is null)
             {
@@ -134,23 +108,12 @@ namespace StudentskaSluzba.Console
             }
 
             System.Console.WriteLine("Grade removed");
-=======
-            Grade? removedDepartment = _gradesDao.removeGrade(GradeId);
-            if (removedDepartment is null)
-            {
-                System.Console.WriteLine("Grade from student not found");
-                return;
-            }
-
-            System.Console.WriteLine("Grade from student removed");
->>>>>>> Stashed changes
         }
 
         public void UpdateGrade()
         {
 
             int id = InputId();
-<<<<<<< Updated upstream
             Grade grade = InputGrade();
             grade.Id = id;
             Grade updatedGrade = _gradesDao.UpdateGrade(grade);
@@ -160,18 +123,6 @@ namespace StudentskaSluzba.Console
                 return;
             }
 
-=======
-            GradesDAO GradesDAO = new GradesDAO();
-            Grade gradesToAdd = GradesDAO.GetGradeById(id);
-            if (gradesToAdd == null)
-            {
-                System.Console.WriteLine("Grade from student not found");
-                return;
-            }
-            System.Console.WriteLine("Grade from student found");
-            Grade grade = InputGrade();
-            _gradesDao.addGrade(grade);
->>>>>>> Stashed changes
             System.Console.WriteLine("Grade updated");
         }
 
@@ -182,10 +133,6 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("Grade added");
         }
         
-<<<<<<< Updated upstream
-=======
-        
->>>>>>> Stashed changes
 
     }
 }

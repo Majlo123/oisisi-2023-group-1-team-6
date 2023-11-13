@@ -63,20 +63,14 @@ namespace StudentskaSluzba.Console
                 System.Console.WriteLine("Enter proffesor id: ");
                 id1 = ConsoleViewUtils.SafeInputInt();
                 ProfessorsDAO professorDAO1 = new ProfessorsDAO();
-<<<<<<< Updated upstream
+
                 professorToAdd = professorDAO.GetProfessorById(id1);
             } 
             Professor professor = new Professor(professorToAdd.Surname,professorToAdd.Name,
                 professorToAdd.Date,professorToAdd.Address,professorToAdd.PhoneNumber,
                 professorToAdd.Email,professorToAdd.Id,professorToAdd.Title,professorToAdd.WorkYear);
-=======
-                professorToAdd = professorDAO1.GetProfessorById(id1);
-            }
-            Professor professor = new Professor(professorToAdd.Surname, professorToAdd.Name, professorToAdd.Date,
-                professorToAdd.Address, professorToAdd.PhoneNumber,professorToAdd.Email,professorToAdd.Id,
-                professorToAdd.Title, professorToAdd.WorkYear);
             
->>>>>>> Stashed changes
+            
             System.Console.WriteLine("Enter ESPB points: ");
             int espb = ConsoleViewUtils.SafeInputInt();
 
@@ -111,16 +105,14 @@ namespace StudentskaSluzba.Console
         public void UpdateSubject()
         {
             int id = InputId();
-            SubjectsDAO subjectDAO = new SubjectsDAO();
-            Subject subjectToAdd = subjectDAO.GetSubjectById(id);
-            if (subjectToAdd == null)
+            Subject subject = InputSubject();
+            subject.subjectId = id;
+            Subject? updatedSubject = _subjectsDao.UpdateSubject(subject);
+            if (updatedSubject == null)
             {
                 System.Console.WriteLine("Subject not found");
                 return;
             }
-            System.Console.WriteLine("Subject found");
-            Subject subject = InputSubject();
-            _subjectsDao.addSubject(subject);
             System.Console.WriteLine("Subject updated");
         }
 
