@@ -102,15 +102,16 @@ namespace StudentskaSluzba.Console
         public void UpdateSubject()
         {
             int id = InputId();
-            Subject subject = InputSubject();
-            subject.subjectId = id;
-            Subject? updatedSubject = _subjectsDao.UpdateSubject(subject);
-            if (updatedSubject == null)
+            SubjectsDAO subjectDAO = new SubjectsDAO();
+            Subject subjectToAdd = subjectDAO.GetSubjectById(id);
+            if (subjectToAdd == null)
             {
                 System.Console.WriteLine("Subject not found");
                 return;
             }
-
+            System.Console.WriteLine("Subject found");
+            Subject subject = InputSubject();
+            _subjectsDao.addSubject(subject);
             System.Console.WriteLine("Subject updated");
         }
 

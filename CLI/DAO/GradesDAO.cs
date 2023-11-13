@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StudentskaSluzba.DAO
 {
-    class GradesDAO
+    public class GradesDAO
     {
         private readonly List<Grade> _grade;
         private readonly Storage<Grade> _storage;

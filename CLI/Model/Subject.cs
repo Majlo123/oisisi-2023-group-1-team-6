@@ -44,7 +44,12 @@ namespace CLI.Model
             StudentsPassed = new List<Student>();
             StudentsFailed = new List<Student>();
         }
+        public Subject(string subjectName)
+        {
+            
+            subjectName = subjectName;
 
+        }
         public Subject(int subjectId, string subjectName, int yearOfStudy,string semester, Professor professor, int eSPBPoints)
         {
             subjectId = subjectId;

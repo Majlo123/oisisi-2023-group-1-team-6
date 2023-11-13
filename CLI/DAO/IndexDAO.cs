@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StudentskaSluzba.DAO
 {
-    class IndexDAO
+    public class IndexDAO
     {
         private readonly List<Model.Index> _index;
         private readonly Storage<Model.Index> _storage;

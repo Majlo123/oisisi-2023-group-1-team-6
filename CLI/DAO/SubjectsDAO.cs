@@ -29,7 +29,7 @@ namespace StudentskaSluzba.DAO
              return _students[^1].Id;
 
          }*/
-        private Subject? GetSubjectById(int id)
+        public Subject? GetSubjectById(int id)
         {
             return _subjects.Find(s => s.subjectId == id);
         }

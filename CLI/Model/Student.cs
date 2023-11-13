@@ -35,7 +35,12 @@ public class Student : ISerializable
 
     public List<Subject> FailedSubjects { get; set; }
 
-
+    public Student(int id,string surname, string name) {
+        Id = id;
+        Surname = surname;
+        Name = name;    
+    
+    }
     public Student()
     {
         PassedSubjects = new List<Subject>();
