@@ -77,16 +77,15 @@ namespace StudentskaSluzba.Console
         {
 
             int id = InputId();
-            AddressDAO addressDAO = new AddressDAO();
-            Address addressToAdd = addressDAO.GetAddressById(id);
-            if (addressToAdd == null)
+            Address address = InputAddress();
+            address.id = id;
+            Address? updatedAddress = _addressDao.UpdateAddress(address);
+            if (updatedAddress == null)
             {
                 System.Console.WriteLine("Address not found");
                 return;
             }
-            System.Console.WriteLine("Address found");
-            Address address = InputAddress();
-            _addressDao.addAddress(address);
+
             System.Console.WriteLine("Address updated");
         }
 

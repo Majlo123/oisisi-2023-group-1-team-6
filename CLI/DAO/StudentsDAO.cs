@@ -53,7 +53,7 @@ namespace StudentskaSluzba.DAO
         public Student? UpdateStudent(Student student)
         {
             Student? oldStudent = GetStudentById(student.Id);
-            if(oldStudent == null) { return null; }
+            if(oldStudent is null) { return null; }
             oldStudent.Surname = student.Surname;
             oldStudent.Name= student.Name;
             oldStudent.Date= student.Date;
@@ -67,7 +67,7 @@ namespace StudentskaSluzba.DAO
             oldStudent.FailedSubjects= student.FailedSubjects;
 
             _storage.Save(_students);
-            return student;
+            return oldStudent;
 
         }
         

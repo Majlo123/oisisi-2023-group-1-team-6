@@ -89,16 +89,15 @@ namespace StudentskaSluzba.Console
         {
 
             int id = InputId();
-            DepartmentsDAO departmentsDAO = new DepartmentsDAO();
-            Department departmentToAdd = departmentsDAO.GetDepartmentById(id);
-            if (departmentToAdd == null)
+            Department department = InputDepartment();
+            department.DepartmentID = id;
+            Department updatedDepartment = _departmentsDao.UpdateDepartment(department);
+            if (updatedDepartment == null)
             {
                 System.Console.WriteLine("Department not found");
                 return;
             }
-            System.Console.WriteLine("Department found");
-            Department department= InputDepartment();
-            _departmentsDao.addDepartment(department);
+
             System.Console.WriteLine("Department updated");
         }
 

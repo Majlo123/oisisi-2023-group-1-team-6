@@ -24,16 +24,17 @@ namespace StudentskaSluzba.DAO
             return _address.Find(a => a.id == id);
         }
 
-        public void addAddress(Address address)
+        public Address addAddress(Address address)
         {
             bool exists = _address.Contains(address);
             if (exists)
             {
                 System.Console.WriteLine("Address already exists. Enter another one!");
-                return;
+                return null;
             }//student.Id = GenerateId(); 
             _address.Add(address);
             _storage.Save(_address);
+            return address;
         }
 
         public Address? removeAddress(int id)
@@ -51,8 +52,8 @@ namespace StudentskaSluzba.DAO
 
         public Address? UpdateAddress(Address address)
         {
-            Address? oldAddress = GetAddressById(address.id);
-            if (oldAddress == null) {
+            Address oldAddress = GetAddressById(address.id);
+            if (oldAddress is null) {
                 System.Console.WriteLine("There is no address with that id. Enter another one!");
                 return null; 
             }
@@ -63,7 +64,7 @@ namespace StudentskaSluzba.DAO
             oldAddress.State = address.State;
 
             _storage.Save(_address);
-            return address;
+            return oldAddress;
 
         }
 

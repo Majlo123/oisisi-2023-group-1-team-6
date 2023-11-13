@@ -59,7 +59,7 @@ namespace StudentskaSluzba.DAO
 
             
             _storage.Save(_departments);
-            return department;
+            return oldDepartment;
 
         }
 

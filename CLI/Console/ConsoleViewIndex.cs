@@ -82,7 +82,7 @@ namespace StudentskaSluzba.Console
                 return;
             }
 
-            System.Console.WriteLine("Professor updated");
+            System.Console.WriteLine("Index updated");
         }
 
         public void AddIndex()
