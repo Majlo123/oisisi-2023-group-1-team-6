@@ -22,6 +22,7 @@ namespace StudentskaSluzba.Console
         ConsoleViewSubject cvsub;
         ConsoleViewIndex cvi;
         ConsoleViewAddress cva;
+        ConsoleViewGrade cvg;
         public ConsoleView()
         {
             cvs = new ConsoleViewStudent(new StudentsDAO());
@@ -30,6 +31,7 @@ namespace StudentskaSluzba.Console
             cvsub= new ConsoleViewSubject(new SubjectsDAO());
             cvi = new ConsoleViewIndex(new IndexDAO());
             cva = new ConsoleViewAddress(new AddressDAO());
+            cvg = new ConsoleViewGrade(new GradesDAO());
         }
         public void RunMenu()
         {
@@ -75,7 +77,7 @@ namespace StudentskaSluzba.Console
                     ShowGradeMenu();
                     int userInput4 = int.Parse(System.Console.ReadLine());
                     if (userInput4 == 0 || userInput4 == null) break;
-                    StudentHandleMenuInput(userInput4);
+                    GradeHandleMenuInput(userInput4);
                     break;
                 case 6:
                     ShowDeparmentMenu();
@@ -227,6 +229,28 @@ namespace StudentskaSluzba.Console
                     break;
             }
         }
+        private void GradeHandleMenuInput(int input)
+        {
+            switch (input)
+            {
+                case 1:
+                    cvg.ShowAllGrades();
+                    break;
+                case 2:
+                    cvg.AddGrade();
+                    break;
+                case 3:
+                    cvg.UpdateGrade();
+                    break;
+                case 4:
+                    cvg.removeGrade();
+                    break;
+                case 5:
+                    RunMenu();
+                    break;
+            }
+        }
+
         private void ProfessorShowMenu()
         {
             System.Console.WriteLine("\nChoose an option: ");

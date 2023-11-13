@@ -88,17 +88,14 @@ namespace StudentskaSluzba.Console
         public void RemoveSubject()
         {
             int id = InputId();
-            SubjectsDAO subjectDAO = new SubjectsDAO();
-            Subject subjecttoAdd = subjectDAO.GetSubjectById(id);
-            if (subjecttoAdd == null)
+            Subject? removedSubject = _subjectsDao.removeSubject(id);
+            if (removedSubject is null)
             {
                 System.Console.WriteLine("Subject not found");
                 return;
             }
-            System.Console.WriteLine("Subject found");
-            Subject subject = InputSubject();
-            _subjectsDao.addSubject(subject);
-            System.Console.WriteLine("Subject updated");
+
+            System.Console.WriteLine("Subject removed");
         }
 
         public void UpdateSubject()

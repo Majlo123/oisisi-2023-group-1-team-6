@@ -30,7 +30,7 @@ namespace StudentskaSluzba.Model;
             Id = id;
             StudentWhoPassed = studentWhoPassed;
             subject = Subject;
-            date = date;
+            date = Date;
             grades = grade;
         }
 
@@ -39,8 +39,9 @@ namespace StudentskaSluzba.Model;
             string[] csvValues =
             {
                 Id.ToString(),
-                StudentWhoPassed.ToString(),
-                subject.ToString(),
+                StudentWhoPassed.Surname,
+                StudentWhoPassed.Name,
+                subject.subjectName,
                 date.ToString(),
                 grades
 
@@ -52,10 +53,9 @@ namespace StudentskaSluzba.Model;
         public void FromCSV(string[] values)
         {
             Id = int.Parse(values[0]);
-            StudentWhoPassed.Surname = values[1];
-            StudentWhoPassed.Name = values[2];
-            subject.subjectId = int.Parse(values[3]);//pitacemo
-            date = DateOnly.ParseExact(values[4], "M/d/yyyy");//pitacemo
+            Student student = new Student(values[1], values[2]);
+            Subject subject = new Subject(values[3]);
+            date = DateOnly.ParseExact(values[4], "M/d/yyyy");
             grades = values[5];
 
         }
@@ -64,8 +64,8 @@ namespace StudentskaSluzba.Model;
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"ID: {Id.ToString()}, ");
-            sb.Append($"Student who passed: {StudentWhoPassed}, ");
-            sb.Append($"Subject Name: {subject}, ");
+            sb.Append($"Student who passed: {StudentWhoPassed.Name}, ");
+            sb.Append($"Subject Name: {subject.subjectName}, ");
             sb.Append($"Date:  {date.ToString()}, ");
             sb.Append($"Grade: {grades}");
 

@@ -35,36 +35,41 @@ namespace StudentskaSluzba.Console
 
         }
 
-        /*public Grade InputGrade()
+        public Grade InputGrade()
         {
             System.Console.WriteLine("Enter Grade ID: ");
             int id = ConsoleViewUtils.SafeInputInt();
-            System.Console.WriteLine("Enter Student ID which you want to grade: ");
-            int id1= ConsoleViewUtils.SafeInputInt();
-            System.Console.WriteLine("Enter Student name which you want to grade: ");
-            string name = System.Console.ReadLine();
-            while (name == "")
+            System.Console.WriteLine("Enter student id which you want to grade: ");
+            int id1 = ConsoleViewUtils.SafeInputInt();
+            StudentsDAO studentsDAO = new StudentsDAO();
+            Student studentToAdd = studentsDAO.GetStudentById(id1);
+            while (studentToAdd == null)
             {
-                System.Console.WriteLine("Enter valid name: ");
-                name = System.Console.ReadLine();
+                System.Console.WriteLine("This student doesn't exist: ");
+                System.Console.WriteLine("Enter student id: ");
+                id1 = ConsoleViewUtils.SafeInputInt();
+                StudentsDAO studentsDAO1 = new StudentsDAO();
+                studentToAdd = studentsDAO.GetStudentById(id1);
             }
-            System.Console.WriteLine("Enter Student surname which you want to grade: ");
-            string surname = System.Console.ReadLine();
-            while (surname == "")
+            
+            
+            Student student = new Student(studentToAdd.Surname,studentToAdd.Name, studentToAdd.Id,
+                studentToAdd.Date, studentToAdd.Address, studentToAdd.PhoneNumber, studentToAdd.Email,
+                studentToAdd.Index, studentToAdd.YearOfStudy, studentToAdd.Status, studentToAdd.AvarageGrade);
+            System.Console.WriteLine("Enter subject id which you want to give grade to student: ");
+            int id2 = ConsoleViewUtils.SafeInputInt();
+            SubjectsDAO subjectDAO = new SubjectsDAO();
+            Subject subjectToAdd = subjectDAO.GetSubjectById(id2);
+            while (subjectToAdd == null)
             {
-                System.Console.WriteLine("Enter valid surname: ");
-                surname = System.Console.ReadLine();
+                System.Console.WriteLine("This subject doesn't exist: ");
+                System.Console.WriteLine("Enter subject id: ");
+                id2 = ConsoleViewUtils.SafeInputInt();
+                SubjectsDAO subjectDAO1 = new SubjectsDAO();
+                subjectToAdd = subjectDAO.GetSubjectById(id2);
             }
-            Student student = new Student(id,surname,name);
-            System.Console.WriteLine("Enter subject name which you want to grade: ");
-            string subject = System.Console.ReadLine();
-            Subject subject1 = new Subject(subject);
-            while (subject == "")
-            {
-                System.Console.WriteLine("Enter valid subject: ");
-                subject = System.Console.ReadLine();
-            }
-
+            Subject subject = new Subject(subjectToAdd.subjectId, subjectToAdd.subjectName, subjectToAdd.yearOfStudy,
+                subjectToAdd.semester, subjectToAdd.professor, subjectToAdd.ESPBPoints);
             System.Console.WriteLine("Enter date of the exam");
             DateOnly date = ConsoleViewUtils.SafeInputDateTime();
             System.Console.WriteLine("Enter grade(must be from 6 to 10): ");
@@ -73,25 +78,20 @@ namespace StudentskaSluzba.Console
                 && grade.ToLower() != "six" && grade.ToLower() != "seven" && grade.ToLower() != "eight"
                 && grade.ToLower() != "nine" && grade.ToLower() != "ten")
             {
-                System.Console.WriteLine("Enter valid subject: ");
-                subject = System.Console.ReadLine();
+                System.Console.WriteLine("Enter valid grade: ");
+                grade = System.Console.ReadLine();
             }
 
-            return new Grade(id,subject,subject1,date,grade);
-        }*/
+            return new Grade(id,student,subject,date,grade);
+        }
 
         public int InputId()
         {
-            System.Console.WriteLine("Enter Department id: ");
+            System.Console.WriteLine("Enter grade id: ");
             int id = ConsoleViewUtils.SafeInputInt();
             return id;
         }
-        public int InputId1()
-        {
-            System.Console.WriteLine("Enter Proffesor id: ");
-            int id = ConsoleViewUtils.SafeInputInt();
-            return id;
-        }
+        
 
         public void ShowAllGrades()
         {
@@ -111,7 +111,7 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("Grade removed");
         }
 
-        /*public void UpdateGrade()
+        public void UpdateGrade()
         {
 
             int id = InputId();
@@ -125,14 +125,14 @@ namespace StudentskaSluzba.Console
             }
 
             System.Console.WriteLine("Grade updated");
-        }*/
+        }
 
-        /*public void AddGrade()
+        public void AddGrade()
         {
             Grade grade = InputGrade();
             _gradesDao.addGrade(grade);
             System.Console.WriteLine("Grade added");
-        }*/
+        }
         
 
     }

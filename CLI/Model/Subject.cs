@@ -68,8 +68,8 @@ namespace CLI.Model
                 subjectName,
                 yearOfStudy.ToString(),
                 semester,
-                professor.Name.ToString(),
-                professor.Surname.ToString(),
+                professor.Name,
+                professor.Surname,
                 ESPBPoints.ToString()
                
 
@@ -116,7 +116,8 @@ namespace CLI.Model
             sb.Append($"SubjectName: {subjectName}, ");
             sb.Append($"Years of study: {yearOfStudy.ToString()}, ");
             sb.Append($"Semester: {semester}");
-            sb.Append($"Professor: {professor.Name.ToString()} {professor.Surname.ToString()}, ");
+            //ne radi kad se ugasi terminal pa upali ponovo bilo sta osim prikaza
+            //sb.AppendLine($"Professor: {professor.Name.ToString()} {professor.Surname.ToString()}, ");
             sb.Append($"ESPB Points: {ESPBPoints.ToString()}, ");
             sb.Append($"Students who passed: ");
             sb.AppendJoin(", ", StudentsPassed.Select(Student => Student.Name));
