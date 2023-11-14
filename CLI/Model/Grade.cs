@@ -64,9 +64,23 @@ namespace StudentskaSluzba.Model;
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"ID: {Id.ToString()}, ");
+            if (StudentWhoPassed != null)
+            {
             sb.Append($"Student who passed: {StudentWhoPassed.Name}, ");
-            sb.Append($"Subject Name: {subject.subjectName}, ");
-            sb.Append($"Date:  {date.ToString()}, ");
+            }
+            else
+            {
+            sb.Append("Student who passed: [Not available], ");
+            }
+            if (subject != null)
+            {
+            sb.Append($"Subject: {subject.subjectName}, ");
+            }
+            else
+            {
+            sb.Append("Subject: [Not available], ");
+            }
+        sb.Append($"Date:  {date.ToString()}, ");
             sb.Append($"Grade: {grades}");
 
             return sb.ToString();

@@ -34,7 +34,22 @@ namespace StudentskaSluzba.Console
 
             while (!DateOnly.TryParse(rawInput, out input))
             {
-                System.Console.WriteLine("Not a valid date, try again: ");
+                System.Console.WriteLine("Enter valid date (in the format MM/dd/yyyy): ");
+
+                rawInput = System.Console.ReadLine() ?? string.Empty;
+            }
+
+            return input;
+        }
+        public static float SafeInputFloat()
+        {
+            float input;
+
+            string rawInput = System.Console.ReadLine() ?? string.Empty;
+
+            while (!float.TryParse(rawInput, out input))
+            {
+                System.Console.WriteLine("Not a valid number, try again:");
 
                 rawInput = System.Console.ReadLine() ?? string.Empty;
             }

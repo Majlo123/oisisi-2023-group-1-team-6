@@ -29,7 +29,7 @@ public class Student : ISerializable
 
     public string Status { get; set; }
 
-    public int AvarageGrade { get; set; }
+    public float AvarageGrade { get; set; }
 
     public List<Subject> PassedSubjects { get; set; }
 
@@ -46,7 +46,7 @@ public class Student : ISerializable
         FailedSubjects = new List<Subject>();
     }
 
-    public Student(string surname, string name,int id, DateOnly date, Address address, string phonenumber, string email, Index index, int yearofstudy, string status, int avaragegrade)
+    public Student(string surname, string name,int id, DateOnly date, Address address, string phonenumber, string email, Index index, int yearofstudy, string status, float avaragegrade)
     {
         Surname = surname;
         Name = name;
@@ -93,7 +93,7 @@ public class Student : ISerializable
         Index = new Index(int.Parse(values[11]), values[12], int.Parse(values[13]), int.Parse(values[14]));
         YearOfStudy = int.Parse(values[15]);
         Status = values[16];
-        AvarageGrade = int.Parse(values[17]);
+        AvarageGrade = float.Parse(values[17]);
     }
     public override string ToString()
     {
@@ -112,7 +112,7 @@ public class Student : ISerializable
         sb.Append("SUBJECTS PASSED:");
         sb.AppendJoin(", ", PassedSubjects.Select(subject => subject.subjectName));
         sb.Append($"SUBJECTS FAILED:");
-        sb.AppendJoin(", ", FailedSubjects.Select(subject => subject.subjectName));//ovo se primenjuje posle pravljenja klase subject
+        sb.AppendJoin(", ", FailedSubjects.Select(subject => subject.subjectName));
 
 
         return sb.ToString();

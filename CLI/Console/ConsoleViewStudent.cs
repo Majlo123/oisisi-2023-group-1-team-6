@@ -50,7 +50,7 @@ namespace StudentskaSluzba.Console
             int id = ConsoleViewUtils.SafeInputInt();
 
 
-            System.Console.WriteLine("Enter date of birth (in the format M/dd/yyyy): ");
+            System.Console.WriteLine("Enter date of birth (in the format MM/dd/yyyy): ");
             DateOnly date = ConsoleViewUtils.SafeInputDateTime();
 
             System.Console.WriteLine("Enter address(id): ");
@@ -94,7 +94,7 @@ namespace StudentskaSluzba.Console
             }
 
             System.Console.WriteLine("Enter average grade: ");
-            int avg = ConsoleViewUtils.SafeInputInt();
+            float avg = ConsoleViewUtils.SafeInputFloat();
 
 
             return new Student(surname, name, id, date, address, phone, email, index, yearstudy, status, avg);

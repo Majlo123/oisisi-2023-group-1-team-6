@@ -30,22 +30,24 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine(header);
             foreach (Grade g in grades)
             {
-                System.Console.WriteLine(g);
+                    System.Console.WriteLine(g);
             }
-
+            
         }
 
         public Grade InputGrade()
         {
             System.Console.WriteLine("Enter Grade ID: ");
             int id = ConsoleViewUtils.SafeInputInt();
+            System.Console.WriteLine("Enter student id: ");
+            int id1 = ConsoleViewUtils.SafeInputInt();
             StudentsDAO studentsDAO = new StudentsDAO();
-            Student studentToAdd = studentsDAO.GetStudentById(id);
+            Student studentToAdd = studentsDAO.GetStudentById(id1);
             while (studentToAdd == null)
             {
                 System.Console.WriteLine("This student doesn't exist: ");
                 System.Console.WriteLine("Enter student id: ");
-                id = ConsoleViewUtils.SafeInputInt();
+                id1 = ConsoleViewUtils.SafeInputInt();
                 StudentsDAO studentsDAO1 = new StudentsDAO();
                 studentToAdd = studentsDAO.GetStudentById(id);
             }
@@ -68,7 +70,7 @@ namespace StudentskaSluzba.Console
             }
             Subject subject = new Subject(subjectToAdd.subjectId, subjectToAdd.subjectName, subjectToAdd.yearOfStudy,
                 subjectToAdd.semester, subjectToAdd.professor, subjectToAdd.ESPBPoints);
-            System.Console.WriteLine("Enter date of the exam");
+            System.Console.WriteLine("Enter date of exam (in the format MM/dd/yyyy): ");
             DateOnly date = ConsoleViewUtils.SafeInputDateTime();
             System.Console.WriteLine("Enter grade(must be from 6 to 10): ");
             string grade = System.Console.ReadLine();

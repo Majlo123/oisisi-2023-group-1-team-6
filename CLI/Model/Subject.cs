@@ -83,26 +83,8 @@ namespace CLI.Model
             subjectName = values[1];
             yearOfStudy = int.Parse(values[2]);
             semester = (values[3]);
-            Address address = new Address
-            {
-                Street = values[7],
-                Number = int.Parse(values[8]),
-                City = values[9],
-                State = values[10]
-            };
-            Professor professorToAdd = new Professor
-            {
-                Surname = values[4], // Surname
-                Name = values[5], // Name
-                Date = DateOnly.ParseExact(values[6], "M/d/yyyy"), // Date
-                Address = address,   // Address
-                PhoneNumber = values[11], // PhoneNumber
-                Email = values[12], // Email
-                Id = int.Parse(values[13]), // Id
-                Title = values[14], // Title
-                WorkYear = int.Parse(values[15]) // WorkYear
-            };
-            ESPBPoints = int.Parse(values[16]);
+            Professor professor = new Professor(values[4], values[5]);
+            ESPBPoints = int.Parse(values[6]);
         }
 
         public override string ToString()
@@ -112,8 +94,8 @@ namespace CLI.Model
             sb.Append($"SubjectName: {subjectName}, ");
             sb.Append($"Years of study: {yearOfStudy.ToString()}, ");
             sb.Append($"Semester: {semester}");
-            //ne radi kad se ugasi terminal pa upali ponovo bilo sta osim prikaza
-            //sb.AppendLine($"Professor: {professor.Name.ToString()} {professor.Surname.ToString()}, ");
+            
+            //sb.AppendLine($"Professor: {professor.Name} {professor.Surname}, ");
             sb.Append($"ESPB Points: {ESPBPoints.ToString()}, ");
             sb.Append($"Students who passed: ");
             sb.AppendJoin(", ", StudentsPassed.Select(Student => Student.Name));

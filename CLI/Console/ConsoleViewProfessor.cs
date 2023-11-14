@@ -48,7 +48,7 @@ namespace CLI.Console
                 surname = System.Console.ReadLine();
             }
 
-            System.Console.WriteLine("Enter date of birth: ");
+            System.Console.WriteLine("Enter date of birth (in the format MM/dd/yyyy): ");
             DateOnly date = ConsoleViewUtils.SafeInputDateTime();
 
             System.Console.WriteLine("Enter address id: ");
