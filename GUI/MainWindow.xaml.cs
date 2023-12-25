@@ -52,8 +52,18 @@ namespace GUI
             foreach (Address address in addressController.GetAllAddress())
             foreach (Professor professor in professorsController.GetAllProfessors()) Professors.Add(new ProfessorDTO(professor,address));
         }
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedProfessor == null)
+            {
+                MessageBox.Show("Please choose a vehicle to delete!");
+            }
+            else
+            {
+                professorsController.Delete(SelectedProfessor.Id);
+            }
+        }
 
-       
     }
    
   
