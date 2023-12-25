@@ -10,6 +10,7 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="Delete" Click="Delete_Click"></MenuItem>
+                <MenuItem Header="Add" Click="Add_Click"></MenuItem>
             </MenuItem>
         </Menu>
 

@@ -1,7 +1,7 @@
 ﻿using CLI.Controller;
 using CLI.Observer;
 using GUI.DTO;
-
+using GUI.View;
 using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
@@ -40,12 +40,12 @@ namespace GUI
             professorsController.Subscribe(this);
             Update();
         }
-        /*private void Add_Click(object sender, RoutedEventArgs e)
+        private void Add_Click(object sender, RoutedEventArgs e)
         {
             AddProfessor addProffessor = new AddProfessor(professorsController);
             addProffessor.Show();
         }
-        */
+        
         public void Update()
         {
             Professors.Clear();
