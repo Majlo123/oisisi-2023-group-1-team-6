@@ -27,7 +27,10 @@ namespace GUI
     {
         public ObservableCollection<ProfessorDTO> Professors { get; set; }
         public ProfessorDTO SelectedProfessor { get; set; }
+        public StudentDTO SelectedStudent {  get; set; }
         private ProfessorController professorsController { get; set; }
+
+        private StudentController studentController {  get; set; }
         private AddressController addressController { get; set; }
         public MainWindow()
         {
@@ -36,14 +39,21 @@ namespace GUI
             Professors = new ObservableCollection<ProfessorDTO>();
             professorsController = new ProfessorController();
             addressController = new AddressController();
+            studentController = new StudentController();
             addressController.Subscribe(this);
             professorsController.Subscribe(this);
             Update();
         }
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void Add_Click_Professor(object sender, RoutedEventArgs e)
         {
             AddProfessor addProffessor = new AddProfessor(professorsController);
             addProffessor.Show();
+        }
+
+        private void Add_Click_Student(object sender, RoutedEventArgs e)
+        {
+            AddStudent addStudent = new AddStudent(studentController);
+            addStudent.Show();
         }
         
         public void Update()

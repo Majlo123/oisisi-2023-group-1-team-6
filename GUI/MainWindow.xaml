@@ -10,7 +10,7 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="Delete" Click="Delete_Click"></MenuItem>
-                <MenuItem Header="Add" Click="Add_Click"></MenuItem>
+                <MenuItem Header="Add" Click="Add_Click_Student"></MenuItem>
             </MenuItem>
         </Menu>
 
@@ -31,6 +31,26 @@
                         </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-           </TabControl>
+            <TabItem Header = "Students" >
+                <DataGrid Height="350"
+         AutoGenerateColumns="False"
+           x:Name="StudentsDataGrid"
+           ItemsSource="{Binding Students, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding SelectedStudent, UpdateSourceTrigger=PropertyChanged}"
+            SelectionMode="Single" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header = "Index" Binding="{Binding Index}" Width="100"></DataGridTextColumn>
+                        <DataGridTextColumn Header = "Name" Binding="{Binding Name}" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header = "Surname" Binding="{Binding Email}" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header = "Year of study" Binding="{Binding Title}" Width="100"></DataGridTextColumn>
+                        <DataGridTextColumn Header = "Status(B or S)" Binding="{Binding Status}" Width="100"></DataGridTextColumn>
+                        <DataGridTextColumn Header = "Average grade" Binding="{Binding Average}" Width="300"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </TabItem>
+        </TabControl>
     </DockPanel>
+    
+    
 </Window>

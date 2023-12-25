@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CLI.Observer;
 using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
 
@@ -16,10 +17,12 @@ namespace StudentskaSluzba.DAO
         private readonly List<Student> _students;
         private readonly Storage<Student> _storage;
 
+        public Subject StudentSubject;
+
         public StudentsDAO() {
             _storage = new Storage<Student>("students.txt");
             _students = _storage.Load();
-        
+            StudentSubject = new Subject();
         }
         private int GenerateId()
         {
@@ -38,6 +41,7 @@ namespace StudentskaSluzba.DAO
             //student.Id = GenerateId(); 
             _students.Add(student);
             _storage.Save(_students);
+            StudentSubject.NotifyObservers();
             return student;
         }
 
@@ -48,6 +52,7 @@ namespace StudentskaSluzba.DAO
 
             _students.Remove(student);
             _storage.Save(_students);
+            StudentSubject.NotifyObservers();
             return student;
         }
         public Student? UpdateStudent(Student student)
@@ -67,6 +72,7 @@ namespace StudentskaSluzba.DAO
             oldStudent.FailedSubjects= student.FailedSubjects;
 
             _storage.Save(_students);
+            StudentSubject.NotifyObservers();
             return oldStudent;
 
         }
