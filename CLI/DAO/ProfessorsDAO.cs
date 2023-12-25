@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
-
+using CLI.Observer;
 
 
 namespace StudentskaSluzba.DAO
@@ -14,16 +14,19 @@ namespace StudentskaSluzba.DAO
 {
     public class ProfessorsDAO
     {
+
         private readonly List<Professor> _professors;
         private readonly Storage<Professor> _storage;
 
+        public Subject ProfessorSubject;
         public ProfessorsDAO()
         {
             _storage = new Storage<Professor>("professors.txt");
             _professors = _storage.Load();
+            ProfessorSubject = new Subject();
 
         }
-        public Professor? GetProfessorById(int id)
+        public Professor? GetProfessorById(string id)
         {
             return _professors.Find(p => p.Id == id);
         }
@@ -35,15 +38,17 @@ namespace StudentskaSluzba.DAO
             //professor.Id = GenerateId();
             _professors.Add(professor);
             _storage.Save(_professors);
+            ProfessorSubject.NotifyObservers();
         }
 
-        public Professor removeProfessor(int id)
+        public Professor removeProfessor(string id)
         {
             Professor? professor = GetProfessorById(id);
             if (professor == null) return null;
 
             _professors.Remove(professor);
             _storage.Save(_professors);
+            ProfessorSubject.NotifyObservers();
             return professor;
 
             /*Model.Index index = GetIndexById(id);
@@ -72,6 +77,8 @@ namespace StudentskaSluzba.DAO
             oldProfessor.Subjects = professor.Subjects;
 
             _storage.Save(_professors);
+            ProfessorSubject.NotifyObservers();
+
             return professor;
 
         }

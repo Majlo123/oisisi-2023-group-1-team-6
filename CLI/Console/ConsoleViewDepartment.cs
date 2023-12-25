@@ -60,10 +60,10 @@ namespace StudentskaSluzba.Console
             int id = ConsoleViewUtils.SafeInputInt();
             return id;
         }
-        public int InputId1()
+        public string InputId1()
         {
             System.Console.WriteLine("Enter Proffesor id: ");
-            int id = ConsoleViewUtils.SafeInputInt();
+            string id = System.Console.ReadLine();
             return id;
         }
 
@@ -109,7 +109,7 @@ namespace StudentskaSluzba.Console
         }
         public void AddProfessorToDepartment()
         {
-            int id = InputId1();
+            string id = InputId1();
             ProfessorsDAO professorDAO = new ProfessorsDAO();
             Professor professorToAdd = professorDAO.GetProfessorById(id);
             if (professorToAdd != null)

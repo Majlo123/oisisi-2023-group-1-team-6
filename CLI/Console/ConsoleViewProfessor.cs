@@ -70,7 +70,7 @@ namespace CLI.Console
             string email = ConsoleViewUtils.SafeInputString();
 
             System.Console.WriteLine("Enter id: ");
-            int id1 = ConsoleViewUtils.SafeInputInt();
+            string id1 = ConsoleViewUtils.SafeInputString();
 
             System.Console.WriteLine("Enter title: ");
             string title = ConsoleViewUtils.SafeInputString(); ;
@@ -102,13 +102,13 @@ namespace CLI.Console
                     subjects.Add(new Subject(name, code, description,));
                 }
             }*/
-            return new Professor(surname, name, date, address, phone, email, id, title, years);
+            return new Professor(surname, name, date, address, phone, email, id1, title, years);
         }
 
-        public int InputId()
+        public string InputId()
         {
             System.Console.WriteLine("Enter professor id: ");
-            int id = ConsoleViewUtils.SafeInputInt();
+            string id = ConsoleViewUtils.SafeInputString();
             return id;
         }
 
@@ -119,7 +119,7 @@ namespace CLI.Console
 
         public void removeProfessor()
         {
-            int id = InputId();
+            string id = InputId();
             Professor? removedProfessor = _professorsDao.removeProfessor(id);
             if (removedProfessor is null)
             {
@@ -132,7 +132,7 @@ namespace CLI.Console
 
         public void UpdateProfessor()
         {
-            int id = InputId();
+            string id = InputId();
             Professor professor = InputProfessor();
             professor.Id = id;
             Professor? updatedProfessor = _professorsDao.UpdateProfessor(professor);

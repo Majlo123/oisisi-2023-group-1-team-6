@@ -13,48 +13,23 @@
             </MenuItem>
         </Menu>
 
+
         <TabControl>
-            <TabItem Header="Students">
-                <DataGrid Height="350"
-                      AutoGenerateColumns="False"
-                      x:Name="VehiclesDataGrid"
-                      ItemsSource="{Binding Vehicles, UpdateSourceTrigger=PropertyChanged}"
-                      SelectedItem="{Binding SelectedVehicle, UpdateSourceTrigger=PropertyChanged}"
-                      SelectionMode="Single" IsReadOnly="True">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="NumberOfWheels" Binding="{Binding NumberOfWheels}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </TabItem>
-        
             <TabItem Header="Professors">
                 <DataGrid Height="350"
-               AutoGenerateColumns="False"
-               x:Name="VehiclesDataGridd"
-               ItemsSource="{Binding Vehicles, UpdateSourceTrigger=PropertyChanged}"
-               SelectedItem="{Binding SelectedVehicle, UpdateSourceTrigger=PropertyChanged}"
-               SelectionMode="Single" IsReadOnly="True">
+                     AutoGenerateColumns="False"
+                       x:Name="ProfessorsDataGrid"
+                       ItemsSource="{Binding Professors, UpdateSourceTrigger=PropertyChanged}"
+                        SelectedItem="{Binding SelectedProfessor, UpdateSourceTrigger=PropertyChanged}"
+                        SelectionMode="Single" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="NumberOfWheels" Binding="{Binding NumberOfWheels}"/>
-                    </DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Surname}" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Surname" Binding="{Binding Name}" Width="250"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="300"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="200"></DataGridTextColumn>
+                        </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-        
-            <TabItem Header="Subject">
-                <DataGrid Height="350"
-               AutoGenerateColumns="False"
-               x:Name="VehiclesDataGriddd"
-               ItemsSource="{Binding Vehicles, UpdateSourceTrigger=PropertyChanged}"
-               SelectedItem="{Binding SelectedVehicle, UpdateSourceTrigger=PropertyChanged}"
-               SelectionMode="Single" IsReadOnly="True">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="NumberOfWheels" Binding="{Binding NumberOfWheels}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </TabItem>
-        </TabControl>
+           </TabControl>
     </DockPanel>
 </Window>

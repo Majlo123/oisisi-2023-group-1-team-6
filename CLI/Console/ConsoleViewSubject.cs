@@ -53,7 +53,7 @@ namespace StudentskaSluzba.Console
                 semester = System.Console.ReadLine();
             }
             System.Console.WriteLine("Enter proffesor id: ");
-            int id1 = ConsoleViewUtils.SafeInputInt();
+            string id1 = ConsoleViewUtils.SafeInputString();
             ProfessorsDAO professorDAO = new ProfessorsDAO();
             Professor professorToAdd = professorDAO.GetProfessorById(id1);
             while (professorToAdd == null)
@@ -61,7 +61,7 @@ namespace StudentskaSluzba.Console
                 
                 System.Console.WriteLine("This proffesor doesn't exist: ");
                 System.Console.WriteLine("Enter proffesor id: ");
-                id1 = ConsoleViewUtils.SafeInputInt();
+                id1= ConsoleViewUtils.SafeInputString();
                 ProfessorsDAO professorDAO1 = new ProfessorsDAO();
 
                 professorToAdd = professorDAO.GetProfessorById(id1);

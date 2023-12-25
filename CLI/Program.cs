@@ -11,5 +11,6 @@ class Program
         StudentsDAO students = new StudentsDAO();
         ConsoleView view = new ConsoleView();
         view.RunMenu();
+       
     }
 }

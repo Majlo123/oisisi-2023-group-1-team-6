@@ -21,7 +21,7 @@ namespace StudentskaSluzba.Model;
 
     public string Email { get; set; }
 
-    public int Id { get; set; }
+    public string Id { get; set; }
 
 
     public string Title { get; set; }
@@ -41,7 +41,7 @@ namespace StudentskaSluzba.Model;
         
         
     }
-    public Professor(string surname, string name, DateOnly date, Address address, string phonenumber, string email, int id, string title, int workyear)
+    public Professor(string surname, string name, DateOnly date, Address address, string phonenumber, string email, string id, string title, int workyear)
     {
         Surname = surname;
         Name = name;
@@ -58,7 +58,7 @@ namespace StudentskaSluzba.Model;
     {
         string[] csvValues =
         {
-            Id.ToString(),
+            Id,
             Surname,
             Name,
             Date.ToString(),
@@ -73,7 +73,7 @@ namespace StudentskaSluzba.Model;
 
     public void FromCSV(string[] values)
     {
-        Id = int.Parse(values[0]);
+        Id = values[0];
         Surname = values[1];
         Name = values[2];
         Date = DateOnly.ParseExact(values[3], "M/d/yyyy");
@@ -86,7 +86,7 @@ namespace StudentskaSluzba.Model;
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append($"ID:{Id.ToString()}|");
+        sb.Append($"ID:{Id}|");
         sb.Append($"SURNAME:{Surname}|");
         sb.Append($"NAME:{Name}|");
         sb.Append($"DATE OF BIRTH:{Date}|");

@@ -1,11 +1,13 @@
-﻿using StudentskaSluzba.Model;
+﻿
+using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
+using CLI.Observer;
 namespace StudentskaSluzba.DAO
 {
     public class AddressDAO
@@ -13,10 +15,12 @@ namespace StudentskaSluzba.DAO
         private readonly List<Address> _address;
         private readonly Storage<Address> _storage;
 
+        public Subject AddressSubject;
         public AddressDAO()
         {
             _storage = new Storage<Address>("address.txt");
             _address = _storage.Load();
+            AddressSubject = new Subject();
         }
 
         public Address? GetAddressById(int id)
@@ -34,6 +38,7 @@ namespace StudentskaSluzba.DAO
             }//student.Id = GenerateId(); 
             _address.Add(address);
             _storage.Save(_address);
+            AddressSubject.NotifyObservers();
             return address;
         }
 
@@ -47,6 +52,7 @@ namespace StudentskaSluzba.DAO
             }
             _address.Remove(address);
             _storage.Save(_address);
+            AddressSubject.NotifyObservers();
             return address;
         }
 
@@ -64,6 +70,8 @@ namespace StudentskaSluzba.DAO
             oldAddress.State = address.State;
 
             _storage.Save(_address);
+            AddressSubject.NotifyObservers();
+
             return oldAddress;
 
         }
