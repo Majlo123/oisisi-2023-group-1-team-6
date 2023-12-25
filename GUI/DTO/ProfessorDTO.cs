@@ -129,18 +129,18 @@ namespace GUI.DTO
                 }
             }
         }
-        private string phonenumber;
-        public string Phonenumber
+        private string phone;
+        public string Phone
         {
             get
             {
-                return phonenumber;
+                return phone;
             }
             set
             {
-                if (value != phonenumber)
+                if (value != phone)
                 {
-                    phonenumber = value;
+                    phone = value;
                     OnPropertyChanged();
                 }
             }
@@ -209,17 +209,18 @@ namespace GUI.DTO
                 }
             }
         }
-        
-
+        //string surname, string name, DateOnly date,
+        //string street, int number, string city, string state
+        //string phonenumber, string email, string id, string title, int workyear
         public string Error => null;
 
         private Regex _NameRegex = new Regex("[A-Za-z0-9-]+");
         private Regex _IdRegex = new Regex("[0-9]{9}");
         private Regex _PhoneNumberRegex = new Regex("[+][0-9]{7,15}");
-        private Regex _DateRegex = new Regex("[0-9]{1,2}[/][0-9]{1,2}[/][0-9]{4}");
+      
         private Regex _EmailRegex = new Regex("[a-zA-Z]+[@][a-zA-Z]+[.][a-zA-Z]+");
-        private Regex _WorkYearRegex = new Regex("[0-9]+");
-        private Regex _NaturalNumber = new Regex("[1-9][0-9]*[A-Za-z]*");
+       
+       
         public string this[string columnName]
         {
             get
@@ -243,7 +244,7 @@ namespace GUI.DTO
                     if (!match.Success)
                         return "Format not good. Try again. ";
                 }
-                else if (columnName == "Date if birth")
+                else if (columnName == "Date")
                 {
                     
                 }
@@ -278,12 +279,12 @@ namespace GUI.DTO
                     if (!match.Success)
                         return "Format not good. Try again. ";
                 }
-                else if (columnName == "Phone number")
+                else if (columnName == "Phone")
                 {
-                    if (string.IsNullOrEmpty(Phonenumber))
+                    if (string.IsNullOrEmpty(Phone))
                         return "Phone number is required";
 
-                    Match match = _PhoneNumberRegex.Match(Phonenumber);
+                    Match match = _PhoneNumberRegex.Match(Phone);
                     if (!match.Success)
                         return "Number must begin with + then State area code and then your number ";
                 }
@@ -314,7 +315,7 @@ namespace GUI.DTO
                     if (!match.Success)
                         return "Format not good. Try again. ";
                 }
-                else if (columnName == "Years of working")
+                else if (columnName == "Workyear")
                 {
                     
                 }
@@ -323,9 +324,9 @@ namespace GUI.DTO
             }
         }
 
-        private readonly string[] _validatedProperties = {"Name", "Surname","Date of birth", "Street", "Number", "City", "State",
-                                                           "Phone number", "Email", "Id", "Title",
-                                                           "Years of working"};
+        private readonly string[] _validatedProperties = {"Name", "Surname","Date", "Street", "Number", "City", "State",
+                                                           "Phone", "Email", "Id", "Title",
+                                                           "Workyear"};
 
         public bool IsValid
         {
@@ -344,7 +345,7 @@ namespace GUI.DTO
         public Professor ToProfessor()
         {
             Address address = new Address(street,number,city,state);
-            return new Professor(surname,name,date,address,phonenumber,email,id,title,workyear);
+            return new Professor(surname,name,date,address,phone,email,id,title,workyear);
         }
 
         public ProfessorDTO()
@@ -363,7 +364,7 @@ namespace GUI.DTO
             city = address.City;
             state = address.State;
             address = professor.Address;
-            phonenumber = professor.PhoneNumber;
+            phone = professor.PhoneNumber;
             email = professor.Email;
             id = professor.Id;
             title = professor.Title;

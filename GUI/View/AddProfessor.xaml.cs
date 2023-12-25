@@ -46,6 +46,20 @@ namespace GUI.View
                 MessageBox.Show("Professor can not be created. Not all fields are valid.");
             }
         }
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
 

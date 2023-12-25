@@ -56,7 +56,7 @@ namespace GUI
         {
             if (SelectedProfessor == null)
             {
-                MessageBox.Show("Please choose a vehicle to delete!");
+                MessageBox.Show("Please choose a professor to delete!");
             }
             else
             {
