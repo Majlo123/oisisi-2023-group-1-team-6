@@ -1,7 +1,11 @@
 ﻿using CLI.Controller;
+using CLI.Model;
 using GUI.DTO;
+using StudentskaSluzba.DAO;
+using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +29,7 @@ namespace GUI.View
 
         private SubjectController subjectsController;
 
+        
         public AddSubject(SubjectController subjectsController)
         {
             InitializeComponent();
@@ -38,6 +43,13 @@ namespace GUI.View
         {
             if (Subject.IsValid)
             {
+                Subject subjectoAdd = subjectsController.getSubjectById(Subject.SubjectId);
+                if (subjectoAdd != null)
+                {
+                    MessageBox.Show("Subject with this id already exist.");
+                    return;
+
+                }
                 subjectsController.Add(Subject.ToSubject());
                 Close();
             }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI.View"
         mc:Ignorable="d"
-            Title="Adding subject" Height="697" Width="914" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+            Title="Adding subject" Height="700" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
         <ControlTemplate x:Key="ValidationTemplate">
             <StackPanel>
@@ -16,7 +16,7 @@
 
         </ControlTemplate>
     </Window.Resources>
-    <Grid RenderTransformOrigin="0.499,0.501" Margin="0,0,0,-6">
+    <Grid RenderTransformOrigin="0.499,0.501" Margin="0,0,0,-120">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>
             <ColumnDefinition Width="437*"/>
@@ -43,24 +43,34 @@
                 <ColumnDefinition Width="83*"></ColumnDefinition>
                 <ColumnDefinition Width="90*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="1" Text="{Binding Path= Subject.SubjectId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                 Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="236,6,-265,17" Grid.Row="8" Grid.RowSpan="2"/>
 
 
 
         </Grid>
-        <WrapPanel Grid.Row="1" FlowDirection="RightToLeft" Margin="0,254,0,0" Height="58" VerticalAlignment="Top" Grid.ColumnSpan="2">
+        <WrapPanel Grid.Row="1" FlowDirection="RightToLeft" Margin="0,150,0,0" Height="308" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20, 5, 20, 5"
             Click="Cancel_Click"/>
             <Button Content="Add" IsDefault="True" HorizontalAlignment="Center" VerticalAlignment="Center"
             Click="Add_Click"/>
         </WrapPanel>
-        <Label Margin="260,349,415,285" Content="EspbPoints" Grid.Column="1" FontSize="20" Grid.RowSpan="2"/>
-        <Label Margin="260,248,415,49" Content="Semester" Grid.Column="1" FontSize="20"/>
+        <Label Margin="245,33,430,164" Content="Espb Points" Grid.Column="1" FontSize="20" Grid.Row="1"/>
+        <Label Margin="245,366,508,22" Content="Semester" Grid.Column="1" FontSize="20"/>
+        <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="195" Height="50" Text="{Binding Path=Subject.Semester, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,  ValidatesOnDataErrors=True}"  Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,366,0,0">
+            <ComboBoxItem Content="Summer"/>
+            <ComboBoxItem Content="Winter"/>
+        </ComboBox>
+        <TextBox Grid.Column="1" Text="{Binding Subject.YearOfStudy, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,254,237,130"/>
+        <TextBox Grid.Column="1" Text="{Binding Subject.SubjectName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,147,237,237"/>
         <TextBox Grid.Column="1" Text="{Binding Subject.SubjectId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="417,243,237,49"/>
-        <TextBox Grid.Column="1" Text="{Binding Subject.SubjectId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="373,334,281,294" Grid.RowSpan="2"/>
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,46,237,338"/>
+        <Label Margin="245,56,430,308" Content="Subject Id" Grid.Column="1" FontSize="20"/>
+        <Label Margin="245,153,430,211" Content="Subject Name" Grid.Column="1" FontSize="20"/>
+        <Label Margin="245,260,430,104" Content="Year" Grid.Column="1" FontSize="20"/>
+        <TextBox Grid.Column="1" Text="{Binding Subject.EspbPoints, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,27,237,261" Grid.Row="1"/>
+
 
 
 

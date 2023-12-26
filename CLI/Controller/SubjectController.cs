@@ -40,5 +40,8 @@ namespace CLI.Controller
         {
             _subjects.SubjectSubject.Subscribe(observer);
         }
+        public CLI.Model.Subject? getSubjectById(int subjectid) { 
+            return _subjects.GetSubjectById(subjectid);
+        }
     }
 }

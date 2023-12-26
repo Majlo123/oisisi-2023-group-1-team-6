@@ -77,8 +77,6 @@ namespace CLI.Model
                 subjectName,
                 yearOfStudy.ToString(),
                 semester,
-                professor.Name,
-                professor.Surname,
                 ESPBPoints.ToString()
 
             };
@@ -92,8 +90,7 @@ namespace CLI.Model
             subjectName = values[1];
             yearOfStudy = int.Parse(values[2]);
             semester = (values[3]);
-            Professor professor = new Professor(values[4], values[5]);
-            ESPBPoints = int.Parse(values[6]);
+            ESPBPoints = int.Parse(values[4]);
         }
 
         public override string ToString()
