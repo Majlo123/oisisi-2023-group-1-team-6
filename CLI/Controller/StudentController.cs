@@ -1,4 +1,5 @@
-﻿using CLI.Observer;
+﻿using CLI.Model;
+using CLI.Observer;
 using StudentskaSluzba.DAO;
 using StudentskaSluzba.Model;
 using System;
@@ -45,6 +46,12 @@ namespace CLI.Controller
         public void Subscribe(IObserver observer)
         {
             _students.StudentSubject.Subscribe(observer);
+        }
+
+        public Student? getStudentById(int studentid)
+        {
+            return _students.GetStudentById(studentid);
+
         }
     }
 }

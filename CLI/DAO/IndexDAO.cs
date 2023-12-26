@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CLI.Observer;
 
 namespace StudentskaSluzba.DAO
 {
@@ -13,11 +14,14 @@ namespace StudentskaSluzba.DAO
         private readonly List<Model.Index> _index;
         private readonly Storage<Model.Index> _storage;
 
+        public Subject IndexSubject;
+
         public IndexDAO()
         {
             _storage = new Storage<Model.Index>("index.txt");
             _index = _storage.Load();
-        }
+            IndexSubject = new Subject();
+    }
 
         public Model.Index? GetIndexById(int id)
         {

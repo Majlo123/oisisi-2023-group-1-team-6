@@ -1,5 +1,6 @@
 ﻿using CLI.Controller;
 using GUI.DTO;
+using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,26 +35,44 @@ namespace GUI.View
 
         }
 
-        
+
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             if (Student.IsValid)
             {
+                Student subjectoAdd = studentController.getStudentById(Student.Id);
+                if (subjectoAdd != null)
+                {
+                    MessageBox.Show("Subject with this id already exist.");
+                    return;
+
+                }
                 studentController.Add(Student.toStudent());
                 Close();
             }
             else
             {
-                MessageBox.Show("Student can not be created. Not all fields are valid.");
+                MessageBox.Show("Subject can not be created. Not all fields are valid.");
             }
         }
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+
+            private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }

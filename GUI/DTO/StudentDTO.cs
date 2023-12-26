@@ -333,6 +333,8 @@ namespace GUI.DTO
         private Regex _naturalNumberRegex = new Regex("[1-9][0-9]*[A-Za-z]*");
         private Regex _avgGradeRegex = new Regex("(10(\\.0)?|[1-9](\\.\\[0-9]*)?)");
 
+        public string Error => null;
+
         public string this[string columnName]
         {
             get
@@ -400,7 +402,7 @@ namespace GUI.DTO
                     if (!match.Success)
                         return "Format not good. Try again. ";
                 }
-                else if (columnName == "Phone number")
+                else if (columnName == "PhoneNumber")
                 {
                     if (string.IsNullOrEmpty(Phonenumber))
                         return "Phone number is required";
@@ -424,13 +426,13 @@ namespace GUI.DTO
                     if (!match.Success)
                         return "Id must be in format of nine numbers ";
                 }
-                else if (columnName == "Average grade")
+                else if (columnName == "Average")
                 {
                     Match match = _avgGradeRegex.Match(Average.ToString());
                     if (!match.Success)
                         return "Average must be in format of number.number";
                 }
-                else if (columnName == "Year of study")
+                else if (columnName == "YearOfStudy")
                 {
                     Match match = _naturalNumberRegex.Match(YearOfStudy.ToString());
                     if (!match.Success)
@@ -441,9 +443,9 @@ namespace GUI.DTO
             }
         }
 
-        private readonly string[] _validatedProperties = {"Name", "Surname","Date", "Id", "Street", "Number", "City", "State",
-                                                           "PhoneNumber", "YearOfStudy", "Status", "AvarageGrade", "Email", "Id",
-                                                          "AbbreviationOfMajor", "MarkOfMajor", "YearOfEnrollment", "IdIndex", "id"};
+        private readonly string[] _validatedProperties = {"Name", "Surname","Date", "Street", "Number", "City", "State",
+                                                           "PhoneNumber", "Email", "Id", "Average", "Email", "YearOfStudy", "Status", 
+                                                          "AbbreviationOfMajor", "MarkOfMajor", "YearOfEnrollment", "IdIndex"};
 
         public bool IsValid
         {
@@ -474,6 +476,8 @@ namespace GUI.DTO
 
         public StudentDTO(Student s, Address a, Index i)
         {
+            a = s.Address;
+            i = s.Index;
             surname = s.Surname;
             name = s.Name;
             id = s.Id;
@@ -497,8 +501,6 @@ namespace GUI.DTO
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        public string Error => throw new NotImplementedException();
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }

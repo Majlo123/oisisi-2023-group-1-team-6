@@ -18,6 +18,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Index = StudentskaSluzba.Model.Index;
+
 namespace GUI
 {
     /// <summary>
@@ -32,6 +34,8 @@ namespace GUI
         public StudentDTO SelectedStudent {  get; set; }
 
         public SubjectDTO SelectedSubject { get; set; }
+
+        public IndexController indexController { get; set; }
         private ProfessorController professorsController { get; set; }
         private SubjectController subjectsController { get; set; }
         private StudentController studentController {  get; set; }
@@ -45,6 +49,7 @@ namespace GUI
             Professors = new ObservableCollection<ProfessorDTO>();
             Students = new ObservableCollection<StudentDTO>();
             Subjects = new ObservableCollection<SubjectDTO>();
+            indexController = new IndexController();
             professorsController = new ProfessorController();
             addressController = new AddressController();
             studentController = new StudentController();
@@ -52,6 +57,8 @@ namespace GUI
             addressController.Subscribe(this);
             professorsController.Subscribe(this);
             subjectsController.Subscribe(this);
+            studentController.Subscribe(this);
+            indexController.Subscribe(this);
             Update();
         }
         private void Add_Click_Professor(object sender, RoutedEventArgs e)
@@ -75,10 +82,31 @@ namespace GUI
         {
             Subjects.Clear();
             Professors.Clear();
-            
-            foreach (Address address in addressController.GetAllAddress())
-            foreach (Professor professor in professorsController.GetAllProfessors()) Professors.Add(new ProfessorDTO(professor,address));
+            Students.Clear();
 
+            foreach (Address address in addressController.GetAllAddress())
+            {
+                foreach (Professor professor in professorsController.GetAllProfessors()) Professors.Add(new ProfessorDTO(professor, address));
+            }
+
+            foreach (Address address in addressController.GetAllAddress())
+            {
+                foreach (Index index in indexController.GetAllIndexes())
+                {
+                    // Dohvati sve studente i za svakog od njih pronađi odgovarajuću adresu i indeks
+                    foreach (Student student in studentController.GetAllStudents())
+                    {
+                        // Pronađi adresu koja odgovara studentu
+                        
+                            // Pronađi indeks koji odgovara studentu
+                            
+                                // Stvori StudentDTO koristeći adresu i indeks te dodaj u kolekciju
+                                Students.Add(new StudentDTO(student, address, index));
+                            
+                        
+                    }
+                }
+            }
             foreach (CLI.Model.Subject subject in subjectsController.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
 
                 
