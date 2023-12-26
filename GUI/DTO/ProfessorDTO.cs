@@ -209,9 +209,7 @@ namespace GUI.DTO
                 }
             }
         }
-        //string surname, string name, DateOnly date,
-        //string street, int number, string city, string state
-        //string phonenumber, string email, string id, string title, int workyear
+      
         public string Error => null;
 
         private Regex _NameRegex = new Regex("[A-Za-z0-9-]+");
@@ -219,8 +217,9 @@ namespace GUI.DTO
         private Regex _PhoneNumberRegex = new Regex("[+][0-9]{7,15}");
       
         private Regex _EmailRegex = new Regex("[a-zA-Z]+[@][a-zA-Z]+[.][a-zA-Z]+");
-       
-       
+        private Regex _DateRegex = new Regex("[0-9]{1,2}[/][0-9]{1,2}[/][0-9]{4}");
+
+        //int subjectid, string subjectname, int yearofstudy, string Semester,int eSPBPoints
         public string this[string columnName]
         {
             get
@@ -341,13 +340,13 @@ namespace GUI.DTO
                 return true;
             }
         }
-
+        
         public Professor ToProfessor()
         {
             Address address = new Address(street,number,city,state);
             return new Professor(surname,name,date,address,phone,email,id,title,workyear);
         }
-
+       
         public ProfessorDTO()
         {
         }
@@ -375,5 +374,6 @@ namespace GUI.DTO
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        
     }
 }

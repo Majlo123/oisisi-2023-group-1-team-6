@@ -86,7 +86,7 @@ namespace StudentskaSluzba.Console
 
         public void ShowAllSubjects()
         {
-            PrintSubject(_subjectsDao.getAllStudents());
+            PrintSubject(_subjectsDao.getAllSubjects());
         }
 
         public void RemoveSubject()

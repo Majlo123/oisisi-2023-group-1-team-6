@@ -10,7 +10,9 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="Delete" Click="Delete_Click"></MenuItem>
-                <MenuItem Header="Add" Click="Add_Click_Student"></MenuItem>
+                <MenuItem Header="Add professor" Click="Add_Click_Professor"></MenuItem>
+                <MenuItem Header="Add subject" Click="Add_Click_Subject"></MenuItem>
+                <MenuItem Header="Update professor" Click="UpdateProfesor_Click"></MenuItem>
             </MenuItem>
         </Menu>
 
@@ -22,13 +24,13 @@
                        x:Name="ProfessorsDataGrid"
                        ItemsSource="{Binding Professors, UpdateSourceTrigger=PropertyChanged}"
                         SelectedItem="{Binding SelectedProfessor, UpdateSourceTrigger=PropertyChanged}"
-                        SelectionMode="Single" IsReadOnly="True">
+                        SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center" Width="895" RenderTransformOrigin="0.548,0.506">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Name" Binding="{Binding Surname}" Width="200"></DataGridTextColumn>
                         <DataGridTextColumn Header="Surname" Binding="{Binding Name}" Width="250"></DataGridTextColumn>
                         <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="300"></DataGridTextColumn>
                         <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="200"></DataGridTextColumn>
-                        </DataGrid.Columns>
+                    </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
             <TabItem Header = "Students" >
@@ -47,10 +49,26 @@
                         <DataGridTextColumn Header = "Average grade" Binding="{Binding Average}" Width="300"></DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-
+            
+            </TabItem>
+            <TabItem Header="Subjects">
+                <DataGrid Height="350"
+         AutoGenerateColumns="False"
+           x:Name="SubjectsDataGrid"
+           ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding SelectedSubject, UpdateSourceTrigger=PropertyChanged}"
+            SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center" Width="895" RenderTransformOrigin="0.548,0.506">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Subject Id" Binding="{Binding SubjectId}" Width="150"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Subject Name" Binding="{Binding SubjectName}" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Espb Points" Binding="{Binding EspbPoints}" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Year" Binding="{Binding YearOfStudy}" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Semester" Binding="{Binding Semester}" Width="200"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
             </TabItem>
         </TabControl>
     </DockPanel>
-    
-    
+
+
 </Window>

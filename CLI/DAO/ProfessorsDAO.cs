@@ -17,7 +17,6 @@ namespace StudentskaSluzba.DAO
 
         private readonly List<Professor> _professors;
         private readonly Storage<Professor> _storage;
-
         public Subject ProfessorSubject;
         public ProfessorsDAO()
         {

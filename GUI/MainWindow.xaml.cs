@@ -26,22 +26,32 @@ namespace GUI
     public partial class MainWindow : Window,IObserver
     {
         public ObservableCollection<ProfessorDTO> Professors { get; set; }
+        public ObservableCollection<SubjectDTO> Subjects { get; set; }
+        public ObservableCollection<StudentDTO> Students { get; set; }
         public ProfessorDTO SelectedProfessor { get; set; }
         public StudentDTO SelectedStudent {  get; set; }
-        private ProfessorController professorsController { get; set; }
 
+        public SubjectDTO SelectedSubject { get; set; }
+        private ProfessorController professorsController { get; set; }
+        private SubjectController subjectsController { get; set; }
         private StudentController studentController {  get; set; }
         private AddressController addressController { get; set; }
+
+
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
             Professors = new ObservableCollection<ProfessorDTO>();
+            Students = new ObservableCollection<StudentDTO>();
+            Subjects = new ObservableCollection<SubjectDTO>();
             professorsController = new ProfessorController();
             addressController = new AddressController();
             studentController = new StudentController();
+            subjectsController = new SubjectController();
             addressController.Subscribe(this);
             professorsController.Subscribe(this);
+            subjectsController.Subscribe(this);
             Update();
         }
         private void Add_Click_Professor(object sender, RoutedEventArgs e)
@@ -55,12 +65,23 @@ namespace GUI
             AddStudent addStudent = new AddStudent(studentController);
             addStudent.Show();
         }
-        
+        private void Add_Click_Subject(object sender, RoutedEventArgs e)
+        {
+            AddSubject addSubject = new AddSubject(subjectsController);
+            addSubject.Show();
+        }
+
         public void Update()
         {
+            Subjects.Clear();
             Professors.Clear();
+            
             foreach (Address address in addressController.GetAllAddress())
             foreach (Professor professor in professorsController.GetAllProfessors()) Professors.Add(new ProfessorDTO(professor,address));
+
+            foreach (CLI.Model.Subject subject in subjectsController.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
+
+                
         }
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
@@ -73,7 +94,19 @@ namespace GUI
                 professorsController.Delete(SelectedProfessor.Id);
             }
         }
+        private void UpdateProfesor_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedProfessor != null)
+            {
+                UpdateProfessor updateProfesor = new UpdateProfessor(professorsController,SelectedProfessor);
+                updateProfesor.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please choose a professor to update!");
+            }
 
+        }
     }
    
   

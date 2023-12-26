@@ -59,7 +59,16 @@ namespace CLI.Model
             StudentsPassed = new List<Student>();
             StudentsFailed = new List<Student>();
         }
-
+        public Subject(int subjectid, string subjectname, int yearofstudy, string Semester,int eSPBPoints)
+        {
+            subjectId = subjectid;
+            subjectName = subjectname;
+            yearOfStudy = yearofstudy;
+            semester = Semester;
+            
+            ESPBPoints = eSPBPoints;
+           
+        }
         public string[] ToCSV()
         {
             string[] csvValues =
