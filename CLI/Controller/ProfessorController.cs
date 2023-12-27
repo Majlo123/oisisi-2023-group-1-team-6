@@ -1,4 +1,5 @@
-﻿using CLI.Observer;
+﻿using CLI.Model;
+using CLI.Observer;
 using StudentskaSluzba.DAO;
 using StudentskaSluzba.Model;
 using System;
@@ -42,6 +43,10 @@ namespace CLI.Controller
         }
         public void Subscribe(IObserver observer) { 
             _professors.ProfessorSubject.Subscribe(observer);
+        }
+        public void Save()
+        {
+            _professors.Save();
         }
     }
 }

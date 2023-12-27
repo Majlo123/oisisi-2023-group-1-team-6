@@ -29,6 +29,10 @@ namespace StudentskaSluzba.DAO
              return _students[^1].Id;
 
          }*/
+        public void Save()
+        {
+            _storage.Save(_subjects);
+        }
         public CLI.Model.Subject? GetSubjectById(int id)
         {
             return _subjects.Find(s => s.subjectId == id);

@@ -81,6 +81,9 @@ namespace StudentskaSluzba.DAO
             return professor;
 
         }
+        public void Save() {
+            _storage.Save(_professors);
+        }
         public List<Professor> GetAllProfessors()
         {
             return _professors;

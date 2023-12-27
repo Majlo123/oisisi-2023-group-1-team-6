@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using Index = StudentskaSluzba.Model.Index;
 
 namespace GUI
@@ -170,6 +171,31 @@ namespace GUI
                 "Nikola Paunovic RA87/2021");
 
 
+
+        }
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            Close();
+
+
+
+        }
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            studentController.Save();
+            professorsController.Save();
+            subjectsController.Save();
+
+            MessageBox.Show("Files are saved successfully");
+
+        }
+        
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

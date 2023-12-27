@@ -44,7 +44,10 @@ namespace StudentskaSluzba.DAO
             StudentSubject.NotifyObservers();
             return student;
         }
-
+        public void Save()
+        {
+            _storage.Save(_students);
+        }
         public Student removeStudent(int id)
         {
             Student? student = GetStudentById(id);

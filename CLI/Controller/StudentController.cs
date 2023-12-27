@@ -53,5 +53,9 @@ namespace CLI.Controller
             return _students.GetStudentById(studentid);
 
         }
+        public void Save()
+        {
+            _students.Save();
+        }
     }
 }

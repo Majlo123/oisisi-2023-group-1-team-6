@@ -43,5 +43,8 @@ namespace CLI.Controller
         public CLI.Model.Subject? getSubjectById(int subjectid) { 
             return _subjects.GetSubjectById(subjectid);
         }
+        public void Save() {
+            _subjects.Save();
+        }
     }
 }
