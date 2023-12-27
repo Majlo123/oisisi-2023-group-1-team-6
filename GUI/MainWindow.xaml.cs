@@ -143,7 +143,7 @@ namespace GUI
         {
             if (SelectedProfessor != null)
             {
-                UpdateProfessor updateProfesor = new UpdateProfessor(professorsController,SelectedProfessor);
+                UpdateProfessor updateProfesor = new UpdateProfessor(professorsController,SelectedProfessor,addressController);
                 updateProfesor.Show();
             }
             else

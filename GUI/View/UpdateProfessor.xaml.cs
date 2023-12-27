@@ -48,7 +48,8 @@ namespace GUI.View
         public ProfessorDTO professor { get; set; }
 
         private ProfessorController professorController;
-        public UpdateProfessor(ProfessorController professorcontroller,ProfessorDTO selectedProfessor)
+        private AddressController addressController;
+        public UpdateProfessor(ProfessorController professorcontroller,ProfessorDTO selectedProfessor,AddressController addressController)
         {
             InitializeComponent();
             this.professor = selectedProfessor;
@@ -74,6 +75,7 @@ namespace GUI.View
 
             this.professor = new ProfessorDTO(professor, address);
             this.professorController = professorcontroller;
+            this.addressController = addressController;
 
         }
 
@@ -81,6 +83,7 @@ namespace GUI.View
         {
             if (professor.IsValid)
             {
+                addressController.Update(professor.ToAddress());
                 professorController.Update(professor.ToProfessor());
                 Close();
             }
