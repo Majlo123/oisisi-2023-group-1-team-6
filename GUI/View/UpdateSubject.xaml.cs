@@ -28,17 +28,17 @@ namespace GUI.View
         string semester { get; set; }
         int espbpoints;
 
-        public SubjectDTO selected {  get; set; }
+        public SubjectDTO subject {  get; set; }
 
         private SubjectController subjectcontroller;
         public UpdateSubject(SubjectController subjectController,SubjectDTO selectedSubject)
         {
             InitializeComponent();
-            selected=selectedSubject;
-            subjectid = selected.SubjectId;
-            subjectname = selected.SubjectName;
-            yearofstudy = selected.YearOfStudy;
-            if (selected.Semester == "Winter")
+            this.subject= selectedSubject;
+            subjectid = this.subject.SubjectId;
+            subjectname = this.subject.SubjectName;
+            yearofstudy = this.subject.YearOfStudy;
+            if (this.subject.Semester == "Winter")
             {
                 semester = "Winter";
             }
@@ -46,18 +46,18 @@ namespace GUI.View
             {
                 semester = "Summer";
             };
-            espbpoints = selected.EspbPoints;
+            espbpoints = this.subject.EspbPoints;
             DataContext = this;
             Subject subject=new Subject(subjectid,subjectname,yearofstudy,semester,espbpoints);
 
-            selected = new SubjectDTO(subject);
+            this.subject = new SubjectDTO(subject);
             subjectcontroller = subjectController;
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            if (selected.IsValid)
+            if (subject.IsValid)
             {
-                subjectcontroller.Update(selected.ToSubject());
+                subjectcontroller.Update(subject.ToSubject());
                 Close();
             }
             else

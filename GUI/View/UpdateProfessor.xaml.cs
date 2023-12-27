@@ -30,6 +30,7 @@ namespace GUI.View
         public string Name;
 
         public DateOnly Date;
+        public int addressid;
         public string street;
         public int number;
         public string city;
@@ -44,43 +45,43 @@ namespace GUI.View
 
         public string Title;
         public int WorkYear;
-        public ProfessorDTO selected { get; set; }
+        public ProfessorDTO professor { get; set; }
 
         private ProfessorController professorController;
         public UpdateProfessor(ProfessorController professorcontroller,ProfessorDTO selectedProfessor)
         {
             InitializeComponent();
-            selected = selectedProfessor;
-            Surname = selected.Surname;
-            Name = selected.Name;
-            Date = selected.Date;
+            this.professor = selectedProfessor;
+            Surname = this.professor.Surname;
+            Name = this.professor.Name;
+            Date = this.professor.Date;
 
+            addressid = this.professor.AddressId;
+            street = this.professor.Street;
+            number = this.professor.Number;
+            city = this.professor.City;
+            state = this.professor.State;
+            Address address = new Address(addressid,street, number, city, state);
 
-            street = selected.Street;
-            number = selected.Number;
-            city = selected.City;
-            state = selected.State;
-            Address address = new Address(street, number, city, state);
+            PhoneNumber = this.professor.Phone;
 
-            PhoneNumber = selected.Phone;
-
-            Email = selected.Email;
-            Id = selected.Id;
-            Title = selected.Title;
-            WorkYear = selected.Workyear;
+            Email = this.professor.Email;
+            Id = this.professor.Id;
+            Title = this.professor.Title;
+            WorkYear = this.professor.Workyear;
             DataContext = this;
             Professor professor=new Professor(Surname,Name,Date,address,PhoneNumber,Email,Id,Title,WorkYear);
 
-            selected = new ProfessorDTO(professor, address);
+            this.professor = new ProfessorDTO(professor, address);
             this.professorController = professorcontroller;
 
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            if (selected.IsValid)
+            if (professor.IsValid)
             {
-                professorController.Update(selected.ToProfessor());
+                professorController.Update(professor.ToProfessor());
                 Close();
             }
             else

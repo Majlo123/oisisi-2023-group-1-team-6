@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="StudentskaSluzba" Height="450" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
+        Title="StudentskaSluzba" Height="500" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File" Click="MenuItem_Click">

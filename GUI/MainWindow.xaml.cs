@@ -2,6 +2,7 @@
 using CLI.Observer;
 using GUI.DTO;
 using GUI.View;
+using StudentskaSluzba.DAO;
 using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace GUI
         public ObservableCollection<ProfessorDTO> Professors { get; set; }
         public ObservableCollection<SubjectDTO> Subjects { get; set; }
         public ObservableCollection<StudentDTO> Students { get; set; }
+
         public ProfessorDTO SelectedProfessor { get; set; }
         public StudentDTO SelectedStudent {  get; set; }
 
@@ -64,7 +66,7 @@ namespace GUI
         }
         private void Add_Click_Professor(object sender, RoutedEventArgs e)
         {
-            AddProfessor addProffessor = new AddProfessor(professorsController);
+            AddProfessor addProffessor = new AddProfessor(professorsController,addressController);
             addProffessor.Show();
         }
 
@@ -85,9 +87,11 @@ namespace GUI
             Professors.Clear();
             Students.Clear();
 
+
             foreach (Address address in addressController.GetAllAddress())
             {
-                foreach (Professor professor in professorsController.GetAllProfessors()) Professors.Add(new ProfessorDTO(professor, address));
+                Address addresss = addressController.getAddressById(address.id);
+                foreach (Professor professor in professorsController.GetAllProfessors()) Professors.Add(new ProfessorDTO(professor, addresss));
             }
 
             foreach (Address address in addressController.GetAllAddress())

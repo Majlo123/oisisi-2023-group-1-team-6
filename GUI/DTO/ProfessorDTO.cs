@@ -1,4 +1,5 @@
-﻿using StudentskaSluzba.Model;
+﻿using CLI.Controller;
+using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace GUI.DTO
 {
     public class ProfessorDTO:INotifyPropertyChanged,IDataErrorInfo
     {
+        public AddressController addressController { get; set; }
 
         //string surname, string name, DateOnly date,
         //string street, int number, string city, string state
@@ -61,6 +63,22 @@ namespace GUI.DTO
                 if (value != date)
                 {
                     date = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        private int addresid;
+        public int AddressId
+        {
+            get
+            {
+                return addresid;
+            }
+            set
+            {
+                if (value != addresid)
+                {
+                    addresid = value;
                     OnPropertyChanged();
                 }
             }
@@ -247,6 +265,10 @@ namespace GUI.DTO
                 {
                     
                 }
+                else if (columnName == "AddressId")
+                {
+
+                }
                 else if (columnName == "Street")
                 {
                     if (string.IsNullOrEmpty(Street))
@@ -323,7 +345,7 @@ namespace GUI.DTO
             }
         }
 
-        private readonly string[] _validatedProperties = {"Name", "Surname","Date", "Street", "Number", "City", "State",
+        private readonly string[] _validatedProperties = {"Name", "Surname","Date","AddressId","Street", "Number", "City", "State",
                                                            "Phone", "Email", "Id", "Title",
                                                            "Workyear"};
 
@@ -343,10 +365,14 @@ namespace GUI.DTO
         
         public Professor ToProfessor()
         {
-            Address address = new Address(street,number,city,state);
+            Address address = new Address(addresid, street,number,city,state);
             return new Professor(surname,name,date,address,phone,email,id,title,workyear);
         }
-       
+        public Address ToAddress()
+        {
+           return new Address(addresid,street, number, city, state);
+            
+        }
         public ProfessorDTO()
         {
         }
@@ -358,6 +384,7 @@ namespace GUI.DTO
             surname = professor.Surname;
             name = professor.Name;
             date=professor.Date;
+            addresid = address.id;
             street = address.Street;
             number=address.Number;
             city = address.City;

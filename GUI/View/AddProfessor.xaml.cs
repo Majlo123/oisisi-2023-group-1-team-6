@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CLI.Controller;
 using GUI.DTO;
+using StudentskaSluzba.Model;
 
 namespace GUI.View
 {
@@ -25,13 +26,14 @@ namespace GUI.View
 
         private ProfessorController professorController;
 
-        public AddProfessor(ProfessorController professorController)
+        private AddressController addressController;
+        public AddProfessor(ProfessorController professorController,AddressController addressController)
         {
             InitializeComponent();
             DataContext = this;
             Professor = new ProfessorDTO();
             this.professorController = professorController;
-
+            this.addressController = new AddressController();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -39,6 +41,9 @@ namespace GUI.View
             if (Professor.IsValid)
             {
                 professorController.Add(Professor.ToProfessor());
+                //string street, int number, string city, string state
+
+                addressController.Add(Professor.ToAddress());
                 Close();
             }
             else

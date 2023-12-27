@@ -22,7 +22,7 @@
             <ColumnDefinition Width="437*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="351"></RowDefinition>
+            <RowDefinition Height="408"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -52,12 +52,12 @@
                  Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="0,41,0,13" RenderTransformOrigin="0.504,0.577" Grid.RowSpan="2" Grid.Column="1"/>
             <TextBox Grid.Row="2" Text="{Binding Path= Professor.Date, UpdateSourceTrigger=PropertyChanged,  ValidatesOnDataErrors=True}"
                  Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="0,3,-1,12" Grid.Column="1" TextChanged="TextBox_TextChanged"/>
-            <TextBox Grid.Row="4" Text="{Binding Path= Professor.Street, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            <TextBox Grid.Row="5" Text="{Binding Path= Professor.Street, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                  Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="0,7,0,11" Grid.Column="1"/>
-            <TextBox Grid.Row="5" Text="{Binding Path= Professor.Number, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                 Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="176,7,1,9" Grid.ColumnSpan="2"/>
+            <TextBox Grid.Row="6" Text="{Binding Path= Professor.Number, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                 Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="1,6,-1,10" Grid.Column="1"/>
             <TextBox Grid.Row="6" Text="{Binding Path= Professor.City, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                 Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="1,8,-1,8" Grid.Column="1"/>
+                 Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="1,41,-1,16" Grid.Column="1" Grid.RowSpan="2"/>
             <TextBox Grid.Column="1" Text="{Binding Path= Professor.Phone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
                  Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="382,5,-402,11" TextChanged="TextBox_TextChanged_1"/>
             <TextBox Grid.Column="1" Text="{Binding Path= Professor.Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
@@ -69,12 +69,12 @@
             <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path= Professor.Workyear, UpdateSourceTrigger=PropertyChanged,  ValidatesOnDataErrors=True}"
                  Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="382,36,-402,22" Grid.RowSpan="2"/>
             <TextBox Grid.Row="7" Text="{Binding Professor.State, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                 Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="175,6,-1,10" Grid.ColumnSpan="2"/>
+                 Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="1,41,0,16" Grid.RowSpan="2" Grid.Column="1"/>
 
 
 
         </Grid>
-        <WrapPanel Grid.Row="1" FlowDirection="RightToLeft" Margin="0,254,0,0" Height="58" VerticalAlignment="Top" Grid.ColumnSpan="2">
+        <WrapPanel Grid.Row="1" FlowDirection="RightToLeft" Grid.ColumnSpan="2" Height="58" VerticalAlignment="Top">
             <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20, 5, 20, 5"
             Click="Cancel_Click"/>
             <Button Content="Add" IsDefault="True" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -89,10 +89,13 @@
         <Label Margin="30,54,688,258" Content="Name" Grid.Column="1"/>
         <Label Margin="30,98,688,214" Content="Date of birth" Grid.Column="1"/>
         <Label Margin="30,142,688,170" Content="Address:" Grid.Column="1"/>
-        <Label Margin="57,182,661,130" Content="Street" Grid.Column="1"/>
-        <Label Margin="57,221,661,91" Content="Number" Grid.Column="1"/>
-        <Label Margin="57,265,661,47" Content="City" Grid.Column="1"/>
-        <Label Margin="57,305,661,7" Content="State" Grid.Column="1"/>
+        <Label Margin="57,221,661,91" Content="Street" Grid.Column="1"/>
+        <Label Margin="57,261,661,51" Content="Number" Grid.Column="1"/>
+        <Label Margin="57,300,661,12" Content="City" Grid.Column="1"/>
+        <Label Margin="57,344,661,2" Content="State" Grid.Column="1"/>
+        <Label Margin="57,182,661,130" Content="Address Id" Grid.Column="1"/>
+        <TextBox Text="{Binding Professor.AddressId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="179,175,504,203" Grid.Column="1"/>
 
 
 

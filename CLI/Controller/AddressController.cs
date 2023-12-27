@@ -37,6 +37,11 @@ namespace CLI.Controller
         {
             _adress.removeAddress(addressid);
         }
+        public Address? getAddressById(int addressid)
+        {
+            return _adress.GetAddressById(addressid);
+
+        }
         public void Subscribe(IObserver observer)
         {
             _adress.AddressSubject.Subscribe(observer);
