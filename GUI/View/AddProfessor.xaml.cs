@@ -32,18 +32,20 @@ namespace GUI.View
             InitializeComponent();
             DataContext = this;
             Professor = new ProfessorDTO();
+            this.addressController = addressController;
             this.professorController = professorController;
-            this.addressController = new AddressController();
+          
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             if (Professor.IsValid)
             {
+                addressController.Add(Professor.ToAddress());
                 professorController.Add(Professor.ToProfessor());
                 //string street, int number, string city, string state
 
-                addressController.Add(Professor.ToAddress());
+                
                 Close();
             }
             else

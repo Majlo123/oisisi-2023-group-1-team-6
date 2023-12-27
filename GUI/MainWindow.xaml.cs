@@ -87,11 +87,10 @@ namespace GUI
             Professors.Clear();
             Students.Clear();
 
-
             foreach (Address address in addressController.GetAllAddress())
             {
-                Address addresss = addressController.getAddressById(address.id);
-                foreach (Professor professor in professorsController.GetAllProfessors()) Professors.Add(new ProfessorDTO(professor, addresss));
+               //OVO PROBAJ DA POPRAVIS Address addresss = addressController.getAddressById(address.id);
+                foreach (Professor professor in professorsController.GetAllProfessors()) Professors.Add(new ProfessorDTO(professor, address));
             }
 
             foreach (Address address in addressController.GetAllAddress())
