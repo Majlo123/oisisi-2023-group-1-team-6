@@ -43,16 +43,7 @@
                 <ColumnDefinition Width="83*"></ColumnDefinition>
                 <ColumnDefinition Width="90*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Margin="0,-1,182,5" Grid.ColumnSpan="2">Surname</Label>
-            <Label Grid.Column="0" Margin="0,1,182,10" Grid.Row="1" RenderTransformOrigin="0.505,0.615" Grid.ColumnSpan="2">Name</Label>
-            <Label Grid.Row="1" Grid.Column="0" Margin="0,36,182,1" Grid.ColumnSpan="2" Grid.RowSpan="2">Date of birth</Label>
-            <Label Grid.Row="2" Margin="0,41,182,40" Content="Address:&#xD;&#xA;" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
-            <Label Grid.Row="4" Grid.Column="0" Margin="0,7,182,34" Content="&#x9;Street" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-            <Label Grid.Row="5" Grid.Column="0" Margin="-1,2,1,39" Content="&#x9;Street number" Grid.RowSpan="2"/>
-            <Label Grid.Row="6" Grid.Column="0" Margin="1,3,190,6" Content="&#x9;City" Grid.ColumnSpan="2"/>
-            <Label Grid.Row="7" Grid.Column="0" Margin="0,3,2,2" Content="&#x9;State"/>
 
-            <Label Grid.Column="1" Margin="252,0,-217,2">Phone number</Label>
 
 
             <TextBox Text="{Binding Path= Professor.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -93,6 +84,15 @@
         <Label Margin="430,108,288,207" Content="ID" Grid.Column="1"/>
         <Label Margin="430,156,288,157" Content="Title" Grid.Column="1"/>
         <Label Margin="430,213,288,99" Content="Years of working" Grid.Column="1"/>
+        <Label Margin="430,16,288,296" Content="Phone number" Grid.Column="1"/>
+        <Label Margin="30,10,688,302" Content="Surname" Grid.Column="1"/>
+        <Label Margin="30,54,688,258" Content="Name" Grid.Column="1"/>
+        <Label Margin="30,98,688,214" Content="Date of birth" Grid.Column="1"/>
+        <Label Margin="30,142,688,170" Content="Address:" Grid.Column="1"/>
+        <Label Margin="57,182,661,130" Content="Street" Grid.Column="1"/>
+        <Label Margin="57,221,661,91" Content="Number" Grid.Column="1"/>
+        <Label Margin="57,265,661,47" Content="City" Grid.Column="1"/>
+        <Label Margin="57,305,661,7" Content="State" Grid.Column="1"/>
 
 
 
