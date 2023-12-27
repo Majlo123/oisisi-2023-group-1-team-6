@@ -111,16 +111,29 @@ namespace GUI
 
                 
         }
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private void DeleteProfessor_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedProfessor == null)
             {
-                MessageBox.Show("Please choose a professor to delete!");
+                MessageBox.Show("Please choose profesor to delete!");
             }
             else
             {
                 professorsController.Delete(SelectedProfessor.Id);
             }
+
+        }
+        private void DeleteSubject_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedSubject == null)
+            {
+                MessageBox.Show("Please choose subject to delete!");
+            }
+            else
+            {
+                subjectsController.Delete(SelectedSubject.subjectId);
+            }
+
         }
         private void UpdateProfesor_Click(object sender, RoutedEventArgs e)
         {
@@ -133,6 +146,30 @@ namespace GUI
             {
                 MessageBox.Show("Please choose a professor to update!");
             }
+
+        }
+        private void UpdateSubject_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedSubject != null)
+            {
+                UpdateSubject updateSubject = new UpdateSubject(subjectsController, SelectedSubject);
+                updateSubject.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please choose a subject to update!");
+            }
+
+        }
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            MessageBox.Show("This application is made by two students from FTN Novi Sad\n" +
+                "Mihajlo Bogdanovic RA64/2021\n" +
+                "Nikola Paunovic RA87/2021");
+
+
 
         }
     }
