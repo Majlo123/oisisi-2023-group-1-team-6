@@ -19,6 +19,24 @@ namespace GUI.DTO
         //string surname, string name, DateOnly date,
         //string street, int number, string city, string state
         //string phonenumber, string email, int id, string title, int workyear
+
+        private DateOnly date;
+
+        public DateOnly Date
+        {
+            get { return date; }
+            set
+            {
+                if (date != value)
+                {
+                    date = value;
+                    OnPropertyChanged("Date");
+                }
+            }
+        }
+
+        
+
         private string surname;
         public string Surname
         {
@@ -31,7 +49,7 @@ namespace GUI.DTO
                 if (value != surname)
                 {
                     surname = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Surname");
                 }
             }
         }
@@ -47,26 +65,11 @@ namespace GUI.DTO
                 if (value != name)
                 {
                     name = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Name");
                 }
             }
         }
-        private DateOnly date;
-        public DateOnly Date
-        {
-            get
-            {
-                return date;
-            }
-            set
-            {
-                if (value != date)
-                {
-                    date = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+        
         private int addresid;
         public int AddressId
         {
@@ -79,7 +82,7 @@ namespace GUI.DTO
                 if (value != addresid)
                 {
                     addresid = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("AddressId");
                 }
             }
         }
@@ -95,7 +98,7 @@ namespace GUI.DTO
                 if (value != street)
                 {
                     street = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Street");
                 }
             }
         }
@@ -111,7 +114,7 @@ namespace GUI.DTO
                 if (value != number)
                 {
                     number = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Number");
                 }
             }
         }
@@ -127,7 +130,7 @@ namespace GUI.DTO
                 if (value != city)
                 {
                     city = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("City");
                 }
             }
         }
@@ -143,7 +146,7 @@ namespace GUI.DTO
                 if (value != state)
                 {
                     state = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("State");
                 }
             }
         }
@@ -159,7 +162,7 @@ namespace GUI.DTO
                 if (value != phone)
                 {
                     phone = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Phone");
                 }
             }
         }
@@ -175,7 +178,7 @@ namespace GUI.DTO
                 if (value != email)
                 {
                     email = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Email");
                 }
             }
         }
@@ -191,7 +194,7 @@ namespace GUI.DTO
                 if (value != id)
                 {
                     id = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Id");
                 }
             }
         }
@@ -207,7 +210,7 @@ namespace GUI.DTO
                 if (value != title)
                 {
                     title = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Title");
                 }
             }
         }
@@ -223,7 +226,7 @@ namespace GUI.DTO
                 if (value != workyear)
                 {
                     workyear = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Workyear");
                 }
             }
         }
@@ -368,6 +371,8 @@ namespace GUI.DTO
             Address address = new Address(addresid, street,number,city,state);
             return new Professor(surname,name,date,address,phone,email,id,title,workyear);
         }
+
+        
         public Address ToAddress()
         {
            return new Address(addresid,street, number, city, state);
@@ -397,10 +402,13 @@ namespace GUI.DTO
             workyear = professor.WorkYear;
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(string name)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
         }
-        
+
     }
 }

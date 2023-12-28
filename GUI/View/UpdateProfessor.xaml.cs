@@ -55,7 +55,7 @@ namespace GUI.View
             this.professor = selectedProfessor;
             Surname = this.professor.Surname;
             Name = this.professor.Name;
-            Date = this.professor.Date;
+            Date = (DateOnly)this.professor.Date;
 
             addressid = this.professor.AddressId;
             street = this.professor.Street;

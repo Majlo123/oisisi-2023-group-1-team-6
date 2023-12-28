@@ -41,5 +41,11 @@ namespace CLI.Controller
         {
             _index.IndexSubject.Subscribe(observer);
         }
+
+        public Index? getIndexById(int addressid)
+        {
+            return _index.GetIndexById(addressid);
+
+        }
     }
 }

@@ -49,6 +49,7 @@
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="83*" />
@@ -136,7 +137,6 @@
                     Grid.Column="1"
                     Margin="0,3,-1,12"
                     Text="{Binding Student.Surname, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                    TextChanged="TextBox_TextChanged"
                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                 <TextBox
                     Grid.Row="5"
@@ -159,7 +159,7 @@
                 <TextBox
                     Grid.Column="1"
                     Margin="382,5,-402,11"
-                    Text="{Binding Student.PhoneNumber, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    Text="{Binding Student.Phonenumber, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                 <TextBox
                     Grid.Row="1"
@@ -191,7 +191,6 @@
                     Grid.ColumnSpan="2"
                     Margin="175,5,1,10"
                     Text="{Binding Student.Date, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                    TextChanged="TextBox_TextChanged"
                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                 <Label
                     Grid.Row="10"
@@ -241,27 +240,8 @@
                     Grid.RowSpan="2"
                     Grid.Column="1"
                     Margin="450,26,-471,32"
-                    Text="{Binding StudentDTO.IdIndex, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    Text="{Binding Student.IdIndex, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
-
-
-
-
-                <WrapPanel
-                    Grid.Row="1"
-                    Grid.ColumnSpan="2"
-                    Height="58"
-                    Margin="0,254,0,0"
-                    VerticalAlignment="Top"
-                    FlowDirection="RightToLeft"
-                    RenderTransformOrigin="0.43,0.48">
-                    <Button
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Click="Add_Click"
-                        Content="Add"
-                        IsDefault="True" />
-                </WrapPanel>
                 <Label
                     Grid.Column="1"
                     Margin="430,81,288,231"
@@ -304,6 +284,23 @@
                     Grid.Column="0"
                     Margin="1,6,1,50"
                     Content="&#x9;Id of address:" />
+                <Label
+                    Grid.Row="11"
+                    Width="156"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Average grade" />
+                <TextBox
+                    Grid.Row="11"
+                    Grid.Column="1"
+                    Width="174"
+                    Height="26"
+                    Margin="7,0,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Text="{Binding Student.Average, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    TextWrapping="Wrap"
+                    Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
             </Grid>
             <Label
                 Grid.Column="1"

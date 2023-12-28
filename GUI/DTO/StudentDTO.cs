@@ -26,7 +26,7 @@ namespace GUI.DTO
                 if (abbreviationOfMajor != value)
                 {
                     abbreviationOfMajor = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("AbbreviationOfMajor");
                 }
             }
         }
@@ -44,7 +44,7 @@ namespace GUI.DTO
                 if (markOfMajor != value)
                 {
                     markOfMajor = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("MarkOfMajor");
                 }
             }
         }
@@ -62,7 +62,7 @@ namespace GUI.DTO
                 if (yearOfEnrollment != value)
                 {
                     yearOfEnrollment = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("YearOfEnrollment");
                 }
             }
         }
@@ -80,7 +80,7 @@ namespace GUI.DTO
                 if (idIndex != value)
                 {
                     idIndex = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("IdIndex");
                 }
             }
         }
@@ -97,7 +97,7 @@ namespace GUI.DTO
                 if (value != name)
                 {
                     name = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Name");
                 }
             }
         }
@@ -115,7 +115,7 @@ namespace GUI.DTO
                 if (value != surname)
                 {
                     surname = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Surname");
                 }
             }
         }
@@ -131,7 +131,7 @@ namespace GUI.DTO
             set
             {
                 yearOfStudy = value;
-                OnPropertyChanged();
+                OnPropertyChanged("YearOfStudy");
             }
         }
 
@@ -148,7 +148,7 @@ namespace GUI.DTO
                 if (!value.Equals(status))
                 {
                     status = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Status");
                 }
             }
         }
@@ -166,7 +166,7 @@ namespace GUI.DTO
                 if (value != average)
                 {
                     average = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Average");
                 }
             }
         }
@@ -184,7 +184,7 @@ namespace GUI.DTO
                 if (value != id)
                 {
                     id = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Id");
                 }
             }
         }
@@ -203,7 +203,7 @@ namespace GUI.DTO
                 if (value != date)
                 {
                     date = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Date");
                 }
             }
         }
@@ -220,7 +220,7 @@ namespace GUI.DTO
                 if (value != street)
                 {
                     street = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Street");
                 }
             }
         }
@@ -236,7 +236,7 @@ namespace GUI.DTO
                 if (value != number)
                 {
                     number = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Number");
                 }
             }
         }
@@ -252,7 +252,7 @@ namespace GUI.DTO
                 if (value != city)
                 {
                     city = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("City");
                 }
             }
         }
@@ -268,7 +268,7 @@ namespace GUI.DTO
                 if (value != state)
                 {
                     state = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("State");
                 }
             }
         }
@@ -284,7 +284,7 @@ namespace GUI.DTO
                 if (value != phonenumber)
                 {
                     phonenumber = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Phonenumber");
                 }
             }
         }
@@ -300,7 +300,7 @@ namespace GUI.DTO
                 if (value != email)
                 {
                     email = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Email");
                 }
             }
         }
@@ -318,10 +318,30 @@ namespace GUI.DTO
                 if(value != idAddress)
                 {
                     idAddress = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("IdAddress");
                 }
             }
         }
+
+        public String printIndex;
+
+        public String PrintIndex
+        {
+            get
+            {
+                return abbreviationOfMajor + markOfMajor + "/" + yearOfEnrollment;
+            }
+            set
+            {
+                if (value != printIndex)
+                {
+                    printIndex = value;
+                    OnPropertyChanged("PrintIndex");
+                }
+            }
+        }
+
+        
 
         private Regex _nameRegex = new Regex("[A-Z][a-z0-9]+");
         private Regex _addressRegex = new Regex("[A-Z][a-z]*");
@@ -402,7 +422,7 @@ namespace GUI.DTO
                     if (!match.Success)
                         return "Format not good. Try again. ";
                 }
-                else if (columnName == "PhoneNumber")
+                else if (columnName == "Phonenumber")
                 {
                     if (string.IsNullOrEmpty(Phonenumber))
                         return "Phone number is required";
@@ -497,9 +517,12 @@ namespace GUI.DTO
             yearOfEnrollment = i.YearOfEnrollment;
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(string name)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

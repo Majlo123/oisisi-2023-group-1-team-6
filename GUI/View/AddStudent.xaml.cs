@@ -44,7 +44,7 @@ namespace GUI.View
                 Student subjectoAdd = studentController.getStudentById(Student.Id);
                 if (subjectoAdd != null)
                 {
-                    MessageBox.Show("Subject with this id already exist.");
+                    MessageBox.Show("Student with this id already exist.");
                     return;
 
                 }
@@ -53,7 +53,7 @@ namespace GUI.View
             }
             else
             {
-                MessageBox.Show("Subject can not be created. Not all fields are valid.");
+                MessageBox.Show("Student can not be created. Not all fields are valid.");
             }
         }
 
@@ -62,19 +62,8 @@ namespace GUI.View
             Close();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        
 
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -64,21 +65,21 @@ namespace GUI
             indexController.Subscribe(this);
             Update();
         }
-        private void Add_Click_Professor(object sender, RoutedEventArgs e)
+        private void Add_Click(object sender, RoutedEventArgs e)
         {
-            AddProfessor addProffessor = new AddProfessor(professorsController,addressController);
-            addProffessor.Show();
-        }
-
-        private void Add_Click_Student(object sender, RoutedEventArgs e)
-        {
-            AddStudent addStudent = new AddStudent(studentController);
-            addStudent.Show();
-        }
-        private void Add_Click_Subject(object sender, RoutedEventArgs e)
-        {
-            AddSubject addSubject = new AddSubject(subjectsController);
-            addSubject.Show();
+            if (tabs.SelectedIndex == 0)
+            {
+                AddProfessor addProffessor = new AddProfessor(professorsController, addressController);
+                addProffessor.Show();
+            }else if(tabs.SelectedIndex == 1)
+            {
+                AddStudent addStudent = new AddStudent(studentController);
+                addStudent.Show();
+            }else if( tabs.SelectedIndex == 2)
+            {
+                AddSubject addSubject = new AddSubject(subjectsController);
+                addSubject.Show();
+            }
         }
 
         public void Update()
@@ -87,84 +88,98 @@ namespace GUI
             Professors.Clear();
             Students.Clear();
 
-            foreach (Address address in addressController.GetAllAddress())
+            var addresses = addressController.GetAllAddress();
+            var professors = professorsController.GetAllProfessors();
+
+            foreach (Address address in addresses)
             {
-               //OVO PROBAJ DA POPRAVIS Address addresss = addressController.getAddressById(address.id);
-                foreach (Professor professor in professorsController.GetAllProfessors()) Professors.Add(new ProfessorDTO(professor, address));
+                // Pronađi odgovarajućeg profesora za ovu adresu
+                Professor professor = professors.FirstOrDefault(p => p.Address.id == address.id);
+
+                // Ako je pronađen profesor, dodaj ga u listu
+                if (professor != null)
+                {
+                    Professors.Add(new ProfessorDTO(professor, address));
+                }
+                else
+                {
+                    // Postupak ako ne možete pronaći odgovarajućeg profesora za adresu
+                }
             }
 
-            foreach (Address address in addressController.GetAllAddress())
+            foreach (Student student in studentController.GetAllStudents())
             {
-                foreach (Index index in indexController.GetAllIndexes())
-                {
-                    // Dohvati sve studente i za svakog od njih pronađi odgovarajuću adresu i indeks
-                    foreach (Student student in studentController.GetAllStudents())
-                    {
-                        // Pronađi adresu koja odgovara studentu
-                        
-                            // Pronađi indeks koji odgovara studentu
-                            
-                                // Stvori StudentDTO koristeći adresu i indeks te dodaj u kolekciju
-                                Students.Add(new StudentDTO(student, address, index));
-                            
-                        
-                    }
-                }
+                Address studentAddress = addressController.getAddressById(student.Address.id);
+                Index studentIndex = indexController.getIndexById(student.Index.IdIndex);
+                Students.Add(new StudentDTO(student, studentAddress, studentIndex));
             }
             foreach (CLI.Model.Subject subject in subjectsController.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
 
                 
         }
-        private void DeleteProfessor_Click(object sender, RoutedEventArgs e)
+        private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (SelectedProfessor == null)
+            if (tabs.SelectedIndex == 0)
             {
-                MessageBox.Show("Please choose profesor to delete!");
+                if (SelectedProfessor == null)
+                {
+                    MessageBox.Show("Please choose profesor to delete!");
+                }
+                else
+                {
+                    professorsController.Delete(SelectedProfessor.Id);
+                }
+            }else if(tabs.SelectedIndex == 1)
+            {
+                if (SelectedStudent == null)
+                {
+                    MessageBox.Show("Please choose profesor to delete!");
+                }
+                else
+                {
+                    studentController.Delete(SelectedStudent.Id);
+                }
+            }else if(tabs.SelectedIndex == 2)
+            {
+                if (SelectedSubject == null)
+                {
+                    MessageBox.Show("Please choose subject to delete!");
+                }
+                else
+                {
+                    subjectsController.Delete(SelectedSubject.subjectId);
+                }
             }
-            else
+        }
+   
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
+            if (tabs.SelectedIndex == 0)
             {
-                professorsController.Delete(SelectedProfessor.Id);
+                if (SelectedProfessor != null)
+                {
+                    UpdateProfessor updateProfesor = new UpdateProfessor(professorsController, SelectedProfessor, addressController);
+                    updateProfesor.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please choose a professor to update!");
+                }
+            }else if(tabs.SelectedIndex == 2)
+            {
+                if (SelectedSubject != null)
+                {
+                    UpdateSubject updateSubject = new UpdateSubject(subjectsController, SelectedSubject);
+                    updateSubject.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please choose a subject to update!");
+                }
             }
 
         }
-        private void DeleteSubject_Click(object sender, RoutedEventArgs e)
-        {
-            if (SelectedSubject == null)
-            {
-                MessageBox.Show("Please choose subject to delete!");
-            }
-            else
-            {
-                subjectsController.Delete(SelectedSubject.subjectId);
-            }
-
-        }
-        private void UpdateProfesor_Click(object sender, RoutedEventArgs e)
-        {
-            if (SelectedProfessor != null)
-            {
-                UpdateProfessor updateProfesor = new UpdateProfessor(professorsController,SelectedProfessor,addressController);
-                updateProfesor.Show();
-            }
-            else
-            {
-                MessageBox.Show("Please choose a professor to update!");
-            }
-
-        }
-        private void UpdateSubject_Click(object sender, RoutedEventArgs e)
-        {
-            if (SelectedSubject != null)
-            {
-                UpdateSubject updateSubject = new UpdateSubject(subjectsController, SelectedSubject);
-                updateSubject.Show();
-            }
-            else
-            {
-                MessageBox.Show("Please choose a subject to update!");
-            }
-
-        }
+        
         private void About_Click(object sender, RoutedEventArgs e)
         {
 
