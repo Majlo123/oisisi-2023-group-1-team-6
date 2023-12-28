@@ -12,23 +12,32 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Resources>
-        <ControlTemplate x:Key="ValidationTemplate">
+        <ControlTemplate
+            x:Key="ValidationTemplate">
             <StackPanel>
                 <!--  Placeholder for the TextBox itself  -->
-                <AdornedElementPlaceholder x:Name="textBox" />
-                <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
+                <AdornedElementPlaceholder
+                    x:Name="textBox" />
+                <TextBlock
+                    Foreground="Red"
+                    Text="{Binding [0].ErrorContent}" />
             </StackPanel>
 
         </ControlTemplate>
     </Window.Resources>
-    <Grid Margin="0,0,0,-6">
-        <Grid RenderTransformOrigin="0.499,0.507">
+    <Grid
+        Margin="0,0,0,-6">
+        <Grid
+            RenderTransformOrigin="0.499,0.507">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*" />
-                <ColumnDefinition Width="437*" />
+                <ColumnDefinition
+                    Width="20*" />
+                <ColumnDefinition
+                    Width="437*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="351" />
+                <RowDefinition
+                    Height="351" />
                 <RowDefinition />
             </Grid.RowDefinitions>
 
@@ -52,8 +61,10 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="83*" />
-                    <ColumnDefinition Width="90*" />
+                    <ColumnDefinition
+                        Width="83*" />
+                    <ColumnDefinition
+                        Width="90*" />
                 </Grid.ColumnDefinitions>
                 <Label
                     Grid.Row="0"
@@ -177,7 +188,7 @@
                     Grid.Row="4"
                     Grid.RowSpan="2"
                     Grid.Column="1"
-                    Margin="450,13,-471,44"
+                    Margin="450,33,-471,24"
                     Text="{Binding Student.AbbreviationOfMajor, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                 <TextBox
@@ -207,8 +218,10 @@
                     Margin="20,0,51,0"
                     Text="{Binding Path=Student.Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}">
-                    <ComboBoxItem Content="B" />
-                    <ComboBoxItem Content="S" />
+                    <ComboBoxItem
+                        Content="B" />
+                    <ComboBoxItem
+                        Content="S" />
                 </ComboBox>
                 <Label
                     Grid.Row="9"
@@ -225,21 +238,20 @@
                     Grid.Row="5"
                     Grid.RowSpan="2"
                     Grid.Column="1"
-                    Margin="450,9,-471,48"
+                    Margin="450,33,-472,22"
                     Text="{Binding Student.MarkOfMajor, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                 <TextBox
                     Grid.Row="6"
                     Grid.RowSpan="2"
                     Grid.Column="1"
-                    Margin="450,16,-471,40"
+                    Margin="450,45,-471,10"
                     Text="{Binding Student.YearOfEnrollment, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                 <TextBox
-                    Grid.Row="7"
-                    Grid.RowSpan="2"
+                    Grid.Row="8"
                     Grid.Column="1"
-                    Margin="450,26,-471,32"
+                    Margin="450,6,-471,5"
                     Text="{Binding Student.IdIndex, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                 <Label

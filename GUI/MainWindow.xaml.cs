@@ -93,18 +93,14 @@ namespace GUI
 
             foreach (Address address in addresses)
             {
-                // Pronađi odgovarajućeg profesora za ovu adresu
+               
                 Professor professor = professors.FirstOrDefault(p => p.Address.id == address.id);
 
-                // Ako je pronađen profesor, dodaj ga u listu
                 if (professor != null)
                 {
                     Professors.Add(new ProfessorDTO(professor, address));
                 }
-                else
-                {
-                    // Postupak ako ne možete pronaći odgovarajućeg profesora za adresu
-                }
+                
             }
 
             foreach (Student student in studentController.GetAllStudents())
@@ -115,8 +111,18 @@ namespace GUI
             }
             foreach (CLI.Model.Subject subject in subjectsController.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
 
-                
+            lblDateTime.Content = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+
+            lblApplicationName.Content = "Studentska sluzba";
+
+            if (tabs.SelectedItem != null && tabs.SelectedItem is TabItem selectedTab)
+            {
+                lblTabName.Content = $"{selectedTab.Header}";
+            }
+
         }
+
+
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             if (tabs.SelectedIndex == 0)
@@ -133,7 +139,7 @@ namespace GUI
             {
                 if (SelectedStudent == null)
                 {
-                    MessageBox.Show("Please choose profesor to delete!");
+                    MessageBox.Show("Please choose student to delete!");
                 }
                 else
                 {
@@ -165,7 +171,20 @@ namespace GUI
                 {
                     MessageBox.Show("Please choose a professor to update!");
                 }
-            }else if(tabs.SelectedIndex == 2)
+            }
+            else if(tabs.SelectedIndex == 1)
+            {
+                if (SelectedStudent != null)
+                {
+                    UpdateStudent updateStudent = new UpdateStudent(studentController, SelectedStudent, addressController,indexController);
+                    updateStudent.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please choose a student to update!");
+                }
+            }
+            else if(tabs.SelectedIndex == 2)
             {
                 if (SelectedSubject != null)
                 {

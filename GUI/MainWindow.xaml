@@ -91,10 +91,30 @@
                 Stretch="Fill" />
 
 
-
         </ToolBar>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <Label x:Name="lblApplicationName" Content="lblApplicationName.Content" />
+            </StatusBarItem>
+            <StatusBarItem>
+                <Label x:Name="lblTabName" Content="{Binding SelectedItem.Header, ElementName=tabs, StringFormat='Naziv otvorenog taba: {0}'}" />
+            </StatusBarItem>
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal">
+                    <Label Width="Auto" Content="" />
+                    <Label
+                        x:Name="lblDateTime"
+                        HorizontalAlignment="Right"
+                        Content="Datum i vreme" />
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
 
-        <TabControl Name="tabs" Height="398" Width="987">
+
+        <TabControl
+            Name="tabs"
+            Width="987"
+            Height="398">
             <TabItem Header="Professors">
                 <DataGrid
                     x:Name="ProfessorsDataGrid"
@@ -130,7 +150,9 @@
             <TabItem Header="Students">
                 <DataGrid
                     x:Name="StudentsDataGrid"
+                    Width="895"
                     Height="350"
+                    HorizontalAlignment="Center"
                     AutoGenerateColumns="False"
                     IsReadOnly="True"
                     ItemsSource="{Binding Students, UpdateSourceTrigger=PropertyChanged}"
@@ -147,7 +169,7 @@
                             Header="Name" />
                         <DataGridTextColumn
                             Width="200"
-                            Binding="{Binding Email}"
+                            Binding="{Binding Surname}"
                             Header="Surname" />
                         <DataGridTextColumn
                             Width="100"
@@ -203,6 +225,8 @@
             </TabItem>
         </TabControl>
         <DatePicker Width="0" />
+        <StatusBar Width="100" />
+        <StatusBar Width="100" />
     </DockPanel>
 
 

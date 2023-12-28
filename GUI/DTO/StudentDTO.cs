@@ -517,6 +517,17 @@ namespace GUI.DTO
             yearOfEnrollment = i.YearOfEnrollment;
         }
 
+        public Address ToAddress()
+        {
+            return new Address(idAddress, street, number, city, state);
+
+        }
+
+        public Index ToIndex()
+        {
+            return new Index(idIndex, abbreviationOfMajor, markOfMajor, yearOfEnrollment);
+        }
+
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)

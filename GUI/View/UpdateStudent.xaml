@@ -1,0 +1,411 @@
+﻿<Window
+    x:Class="GUI.View.UpdateStudent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="UpdateStudent"
+    Height="550"
+    av:DesignWidth="1085.724"
+    mc:Ignorable="av">
+    <Window.Resources>
+        <ControlTemplate
+            x:Key="ValidationTemplate">
+            <StackPanel>
+                <!--  Placeholder for the TextBox itself  -->
+                <AdornedElementPlaceholder
+                    x:Name="textBox" />
+                <TextBlock
+                    Foreground="Red"
+                    Text="{Binding [0].ErrorContent}" />
+            </StackPanel>
+
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid
+        Margin="0,0,0,-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="*" />
+            <ColumnDefinition
+                Width="*" />
+            <ColumnDefinition
+                Width="*" />
+            <ColumnDefinition
+                Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="*" />
+        </Grid.RowDefinitions>
+        <TextBox
+            Grid.Column="1"
+            Width="203"
+            Height="26"
+            Margin="38,14,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text="{Binding Path=student.Id, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+            TextChanged="TextBox_TextChanged" />
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Width="203"
+            Height="26"
+            Margin="38,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text="{Binding Path=student.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Width="203"
+            Height="26"
+            Margin="38,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text="{Binding Path=student.Surname, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <Label
+            Grid.Row="3"
+            Width="213"
+            Margin="0,7,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Date of birth:" />
+        <DatePicker
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="203"
+            Height="30"
+            Margin="38,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            SelectedDate="{Binding Path=dateTime, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <Label
+            Grid.Row="4"
+            Width="213"
+            Margin="0,7,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Address:" />
+        <Label
+            Grid.Row="5"
+            Width="145"
+            Margin="79,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Id of address:" />
+        <Label
+            Grid.Row="6"
+            Width="145"
+            Margin="79,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="State:" />
+        <Label
+            Grid.Row="7"
+            Width="145"
+            Margin="79,4,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="City:" />
+        <Label
+            Grid.Row="8"
+            Width="145"
+            Margin="79,5,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Street:" />
+        <Label
+            Grid.Row="9"
+            Width="145"
+            Margin="79,4,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Name:" />
+        <Label
+            Grid.Row="10"
+            Width="213"
+            Margin="0,5,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Status:" />
+        <ComboBox
+            Grid.Row="10"
+            Grid.Column="1"
+            Width="203"
+            Height="24"
+            Margin="38,7,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text="{Binding Path=student.Status, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}">
+            <ComboBoxItem
+                Content="B" />
+            <ComboBoxItem
+                Content="S" />
+        </ComboBox>
+        <Label
+            Grid.Row="11"
+            Width="213"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Average:" />
+        <Label
+            Grid.Column="2"
+            Width="213"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Phone number:" />
+        <Label
+            Grid.Row="1"
+            Grid.Column="2"
+            Width="213"
+            Margin="0,7,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Email:" />
+        <Label
+            Grid.Row="2"
+            Grid.Column="2"
+            Width="213"
+            Margin="0,7,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Year of studying:" />
+        <Label
+            Grid.Row="3"
+            Grid.Column="2"
+            Width="213"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Index:" />
+        <Label
+            Grid.Row="4"
+            Grid.Column="2"
+            Width="145"
+            Margin="97,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="Id of index:" />
+        <Label
+            Grid.Row="5"
+            Grid.Column="2"
+            Width="145"
+            Margin="97,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="Abbreviation of major:" />
+        <Label
+            Grid.Row="6"
+            Grid.Column="2"
+            Width="145"
+            Margin="97,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="Mark of major:" />
+        <Label
+            Grid.Row="7"
+            Grid.Column="2"
+            Width="145"
+            Margin="97,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="Year of enrollment:" />
+        <Button
+            Grid.Row="10"
+            Grid.RowSpan="2"
+            Grid.Column="2"
+            Width="164"
+            Margin="97,45,0,10"
+            HorizontalAlignment="Left"
+            Click="Update_Click"
+            Content="Update"
+            IsDefault="True" />
+        <Button
+            Grid.Row="11"
+            Grid.Column="3"
+            Width="164"
+            Height="35"
+            Margin="0,1,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Click="Cancel_Click"
+            Content="Cancel"
+            IsCancel="True" />
+        <TextBox
+            Grid.Row="5"
+            Grid.Column="1"
+            Width="203"
+            Height="26"
+            Margin="38,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{Binding Path=student.IdAddress, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <TextBox
+            Grid.Row="6"
+            Grid.Column="1"
+            Width="203"
+            Height="26"
+            Margin="38,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{Binding Path=student.State, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <TextBox
+            Grid.Row="7"
+            Grid.Column="1"
+            Width="203"
+            Height="26"
+            Margin="38,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{Binding Path=student.City, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <TextBox
+            Grid.Row="8"
+            Grid.Column="1"
+            Width="203"
+            Height="26"
+            Margin="38,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{Binding Path=student.Street, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <TextBox
+            Grid.Row="9"
+            Grid.Column="1"
+            Width="203"
+            Height="26"
+            Margin="38,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{Binding Path=student.Number, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <TextBox
+            Grid.Row="11"
+            Grid.Column="1"
+            Width="203"
+            Height="26"
+            Margin="38,6,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text="{Binding Path=student.Average, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <TextBox
+            Grid.Column="3"
+            Width="203"
+            Height="26"
+            Margin="15,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{Binding Path=student.Phonenumber, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="3"
+            Width="203"
+            Height="26"
+            Margin="15,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{Binding Path=student.Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="3"
+            Width="203"
+            Height="26"
+            Margin="15,7,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text="{Binding Path=student.YearOfStudy, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="3"
+            Width="203"
+            Height="26"
+            Margin="15,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{Binding Path=student.IdIndex, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <TextBox
+            Grid.Row="5"
+            Grid.Column="3"
+            Width="203"
+            Height="26"
+            Margin="15,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{Binding Path=student.AbbreviationOfMajor, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <TextBox
+            Grid.Row="6"
+            Grid.Column="3"
+            Width="203"
+            Height="26"
+            Margin="15,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{Binding Path=student.MarkOfMajor, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <TextBox
+            Grid.Row="7"
+            Grid.Column="3"
+            Width="203"
+            Height="26"
+            Margin="15,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{Binding Path=student.YearOfEnrollment, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+
+
+    </Grid>
+</Window>
+
