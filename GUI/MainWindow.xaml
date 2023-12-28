@@ -94,7 +94,7 @@
 
         </ToolBar>
 
-        <TabControl Name="tabs" Height="398">
+        <TabControl Name="tabs" Height="398" Width="987">
             <TabItem Header="Professors">
                 <DataGrid
                     x:Name="ProfessorsDataGrid"
@@ -202,7 +202,6 @@
                 </DataGrid>
             </TabItem>
         </TabControl>
-        <StatusBar Width="100" />
         <DatePicker Width="0" />
     </DockPanel>
 

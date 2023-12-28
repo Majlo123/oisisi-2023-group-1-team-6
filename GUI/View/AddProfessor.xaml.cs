@@ -42,6 +42,26 @@ namespace GUI.View
         {
             if (Professor.IsValid)
             {
+                Address adresstoadd = addressController.getAddressById(Professor.AddressId);
+                Professor professortoadd = professorController.getProfessorById(Professor.Id);
+                if (adresstoadd != null)
+                {
+                    MessageBox.Show("Address with this id already exist.");
+                    if (professortoadd != null)
+                    {
+                        MessageBox.Show("Proffesor with this id already exist.");
+                        return;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                if (professortoadd != null)
+                {
+                    MessageBox.Show("Proffesor with this id already exist.");
+                    return;
+                }
                 addressController.Add(Professor.ToAddress());
                 professorController.Add(Professor.ToProfessor());
                 //string street, int number, string city, string state

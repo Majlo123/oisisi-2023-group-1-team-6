@@ -48,5 +48,9 @@ namespace CLI.Controller
         {
             _professors.Save();
         }
+        public Professor? getProfessorById(string professorid)
+        {
+            return _professors.GetProfessorById(professorid);
+        }
     }
 }
