@@ -347,11 +347,12 @@ namespace GUI.DTO
         private Regex _addressRegex = new Regex("[A-Z][a-z]*");
         private Regex _surnameRegex = new Regex("[A-Z][a-z0-9]+");
         private Regex _idRegex = new Regex("[0-9]+");
-        private Regex _phoneNumberRegex = new Regex("06[0-9]{7,8}");
+        private Regex _PhoneNumberRegex = new Regex("[+][0-9]{7,15}");
+        private Regex _StatusRegex = new Regex("[BS]");
         private Regex _dateRegex = new Regex("[0-9]{1,2}[/][0-9]{1,2}[/][0-9]{4}");
         private Regex _emailRegex = new Regex("[a-zA-Z]+[@][a-zA-Z]+[.][a-zA-Z]+");
         private Regex _naturalNumberRegex = new Regex("[1-9][0-9]*[A-Za-z]*");
-        private Regex _avgGradeRegex = new Regex("(10(\\.0)?|[1-9](\\.\\[0-9]*)?)");
+        private Regex _abbreviationRegex = new Regex("[a-z]{2}");
 
         public string Error => null;
 
@@ -427,7 +428,7 @@ namespace GUI.DTO
                     if (string.IsNullOrEmpty(Phonenumber))
                         return "Phone number is required";
 
-                    Match match = _phoneNumberRegex.Match(Phonenumber);
+                    Match match = _PhoneNumberRegex.Match(Phonenumber);
                     if (!match.Success)
                         return "Number must begin with + then State area code and then your number ";
                 }
@@ -448,15 +449,32 @@ namespace GUI.DTO
                 }
                 else if (columnName == "Average")
                 {
-                    Match match = _avgGradeRegex.Match(Average.ToString());
+                    Match match = _naturalNumberRegex.Match(Average.ToString());
                     if (!match.Success)
-                        return "Average must be in format of number.number";
+                        return "Average must be in format of number";
                 }
                 else if (columnName == "YearOfStudy")
                 {
                     Match match = _naturalNumberRegex.Match(YearOfStudy.ToString());
                     if (!match.Success)
                         return "Year of study must be in format of a number";
+                }else if(columnName == "Status")
+                {
+                    if (string.IsNullOrEmpty(Status))
+                        return "Status is required";
+
+                    Match match = _StatusRegex.Match(Status);
+                    if (!match.Success)
+                        return "Status must be 'B' or 'S'";
+                }
+                else if(columnName == "AbbreviationOfMajor")
+                {
+                    if (string.IsNullOrEmpty(AbbreviationOfMajor))
+                        return "Abbreviation is required";
+
+                    Match match = _abbreviationRegex.Match(AbbreviationOfMajor);
+                    if (!match.Success)
+                        return "Abbreviation must consist of two small letters";
                 }
 
                 return null;

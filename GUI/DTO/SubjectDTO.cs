@@ -27,7 +27,7 @@ namespace GUI.DTO
                 if (subjectId != value)
                 {
                     subjectId = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("SubjectId");
                 }
             }
         }
@@ -44,7 +44,7 @@ namespace GUI.DTO
                 if (subjectName != value)
                 {
                     subjectName = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("SubjectName");
                 }
             }
         }
@@ -61,7 +61,7 @@ namespace GUI.DTO
                 if (yearOfStudy != value)
                 {
                     yearOfStudy = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("YearOfStudy");
                 }
             }
         }
@@ -78,7 +78,7 @@ namespace GUI.DTO
                 if (semester != value)
                 {
                     semester = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Semester");
                 }
             }
         }
@@ -95,7 +95,7 @@ namespace GUI.DTO
                 if (espbPoints != value)
                 {
                     espbPoints = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("EspbPoints");
                 }
             }
         }
@@ -170,9 +170,12 @@ namespace GUI.DTO
             espbPoints = subject.ESPBPoints;
         }
         public event PropertyChangedEventHandler? PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(string name)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 }
