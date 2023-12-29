@@ -100,23 +100,15 @@
             <TextBox
                 Grid.Row="2"
                 Grid.Column="1"
-                Margin="382,14,-402,1"
-                Text="{Binding Path=professor.Id, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                Margin="382,19,-402,39"
+                Text="{Binding Path=professor.Title, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Grid.RowSpan="2" />
             <TextBox
                 Grid.Row="3"
-                Grid.RowSpan="2"
-                Grid.Column="1"
-                Margin="382,21,-402,37"
-                Text="{Binding Path=professor.Title, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
-            <TextBox
-                Grid.Row="4"
-                Grid.RowSpan="2"
                 Grid.Column="1"
                 Margin="382,36,-402,22"
                 Text="{Binding Path=professor.Workyear, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Grid.RowSpan="2" />
             <TextBox
                 Grid.Row="7"
                 Grid.ColumnSpan="2"
@@ -163,15 +155,11 @@
             Content="Email" />
         <Label
             Grid.Column="1"
-            Margin="430,108,288,207"
-            Content="ID" />
-        <Label
-            Grid.Column="1"
-            Margin="430,156,288,157"
+            Margin="430,108,288,205"
             Content="Title" />
         <Label
             Grid.Column="1"
-            Margin="430,213,288,99"
+            Margin="430,176,288,137"
             Content="Years of working" />
         <Label
             Grid.Column="1"
