@@ -28,6 +28,9 @@ namespace GUI.View
         private ProfessorController professorController;
 
         private AddressController addressController;
+
+        public DateTime? dateTime { get; set; }
+        public DateOnly Date;
         public AddProfessor(ProfessorController professorController,AddressController addressController)
         {
             InitializeComponent();
@@ -40,7 +43,7 @@ namespace GUI.View
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            if (Professor.IsValid)
+            if (Professor.IsValid && dateTime != null)
             {
                 Address adresstoadd = addressController.getAddressById(Professor.AddressId);
                 Professor professortoadd = professorController.getProfessorById(Professor.Id);
@@ -62,6 +65,7 @@ namespace GUI.View
                     MessageBox.Show("Proffesor with this id already exist.");
                     return;
                 }
+                Professor.date = new DateOnly(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day);
                 addressController.Add(Professor.ToAddress());
                 professorController.Add(Professor.ToProfessor());
                 //string street, int number, string city, string state

@@ -37,6 +37,7 @@ namespace GUI.View
         public string state;
         public Address address;
         public string PhoneNumber;
+        public DateTime dateTime { get; set; }
 
         public string Email;
 
@@ -63,6 +64,7 @@ namespace GUI.View
             city = this.professor.City;
             state = this.professor.State;
             Address address = new Address(addressid,street, number, city, state);
+            this.dateTime = new DateTime(Date.Year, Date.Month, Date.Day);
 
             PhoneNumber = this.professor.Phone;
 
@@ -71,9 +73,9 @@ namespace GUI.View
             Title = this.professor.Title;
             WorkYear = this.professor.Workyear;
             DataContext = this;
-            Professor professor=new Professor(Surname,Name,Date,address,PhoneNumber,Email,Id,Title,WorkYear);
+            //Professor professor=new Professor(Surname,Name,Date,address,PhoneNumber,Email,Id,Title,WorkYear);
 
-            this.professor = new ProfessorDTO(professor, address);
+            //this.professor = new ProfessorDTO(professor, address);
             this.professorController = professorcontroller;
             this.addressController = addressController;
 
@@ -83,6 +85,7 @@ namespace GUI.View
         {
             if (professor.IsValid)
             {
+                professor.date = new DateOnly(dateTime.Year, dateTime.Month, dateTime.Day);
                 addressController.Update(professor.ToAddress());
                 professorController.Update(professor.ToProfessor());
                 Close();

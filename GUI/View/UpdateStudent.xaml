@@ -9,56 +9,35 @@
     av:DesignWidth="1085.724"
     mc:Ignorable="av">
     <Window.Resources>
-        <ControlTemplate
-            x:Key="ValidationTemplate">
+        <ControlTemplate x:Key="ValidationTemplate">
             <StackPanel>
                 <!--  Placeholder for the TextBox itself  -->
-                <AdornedElementPlaceholder
-                    x:Name="textBox" />
-                <TextBlock
-                    Foreground="Red"
-                    Text="{Binding [0].ErrorContent}" />
+                <AdornedElementPlaceholder x:Name="textBox" />
+                <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
             </StackPanel>
 
         </ControlTemplate>
     </Window.Resources>
-    <Grid
-        Margin="0,0,0,-6">
+    <Grid Margin="0,0,0,-6">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition
-                Width="*" />
-            <ColumnDefinition
-                Width="*" />
-            <ColumnDefinition
-                Width="*" />
-            <ColumnDefinition
-                Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <TextBox
             Grid.Column="1"
@@ -68,9 +47,9 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Text="{Binding Path=student.Id, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextChanged="TextBox_TextChanged"
             TextWrapping="Wrap"
-            Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
-            TextChanged="TextBox_TextChanged" />
+            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
         <TextBox
             Grid.Row="1"
             Grid.Column="1"
@@ -169,10 +148,8 @@
             VerticalAlignment="Top"
             Text="{Binding Path=student.Status, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
             Validation.ErrorTemplate="{StaticResource ValidationTemplate}">
-            <ComboBoxItem
-                Content="B" />
-            <ComboBoxItem
-                Content="S" />
+            <ComboBoxItem Content="B" />
+            <ComboBoxItem Content="S" />
         </ComboBox>
         <Label
             Grid.Row="11"
@@ -404,6 +381,23 @@
             Text="{Binding Path=student.YearOfEnrollment, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
             TextWrapping="Wrap"
             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+        <Label
+            Grid.Row="2"
+            Width="213"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Surname:" />
+        <Label
+            Grid.Row="1"
+            Width="213"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Name" />
+        <Label
+            Width="213"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Id of student:" />
 
 
     </Grid>

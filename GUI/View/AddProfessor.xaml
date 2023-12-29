@@ -129,7 +129,7 @@
                 Margin="33,6,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                SelectedDate="{Binding Path=Professor.Date, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                SelectedDate="{Binding Path=dateTime, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                 Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
             <TextBox
                 Grid.Row="4"

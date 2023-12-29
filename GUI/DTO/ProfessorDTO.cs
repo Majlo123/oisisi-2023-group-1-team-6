@@ -20,7 +20,7 @@ namespace GUI.DTO
         //string street, int number, string city, string state
         //string phonenumber, string email, int id, string title, int workyear
 
-        private DateOnly date;
+        public DateOnly date;
 
         public DateOnly Date
         {

@@ -48,8 +48,6 @@ namespace GUI.View
 
         public int Id;
 
-
-        public string Title;
         public int WorkYear;
         public StudentDTO student { get; set; }
 

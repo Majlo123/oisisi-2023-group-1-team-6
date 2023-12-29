@@ -12,32 +12,23 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Resources>
-        <ControlTemplate
-            x:Key="ValidationTemplate">
+        <ControlTemplate x:Key="ValidationTemplate">
             <StackPanel>
                 <!--  Placeholder for the TextBox itself  -->
-                <AdornedElementPlaceholder
-                    x:Name="textBox" />
-                <TextBlock
-                    Foreground="Red"
-                    Text="{Binding [0].ErrorContent}" />
+                <AdornedElementPlaceholder x:Name="textBox" />
+                <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
             </StackPanel>
 
         </ControlTemplate>
     </Window.Resources>
-    <Grid
-        Margin="0,0,0,-6">
-        <Grid
-            RenderTransformOrigin="0.499,0.507">
+    <Grid Margin="0,0,0,-6">
+        <Grid RenderTransformOrigin="0.499,0.507">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="20*" />
-                <ColumnDefinition
-                    Width="437*" />
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="437*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition
-                    Height="351" />
+                <RowDefinition Height="351" />
                 <RowDefinition />
             </Grid.RowDefinitions>
 
@@ -61,10 +52,8 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition
-                        Width="83*" />
-                    <ColumnDefinition
-                        Width="90*" />
+                    <ColumnDefinition Width="83*" />
+                    <ColumnDefinition Width="90*" />
                 </Grid.ColumnDefinitions>
                 <Label
                     Grid.Row="0"
@@ -197,12 +186,6 @@
                     Margin="176,8,-2,8"
                     Text="{Binding Student.State, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
-                <TextBox
-                    Grid.Row="3"
-                    Grid.ColumnSpan="2"
-                    Margin="175,5,1,10"
-                    Text="{Binding Student.Date, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                    Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                 <Label
                     Grid.Row="10"
                     Width="126"
@@ -218,10 +201,8 @@
                     Margin="20,0,51,0"
                     Text="{Binding Path=Student.Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}">
-                    <ComboBoxItem
-                        Content="B" />
-                    <ComboBoxItem
-                        Content="S" />
+                    <ComboBoxItem Content="B" />
+                    <ComboBoxItem Content="S" />
                 </ComboBox>
                 <Label
                     Grid.Row="9"
@@ -312,6 +293,15 @@
                     VerticalAlignment="Center"
                     Text="{Binding Student.Average, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     TextWrapping="Wrap"
+                    Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                <DatePicker
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Width="129"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    SelectedDate="{Binding Path=dateTime, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
             </Grid>
             <Label
