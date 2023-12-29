@@ -310,7 +310,7 @@ namespace GUI.DTO
 
                     Match match = _PhoneNumberRegex.Match(Phone);
                     if (!match.Success)
-                        return "Number must begin with + then State area code and then your number ";
+                        return "+ then State area code and then your number ";
                 }
                 else if (columnName == "Email")
                 {
