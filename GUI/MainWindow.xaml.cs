@@ -7,8 +7,10 @@ using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -45,7 +47,18 @@ namespace GUI
         private StudentController studentController {  get; set; }
         private AddressController addressController { get; set; }
 
+        private string searchText;
 
+        public string SearchText
+        {
+            get { return searchText; }
+            set
+            {
+                searchText = value;
+
+                OnPropertyChanged("SearchText");
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -274,7 +287,157 @@ namespace GUI
             MessageBox.Show("Files are saved successfully");
 
         }
-        
+        public void Search_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (tabs.SelectedIndex == 0)
+            {
+                if (SearchText != "")
+                {
+                    string writentext = SearchText.ToLower();
+                    writentext = writentext.Replace(" ", String.Empty);
+                    string[] query = writentext.Split(',');
+
+                    ObservableCollection<ProfessorDTO> professorTemp = new ObservableCollection<ProfessorDTO>();
+
+                    if (query.Length == 1)
+                    {
+                        foreach (ProfessorDTO p in Professors)
+                        {
+                            if (p.Surname.ToLower().Contains(query[0]))
+                            {
+                                professorTemp.Add(p);
+                            }
+                        }
+                    }
+                    else if (query.Length == 2)
+                    {
+                        foreach (ProfessorDTO p in Professors)
+                        {
+                            if (p.Surname.ToLower().Contains(query[0]))
+                            {
+                                if (p.Name.ToLower().Contains(query[1]))
+                                {
+                                    professorTemp.Add(p);
+                                }
+                            }
+                        }
+                    }
+                    Professors = professorTemp;
+                    ProfessorsDataGrid.ItemsSource = Professors;
+
+                }
+                else {
+                    Professors.Clear();
+                    var addresses = addressController.GetAllAddress();
+                    var professors = professorsController.GetAllProfessors();
+                    foreach (Address address in addresses)
+                    {
+
+                        Professor professor = professors.FirstOrDefault(p => p.Address.id == address.id);
+
+                        if (professor != null)
+                        {
+                            Professors.Add(new ProfessorDTO(professor, address));
+                        }
+
+                    }
+                    
+                    ProfessorsDataGrid.ItemsSource = Professors;
+                    
+                }
+            }
+            if (tabs.SelectedIndex == 2)
+            {
+                if (SearchText != "")
+                {
+                    string writentext = SearchText.ToLower();
+                    writentext = writentext.Replace(" ", String.Empty);
+                    string[] query = writentext.Split(',');
+
+                    ObservableCollection<SubjectDTO> subjectTemp = new ObservableCollection<SubjectDTO>();
+
+                    if (query.Length == 1)
+                    {
+                        foreach (SubjectDTO sb in Subjects)
+                        {
+                            if (sb.subjectId.ToString().Contains(query[0]))
+                            {
+                                subjectTemp.Add(sb);
+                            }
+                        }
+                    }
+                    else if (query.Length == 2)
+                    {
+                        foreach (SubjectDTO sb in Subjects)
+                        {
+                            if (sb.subjectId.ToString().Contains(query[0]))
+                            {
+                                if (sb.subjectName.ToLower().Contains(query[1]))
+                                {
+                                    subjectTemp.Add(sb);
+                                }
+                            }
+                        }
+                    }
+                    Subjects = subjectTemp;
+                    SubjectsDataGrid.ItemsSource = Subjects;
+
+                }
+                else
+                {
+                    Subjects.Clear();
+                    foreach (CLI.Model.Subject subject in subjectsController.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
+
+                    SubjectsDataGrid.ItemsSource = Subjects;
+
+                }
+            }
+        }
+        private void Back_Click(object sender, RoutedEventArgs e) {
+            
+            if (tabs.SelectedIndex == 0)
+            {
+                Professors.Clear();
+                var addresses = addressController.GetAllAddress();
+                var professors = professorsController.GetAllProfessors();
+
+                foreach (Address address in addresses)
+                {
+
+                    Professor professor = professors.FirstOrDefault(p => p.Address.id == address.id);
+
+                    if (professor != null)
+                    {
+                        Professors.Add(new ProfessorDTO(professor, address));
+                    }
+
+                }
+            }
+            else if (tabs.SelectedIndex == 1)
+            {
+                Students.Clear();
+                foreach (Student student in studentController.GetAllStudents())
+                {
+                    Address studentAddress = addressController.getAddressById(student.Address.id);
+                    Index studentIndex = indexController.getIndexById(student.Index.IdIndex);
+                    Students.Add(new StudentDTO(student, studentAddress, studentIndex));
+                }
+            }
+            else if (tabs.SelectedIndex == 2)
+            {
+                Subjects.Clear();
+                foreach (CLI.Model.Subject subject in subjectsController.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
+            }
+        }
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 

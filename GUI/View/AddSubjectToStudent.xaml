@@ -1,0 +1,47 @@
+﻿<Window x:Class="GUI.View.AddSubjectToStudent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI.View"
+        mc:Ignorable="d"
+        Title="AddSubjectToStudent" Height="450" Width="800">
+    <Grid>
+
+        <TabControl SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Header="Subjects">
+                <Grid HorizontalAlignment="Left" Margin="246,0,0,0">
+                    <DataGrid
+                    x:Name="SubjectsDataGrid"
+                    Width="291"
+                    HorizontalAlignment="Left"
+                    AutoGenerateColumns="False"
+                    IsReadOnly="True"
+                    ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}"
+                    RenderTransformOrigin="0.548,0.506"
+                    SelectedItem="{Binding SelectedSubject, UpdateSourceTrigger=PropertyChanged}"
+                    SelectionMode="Single" SelectionChanged="SubjectsDataGrid_SelectionChanged" Margin="0,0,0,115">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                            Width="150"
+                            Binding="{Binding SubjectId}"
+                            Header="Subject Id" />
+                            <DataGridTextColumn
+                            Width="200"
+                            Binding="{Binding SubjectName}"
+                            Header="Subject Name" />
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                    <Button Content="Add" HorizontalAlignment="Left" Margin="41,326,0,0" VerticalAlignment="Top" Height="30" Width="61" Click="Add_Click"/>
+                    <Button Content="Cancel" HorizontalAlignment="Left" Margin="186,326,0,0" VerticalAlignment="Top" Height="30" Width="61" Click="Cancel_Click"/>
+
+                </Grid>
+
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+
+</Window>

@@ -80,17 +80,26 @@
                     Source="/trash.png"
                     Stretch="Fill" />
             </Button>
+            
             <TextBox
+                 Text="{Binding Path=SearchText}"
                 Grid.Row="3"
                 Grid.ColumnSpan="2"
                 Width="142" />
-            <Image
+            <Button x:Name="ToolBar_search" Click="Search_Click">
+                <Image
                 Width="24"
                 Height="24"
                 Source="/8666693_search_icon.png"
                 Stretch="Fill" />
-
-
+            </Button>
+            <Button x:Name="ToolBar_back" Click="Back_Click">
+                <Image
+                Width="24"
+                Height="24"
+                Source="/backbutton.png"
+                Stretch="Fill" />
+            </Button>
         </ToolBar>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>

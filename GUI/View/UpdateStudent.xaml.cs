@@ -3,6 +3,7 @@ using GUI.DTO;
 using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,11 +51,13 @@ namespace GUI.View
 
         public int WorkYear;
         public StudentDTO student { get; set; }
-
+        public SubjectDTO subject {  get; set; }
         private ProfessorController professorController;
         private AddressController addressController;
         private StudentController studentController;
+        private SubjectController subjectController;
         private IndexController indexController;
+        public ObservableCollection<SubjectDTO> Subjects { get; set; }
         public UpdateStudent(StudentController studentController, StudentDTO selectedStudent, AddressController addressController, IndexController indexController)
         {
             InitializeComponent();
@@ -86,7 +89,7 @@ namespace GUI.View
             this.studentController = studentController;
             this.addressController = addressController;
             this.indexController = indexController;
-
+            subject = new SubjectDTO();
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
@@ -112,8 +115,18 @@ namespace GUI.View
         {
 
         }
+        private void AddSubject_Click(object sender, RoutedEventArgs e)
+        {
+            AddSubjectToStudent addSubject = new AddSubjectToStudent(subjectController);
+            addSubject.Show();
 
+        }
         private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

@@ -11,6 +11,7 @@
     <None Remove="2044240_disk_save_save as_icon.png" />
     <None Remove="4243273_pen_basic_app_ux_icon.png" />
     <None Remove="8666693_search_icon.png" />
+    <None Remove="backbutton.png" />
     <None Remove="new.png" />
     <None Remove="trash.png" />
     <None Remove="x_icon.png" />
@@ -23,6 +24,7 @@
   <ItemGroup>
     <Resource Include="2044240_disk_save_save as_icon.png" />
     <Resource Include="8666693_search_icon.png" />
+    <Resource Include="backbutton.png" />
     <Resource Include="trash.png" />
     <Resource Include="4243273_pen_basic_app_ux_icon.png" />
     <Resource Include="new.png" />
