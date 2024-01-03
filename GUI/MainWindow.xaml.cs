@@ -133,19 +133,50 @@ namespace GUI
                 }
                 else
                 {
-                    professorsController.Delete(SelectedProfessor.Id);
+                    string message = "Are you sure that you want to delete a professor?";
+                    string title = "Deleting professor";
+
+                    MessageBoxResult result =
+                     MessageBox.Show(message, title,
+           MessageBoxButton.OKCancel);
+
+                    if (result == MessageBoxResult.OK)
+                    {
+                        professorsController.Delete(SelectedProfessor.Id);
+                    }
+
+                    else
+                    { }
+
                 }
-            }else if(tabs.SelectedIndex == 1)
+            }
+            else if (tabs.SelectedIndex == 1)
             {
                 if (SelectedStudent == null)
                 {
                     MessageBox.Show("Please choose student to delete!");
                 }
-                else
-                {
-                    studentController.Delete(SelectedStudent.Id);
+               
+                   else
+                    {
+                        string message = "Are you sure that you want to delete a student?";
+                        string title = "Deleting student";
+
+                        MessageBoxResult result =
+                         MessageBox.Show(message, title,
+               MessageBoxButton.OKCancel);
+
+                        if (result == MessageBoxResult.OK)
+                        {
+                           studentController.Delete(SelectedStudent.Id);
+                        }
+
+                        else
+                        { }
+                    }
                 }
-            }else if(tabs.SelectedIndex == 2)
+            
+            else if (tabs.SelectedIndex == 2)
             {
                 if (SelectedSubject == null)
                 {
@@ -153,7 +184,20 @@ namespace GUI
                 }
                 else
                 {
-                    subjectsController.Delete(SelectedSubject.subjectId);
+                    string message = "Are you sure that you want to delete a subject?";
+                    string title = "Deleting subject";
+
+                    MessageBoxResult result =
+                     MessageBox.Show(message, title,
+           MessageBoxButton.OKCancel);
+
+                    if (result == MessageBoxResult.OK)
+                    {
+                        subjectsController.Delete(SelectedSubject.SubjectId);
+                    }
+
+                    else
+                    { }
                 }
             }
         }
