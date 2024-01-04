@@ -421,30 +421,30 @@
                         HorizontalAlignment="Left"
                         AutoGenerateColumns="False"
                         IsReadOnly="True"
-                        ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding UnpassedSubjects, UpdateSourceTrigger=PropertyChanged}"
                         RenderTransformOrigin="0.548,0.506"
-                        SelectedItem="{Binding SelectedSubject, UpdateSourceTrigger=PropertyChanged}"
+                        SelectedItem="{Binding subject, UpdateSourceTrigger=PropertyChanged}"
                         SelectionMode="Single" Grid.Column="1" Margin="6,152,0,151">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                 Width="150"
-                                Binding="{Binding subject.SubjectId}"
+                                Binding="{Binding SubjectId}"
                                 Header="Subject Id" />
                                 <DataGridTextColumn
                                 Width="200"
-                                Binding="{Binding subject.SubjectName}"
+                                Binding="{Binding SubjectName}"
                                 Header="Subject Name" />
                                 <DataGridTextColumn
                                 Width="200"
-                                Binding="{Binding subject.EspbPoints}"
+                                Binding="{Binding EspbPoints}"
                                 Header="Espb Points" />
                                 <DataGridTextColumn
                                 Width="200"
-                                Binding="{Binding subject.YearOfStudy}"
+                                Binding="{Binding YearOfStudy}"
                                 Header="Year" />
                                 <DataGridTextColumn
                                 Width="200"
-                                Binding="{Binding subject.Semester}"
+                                Binding="{Binding Semester}"
                                 Header="Semester" />
                             </DataGrid.Columns>
                         </DataGrid>
@@ -461,7 +461,7 @@
                             Width="136"
                             Margin="274,62,0,533"
                             HorizontalAlignment="Left"
-                            Click="Update_Click"
+                            Click="DeleteSubject_Click"
                             Content="Delete"
                             IsDefault="True" />
                         <Button

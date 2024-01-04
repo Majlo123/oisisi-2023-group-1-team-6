@@ -1,4 +1,5 @@
-﻿using StudentskaSluzba.Model;
+﻿using CLI.Controller;
+using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -512,6 +513,7 @@ namespace GUI.DTO
             return student;
         }
 
+       
         public StudentDTO(Student s, Address a, Index i)
         {
             a = s.Address;

@@ -24,20 +24,23 @@ namespace GUI.View
     /// </summary>
     public partial class AddSubjectToStudent : Window, IObserver
     {
-        public SubjectDTO Subject { get; set; }
 
-        private SubjectController subjectsController { get; set; }
 
         public ObservableCollection<SubjectDTO> Subjects { get; set; }
-        public AddSubjectToStudent(SubjectController subjectController)
+        public SubjectController subject_controler;
+        public StudentSubjectController studentsubject_controler;
+        public SubjectDTO SelectedSubject { get; set; }
+        public StudentDTO selectedStudent { get; set; }
+        public AddSubjectToStudent(StudentDTO student)
         {
             InitializeComponent();
+            subject_controler = new SubjectController();
+            studentsubject_controler = new StudentSubjectController();
             DataContext = this;
+            subject_controler.Subscribe(this);
+            studentsubject_controler.Subscribe(this);
+            selectedStudent = student;
             Subjects = new ObservableCollection<SubjectDTO>();
-            Subject = new SubjectDTO();
-            subjectsController = new SubjectController();
-            subjectsController.Subscribe(this);
-            this.subjectsController = subjectsController;
             Update();
         }
 
@@ -46,15 +49,12 @@ namespace GUI.View
         {
             Subjects.Clear();
 
-            foreach (CLI.Model.Subject subject in subjectsController.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
+            foreach (CLI.Model.Subject subject in subject_controler.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
 
 
 
         }
-        private void SubjectsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -65,32 +65,29 @@ namespace GUI.View
         {
             Close();
         }
+
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            // Check if Subject is null
-            if (Subject == null)
+
+            if (SelectedSubject != null)
             {
-                MessageBox.Show("Please choose a subject to add!");
-                return; // Exit the method early as Subject is not selected
+                studentsubject_controler.Add(selectedStudent.id, SelectedSubject.subjectId);
+                
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Odaberite predmet koji želite dodati.");
             }
 
-            
-                // Assuming SubjectId is a property within SubjectDTO
-                CLI.Model.Subject subjectToAdd = subjectsController.getSubjectById(Subject.subjectId);
-
-                if (subjectToAdd != null)
-                {
-                    subjectsController.Add(subjectToAdd);
-                    MessageBox.Show(subjectToAdd.ToString());
-                    Close();
-                }
-                else
-                {
-                    MessageBox.Show("The selected subject does not exist.");
-                }
-            }
         }
     }
+}
+    
+
+            
+        
+    
 
 
 

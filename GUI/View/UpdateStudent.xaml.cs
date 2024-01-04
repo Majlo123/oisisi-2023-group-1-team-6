@@ -1,4 +1,5 @@
 ﻿using CLI.Controller;
+using CLI.Model;
 using GUI.DTO;
 using StudentskaSluzba.Model;
 using System;
@@ -26,7 +27,7 @@ namespace GUI.View
     public partial class UpdateStudent : Window
     {
 
-
+        public MainWindow SelectedStudent {  get; set; }
         public string Surname;
 
         public string Name;
@@ -51,13 +52,19 @@ namespace GUI.View
 
         public int WorkYear;
         public StudentDTO student { get; set; }
+
+        public StudentDTO selected;
+       
         public SubjectDTO subject {  get; set; }
         private ProfessorController professorController;
         private AddressController addressController;
         private StudentController studentController;
         private SubjectController subjectController;
         private IndexController indexController;
-        public ObservableCollection<SubjectDTO> Subjects { get; set; }
+        private StudentSubjectController studentSubjectController;
+        public ObservableCollection<SubjectDTO> UnpassedSubjects { get; set; }
+
+       
         public UpdateStudent(StudentController studentController, StudentDTO selectedStudent, AddressController addressController, IndexController indexController)
         {
             InitializeComponent();
@@ -89,7 +96,13 @@ namespace GUI.View
             this.studentController = studentController;
             this.addressController = addressController;
             this.indexController = indexController;
+            studentSubjectController = new StudentSubjectController();
+            UnpassedSubjects = new ObservableCollection<SubjectDTO>(
+            studentSubjectController.GetAllSubjectsById(student.id)
+            .Select(subject => new SubjectDTO(subject))
+            .ToList());
             subject = new SubjectDTO();
+            Update();
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
@@ -115,10 +128,57 @@ namespace GUI.View
         {
 
         }
+
+        private void Update()
+        {
+            
+            UnpassedSubjects.Clear();
+            foreach (CLI.Model.Subject subject in studentSubjectController.GetAllSubjectsById(student.id))
+            
+                UnpassedSubjects.Add(new SubjectDTO(subject));
+               
+            
+        }
         private void AddSubject_Click(object sender, RoutedEventArgs e)
         {
-            AddSubjectToStudent addSubject = new AddSubjectToStudent(subjectController);
+
+            
+            AddSubjectToStudent addSubject = new AddSubjectToStudent(student);
+            addSubject.Closed += AddSubject_Closed;
             addSubject.Show();
+
+            
+            
+
+        }
+
+        private void AddSubject_Closed(object sender, EventArgs e)
+        {
+            Update(); 
+        }
+        private void DeleteSubject_Click(Object sender, RoutedEventArgs e) {
+            if (subject == null) {
+
+                MessageBox.Show("Please select subject that you want to delete from student.");
+            }
+            else
+            {
+                string message = "Are you sure that you want to delete a subject?";
+                string title = "Deleting subject from student";
+
+                MessageBoxResult result =
+                 MessageBox.Show(message, title,
+       MessageBoxButton.OKCancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+                    
+                    studentSubjectController.Delete(subject.subjectId);
+                }
+
+                else
+                { }
+            }
 
         }
         private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)

@@ -155,6 +155,7 @@ namespace GUI
 
                     if (result == MessageBoxResult.OK)
                     {
+                        
                         professorsController.Delete(SelectedProfessor.Id);
                     }
 
@@ -214,7 +215,15 @@ namespace GUI
                 }
             }
         }
-   
+
+        public StudentDTO GetSelectedStudent()
+        {
+            if (StudentsDataGrid.SelectedItem != null && StudentsDataGrid.SelectedItem is StudentDTO selectedStudent)
+            {
+                return selectedStudent;
+            }
+            return null;
+        }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             if (tabs.SelectedIndex == 0)
@@ -233,6 +242,7 @@ namespace GUI
             {
                 if (SelectedStudent != null)
                 {
+                    StudentDTO selectedStudent = GetSelectedStudent();
                     UpdateStudent updateStudent = new UpdateStudent(studentController, SelectedStudent, addressController,indexController);
                     updateStudent.Show();
                 }
@@ -245,6 +255,7 @@ namespace GUI
             {
                 if (SelectedSubject != null)
                 {
+                    
                     UpdateSubject updateSubject = new UpdateSubject(subjectsController, SelectedSubject);
                     updateSubject.Show();
                 }

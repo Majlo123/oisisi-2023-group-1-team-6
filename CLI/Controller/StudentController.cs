@@ -13,13 +13,13 @@ namespace CLI.Controller
     public class StudentController
     {
         private readonly StudentsDAO _students;
-
+        private readonly SubjectsDAO _subjects;
 
         public StudentController()
         {
             _students = new StudentsDAO();
 
-
+            _subjects=new SubjectsDAO();
         }
         public List<Student> GetAllStudents()
         {
@@ -34,6 +34,10 @@ namespace CLI.Controller
         public void Add(Student student)
         {
             _students.addStudent(student);
+        }
+        public void AddSubject(CLI.Model.Subject subject)
+        {
+            _subjects.addSubject(subject);
         }
         public void Update(Student student)
         {

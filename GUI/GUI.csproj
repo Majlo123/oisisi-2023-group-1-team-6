@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="2044240_disk_save_save as_icon.png" />
+    <Resource Include="View\2044240_disk_save_save as_icon.png" />
     <Resource Include="8666693_search_icon.png" />
     <Resource Include="backbutton.png" />
     <Resource Include="trash.png" />

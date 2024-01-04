@@ -20,7 +20,7 @@
                     ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}"
                     RenderTransformOrigin="0.548,0.506"
                     SelectedItem="{Binding SelectedSubject, UpdateSourceTrigger=PropertyChanged}"
-                    SelectionMode="Single" SelectionChanged="SubjectsDataGrid_SelectionChanged" Margin="0,0,0,115">
+                    >
                         <DataGrid.Columns>
                             <DataGridTextColumn
                             Width="150"
