@@ -36,9 +36,9 @@ namespace CLI.Controller
         {
             _students.UpdateStudentSubject(student);
         }
-        public void Delete(int studentid)
+        public void Delete(int id)
         {
-            _students.RemoveStudentSubject(studentid);
+            _students.RemoveStudentSubject(id);
         }
         public void Subscribe(IObserver observer)
         {

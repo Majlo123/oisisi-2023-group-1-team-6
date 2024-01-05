@@ -77,7 +77,7 @@ namespace GUI.View
             }
             else
             {
-                MessageBox.Show("Odaberite predmet koji želite dodati.");
+                MessageBox.Show("Chose subject that you want to add.");
             }
 
         }

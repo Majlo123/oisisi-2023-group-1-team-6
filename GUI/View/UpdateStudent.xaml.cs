@@ -62,6 +62,7 @@ namespace GUI.View
         private SubjectController subjectController;
         private IndexController indexController;
         private StudentSubjectController studentSubjectController;
+        public StudentSubject studentSubject { get; set; }
         public ObservableCollection<SubjectDTO> UnpassedSubjects { get; set; }
 
        
@@ -102,6 +103,7 @@ namespace GUI.View
             .Select(subject => new SubjectDTO(subject))
             .ToList());
             subject = new SubjectDTO();
+            studentSubject=new StudentSubject();
             Update();
         }
 
@@ -174,6 +176,8 @@ namespace GUI.View
                 {
                     
                     studentSubjectController.Delete(subject.subjectId);
+                    Update();
+                   
                 }
 
                 else

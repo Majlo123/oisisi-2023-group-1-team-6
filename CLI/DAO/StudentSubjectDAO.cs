@@ -44,10 +44,10 @@ namespace CLI.DAO
             return _studentsubject.Find(s => s.id_subject == id);
         }
 
-        public void Add(int id_stud, int id_pred)
+        public void Add(int id_stud, int id_subject)
         {
             int id = NextId();
-            StudentSubject studsubject = new StudentSubject(id_stud, id_pred, id);
+            StudentSubject studsubject = new StudentSubject(id_stud, id_subject, id);
             _studentsubject.Add(studsubject);
             _storage.Save(_studentsubject);
             StudentSubject.NotifyObservers();
