@@ -33,8 +33,15 @@ namespace StudentskaSluzba.Model;
             date = Date;
             grades = grade;
         }
+        public Grade(int id, Subject Subject, DateOnly Date, string grade)
+        {
+        Id = id;
+        subject = Subject;
+        date = Date;
+        grades = grade;
+         }
 
-        public string[] ToCSV()
+    public string[] ToCSV()
         {
             string[] csvValues =
             {

@@ -1,11 +1,11 @@
-﻿<Window x:Class="GUI.View.AddSubjectToStudent"
+﻿<Window x:Class="GUI.View.AddProfessorToSubject"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI.View"
         mc:Ignorable="d"
-        Title="AddSubjectToStudent" Height="450" Width="800">
+        Title="AddProfessorToSubject" Height="450" Width="800">
     <Grid>
 
         <TabControl SelectionChanged="TabControl_SelectionChanged">
@@ -17,18 +17,18 @@
                     HorizontalAlignment="Left"
                     AutoGenerateColumns="False"
                     IsReadOnly="True"
-                    ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding Professors, UpdateSourceTrigger=PropertyChanged}"
                     RenderTransformOrigin="0.548,0.506"
-                    SelectedItem="{Binding SelectedSubject, UpdateSourceTrigger=PropertyChanged}"
+                    SelectedItem="{Binding SelectedProfessor, UpdateSourceTrigger=PropertyChanged}"
                     >
                         <DataGrid.Columns>
                             <DataGridTextColumn
                             Width="150"
-                            Binding="{Binding SubjectId}"
+                            Binding="{Binding Name}"
                             />
                             <DataGridTextColumn
                             Width="200"
-                            Binding="{Binding SubjectName}"
+                            Binding="{Binding Surname}"
                             />
 
                         </DataGrid.Columns>

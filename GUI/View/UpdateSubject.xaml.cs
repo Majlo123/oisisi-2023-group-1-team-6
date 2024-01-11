@@ -1,13 +1,16 @@
 ﻿using CLI.Controller;
 using CLI.Model;
 using GUI.DTO;
+using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -28,9 +31,11 @@ namespace GUI.View
         string semester { get; set; }
         int espbpoints;
 
+        public ProfessorDTO professor { get; set; }
         public SubjectDTO subject {  get; set; }
 
         private SubjectController subjectcontroller;
+        public ObservableCollection<Professor> professors { get; set; }
         public UpdateSubject(SubjectController subjectController,SubjectDTO selectedSubject)
         {
             InitializeComponent();
@@ -51,6 +56,7 @@ namespace GUI.View
             Subject subject=new Subject(subjectid,subjectname,yearofstudy,semester,espbpoints);
 
             this.subject = new SubjectDTO(subject);
+            UpdateProfessors();
             subjectcontroller = subjectController;
         }
         private void Update_Click(object sender, RoutedEventArgs e)
@@ -74,6 +80,20 @@ namespace GUI.View
 
         }
         private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private void AddProfessor_Click(object sender, RoutedEventArgs e) {
+
+            AddProfessorToSubject updateProfesor = new AddProfessorToSubject();
+            updateProfesor.Show();
+        }
+        private void UpdateProfessors()
+        {
+
+           
+        }
+        private void Tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

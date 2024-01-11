@@ -154,11 +154,12 @@
                 Content="Cancel"
                 IsCancel="True" />
             <Button
+                Name="Add"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="Add_Click"
                 Content="Add"
-                IsDefault="True" />
+                 />
         </WrapPanel>
         <Label
             Grid.Column="1"

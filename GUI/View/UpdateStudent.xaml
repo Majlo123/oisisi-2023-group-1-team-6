@@ -469,7 +469,7 @@
                             Width="138"
                             Margin="506,62,0,533"
                             HorizontalAlignment="Left"
-                            Click="Update_Click"
+                            Click="Take_Exam_Click"
                             Content="Take Exam"
                             IsDefault="True" />
                     </Grid>

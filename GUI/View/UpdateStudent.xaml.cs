@@ -119,7 +119,7 @@ namespace GUI.View
             }
             else
             {
-                MessageBox.Show("Professor can not be updated. Not all fields are valid.");
+                MessageBox.Show("Student can not be updated. Not all fields are valid.");
             }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -153,7 +153,19 @@ namespace GUI.View
             
 
         }
+        private void Take_Exam_Click(object sender, RoutedEventArgs e) {
+            if (subject.subjectName == null) {
 
+                MessageBox.Show("Please select subject that you want to take exam.");
+            }
+            else
+            {
+                TakeExam takeexam = new TakeExam(subject);
+                takeexam.Show();
+            }
+           
+            
+        }
         private void AddSubject_Closed(object sender, EventArgs e)
         {
             Update(); 

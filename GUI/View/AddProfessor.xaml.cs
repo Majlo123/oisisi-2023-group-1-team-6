@@ -45,6 +45,7 @@ namespace GUI.View
         {
             if (Professor.IsValid && dateTime != null)
             {
+                
                 Address adresstoadd = addressController.getAddressById(Professor.AddressId);
                 Professor professortoadd = professorController.getProfessorById(Professor.Id);
                 if (adresstoadd != null)
@@ -65,6 +66,7 @@ namespace GUI.View
                     MessageBox.Show("Proffesor with this id already exist.");
                     return;
                 }
+                
                 Professor.date = new DateOnly(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day);
                 addressController.Add(Professor.ToAddress());
                 professorController.Add(Professor.ToProfessor());

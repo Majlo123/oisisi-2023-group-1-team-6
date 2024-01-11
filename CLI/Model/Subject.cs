@@ -48,6 +48,11 @@ namespace CLI.Model
             subjectName = subjectname;
 
         }
+        public Subject(int subjectid, string subjectname) { 
+            subjectName=subjectname;
+            subjectId = subjectid;
+        
+        }
         public Subject(int subjectid, string subjectname, int yearofstudy,string Semester, Professor Professor, int eSPBPoints)
         {
             subjectId = subjectid;
