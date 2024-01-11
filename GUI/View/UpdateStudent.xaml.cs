@@ -154,14 +154,14 @@ namespace GUI.View
 
         }
         private void Take_Exam_Click(object sender, RoutedEventArgs e) {
-            if (subject.subjectName == null) {
-
-                MessageBox.Show("Please select subject that you want to take exam.");
+            if (subject!=null) {
+                TakeExam takeexam = new TakeExam(subject);
+                takeexam.Show();
+                
             }
             else
             {
-                TakeExam takeexam = new TakeExam(subject);
-                takeexam.Show();
+                MessageBox.Show("Please select subject that you want to take exam.");
             }
            
             
@@ -203,6 +203,11 @@ namespace GUI.View
         }
 
         private void Tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void SubjectsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
