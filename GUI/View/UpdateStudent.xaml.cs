@@ -61,9 +61,12 @@ namespace GUI.View
         private StudentController studentController;
         private SubjectController subjectController;
         private IndexController indexController;
-        private StudentSubjectController studentSubjectController;
-        public StudentSubject studentSubject { get; set; }
+        private StudentSubjectController studentSubjectController1;
+        private StudentSubjectController studentSubjectController2;
+        public StudentSubject studentSubject1 { get; set; }
+        public StudentSubject studentSubject2 {  get; set; }
         public ObservableCollection<SubjectDTO> UnpassedSubjects { get; set; }
+        public ObservableCollection<SubjectDTO> PassedSubjects {  get; set; }
 
        
         public UpdateStudent(StudentController studentController, StudentDTO selectedStudent, AddressController addressController, IndexController indexController)
@@ -97,13 +100,19 @@ namespace GUI.View
             this.studentController = studentController;
             this.addressController = addressController;
             this.indexController = indexController;
-            studentSubjectController = new StudentSubjectController();
+            studentSubjectController1 = new StudentSubjectController();
+            studentSubjectController2 = new StudentSubjectController();
             UnpassedSubjects = new ObservableCollection<SubjectDTO>(
-            studentSubjectController.GetAllSubjectsById(student.id)
+            studentSubjectController1.GetAllSubjectsById(student.id)
+            .Select(subject => new SubjectDTO(subject))
+            .ToList());
+            PassedSubjects = new ObservableCollection<SubjectDTO>(
+            studentSubjectController2.GetAllSubjectsById(student.id)
             .Select(subject => new SubjectDTO(subject))
             .ToList());
             subject = new SubjectDTO();
-            studentSubject=new StudentSubject();
+            studentSubject1=new StudentSubject();
+            studentSubject2 = new StudentSubject();
             Update();
         }
 
@@ -135,13 +144,13 @@ namespace GUI.View
         {
             
             UnpassedSubjects.Clear();
-            foreach (CLI.Model.Subject subject in studentSubjectController.GetAllSubjectsById(student.id))
-            
+            foreach (CLI.Model.Subject subject in studentSubjectController1.GetAllSubjectsById(student.id))
                 UnpassedSubjects.Add(new SubjectDTO(subject));
-               
-            
+            foreach (CLI.Model.Subject subject in studentSubjectController2.GetAllSubjectsById(student.id))
+                PassedSubjects.Add(new SubjectDTO(subject));
+
         }
-        private void AddSubject_Click(object sender, RoutedEventArgs e)
+        private void AddSubjectUnpassed_Click(object sender, RoutedEventArgs e)
         {
 
             
@@ -149,8 +158,15 @@ namespace GUI.View
             addSubject.Closed += AddSubject_Closed;
             addSubject.Show();
 
-            
-            
+        }
+
+        private void AddSubjectPassed_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            AddSubjectToStudent addSubject = new AddSubjectToStudent(student);
+            addSubject.Closed += AddSubject_Closed;
+            addSubject.Show();
 
         }
         private void Take_Exam_Click(object sender, RoutedEventArgs e) {
@@ -170,7 +186,7 @@ namespace GUI.View
         {
             Update(); 
         }
-        private void DeleteSubject_Click(Object sender, RoutedEventArgs e) {
+        private void DeleteSubjectUnpassed_Click(Object sender, RoutedEventArgs e) {
             if (subject == null) {
 
                 MessageBox.Show("Please select subject that you want to delete from student.");
@@ -187,9 +203,39 @@ namespace GUI.View
                 if (result == MessageBoxResult.OK)
                 {
                     
-                    studentSubjectController.Delete(subject.subjectId);
+                    studentSubjectController1.Delete(subject.subjectId);
                     Update();
                    
+                }
+
+                else
+                { }
+            }
+
+        }
+
+        private void DeleteSubjectPassed_Click(Object sender, RoutedEventArgs e)
+        {
+            if (subject == null)
+            {
+
+                MessageBox.Show("Please select subject that you want to delete from student.");
+            }
+            else
+            {
+                string message = "Are you sure that you want to delete this subject?";
+                string title = "Deleting subject from student";
+
+                MessageBoxResult result =
+                 MessageBox.Show(message, title,
+       MessageBoxButton.OKCancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+
+                    studentSubjectController2.Delete(subject.subjectId);
+                    Update();
+
                 }
 
                 else

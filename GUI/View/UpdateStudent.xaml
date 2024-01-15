@@ -28,7 +28,8 @@
                     <Grid Margin="0,0,0,-6">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="92*" />
-                            <ColumnDefinition Width="135*"/>
+                            <ColumnDefinition Width="23*" />
+                            <ColumnDefinition Width="112*" />
                             <ColumnDefinition Width="239*" />
                             <ColumnDefinition Width="214*" />
                             <ColumnDefinition Width="227*" />
@@ -48,7 +49,7 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <TextBox
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Width="191"
                             Height="28"
                             Margin="38,0,0,0"
@@ -60,7 +61,7 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
                             Grid.Row="1"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Width="191"
                             Height="23"
                             Margin="38,10,0,0"
@@ -71,7 +72,7 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
                             Grid.Row="2"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Width="191"
                             Height="23"
                             Margin="38,10,0,0"
@@ -82,14 +83,16 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <Label
                             Grid.Row="3"
+                            Grid.ColumnSpan="3"
                             Width="213"
+                            Height="26"
                             Margin="7,7,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="Date of birth:" Height="26" Grid.ColumnSpan="2" />
+                            Content="Date of birth:" />
                         <DatePicker
                             Grid.Row="3"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Width="191"
                             Height="26"
                             Margin="38,0,0,0"
@@ -99,56 +102,70 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <Label
                             Grid.Row="4"
+                            Grid.ColumnSpan="3"
                             Width="213"
+                            Height="26"
                             Margin="7,7,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="Address:" Height="26" Grid.ColumnSpan="2" />
+                            Content="Address:" />
                         <Label
                             Grid.Row="5"
+                            Grid.ColumnSpan="3"
                             Width="145"
+                            Height="26"
                             Margin="79,10,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="Id of address:" Height="26" Grid.ColumnSpan="2" />
+                            Content="Id of address:" />
                         <Label
                             Grid.Row="6"
+                            Grid.ColumnSpan="3"
                             Width="145"
+                            Height="26"
                             Margin="79,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="State:" Height="26" Grid.ColumnSpan="2" />
+                            Content="State:" />
                         <Label
                             Grid.Row="7"
+                            Grid.ColumnSpan="3"
                             Width="145"
+                            Height="26"
                             Margin="79,4,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="City:" Height="26" Grid.ColumnSpan="2" />
+                            Content="City:" />
                         <Label
                             Grid.Row="8"
+                            Grid.ColumnSpan="3"
                             Width="145"
+                            Height="26"
                             Margin="79,5,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="Street:" Height="26" Grid.ColumnSpan="2" />
+                            Content="Street:" />
                         <Label
                             Grid.Row="9"
+                            Grid.ColumnSpan="3"
                             Width="145"
+                            Height="26"
                             Margin="79,4,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="Name:" Height="26" Grid.ColumnSpan="2" />
+                            Content="Name:" />
                         <Label
                             Grid.Row="10"
+                            Grid.ColumnSpan="3"
                             Width="213"
+                            Height="25"
                             Margin="7,5,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="Status:" Height="25" Grid.ColumnSpan="2" />
+                            Content="Status:" />
                         <ComboBox
                             Grid.Row="10"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Width="191"
                             Height="23"
                             Margin="38,7,0,0"
@@ -161,83 +178,99 @@
                         </ComboBox>
                         <Label
                             Grid.Row="11"
+                            Grid.ColumnSpan="3"
                             Width="213"
+                            Height="26"
+                            Margin="7,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Average:" Height="26" Grid.ColumnSpan="2" Margin="7,0,0,0" />
+                            Content="Average:" />
                         <Label
-                            Grid.Column="3"
+                            Grid.Column="4"
                             Width="213"
+                            Height="26"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Content="Phone number:" Height="26" />
+                            Content="Phone number:" />
                         <Label
                             Grid.Row="1"
-                            Grid.Column="3"
+                            Grid.Column="4"
                             Width="213"
+                            Height="26"
                             Margin="0,7,0,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
-                            Content="Email:" Height="26" />
+                            Content="Email:" />
                         <Label
                             Grid.Row="2"
-                            Grid.Column="3"
+                            Grid.Column="4"
                             Width="213"
+                            Height="25"
                             Margin="0,7,0,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
-                            Content="Year of studying:" Height="25" />
+                            Content="Year of studying:" />
                         <Label
                             Grid.Row="3"
-                            Grid.Column="3"
+                            Grid.Column="4"
                             Width="213"
+                            Height="26"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Content="Index:" Height="26" />
+                            Content="Index:" />
                         <Label
                             Grid.Row="4"
-                            Grid.Column="3"
+                            Grid.Column="4"
+                            Grid.ColumnSpan="2"
                             Width="145"
+                            Height="26"
                             Margin="97,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Id of index:" Grid.ColumnSpan="2" Height="26" />
+                            Content="Id of index:" />
                         <Label
                             Grid.Row="5"
-                            Grid.Column="3"
+                            Grid.Column="4"
+                            Grid.ColumnSpan="2"
                             Width="145"
+                            Height="26"
                             Margin="97,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Abbreviation of major:" Grid.ColumnSpan="2" Height="26" />
+                            Content="Abbreviation of major:" />
                         <Label
                             Grid.Row="6"
-                            Grid.Column="3"
+                            Grid.Column="4"
+                            Grid.ColumnSpan="2"
                             Width="145"
+                            Height="26"
                             Margin="97,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Mark of major:" Grid.ColumnSpan="2" Height="26" />
+                            Content="Mark of major:" />
                         <Label
                             Grid.Row="7"
-                            Grid.Column="3"
+                            Grid.Column="4"
+                            Grid.ColumnSpan="2"
                             Width="145"
+                            Height="26"
                             Margin="97,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Year of enrollment:" Grid.ColumnSpan="2" Height="26" />
+                            Content="Year of enrollment:" />
                         <Button
                             Grid.Row="10"
-                            Grid.Column="3"
+                            Grid.RowSpan="2"
+                            Grid.Column="4"
                             Width="136"
                             Margin="70,55,0,21"
                             HorizontalAlignment="Left"
                             Click="Update_Click"
                             Content="Update"
-                            IsDefault="True" Grid.RowSpan="2" />
+                            IsDefault="True" />
                         <Button
                             Grid.Row="11"
-                            Grid.Column="4"
+                            Grid.Column="5"
                             Width="164"
                             Height="35"
                             Margin="0,1,0,0"
@@ -248,7 +281,7 @@
                             IsCancel="True" />
                         <TextBox
                             Grid.Row="5"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Width="191"
                             Height="26"
                             Margin="38,0,0,0"
@@ -259,7 +292,7 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
                             Grid.Row="6"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Width="191"
                             Height="26"
                             Margin="38,0,0,0"
@@ -270,7 +303,7 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
                             Grid.Row="7"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Width="191"
                             Height="26"
                             Margin="38,0,0,0"
@@ -281,7 +314,7 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
                             Grid.Row="8"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Width="191"
                             Height="37"
                             Margin="38,0,0,0"
@@ -292,7 +325,7 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
                             Grid.Row="9"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Width="192"
                             Height="37"
                             Margin="38,0,0,0"
@@ -303,7 +336,7 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
                             Grid.Row="11"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Width="191"
                             Height="22"
                             Margin="38,6,0,0"
@@ -313,7 +346,7 @@
                             TextWrapping="Wrap"
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
-                            Grid.Column="4"
+                            Grid.Column="5"
                             Width="203"
                             Height="26"
                             Margin="15,0,0,0"
@@ -324,7 +357,7 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
                             Grid.Row="1"
-                            Grid.Column="4"
+                            Grid.Column="5"
                             Width="203"
                             Height="26"
                             Margin="15,0,0,0"
@@ -335,7 +368,7 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
                             Grid.Row="2"
-                            Grid.Column="4"
+                            Grid.Column="5"
                             Width="203"
                             Height="26"
                             Margin="15,7,0,0"
@@ -346,7 +379,7 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
                             Grid.Row="4"
-                            Grid.Column="4"
+                            Grid.Column="5"
                             Width="203"
                             Height="26"
                             Margin="15,0,0,0"
@@ -357,7 +390,7 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
                             Grid.Row="5"
-                            Grid.Column="4"
+                            Grid.Column="5"
                             Width="203"
                             Height="26"
                             Margin="15,0,0,0"
@@ -368,7 +401,7 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
                             Grid.Row="6"
-                            Grid.Column="4"
+                            Grid.Column="5"
                             Width="203"
                             Height="26"
                             Margin="15,0,0,0"
@@ -379,7 +412,7 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
                             Grid.Row="7"
-                            Grid.Column="4"
+                            Grid.Column="5"
                             Width="203"
                             Height="26"
                             Margin="15,0,0,0"
@@ -390,62 +423,73 @@
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <Label
                             Grid.Row="2"
+                            Grid.ColumnSpan="3"
                             Width="213"
+                            Height="26"
+                            Margin="7,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Surname:" Height="26" Grid.ColumnSpan="2" Margin="7,0,0,0" />
+                            Content="Surname:" />
                         <Label
                             Grid.Row="1"
+                            Grid.ColumnSpan="3"
                             Width="213"
+                            Height="26"
+                            Margin="7,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Name" Height="26" Grid.ColumnSpan="2" Margin="7,0,0,0" />
+                            Content="Name" />
                         <Label
+                            Grid.ColumnSpan="3"
                             Width="213"
+                            Height="26"
+                            Margin="7,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Id of student:" Height="26" Grid.ColumnSpan="2" Margin="7,0,0,0" />
+                            Content="Id of student:" />
                     </Grid>
                 </TabItem>
                 <TabItem Header="Unpassed">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="893*"/>
+                            <ColumnDefinition Width="15*" />
+                            <ColumnDefinition Width="893*" />
                         </Grid.ColumnDefinitions>
 
                         <DataGrid
-                        x:Name="SubjectsDataGrid"
-                        Width="866"
-                        Height="350"
-                        HorizontalAlignment="Left"
-                        AutoGenerateColumns="False"
-                        IsReadOnly="True"
-                        ItemsSource="{Binding UnpassedSubjects, UpdateSourceTrigger=PropertyChanged}"
-                        RenderTransformOrigin="0.548,0.506"
-                        SelectedItem="{Binding subject, UpdateSourceTrigger=PropertyChanged}"
-                        SelectionMode="Single" Grid.Column="1" Margin="6,152,0,151">
+                            x:Name="UnpassedSubjectsDataGrid"
+                            Grid.Column="1"
+                            Width="866"
+                            Height="350"
+                            Margin="6,152,0,151"
+                            HorizontalAlignment="Left"
+                            AutoGenerateColumns="False"
+                            IsReadOnly="True"
+                            ItemsSource="{Binding UnpassedSubjects, UpdateSourceTrigger=PropertyChanged}"
+                            RenderTransformOrigin="0.548,0.506"
+                            SelectedItem="{Binding subject, UpdateSourceTrigger=PropertyChanged}"
+                            SelectionMode="Single">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
-                                Width="150"
-                                Binding="{Binding SubjectId}"
-                                Header="Subject Id" />
+                                    Width="150"
+                                    Binding="{Binding SubjectId}"
+                                    Header="Subject Id" />
                                 <DataGridTextColumn
-                                Width="200"
-                                Binding="{Binding SubjectName}"
-                                Header="Subject Name" />
+                                    Width="200"
+                                    Binding="{Binding SubjectName}"
+                                    Header="Subject Name" />
                                 <DataGridTextColumn
-                                Width="200"
-                                Binding="{Binding EspbPoints}"
-                                Header="Espb Points" />
+                                    Width="200"
+                                    Binding="{Binding EspbPoints}"
+                                    Header="Espb Points" />
                                 <DataGridTextColumn
-                                Width="200"
-                                Binding="{Binding YearOfStudy}"
-                                Header="Year" />
+                                    Width="200"
+                                    Binding="{Binding YearOfStudy}"
+                                    Header="Year" />
                                 <DataGridTextColumn
-                                Width="200"
-                                Binding="{Binding Semester}"
-                                Header="Semester" />
+                                    Width="200"
+                                    Binding="{Binding Semester}"
+                                    Header="Semester" />
                             </DataGrid.Columns>
                         </DataGrid>
                         <Button
@@ -453,7 +497,7 @@
                             Width="137"
                             Margin="61,62,0,533"
                             HorizontalAlignment="Left"
-                            Click="AddSubject_Click"
+                            Click="AddSubjectUnpassed_Click"
                             Content="Add"
                             IsDefault="True" />
                         <Button
@@ -461,7 +505,7 @@
                             Width="136"
                             Margin="274,62,0,533"
                             HorizontalAlignment="Left"
-                            Click="DeleteSubject_Click"
+                            Click="DeleteSubjectUnpassed_Click"
                             Content="Delete"
                             IsDefault="True" />
                         <Button
@@ -471,6 +515,67 @@
                             HorizontalAlignment="Left"
                             Click="Take_Exam_Click"
                             Content="Take Exam"
+                            IsDefault="True" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Passed">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*" />
+                            <ColumnDefinition Width="893*" />
+                        </Grid.ColumnDefinitions>
+
+                        <DataGrid
+                            x:Name="PassedSubjectsDataGrid"
+                            Grid.Column="1"
+                            Width="866"
+                            Height="350"
+                            Margin="6,152,0,151"
+                            HorizontalAlignment="Left"
+                            AutoGenerateColumns="False"
+                            IsReadOnly="True"
+                            ItemsSource="{Binding PassedSubjects, UpdateSourceTrigger=PropertyChanged}"
+                            RenderTransformOrigin="0.548,0.506"
+                            SelectedItem="{Binding subject, UpdateSourceTrigger=PropertyChanged}"
+                            SelectionMode="Single">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                    Width="150"
+                                    Binding="{Binding SubjectId}"
+                                    Header="Subject Id" />
+                                <DataGridTextColumn
+                                    Width="200"
+                                    Binding="{Binding SubjectName}"
+                                    Header="Subject Name" />
+                                <DataGridTextColumn
+                                    Width="200"
+                                    Binding="{Binding EspbPoints}"
+                                    Header="Espb Points" />
+                                <DataGridTextColumn
+                                    Width="200"
+                                    Binding="{Binding YearOfStudy}"
+                                    Header="Year" />
+                                <DataGridTextColumn
+                                    Width="200"
+                                    Binding="{Binding Semester}"
+                                    Header="Semester" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button
+                            Grid.Column="1"
+                            Width="137"
+                            Margin="61,62,0,533"
+                            HorizontalAlignment="Left"
+                            Click="AddSubjectPassed_Click"
+                            Content="Add"
+                            IsDefault="True" />
+                        <Button
+                            Grid.Column="1"
+                            Width="173"
+                            Margin="274,62,0,533"
+                            HorizontalAlignment="Left"
+                            Click="DeleteSubjectPassed_Click"
+                            Content="Delete from passed&#xD;&#xA;"
                             IsDefault="True" />
                     </Grid>
                 </TabItem>

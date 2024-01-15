@@ -1,5 +1,6 @@
 ﻿using CLI.Controller;
 using CLI.Observer;
+using CLI.Model;
 using GUI.DTO;
 using GUI.View;
 using StudentskaSluzba.DAO;
@@ -356,6 +357,77 @@ namespace GUI
                     
                     ProfessorsDataGrid.ItemsSource = Professors;
                     
+                }
+            }
+            if (tabs.SelectedIndex == 1)
+            {
+                if (!string.IsNullOrWhiteSpace(SearchText))
+                {
+                    string writentext = SearchText.ToLower();
+                    writentext = writentext.Replace(" ", String.Empty);
+                    string[] query = writentext.Split(',');
+
+                    ObservableCollection<StudentDTO> studentTemp = new ObservableCollection<StudentDTO>();
+
+                    if (query.Length == 1)
+                    {
+                        foreach (StudentDTO st in Students)
+                        {
+                            if (st.surname.ToLower().Contains(query[0]))
+                            {
+                                studentTemp.Add(st);
+                            }
+                        }
+                    }
+                    else if (query.Length == 2)
+                    {
+                        foreach (StudentDTO st in Students)
+                        {
+                            if (st.surname.ToLower().Contains(query[0]))
+                            {
+                                if (st.name.ToLower().Contains(query[1]))
+                                {
+                                    studentTemp.Add(st);
+                                }
+                            }
+                        }
+                    }
+                    else if(query.Length == 3)
+                    {
+                        foreach (StudentDTO st in Students)
+                        {
+                            if (st.printIndex.ToLower().Contains(query[0]))
+                            {
+                                if (st.name.ToLower().Contains(query[1]))
+                                {
+                                    if (st.surname.ToLower().Contains(query[2]))
+                                        studentTemp.Add(st);
+                                }
+                            }
+                        }
+                    }
+                    Students = studentTemp;
+                    StudentsDataGrid.ItemsSource = Students;
+
+                }
+                else
+                {
+                    Students.Clear();
+                    var addresses = addressController.GetAllAddress();
+                    var students = studentController.GetAllStudents();
+                    var indexes = indexController.GetAllIndexes();
+
+                    foreach (Student student in students)
+                    {
+                        Address studentAddress = addressController.getAddressById(student.Address.id);
+                        Index studentIndex = indexController.getIndexById(student.Index.IdIndex);
+                        Students.Add(new StudentDTO(student, studentAddress, studentIndex));
+                    }
+
+                    
+
+                    StudentsDataGrid.ItemsSource = Students;
+
                 }
             }
             if (tabs.SelectedIndex == 2)

@@ -139,11 +139,11 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Width="200"
-                            Binding="{Binding Surname}"
+                            Binding="{Binding Name}"
                             Header="Name" />
                         <DataGridTextColumn
                             Width="250"
-                            Binding="{Binding Name}"
+                            Binding="{Binding Surname}"
                             Header="Surname" />
                         <DataGridTextColumn
                             Width="300"

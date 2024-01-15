@@ -535,6 +535,7 @@ namespace GUI.DTO
             abbreviationOfMajor = i.AbbreviationOfMajor;
             markOfMajor = i.MarkOfMajor;
             yearOfEnrollment = i.YearOfEnrollment;
+            printIndex = i.AbbreviationOfMajor + i.MarkOfMajor + "/" + i.YearOfEnrollment;
         }
 
         public Address ToAddress()
