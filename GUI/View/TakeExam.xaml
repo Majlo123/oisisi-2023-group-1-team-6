@@ -55,7 +55,7 @@
         </WrapPanel>
         <Label Margin="245,317,430,330" Content="Date of Exam" Grid.Column="1" FontSize="20" Grid.RowSpan="2"/>
         <Label Margin="245,225,508,163" Content="Grade" Grid.Column="1" FontSize="20"/>
-        <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="195" Height="50" Text="{Binding Path=subject.Semester,UpdateSourceTrigger=PropertyChanged,  ValidatesOnDataErrors=True}"  Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,230,0,0">
+        <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="195" Height="50" Text="{Binding Path=Grade.Grade,UpdateSourceTrigger=PropertyChanged,  ValidatesOnDataErrors=True}"  Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,230,0,0">
             <ComboBoxItem Content="6"/>
             <ComboBoxItem Content="7"/>
             <ComboBoxItem Content="8"/>
@@ -69,8 +69,14 @@
                  Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,45,237,339" Grid.Column="1"/>
         <Label Margin="245,56,430,308" Content="Subject Id" Grid.Column="1" FontSize="20"/>
         <Label Margin="245,139,430,225" Content="Subject Name" Grid.Column="1" FontSize="20"/>
-        <TextBox Grid.Column="1" Text="{Binding Path=subject.EspbPoints, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="403,317,246,66"/>
+        <DatePicker
+     Grid.Column="1"
+     Width="195"
+     Margin="411,317,0,0"
+     HorizontalAlignment="Left"
+     VerticalAlignment="Top"
+     SelectedDate="{Binding Path=dateTime, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+     Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="47" />
 
 
 

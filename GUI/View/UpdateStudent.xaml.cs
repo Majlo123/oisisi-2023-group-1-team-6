@@ -27,7 +27,7 @@ namespace GUI.View
     public partial class UpdateStudent : Window
     {
 
-        public MainWindow SelectedStudent {  get; set; }
+        public MainWindow SelectedStudent { get; set; }
         public string Surname;
 
         public string Name;
@@ -54,21 +54,19 @@ namespace GUI.View
         public StudentDTO student { get; set; }
 
         public StudentDTO selected;
-       
-        public SubjectDTO subject {  get; set; }
+
+        public SubjectDTO subject { get; set; }
         private ProfessorController professorController;
         private AddressController addressController;
         private StudentController studentController;
         private SubjectController subjectController;
         private IndexController indexController;
-        private StudentSubjectController studentSubjectController1;
-        private StudentSubjectController studentSubjectController2;
-        public StudentSubject studentSubject1 { get; set; }
-        public StudentSubject studentSubject2 {  get; set; }
+        private GradeController gradeController;
+        private StudentSubjectController studentSubjectController;
+        public StudentSubject studentSubject { get; set; }
         public ObservableCollection<SubjectDTO> UnpassedSubjects { get; set; }
-        public ObservableCollection<SubjectDTO> PassedSubjects {  get; set; }
-
-       
+        public GradeDTO grade { get; set; }
+        public ObservableCollection<GradeDTO> PassedSubjects { get; set; }
         public UpdateStudent(StudentController studentController, StudentDTO selectedStudent, AddressController addressController, IndexController indexController)
         {
             InitializeComponent();
@@ -94,25 +92,24 @@ namespace GUI.View
             Email = this.student.Email;
             Id = this.student.Id;
             DataContext = this;
-           // Student student = new Student(Surname, Name, Date, address, PhoneNumber, Email, Id, Title, WorkYear);
+            // Student student = new Student(Surname, Name, Date, address, PhoneNumber, Email, Id, Title, WorkYear);
 
-           // this.student = new StudentDTO(student, address, index); ;
+            // this.student = new StudentDTO(student, address, index); ;
             this.studentController = studentController;
             this.addressController = addressController;
             this.indexController = indexController;
-            studentSubjectController1 = new StudentSubjectController();
-            studentSubjectController2 = new StudentSubjectController();
+            studentSubjectController = new StudentSubjectController();
+            gradeController = new GradeController();
             UnpassedSubjects = new ObservableCollection<SubjectDTO>(
-            studentSubjectController1.GetAllSubjectsById(student.id)
+            studentSubjectController.GetAllSubjectsById(student.id)
             .Select(subject => new SubjectDTO(subject))
             .ToList());
-            PassedSubjects = new ObservableCollection<SubjectDTO>(
-            studentSubjectController2.GetAllSubjectsById(student.id)
-            .Select(subject => new SubjectDTO(subject))
+            PassedSubjects = new ObservableCollection<GradeDTO>(
+            gradeController.GetAllGradesByStudent(student.id)
+            .Select(grade => new GradeDTO(grade))
             .ToList());
             subject = new SubjectDTO();
-            studentSubject1=new StudentSubject();
-            studentSubject2 = new StudentSubject();
+            studentSubject = new StudentSubject();
             Update();
         }
 
@@ -120,7 +117,7 @@ namespace GUI.View
         {
             if (student.IsValid)
             {
-                student.date = new DateOnly(dateTime.Year,dateTime.Month, dateTime.Day);
+                student.date = new DateOnly(dateTime.Year, dateTime.Month, dateTime.Day);
                 indexController.Update(student.ToIndex());
                 addressController.Update(student.ToAddress());
                 studentController.Update(student.toStudent());
@@ -142,25 +139,18 @@ namespace GUI.View
 
         private void Update()
         {
-            
+
             UnpassedSubjects.Clear();
-            foreach (CLI.Model.Subject subject in studentSubjectController1.GetAllSubjectsById(student.id))
+            foreach (CLI.Model.Subject subject in studentSubjectController.GetAllSubjectsById(student.id))
+
                 UnpassedSubjects.Add(new SubjectDTO(subject));
-            foreach (CLI.Model.Subject subject in studentSubjectController2.GetAllSubjectsById(student.id))
-                PassedSubjects.Add(new SubjectDTO(subject));
+            PassedSubjects.Clear();
+            foreach (Grade grade in gradeController.GetAllGradesByStudent(student.id)) { 
+                PassedSubjects.Add(new GradeDTO(grade));
+            }
 
         }
-        private void AddSubjectUnpassed_Click(object sender, RoutedEventArgs e)
-        {
-
-            
-            AddSubjectToStudent addSubject = new AddSubjectToStudent(student);
-            addSubject.Closed += AddSubject_Closed;
-            addSubject.Show();
-
-        }
-
-        private void AddSubjectPassed_Click(object sender, RoutedEventArgs e)
+        private void AddSubject_Click(object sender, RoutedEventArgs e)
         {
 
 
@@ -168,26 +158,33 @@ namespace GUI.View
             addSubject.Closed += AddSubject_Closed;
             addSubject.Show();
 
+
+
+
         }
-        private void Take_Exam_Click(object sender, RoutedEventArgs e) {
-            if (subject!=null) {
-                TakeExam takeexam = new TakeExam(subject);
+        private void Take_Exam_Click(object sender, RoutedEventArgs e)
+        {
+            if (subject != null)
+            {
+                TakeExam takeexam = new TakeExam(subject, student);
                 takeexam.Show();
-                
+
             }
             else
             {
                 MessageBox.Show("Please select subject that you want to take exam.");
             }
-           
-            
+
+
         }
         private void AddSubject_Closed(object sender, EventArgs e)
         {
-            Update(); 
+            Update();
         }
-        private void DeleteSubjectUnpassed_Click(Object sender, RoutedEventArgs e) {
-            if (subject == null) {
+        private void DeleteSubject_Click(Object sender, RoutedEventArgs e)
+        {
+            if (subject == null)
+            {
 
                 MessageBox.Show("Please select subject that you want to delete from student.");
             }
@@ -202,38 +199,8 @@ namespace GUI.View
 
                 if (result == MessageBoxResult.OK)
                 {
-                    
-                    studentSubjectController1.Delete(subject.subjectId);
-                    Update();
-                   
-                }
 
-                else
-                { }
-            }
-
-        }
-
-        private void DeleteSubjectPassed_Click(Object sender, RoutedEventArgs e)
-        {
-            if (subject == null)
-            {
-
-                MessageBox.Show("Please select subject that you want to delete from student.");
-            }
-            else
-            {
-                string message = "Are you sure that you want to delete this subject?";
-                string title = "Deleting subject from student";
-
-                MessageBoxResult result =
-                 MessageBox.Show(message, title,
-       MessageBoxButton.OKCancel);
-
-                if (result == MessageBoxResult.OK)
-                {
-
-                    studentSubjectController2.Delete(subject.subjectId);
+                    studentSubjectController.Delete(subject.subjectId);
                     Update();
 
                 }
@@ -247,7 +214,11 @@ namespace GUI.View
         {
 
         }
+        private void DeleteSubjectPassed_Click(object sender, TextChangedEventArgs e)
+        {
 
+        }
+        
         private void Tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 

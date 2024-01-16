@@ -497,7 +497,7 @@
                             Width="137"
                             Margin="61,62,0,533"
                             HorizontalAlignment="Left"
-                            Click="AddSubjectUnpassed_Click"
+                            Click="AddSubject_Click"
                             Content="Add"
                             IsDefault="True" />
                         <Button
@@ -505,7 +505,7 @@
                             Width="136"
                             Margin="274,62,0,533"
                             HorizontalAlignment="Left"
-                            Click="DeleteSubjectUnpassed_Click"
+                            Click="DeleteSubject_Click"
                             Content="Delete"
                             IsDefault="True" />
                         <Button
@@ -522,7 +522,8 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15*" />
-                            <ColumnDefinition Width="893*" />
+                            <ColumnDefinition Width="96*" />
+                            <ColumnDefinition Width="797*"/>
                         </Grid.ColumnDefinitions>
 
                         <DataGrid
@@ -536,47 +537,31 @@
                             IsReadOnly="True"
                             ItemsSource="{Binding PassedSubjects, UpdateSourceTrigger=PropertyChanged}"
                             RenderTransformOrigin="0.548,0.506"
-                            SelectedItem="{Binding subject, UpdateSourceTrigger=PropertyChanged}"
-                            SelectionMode="Single">
+                            SelectedItem="{Binding grade, UpdateSourceTrigger=PropertyChanged}"
+                            SelectionMode="Single" Grid.ColumnSpan="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                     Width="150"
-                                    Binding="{Binding SubjectId}"
+                                    Binding="{Binding Subject_1.SubjectId}"
                                     Header="Subject Id" />
                                 <DataGridTextColumn
                                     Width="200"
-                                    Binding="{Binding SubjectName}"
+                                    Binding="{Binding Subject_1.SubjectName}"
                                     Header="Subject Name" />
                                 <DataGridTextColumn
                                     Width="200"
-                                    Binding="{Binding EspbPoints}"
+                                    Binding="{Binding Subject_1.EspbPoints}"
                                     Header="Espb Points" />
                                 <DataGridTextColumn
                                     Width="200"
-                                    Binding="{Binding YearOfStudy}"
-                                    Header="Year" />
+                                    Binding="{Binding Grade}"
+                                    Header="Grade" />
                                 <DataGridTextColumn
                                     Width="200"
-                                    Binding="{Binding Semester}"
-                                    Header="Semester" />
+                                    Binding="{Binding Date}"
+                                    Header="Date" />
                             </DataGrid.Columns>
                         </DataGrid>
-                        <Button
-                            Grid.Column="1"
-                            Width="137"
-                            Margin="61,62,0,533"
-                            HorizontalAlignment="Left"
-                            Click="AddSubjectPassed_Click"
-                            Content="Add"
-                            IsDefault="True" />
-                        <Button
-                            Grid.Column="1"
-                            Width="173"
-                            Margin="274,62,0,533"
-                            HorizontalAlignment="Left"
-                            Click="DeleteSubjectPassed_Click"
-                            Content="Delete from passed&#xD;&#xA;"
-                            IsDefault="True" />
                     </Grid>
                 </TabItem>
             </TabControl>

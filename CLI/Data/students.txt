@@ -1,4 +1,3 @@
-1|Paunovic Nikse|Nikola|8/10/2002|0|Kisodad|3|Ddrwq|Kisodad|068392017812|jidosa@fksl.c|1|ra|87|2021|1|B|9
 9|Loskdapo|Iopsad|1/1/0001|0|Iofpsa|4|Ioposa|Iofpsa|064291074214|uidpousai@fksa.c|5|ra|15|2021|4|S|5
 321412|Lpkpofsa|Iopifosa|1/17/0001|0|OIokjdpsa|5|Pkfops|OIokjdpsa|06748921741|iopsad@ifosa.c|5|ra|87|2002|4|B|8
-10|Oofpsa|Lofsa|5/21/2001|8|Oopsda|4|Oifopsaf|Oopsda|0684092174012|jfkisoajif@fksoa.cs|9|ra|78901|9031|7|S|7
+10|Oofpsa|Lofsa|5/6/2001|0|Oopsda|4|Oifopsaf|Oopsda|0684092174012|jfkisoajif@fksoa.cs|9|ra|78901|9031|7|S|7

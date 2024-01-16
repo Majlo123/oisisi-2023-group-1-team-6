@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,6 +36,8 @@ namespace GUI.View
         public string professorid;
         public ProfessorDTO professor { get; set; }
         public SubjectDTO subject {  get; set; }
+
+        
         private AddressController addressController;
         private ProfessorController professorController;
         public SubjectController subjectcontroller;
@@ -131,18 +134,13 @@ namespace GUI.View
         {
             AddProfessorToSubject updateProfesor = new AddProfessorToSubject(professorController, subjectcontroller, subject,this);
 
-           
-            updateProfesor.Closed += (s, args) =>
-            {
-                
-                UpdateProfessors();
-            };
+
+            updateProfesor.Closed += AddSubject_Closed;
 
             updateProfesor.Show();
         }
-        public void RefreshData()
+        private void AddSubject_Closed(object sender, EventArgs e)
         {
-            
             UpdateProfessors();
         }
         public void UpdateProfessors()
@@ -181,4 +179,5 @@ namespace GUI.View
 
         }
     }
+    
 }

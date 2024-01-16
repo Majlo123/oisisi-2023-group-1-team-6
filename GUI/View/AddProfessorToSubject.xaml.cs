@@ -79,12 +79,12 @@ namespace GUI.View
             subjectController.Update(SelectedSubject.ToSubject());
 
             
-            updateSubject.RefreshData();
-
+            
+            
             Close();
         }
 
-
+        
 
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)

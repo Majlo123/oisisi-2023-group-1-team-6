@@ -11,9 +11,9 @@ namespace StudentskaSluzba.Model;
     public class Grade : ISerializable
     {
         public int Id { get; set; }
-        public Student StudentWhoPassed {  get; set; }
+        public int studentId {  get; set; }
 
-        public Subject subject { get; set; }
+        public int subjectId { get; set; }
 
         public string grades { get; set; }
 
@@ -23,32 +23,31 @@ namespace StudentskaSluzba.Model;
         {
             grades= "";
             Id = 0;
-            
+            studentId = 0;
+            subjectId = 0;
         }
-        public Grade(int id,Student studentWhoPassed, Subject Subject, DateOnly Date, string grade )
+        public Grade(int id,int studentid, int subjectid, DateOnly Date, string grade )
         {
             Id = id;
-            StudentWhoPassed = studentWhoPassed;
-            subject = Subject;
+            studentId=studentid;
+            subjectId = subjectid;
             date = Date;
             grades = grade;
         }
-        public Grade(int id, Subject Subject, DateOnly Date, string grade)
-        {
-        Id = id;
-        subject = Subject;
+    public Grade(DateOnly Date, string grade)
+    {
+
         date = Date;
         grades = grade;
-         }
+    }
 
     public string[] ToCSV()
         {
             string[] csvValues =
             {
                 Id.ToString(),
-                StudentWhoPassed.Surname,
-                StudentWhoPassed.Name,
-                subject.subjectName,
+                studentId.ToString(),
+                subjectId.ToString(),
                 date.ToString(),
                 grades
 
@@ -60,10 +59,10 @@ namespace StudentskaSluzba.Model;
         public void FromCSV(string[] values)
         {
             Id = int.Parse(values[0]);
-            Student student = new Student(values[1], values[2]);
-            Subject subject = new Subject(values[3]);
-            date = DateOnly.ParseExact(values[4], "M/d/yyyy");
-            grades = values[5];
+            studentId = int.Parse(values[1]);
+            subjectId = int.Parse(values[2]);
+            date = DateOnly.ParseExact(values[3], "M/d/yyyy");
+            grades = values[4];
 
         }
 
@@ -71,22 +70,15 @@ namespace StudentskaSluzba.Model;
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"ID: {Id.ToString()}, ");
-            if (StudentWhoPassed != null)
-            {
-            sb.Append($"Student who passed: {StudentWhoPassed.Name}, ");
-            }
-            else
-            {
-            sb.Append("Student who passed: [Not available], ");
-            }
-            if (subject != null)
-            {
-            sb.Append($"Subject: {subject.subjectName}, ");
-            }
-            else
-            {
-            sb.Append("Subject: [Not available], ");
-            }
+            
+            sb.Append($"Student who passed: {studentId}, ");
+
+
+
+
+        sb.Append($"Subject: {subjectId}, ");
+            
+            
         sb.Append($"Date:  {date.ToString()}, ");
             sb.Append($"Grade: {grades}");
 

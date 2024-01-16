@@ -1,4 +1,5 @@
-﻿using StudentskaSluzba.Model;
+﻿using CLI.Observer;
+using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
 using System;
 using System.Collections.Generic;
@@ -12,14 +13,18 @@ namespace StudentskaSluzba.DAO
     {
         private readonly List<Grade> _grade;
         private readonly Storage<Grade> _storage;
+        public Subject Subject;
 
         public GradesDAO()
         {
             _storage = new Storage<Grade>("grades.txt");
             _grade = _storage.Load();
-
+            Subject=new Subject();
         }
-
+        public void Save()
+        {
+            _storage.Save(_grade);
+        }
         public Grade? GetGradeById(int id)
         {
             return _grade.Find(g=> g.Id == id);
@@ -32,8 +37,20 @@ namespace StudentskaSluzba.DAO
             
             _grade.Add(grade);
             _storage.Save(_grade);
+            Subject.NotifyObservers();
         }
-
+        public List<Grade> GetGradesByIdStudent(int id)
+        {
+            List<Grade> grades_tmp = new List<Grade>();
+            foreach (Grade g in _grade)
+            {
+                if (g.studentId == id)
+                {
+                    grades_tmp.Add(g);
+                }
+            }
+            return grades_tmp;
+        }
         public Grade removeGrade(int id)
         {
             Grade grade = GetGradeById(id);
@@ -44,6 +61,7 @@ namespace StudentskaSluzba.DAO
             }
             _grade.Remove(grade);
             _storage.Save(_grade);
+            Subject.NotifyObservers();
             return grade;
         }
         public Grade UpdateGrade(Grade grade)
@@ -55,14 +73,15 @@ namespace StudentskaSluzba.DAO
                 return null;
             }
             oldGrade.Id = grade.Id;
-            oldGrade.StudentWhoPassed = grade.StudentWhoPassed;
-            oldGrade.subject = grade.subject;
+            oldGrade.studentId = grade.studentId;
+            oldGrade.subjectId = grade.subjectId;
             oldGrade.grades = grade.grades;
             oldGrade.date  = grade.date;
            
 
 
             _storage.Save(_grade);
+            Subject.NotifyObservers();
             return oldGrade;
 
         }

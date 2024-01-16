@@ -82,7 +82,7 @@ namespace StudentskaSluzba.Console
                 grade = System.Console.ReadLine();
             }
 
-            return new Grade(id, student, subject, date, grade);
+            return new Grade(id, student.Id, subject.subjectId, date, grade);
         }
 
         public int InputId()
