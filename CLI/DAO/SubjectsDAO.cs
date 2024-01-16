@@ -62,8 +62,8 @@ namespace StudentskaSluzba.DAO
             CLI.Model.Subject? subject = GetSubjectById(subjectId);
             if (subject == null) return null;
 
-            // Assuming you have a property like professor_Id in your Subject class
-            subject.professor_Id = null; // Set professor_Id to null or any default value you use.
+            
+            subject.professor_Id =""; 
 
             _storage.Save(_subjects);
             SubjectSubject.NotifyObservers();

@@ -27,10 +27,12 @@ namespace GUI.View
         private ProfessorController professorController;
         private AddressController addressController;
         private SubjectController subjectController;
-
+       
         public SubjectDTO SelectedSubject { get; set; }
         public ProfessorDTO SelectedProfessor { get; set; }
-        public AddProfessorToSubject(ProfessorController ps, SubjectController sc, SubjectDTO selectedSubject)
+        private UpdateSubject updateSubject;
+
+        public AddProfessorToSubject(ProfessorController ps, SubjectController sc, SubjectDTO selectedSubject, UpdateSubject updateSubject)
         {
             InitializeComponent();
             professorController = ps;
@@ -38,13 +40,15 @@ namespace GUI.View
             subjectController = sc;
             DataContext = this;
             SelectedSubject = selectedSubject;
+            this.updateSubject = updateSubject;  
             Professors = new ObservableCollection<ProfessorDTO>();
             Update();
         }
         public void Update()
         {
 
-
+            subjectController.Update(SelectedSubject.ToSubject());
+            
             var addresses = addressController.GetAllAddress();
             var professors = professorController.GetAllProfessors();
 
@@ -71,14 +75,15 @@ namespace GUI.View
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             string id_prof = SelectedProfessor.Id;
-            SelectedSubject.professorId = id_prof;
+            SelectedSubject.professor = id_prof;
             subjectController.Update(SelectedSubject.ToSubject());
 
-
-            Update();
+            
+            updateSubject.RefreshData();
 
             Close();
         }
+
 
 
 

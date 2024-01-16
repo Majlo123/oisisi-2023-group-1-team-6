@@ -49,20 +49,20 @@ namespace GUI.DTO
                 }
             }
         }
-        public string professorId;
+        public string professor;
 
-        public string ProfessorId
+        public string Professor
         {
             get
             {
-                return professorId;
+                return professor;
             }
             set
             {
-                if (professorId != value)
+                if (professor != value)
                 {
-                    professorId = value;
-                    OnPropertyChanged("ProfessorId");
+                    professor = value;
+                    OnPropertyChanged("Professor");
                 }
             }
         }
@@ -148,7 +148,7 @@ namespace GUI.DTO
 
 
                 }
-                else if (columnName == "ProfessorId")
+                else if (columnName == "Professor")
                 {
 
                 }
@@ -161,7 +161,7 @@ namespace GUI.DTO
                 return null;
             }
         }
-        private readonly string[] _validatedProperties = { "SubjectId", "SubjectName", "YearOfStudy", "Semester", "ProfessorId", "EspbPoints" };
+        private readonly string[] _validatedProperties = { "SubjectId", "SubjectName", "YearOfStudy", "Semester", "Professor", "EspbPoints" };
         public bool IsValid
         {
             get
@@ -178,7 +178,7 @@ namespace GUI.DTO
         public Subject ToSubject()
         {
 
-            return new Subject(subjectId, subjectName, yearOfStudy, semester, professorId, espbPoints);
+            return new Subject(subjectId, subjectName, yearOfStudy, semester, professor, espbPoints);
         }
         public SubjectDTO()
         {
@@ -189,7 +189,7 @@ namespace GUI.DTO
             subjectName = subject.subjectName;
             yearOfStudy = subject.yearOfStudy;
             semester = subject.semester;
-            professorId = subject.professor_Id;
+            professor = subject.professor_Id;
             espbPoints = subject.ESPBPoints;
         }
         public event PropertyChangedEventHandler? PropertyChanged;

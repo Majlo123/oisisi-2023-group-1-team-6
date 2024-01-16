@@ -5,8 +5,10 @@ using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,7 +37,7 @@ namespace GUI.View
         public SubjectDTO subject {  get; set; }
         private AddressController addressController;
         private ProfessorController professorController;
-        private SubjectController subjectcontroller;
+        public SubjectController subjectcontroller;
         public ObservableCollection<ProfessorDTO> professors { get; set; }
         public UpdateSubject(SubjectController subjectController,SubjectDTO selectedSubject)
         {
@@ -44,7 +46,9 @@ namespace GUI.View
             subjectid = this.subject.SubjectId;
             subjectname = this.subject.SubjectName;
             yearofstudy = this.subject.YearOfStudy;
-            professorid=this.subject.ProfessorId;
+            
+            professorid =this.subject.Professor;
+            
             if (this.subject.Semester == "Winter")
             {
                 semester = "Winter";
@@ -54,16 +58,16 @@ namespace GUI.View
                 semester = "Summer";
             };
             espbpoints = this.subject.EspbPoints;
-            DataContext = this;
+            
             Subject subject=new Subject(subjectid,subjectname,yearofstudy,semester,professorid,espbpoints);
 
             this.subject = new SubjectDTO(subject);
             subjectcontroller = subjectController;
             professorController = new ProfessorController();
             addressController = new AddressController();
-            professors = new ObservableCollection<ProfessorDTO>();
-            UpdateProfessors();
             
+            UpdateProfessors();
+            DataContext = this;
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
@@ -77,15 +81,30 @@ namespace GUI.View
                 MessageBox.Show("Subject can not be updated. Not all fields are valid.");
             }
         }
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        public void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            subjectcontroller.DeleteProfessor(subjectid);
+            
+            string message = "Are you sure that you want to delete professor from subject?";
+            string title = "Deleting professor from subject";
 
-            Close();
+            MessageBoxResult result =
+             MessageBox.Show(message, title,
+   MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                subjectcontroller.DeleteProfessor(subjectid);
+                Close();
+                
+               
+                
+            }
+            else { }
+
+
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -100,28 +119,40 @@ namespace GUI.View
 
 
 
-            professors.Clear();
+            professors = new ObservableCollection<ProfessorDTO>();
 
             foreach (Professor professor in professorController.GetAllProfessors())
-            {
-                professors.Add(new ProfessorDTO(professor));
-            }
+                {
+                    professors.Add(new ProfessorDTO(professor));
+                }
+            
         }
         private void AddProfessor_Click(object sender, RoutedEventArgs e)
         {
+            AddProfessorToSubject updateProfesor = new AddProfessorToSubject(professorController, subjectcontroller, subject,this);
 
-            AddProfessorToSubject updateProfesor = new AddProfessorToSubject(professorController, subjectcontroller, subject);
+           
+            updateProfesor.Closed += (s, args) =>
+            {
+                
+                UpdateProfessors();
+            };
+
             updateProfesor.Show();
         }
-        private void UpdateProfessors()
+        public void RefreshData()
+        {
+            
+            UpdateProfessors();
+        }
+        public void UpdateProfessors()
         {
             GetProfesors();
 
-            if (professorid == null)
+            if (professorid == "")
             {
-                Add.IsEnabled = true;
                 Delete.IsEnabled = false;
-
+                Add.IsEnabled = true;
             }
             else
             {
@@ -136,15 +167,15 @@ namespace GUI.View
                         Add.IsEnabled = false;
                         Delete.IsEnabled = true;
 
+                        professor_textbox.IsReadOnly = true;
                     }
-
                 }
             }
 
-
-            professor_textbox.IsReadOnly = true;
-
+           
+            professor_textbox.GetBindingExpression(TextBox.TextProperty)?.UpdateTarget();
         }
+
         private void Tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
