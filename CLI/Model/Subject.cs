@@ -21,9 +21,9 @@ namespace CLI.Model
         public int subjectId { get; set; }
         public string subjectName { get; set; }
 
-        public int yearOfStudy {  get; set; }
+        public int yearOfStudy { get; set; }
 
-        public Professor professor {  get; set; }
+        public string professor_Id { get; set; }
 
         public int ESPBPoints { get; set; }
 
@@ -31,49 +31,42 @@ namespace CLI.Model
 
         public List<Student> StudentsPassed { get; set; }
 
-        public List<Student> StudentsFailed {  get; set; }
+        public List<Student> StudentsFailed { get; set; }
 
 
-        public Subject() {
+        public Subject()
+        {
             subjectId = 0;
             subjectName = "";
             yearOfStudy = 0;
             ESPBPoints = 0;
+            professor_Id = "";
             StudentsPassed = new List<Student>();
             StudentsFailed = new List<Student>();
         }
         public Subject(string subjectname)
         {
-            
+
             subjectName = subjectname;
 
         }
-        public Subject(int subjectid, string subjectname) { 
-            subjectName=subjectname;
+        public Subject(int subjectid, string subjectname)
+        {
+            subjectName = subjectname;
             subjectId = subjectid;
-        
+
         }
-        public Subject(int subjectid, string subjectname, int yearofstudy,string Semester, Professor Professor, int eSPBPoints)
+        public Subject(int subjectid, string subjectname, int yearofstudy, string Semester, string professor_id, int eSPBPoints)
         {
             subjectId = subjectid;
             subjectName = subjectname;
             yearOfStudy = yearofstudy;
             semester = Semester;
-            professor = Professor;
+            professor_Id = professor_id;
             ESPBPoints = eSPBPoints;
-            StudentsPassed = new List<Student>();
-            StudentsFailed = new List<Student>();
+
         }
-        public Subject(int subjectid, string subjectname, int yearofstudy, string Semester,int eSPBPoints)
-        {
-            subjectId = subjectid;
-            subjectName = subjectname;
-            yearOfStudy = yearofstudy;
-            semester = Semester;
-            
-            ESPBPoints = eSPBPoints;
-           
-        }
+
         public string[] ToCSV()
         {
             string[] csvValues =
@@ -82,6 +75,7 @@ namespace CLI.Model
                 subjectName,
                 yearOfStudy.ToString(),
                 semester,
+                professor_Id,
                 ESPBPoints.ToString()
 
             };
@@ -95,7 +89,8 @@ namespace CLI.Model
             subjectName = values[1];
             yearOfStudy = int.Parse(values[2]);
             semester = (values[3]);
-            ESPBPoints = int.Parse(values[4]);
+            professor_Id = values[4];
+            ESPBPoints = int.Parse(values[5]);
         }
 
         public override string ToString()
@@ -105,8 +100,7 @@ namespace CLI.Model
             sb.Append($"SubjectName: {subjectName}, ");
             sb.Append($"Years of study: {yearOfStudy.ToString()}, ");
             sb.Append($"Semester: {semester}");
-            
-            //sb.AppendLine($"Professor: {professor.Name} {professor.Surname}, ");
+            sb.Append($"Professor: {professor_Id}");
             sb.Append($"ESPB Points: {ESPBPoints.ToString()}, ");
             sb.Append($"Students who passed: ");
             sb.AppendJoin(", ", StudentsPassed.Select(Student => Student.Name));

@@ -69,12 +69,12 @@
         <TextBox Grid.Column="1" Text="{Binding Path=subject.EspbPoints, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="403,317,237,137"/>
         <Label Margin="245,402,482,43" Content="Professor" Grid.Column="1" FontSize="20"/>
-        <TextBox Grid.Column="1" Text="{Binding subject.EspbPoints, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="404,402,295,52"/>
-        <Button Content="+" IsDefault="True" HorizontalAlignment="Left" VerticalAlignment="Top"
-            Click="AddProfessor_Click" Grid.Column="1" Margin="581,408,0,0" Height="31" Width="21" FontSize="18"/>
-        <Button Content="-" IsDefault="True" HorizontalAlignment="Left" VerticalAlignment="Top"
-            Click="Update_Click" Grid.Column="1" Margin="623,408,0,0" Height="31" Width="23" FontSize="22" FontWeight="Bold" FontFamily="Bahnschrift SemiBold"/>
+        <TextBox x:Name="professor_textbox" Grid.Column="1" 
+     Margin="404,402,295,52"/>
+        <Button x:Name="Add" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top"
+    Click="AddProfessor_Click" Grid.Column="1" Margin="581,408,0,0" Height="31" Width="21" FontSize="18"/>
+        <Button x:Name="Delete" Content="-"  HorizontalAlignment="Left" VerticalAlignment="Top"
+    Click="Delete_Click" Grid.Column="1" Margin="623,408,0,0" Height="31" Width="23" FontSize="22" FontWeight="Bold" FontFamily="Bahnschrift SemiBold"/> 
 
 
 

@@ -30,9 +30,9 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine(header);
             foreach (Grade g in grades)
             {
-                    System.Console.WriteLine(g);
+                System.Console.WriteLine(g);
             }
-            
+
         }
 
         public Grade InputGrade()
@@ -51,9 +51,9 @@ namespace StudentskaSluzba.Console
                 StudentsDAO studentsDAO1 = new StudentsDAO();
                 studentToAdd = studentsDAO.GetStudentById(id);
             }
-            
-            
-            Student student = new Student(studentToAdd.Surname,studentToAdd.Name, studentToAdd.Id,
+
+
+            Student student = new Student(studentToAdd.Surname, studentToAdd.Name, studentToAdd.Id,
                 studentToAdd.Date, studentToAdd.Address, studentToAdd.PhoneNumber, studentToAdd.Email,
                 studentToAdd.Index, studentToAdd.YearOfStudy, studentToAdd.Status, studentToAdd.AvarageGrade);
             System.Console.WriteLine("Enter subject id which you want to give grade to student: ");
@@ -69,12 +69,12 @@ namespace StudentskaSluzba.Console
                 subjectToAdd = subjectDAO.GetSubjectById(id2);
             }
             Subject subject = new Subject(subjectToAdd.subjectId, subjectToAdd.subjectName, subjectToAdd.yearOfStudy,
-                subjectToAdd.semester, subjectToAdd.professor, subjectToAdd.ESPBPoints);
+                subjectToAdd.semester, subjectToAdd.professor_Id, subjectToAdd.ESPBPoints);
             System.Console.WriteLine("Enter date of exam (in the format MM/dd/yyyy): ");
             DateOnly date = ConsoleViewUtils.SafeInputDateTime();
             System.Console.WriteLine("Enter grade(must be from 6 to 10): ");
             string grade = System.Console.ReadLine();
-            while (grade != "6"&& grade != "7"&&grade != "8" && grade != "9" && grade != "10"
+            while (grade != "6" && grade != "7" && grade != "8" && grade != "9" && grade != "10"
                 && grade.ToLower() != "six" && grade.ToLower() != "seven" && grade.ToLower() != "eight"
                 && grade.ToLower() != "nine" && grade.ToLower() != "ten")
             {
@@ -82,7 +82,7 @@ namespace StudentskaSluzba.Console
                 grade = System.Console.ReadLine();
             }
 
-            return new Grade(id,student,subject,date,grade);
+            return new Grade(id, student, subject, date, grade);
         }
 
         public int InputId()
@@ -91,7 +91,7 @@ namespace StudentskaSluzba.Console
             int id = ConsoleViewUtils.SafeInputInt();
             return id;
         }
-        
+
 
         public void ShowAllGrades()
         {
@@ -134,7 +134,7 @@ namespace StudentskaSluzba.Console
             _gradesDao.addGrade(grade);
             System.Console.WriteLine("Grade added");
         }
-        
+
 
     }
 }

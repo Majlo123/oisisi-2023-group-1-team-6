@@ -47,7 +47,7 @@ namespace StudentskaSluzba.Console
             int year = ConsoleViewUtils.SafeInputInt();
             System.Console.WriteLine("In which semester is this subject(Summer or winter): ");
             string semester = System.Console.ReadLine();
-            while (semester.ToLower() != "summer" && semester.ToLower()!="winter")
+            while (semester.ToLower() != "summer" && semester.ToLower() != "winter")
             {
                 System.Console.WriteLine("Enter summer or winter: ");
                 semester = System.Console.ReadLine();
@@ -58,23 +58,23 @@ namespace StudentskaSluzba.Console
             Professor professorToAdd = professorDAO.GetProfessorById(id1);
             while (professorToAdd == null)
             {
-                
+
                 System.Console.WriteLine("This proffesor doesn't exist: ");
                 System.Console.WriteLine("Enter proffesor id: ");
-                id1= ConsoleViewUtils.SafeInputString();
+                id1 = ConsoleViewUtils.SafeInputString();
                 ProfessorsDAO professorDAO1 = new ProfessorsDAO();
 
                 professorToAdd = professorDAO.GetProfessorById(id1);
-            } 
-            Professor professor = new Professor(professorToAdd.Surname,professorToAdd.Name,
-                professorToAdd.Date,professorToAdd.Address,professorToAdd.PhoneNumber,
-                professorToAdd.Email,professorToAdd.Id,professorToAdd.Title,professorToAdd.WorkYear);
-            
-            
+            }
+            Professor professor = new Professor(professorToAdd.Surname, professorToAdd.Name,
+                professorToAdd.Date, professorToAdd.Address, professorToAdd.PhoneNumber,
+                professorToAdd.Email, professorToAdd.Id, professorToAdd.Title, professorToAdd.WorkYear);
+
+
             System.Console.WriteLine("Enter ESPB points: ");
             int espb = ConsoleViewUtils.SafeInputInt();
 
-            return new Subject(id, name, year, semester, professor, espb);
+            return new Subject(id, name, year, semester, id1, espb);
         }
 
         public int InputId()

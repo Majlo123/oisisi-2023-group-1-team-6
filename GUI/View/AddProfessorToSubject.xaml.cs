@@ -24,21 +24,26 @@ namespace GUI.View
     public partial class AddProfessorToSubject : Window
     {
         public ObservableCollection<ProfessorDTO> Professors { get; set; }
-        public ProfessorController professorController;
-        public AddressController addressController;
+        private ProfessorController professorController;
+        private AddressController addressController;
+        private SubjectController subjectController;
+
+        public SubjectDTO SelectedSubject { get; set; }
         public ProfessorDTO SelectedProfessor { get; set; }
-        public AddProfessorToSubject()
+        public AddProfessorToSubject(ProfessorController ps, SubjectController sc, SubjectDTO selectedSubject)
         {
             InitializeComponent();
-            professorController = new ProfessorController();
-            addressController = new AddressController(); 
+            professorController = ps;
+            addressController = new AddressController();
+            subjectController = sc;
             DataContext = this;
+            SelectedSubject = selectedSubject;
             Professors = new ObservableCollection<ProfessorDTO>();
             Update();
         }
         public void Update()
         {
-            
+
 
             var addresses = addressController.GetAllAddress();
             var professors = professorController.GetAllProfessors();
@@ -65,8 +70,16 @@ namespace GUI.View
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            string id_prof = SelectedProfessor.Id;
+            SelectedSubject.professorId = id_prof;
+            subjectController.Update(SelectedSubject.ToSubject());
+
+
+            Update();
+
             Close();
         }
+
 
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -11,9 +11,10 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace GUI.DTO
-{   
-    public class SubjectDTO:INotifyPropertyChanged, IDataErrorInfo
+{
+    public class SubjectDTO : INotifyPropertyChanged, IDataErrorInfo
     {
+        public Subject subject;
         public int subjectId;
 
         public int SubjectId
@@ -45,6 +46,23 @@ namespace GUI.DTO
                 {
                     subjectName = value;
                     OnPropertyChanged("SubjectName");
+                }
+            }
+        }
+        public string professorId;
+
+        public string ProfessorId
+        {
+            get
+            {
+                return professorId;
+            }
+            set
+            {
+                if (professorId != value)
+                {
+                    professorId = value;
+                    OnPropertyChanged("ProfessorId");
                 }
             }
         }
@@ -107,7 +125,7 @@ namespace GUI.DTO
             {
                 if (columnName == "SubjectId")
                 {
-                    
+
 
                 }
                 else if (columnName == "SubjectName")
@@ -128,18 +146,22 @@ namespace GUI.DTO
                     if (string.IsNullOrEmpty(Semester))
                         return "Semester is required";
 
-                    
+
+                }
+                else if (columnName == "ProfessorId")
+                {
+
                 }
                 else if (columnName == "EspbPoints")
                 {
 
                 }
-               
-               
+
+
                 return null;
             }
         }
-        private readonly string[] _validatedProperties = {"SubjectId", "SubjectName","YearOfStudy", "Semester", "EspbPoints"};
+        private readonly string[] _validatedProperties = { "SubjectId", "SubjectName", "YearOfStudy", "Semester", "ProfessorId", "EspbPoints" };
         public bool IsValid
         {
             get
@@ -156,7 +178,7 @@ namespace GUI.DTO
         public Subject ToSubject()
         {
 
-            return new Subject(subjectId, subjectName, yearOfStudy, semester, espbPoints);
+            return new Subject(subjectId, subjectName, yearOfStudy, semester, professorId, espbPoints);
         }
         public SubjectDTO()
         {
@@ -164,9 +186,10 @@ namespace GUI.DTO
         public SubjectDTO(Subject subject)
         {
             subjectId = subject.subjectId;
-            subjectName=subject.subjectName;
+            subjectName = subject.subjectName;
             yearOfStudy = subject.yearOfStudy;
             semester = subject.semester;
+            professorId = subject.professor_Id;
             espbPoints = subject.ESPBPoints;
         }
         public event PropertyChangedEventHandler? PropertyChanged;

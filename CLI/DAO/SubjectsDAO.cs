@@ -21,7 +21,7 @@ namespace StudentskaSluzba.DAO
         {
             _storage = new Storage<CLI.Model.Subject>("subject.txt");
             _subjects = _storage.Load();
-            SubjectSubject=new CLI.Observer.Subject();
+            SubjectSubject = new CLI.Observer.Subject();
         }
         /* private int GenerateId()
          {
@@ -57,6 +57,20 @@ namespace StudentskaSluzba.DAO
             SubjectSubject.NotifyObservers();
             return subject;
         }
+        public CLI.Model.Subject removeProfessorfromSubject(int subjectId)
+        {
+            CLI.Model.Subject? subject = GetSubjectById(subjectId);
+            if (subject == null) return null;
+
+            // Assuming you have a property like professor_Id in your Subject class
+            subject.professor_Id = null; // Set professor_Id to null or any default value you use.
+
+            _storage.Save(_subjects);
+            SubjectSubject.NotifyObservers();
+
+            return subject;
+        }
+
         public CLI.Model.Subject? UpdateSubject(CLI.Model.Subject subject)
         {
             CLI.Model.Subject? oldSubject = GetSubjectById(subject.subjectId);
@@ -64,7 +78,7 @@ namespace StudentskaSluzba.DAO
             oldSubject.subjectId = subject.subjectId;
             oldSubject.subjectName = subject.subjectName;
             oldSubject.yearOfStudy = subject.yearOfStudy;
-            oldSubject.professor = subject.professor;
+            oldSubject.professor_Id = subject.professor_Id;
             oldSubject.ESPBPoints = subject.ESPBPoints;
             oldSubject.semester = subject.semester;
             oldSubject.StudentsPassed = subject.StudentsPassed;

@@ -30,12 +30,13 @@ namespace GUI.View
         public int yearofstudy;
         string semester { get; set; }
         int espbpoints;
-
+        public string professorid;
         public ProfessorDTO professor { get; set; }
         public SubjectDTO subject {  get; set; }
-
+        private AddressController addressController;
+        private ProfessorController professorController;
         private SubjectController subjectcontroller;
-        public ObservableCollection<Professor> professors { get; set; }
+        public ObservableCollection<ProfessorDTO> professors { get; set; }
         public UpdateSubject(SubjectController subjectController,SubjectDTO selectedSubject)
         {
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace GUI.View
             subjectid = this.subject.SubjectId;
             subjectname = this.subject.SubjectName;
             yearofstudy = this.subject.YearOfStudy;
+            professorid=this.subject.ProfessorId;
             if (this.subject.Semester == "Winter")
             {
                 semester = "Winter";
@@ -53,11 +55,15 @@ namespace GUI.View
             };
             espbpoints = this.subject.EspbPoints;
             DataContext = this;
-            Subject subject=new Subject(subjectid,subjectname,yearofstudy,semester,espbpoints);
+            Subject subject=new Subject(subjectid,subjectname,yearofstudy,semester,professorid,espbpoints);
 
             this.subject = new SubjectDTO(subject);
-            UpdateProfessors();
             subjectcontroller = subjectController;
+            professorController = new ProfessorController();
+            addressController = new AddressController();
+            professors = new ObservableCollection<ProfessorDTO>();
+            UpdateProfessors();
+            
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
@@ -75,6 +81,12 @@ namespace GUI.View
         {
             Close();
         }
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            subjectcontroller.DeleteProfessor(subjectid);
+
+            Close();
+        }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -83,15 +95,55 @@ namespace GUI.View
         {
 
         }
-        private void AddProfessor_Click(object sender, RoutedEventArgs e) {
+        private void GetProfesors()
+        {
 
-            AddProfessorToSubject updateProfesor = new AddProfessorToSubject();
+
+
+            professors.Clear();
+
+            foreach (Professor professor in professorController.GetAllProfessors())
+            {
+                professors.Add(new ProfessorDTO(professor));
+            }
+        }
+        private void AddProfessor_Click(object sender, RoutedEventArgs e)
+        {
+
+            AddProfessorToSubject updateProfesor = new AddProfessorToSubject(professorController, subjectcontroller, subject);
             updateProfesor.Show();
         }
         private void UpdateProfessors()
         {
+            GetProfesors();
 
-           
+            if (professorid == null)
+            {
+                Add.IsEnabled = true;
+                Delete.IsEnabled = false;
+
+            }
+            else
+            {
+                foreach (Professor professor in professorController.GetAllProfessors())
+                {
+                    if (professor.Id == professorid)
+                    {
+                        string name = professor.Name;
+                        string surname = professor.Surname;
+                        professor_textbox.Text = name + " " + surname;
+
+                        Add.IsEnabled = false;
+                        Delete.IsEnabled = true;
+
+                    }
+
+                }
+            }
+
+
+            professor_textbox.IsReadOnly = true;
+
         }
         private void Tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

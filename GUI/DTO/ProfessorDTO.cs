@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace GUI.DTO
 {
-    public class ProfessorDTO:INotifyPropertyChanged,IDataErrorInfo
+    public class ProfessorDTO : INotifyPropertyChanged, IDataErrorInfo
     {
         public AddressController addressController { get; set; }
 
@@ -35,7 +35,7 @@ namespace GUI.DTO
             }
         }
 
-        
+
 
         private string surname;
         public string Surname
@@ -69,7 +69,7 @@ namespace GUI.DTO
                 }
             }
         }
-        
+
         private int addresid;
         public int AddressId
         {
@@ -230,13 +230,13 @@ namespace GUI.DTO
                 }
             }
         }
-      
+
         public string Error => null;
 
         private Regex _NameRegex = new Regex("[A-Za-z0-9-]+");
         private Regex _IdRegex = new Regex("[0-9]{9}");
         private Regex _PhoneNumberRegex = new Regex("[+][0-9]{7,15}");
-      
+
         private Regex _EmailRegex = new Regex("[a-zA-Z]+[@][a-zA-Z]+[.][a-zA-Z]+");
         private Regex _DateRegex = new Regex("[0-9]{1,2}[/][0-9]{1,2}[/][0-9]{4}");
 
@@ -266,7 +266,7 @@ namespace GUI.DTO
                 }
                 else if (columnName == "Date")
                 {
-                    
+
                 }
                 else if (columnName == "AddressId")
                 {
@@ -283,7 +283,7 @@ namespace GUI.DTO
                 }
                 else if (columnName == "Number")
                 {
-                    
+
                 }
                 else if (columnName == "City")
                 {
@@ -341,9 +341,9 @@ namespace GUI.DTO
                 }
                 else if (columnName == "Workyear")
                 {
-                    
+
                 }
-               
+
                 return null;
             }
         }
@@ -365,18 +365,18 @@ namespace GUI.DTO
                 return true;
             }
         }
-        
+
         public Professor ToProfessor()
         {
-            Address address = new Address(addresid, street,number,city,state);
-            return new Professor(surname,name,date,address,phone,email,id,title,workyear);
+            Address address = new Address(addresid, street, number, city, state);
+            return new Professor(surname, name, date, address, phone, email, id, title, workyear);
         }
 
-        
+
         public Address ToAddress()
         {
-           return new Address(addresid,street, number, city, state);
-            
+            return new Address(addresid, street, number, city, state);
+
         }
         public ProfessorDTO()
         {
@@ -384,14 +384,14 @@ namespace GUI.DTO
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public ProfessorDTO(Professor professor,Address address)
+        public ProfessorDTO(Professor professor, Address address)
         {
             surname = professor.Surname;
             name = professor.Name;
-            date=professor.Date;
+            date = professor.Date;
             addresid = address.id;
             street = address.Street;
-            number=address.Number;
+            number = address.Number;
             city = address.City;
             state = address.State;
             address = professor.Address;
@@ -400,6 +400,12 @@ namespace GUI.DTO
             id = professor.Id;
             title = professor.Title;
             workyear = professor.WorkYear;
+        }
+        public ProfessorDTO(Professor professor)
+        {
+            surname = professor.Surname;
+            name = professor.Name;
+            id = professor.Id;
         }
 
         protected virtual void OnPropertyChanged(string name)

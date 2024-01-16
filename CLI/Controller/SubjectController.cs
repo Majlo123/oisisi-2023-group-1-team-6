@@ -40,11 +40,17 @@ namespace CLI.Controller
         {
             _subjects.SubjectSubject.Subscribe(observer);
         }
-        public CLI.Model.Subject? getSubjectById(int subjectid) { 
+        public CLI.Model.Subject? getSubjectById(int subjectid)
+        {
             return _subjects.GetSubjectById(subjectid);
         }
-        public void Save() {
+        public void Save()
+        {
             _subjects.Save();
+        }
+        public void DeleteProfessor(int professor_id)
+        {
+            _subjects.removeProfessorfromSubject(professor_id);
         }
     }
 }

@@ -1,3 +1,1 @@
-2|dawq2|3|Summer|12
-1|dawq|3|Winter|12
-12|s|12|Winter|12
+12|ss|12|Winter||14
