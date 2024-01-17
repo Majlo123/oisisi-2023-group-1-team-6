@@ -203,7 +203,7 @@
                 </DataGrid>
 
             </TabItem>
-            <TabItem Header="Subjects">
+            <TabItem Header="{ns:Loc Subjects}">
                 <DataGrid
                     x:Name="SubjectsDataGrid"
                     Width="895"

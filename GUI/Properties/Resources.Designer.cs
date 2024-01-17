@@ -538,6 +538,15 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Predmet.
+        /// </summary>
+        public static string Subjects {
+            get {
+                return ResourceManager.GetString("Subjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Polazi Ispit.
         /// </summary>
         public static string TakeExam {

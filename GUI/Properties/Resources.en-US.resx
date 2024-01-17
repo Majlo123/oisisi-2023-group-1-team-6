@@ -276,6 +276,9 @@
   <data name="SubjectName" xml:space="preserve">
     <value>Subject Name</value>
   </data>
+  <data name="Subjects" xml:space="preserve">
+    <value>Subjects</value>
+  </data>
   <data name="TakeExam" xml:space="preserve">
     <value>Take Exam</value>
   </data>
