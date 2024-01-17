@@ -5,12 +5,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:GUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ns="clr-namespace:GUI.Localization"
+    mc:Ignorable="d"
     Title="StudentskaSluzba"
     Width="1000"
     Height="500"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d">
+    KeyDown="Window_KeyDown">
+    
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Click="MenuItem_Click" Header="File">
@@ -56,6 +59,10 @@
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Click="About_Click" Header="About" />
+            </MenuItem>
+            <MenuItem Header="Localization">
+                <MenuItem Header="Serbian" Click="MenuItem_Click_Serbian" InputGestureText="Ctrl + R"></MenuItem>
+                <MenuItem Header="English" Click="MenuItem_Click_English" InputGestureText="Ctrl + E"></MenuItem>
             </MenuItem>
         </Menu>
         <ToolBar Height="36" DockPanel.Dock="Top">

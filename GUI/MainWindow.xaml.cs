@@ -33,6 +33,11 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window,IObserver
     {
+        private App app;
+        private const string SRB = "sr-RS";
+        private const string ENG = "en-US";
+        public string StatusBarString;
+
         public ObservableCollection<ProfessorDTO> Professors { get; set; }
         public ObservableCollection<SubjectDTO> Subjects { get; set; }
         public ObservableCollection<StudentDTO> Students { get; set; }
@@ -77,6 +82,9 @@ namespace GUI
             subjectsController.Subscribe(this);
             studentController.Subscribe(this);
             indexController.Subscribe(this);
+            app = (App)Application.Current;
+            app.ChangeLanguage(ENG);
+            
             Update();
         }
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -95,7 +103,15 @@ namespace GUI
                 addSubject.Show();
             }
         }
+        private void MenuItem_Click_Serbian(object sender, RoutedEventArgs e)
+        {
+            app.ChangeLanguage(SRB);
+        }
 
+        private void MenuItem_Click_English(object sender, RoutedEventArgs e)
+        {
+            app.ChangeLanguage(ENG);
+        }
         public void Update()
         {
             Subjects.Clear();
@@ -524,6 +540,28 @@ namespace GUI
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.N))
+                Add_Click(sender, e);
+            else if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.D))
+                Delete_Click(sender, e);
+            else if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.E))
+                Update_Click(sender, e);
+            else if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.S))
+                Save_Click(sender, e);
+            else if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.C))
+                Close_Click(sender, e);
+            else if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.A))
+                About_Click(sender, e);
+            else if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.F1))
+                tabs.SelectedIndex = 0;
+            else if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.F2))
+                tabs.SelectedIndex=1;
+            else if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.F3))
+                tabs.SelectedIndex=2;
+            
         }
     }
    

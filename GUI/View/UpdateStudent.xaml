@@ -550,15 +550,15 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                     Width="150"
-                                    Binding="{Binding Subject_1.SubjectId}"
+                                    Binding="{Binding grade.Subject_Id}"
                                     Header="Subject Id" />
                                 <DataGridTextColumn
                                     Width="200"
-                                    Binding="{Binding Subject_1.SubjectName}"
+                                    Binding="{Binding grade.Subject_1.SubjectName}"
                                     Header="Subject Name" />
                                 <DataGridTextColumn
                                     Width="200"
-                                    Binding="{Binding Subject_1.EspbPoints}"
+                                    Binding="{Binding grade.Subject_1.EspbPoints}"
                                     Header="Espb Points" />
                                 <DataGridTextColumn
                                     Width="200"

@@ -13,13 +13,13 @@
                 <Grid HorizontalAlignment="Left" Margin="246,0,0,0">
                     <DataGrid
                     x:Name="SubjectsDataGrid"
-                    Width="291"
+                    Width="354"
                     HorizontalAlignment="Left"
                     AutoGenerateColumns="False"
                     IsReadOnly="True"
                     ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}"
                     RenderTransformOrigin="0.548,0.506"
-                    SelectedItem="{Binding SelectedSubject, UpdateSourceTrigger=PropertyChanged}"
+                    SelectedItem="{Binding SelectedSubject, UpdateSourceTrigger=PropertyChanged}" Margin="-43,0,0,0"
                     >
                         <DataGrid.Columns>
                             <DataGridTextColumn
