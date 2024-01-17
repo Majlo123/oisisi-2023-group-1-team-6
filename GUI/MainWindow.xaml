@@ -16,11 +16,11 @@
     
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Click="MenuItem_Click" Header="File">
+            <MenuItem Click="MenuItem_Click" Header="{ns:Loc File}">
 
                 <MenuItem
                     Click="Add_Click"
-                    Header="Add"
+                    Header="{ns:Loc New}"
                     InputGestureText="Ctrl + N">
                     <MenuItem.Icon>
                         <Image
@@ -32,7 +32,7 @@
                 </MenuItem>
                 <MenuItem
                     Click="Close_Click"
-                    Header="Close"
+                    Header="{ns:Loc Close}"
                     InputGestureText="Ctrl + C">
                     <MenuItem.Icon>
                         <Image
@@ -43,7 +43,7 @@
                     </MenuItem.Icon>
 
                 </MenuItem>
-                <MenuItem Click="Save_Click" Header="Save">
+                <MenuItem Click="Save_Click" Header="{ns:Loc Save}">
                     <MenuItem.Icon>
                         <Image
                             Width="20"
@@ -53,16 +53,16 @@
                 </MenuItem>
 
             </MenuItem>
-            <MenuItem Header="Edit">
-                <MenuItem Click="Update_Click" Header="Update" />
-                <MenuItem Click="Delete_Click" Header="Delete" />
+            <MenuItem Header="{ns:Loc Edit}">
+                <MenuItem Click="Update_Click" Header="{ns:Loc Update}" />
+                <MenuItem Click="Delete_Click" Header="{ns:Loc Delete}" />
             </MenuItem>
-            <MenuItem Header="Help">
-                <MenuItem Click="About_Click" Header="About" />
+            <MenuItem Header="{ns:Loc Help}">
+                <MenuItem Click="About_Click" Header="{ns:Loc About}" />
             </MenuItem>
-            <MenuItem Header="Localization">
-                <MenuItem Header="Serbian" Click="MenuItem_Click_Serbian" InputGestureText="Ctrl + R"></MenuItem>
-                <MenuItem Header="English" Click="MenuItem_Click_English" InputGestureText="Ctrl + E"></MenuItem>
+            <MenuItem Header="{ns:Loc Localization}" Name="Lokalizacija">
+                <MenuItem Header="{ns:Loc Serbian}" Click="MenuItem_Click_Serbian" InputGestureText="Ctrl + R"></MenuItem>
+                <MenuItem Header="{ns:Loc English}" Click="MenuItem_Click_English" InputGestureText="Ctrl + E"></MenuItem>
             </MenuItem>
         </Menu>
         <ToolBar Height="36" DockPanel.Dock="Top">
@@ -131,7 +131,7 @@
             Name="tabs"
             Width="987"
             Height="398">
-            <TabItem Header="Professors">
+            <TabItem Header="{ns:Loc Professors}">
                 <DataGrid
                     x:Name="ProfessorsDataGrid"
                     Width="895"
@@ -147,23 +147,23 @@
                         <DataGridTextColumn
                             Width="200"
                             Binding="{Binding Name}"
-                            Header="Name" />
+                            Header="{ns:Loc ProfessorName}" />
                         <DataGridTextColumn
                             Width="250"
                             Binding="{Binding Surname}"
-                            Header="Surname" />
+                            Header="{ns:Loc ProfessorSurname}" />
                         <DataGridTextColumn
                             Width="300"
                             Binding="{Binding Email}"
-                            Header="Email" />
+                            Header="{ns:Loc ProfessorEmail}" />
                         <DataGridTextColumn
                             Width="200"
                             Binding="{Binding Title}"
-                            Header="Title" />
+                            Header="{ns:Loc Title}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-            <TabItem Header="Students">
+            <TabItem Header="{ns:Loc Students}">
                 <DataGrid
                     x:Name="StudentsDataGrid"
                     Width="895"
@@ -178,27 +178,27 @@
                         <DataGridTextColumn
                             Width="100"
                             Binding="{Binding PrintIndex}"
-                            Header="Index" />
+                            Header="{ns:Loc Index}" />
                         <DataGridTextColumn
                             Width="200"
                             Binding="{Binding Name}"
-                            Header="Name" />
+                            Header="{ns:Loc StudentName}" />
                         <DataGridTextColumn
                             Width="200"
                             Binding="{Binding Surname}"
-                            Header="Surname" />
+                            Header="{ns:Loc StudentSurname}" />
                         <DataGridTextColumn
                             Width="100"
                             Binding="{Binding YearOfStudy}"
-                            Header="Year of study" />
+                            Header="{ns:Loc YearOfStudy}" />
                         <DataGridTextColumn
                             Width="100"
                             Binding="{Binding Status}"
-                            Header="Status(B or S)" />
+                            Header="{ns:Loc Status}" />
                         <DataGridTextColumn
                             Width="300"
                             Binding="{Binding Average}"
-                            Header="Average grade" />
+                            Header="{ns:Loc Average}" />
                     </DataGrid.Columns>
                 </DataGrid>
 
@@ -219,23 +219,23 @@
                         <DataGridTextColumn
                             Width="150"
                             Binding="{Binding SubjectId}"
-                            Header="Subject Id" />
+                            Header="{ns:Loc SubjectId}" />
                         <DataGridTextColumn
                             Width="200"
                             Binding="{Binding SubjectName}"
-                            Header="Subject Name" />
+                            Header="{ns:Loc SubjectName}" />
                         <DataGridTextColumn
                             Width="200"
                             Binding="{Binding EspbPoints}"
-                            Header="Espb Points" />
+                            Header="{ns:Loc EspbPoints}" />
                         <DataGridTextColumn
                             Width="200"
                             Binding="{Binding YearOfStudy}"
-                            Header="Year" />
+                            Header="{ns:Loc Year}" />
                         <DataGridTextColumn
                             Width="200"
                             Binding="{Binding Semester}"
-                            Header="Semester" />
+                            Header="{ns:Loc Semestar}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>

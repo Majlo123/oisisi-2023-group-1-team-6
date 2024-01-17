@@ -159,15 +159,16 @@ namespace GUI
             {
                 if (SelectedProfessor == null)
                 {
+                    
                     MessageBox.Show("Please choose profesor to delete!");
                 }
                 else
                 {
-                    string message = "Are you sure that you want to delete a professor?";
+                    string messageprof = "Are you sure that you want to delete a professor?";
                     string title = "Deleting professor";
 
                     MessageBoxResult result =
-                     MessageBox.Show(message, title,
+                     MessageBox.Show(messageprof, title,
            MessageBoxButton.OKCancel);
 
                     if (result == MessageBoxResult.OK)
@@ -287,11 +288,11 @@ namespace GUI
         private void About_Click(object sender, RoutedEventArgs e)
         {
 
-
-            MessageBox.Show("This application is made by two students from FTN Novi Sad\n" +
-                "Mihajlo Bogdanovic RA64/2021\n" +
-                "Nikola Paunovic RA87/2021");
-
+            
+                MessageBox.Show("This application is made by two students from FTN Novi Sad\n" +
+                    "Mihajlo Bogdanovic RA64/2021\n" +
+                    "Nikola Paunovic RA87/2021");
+            
 
 
         }

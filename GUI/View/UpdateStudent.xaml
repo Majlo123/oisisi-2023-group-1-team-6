@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ns="clr-namespace:GUI.Localization"
     Title="UpdateStudent"
     Width="914"
     Height="697"
@@ -445,7 +446,7 @@
                             Margin="7,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Id of student:" />
+                            Content="{ns:Loc StudentId}" />
                         <Button
                             Grid.Row="9"
                             Grid.Column="4"
