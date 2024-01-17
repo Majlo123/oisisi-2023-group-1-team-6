@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ns="clr-namespace:GUI.Localization"
         xmlns:local="clr-namespace:GUI.View"
         mc:Ignorable="d"
-            Title="Update subject" Height="700" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+            Title="{ns:Loc UpdateSubject}" Height="700" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
         <ControlTemplate x:Key="ValidationTemplate">
             <StackPanel>
@@ -48,13 +49,13 @@
 
         </Grid>
         <WrapPanel Grid.Row="1" FlowDirection="RightToLeft" Margin="0,98,0,0" Height="246" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20, 5, 20, 5"
+            <Button Content="{ns:Loc Cancel}" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20, 5, 20, 5"
             Click="Cancel_Click"/>
-            <Button Content="Update" IsDefault="True" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <Button Content="{ns:Loc Update}" IsDefault="True" HorizontalAlignment="Center" VerticalAlignment="Center"
             Click="Update_Click"/>
         </WrapPanel>
-        <Label Margin="245,317,482,128" Content="Espb Points" Grid.Column="1" FontSize="20"/>
-        <Label Margin="245,225,508,163" Content="Semester" Grid.Column="1" FontSize="20"/>
+        <Label Margin="245,317,482,128" Content="{ns:Loc EspbPoints}" Grid.Column="1" FontSize="20"/>
+        <Label Margin="245,225,508,163" Content="{ns:Loc Semestar}" Grid.Column="1" FontSize="20"/>
         <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="213" Height="46" Text="{Binding Path=subject.Semester,UpdateSourceTrigger=PropertyChanged,  ValidatesOnDataErrors=True}"  Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,0,0,0">
             <ComboBoxItem Content="Summer"/>
             <ComboBoxItem Content="Winter"/>
@@ -63,12 +64,12 @@
             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,136,237,319"/>
 
         <TextBox Text="{Binding Path= subject.SubjectName,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                 Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,45,237,402" Grid.Column="1"/>
-        <Label Margin="245,56,430,308" Content="Subject Name" Grid.Column="1" FontSize="20"/>
-        <Label Margin="245,139,430,225" Content="Year" Grid.Column="1" FontSize="20"/>
+                 Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="393,45,219,391" Grid.Column="1"/>
+        <Label Margin="245,56,430,308" Content="{ns:Loc SubjectName}" Grid.Column="1" FontSize="20"/>
+        <Label Margin="245,139,430,225" Content="{ns:Loc Year}" Grid.Column="1" FontSize="20"/>
         <TextBox Grid.Column="1" Text="{Binding Path=subject.EspbPoints, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="403,317,237,137"/>
-        <Label Margin="245,402,482,43" Content="Professor" Grid.Column="1" FontSize="20"/>
+        <Label Margin="245,402,482,43" Content="{ns:Loc Professor}" Grid.Column="1" FontSize="20"/>
         <TextBox x:Name="professor_textbox" Grid.Column="1" 
      Margin="404,402,295,52"/>
         <Button x:Name="Add" Content="+" IsDefault="True" HorizontalAlignment="Left" VerticalAlignment="Top"

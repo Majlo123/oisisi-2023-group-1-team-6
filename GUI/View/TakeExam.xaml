@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ns="clr-namespace:GUI.Localization"
         xmlns:local="clr-namespace:GUI.View"
         mc:Ignorable="d"
-            Title="Take Exam" Height="700" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+            Title="{ns:Loc TakeExam}" Height="700" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
         <ControlTemplate x:Key="ValidationTemplate">
             <StackPanel>
@@ -48,13 +49,13 @@
 
         </Grid>
         <WrapPanel Grid.Row="1" FlowDirection="RightToLeft" Margin="0,36,0,0" Height="308" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20, 5, 20, 5"
+            <Button Content="{ns:Loc Cancel}" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20, 5, 20, 5"
             Click="Cancel_Click"/>
-            <Button Content="Update" IsDefault="True" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <Button Content="{ns:Loc Update}" IsDefault="True" HorizontalAlignment="Center" VerticalAlignment="Center"
             Click="Update_Click"/>
         </WrapPanel>
-        <Label Margin="245,317,430,330" Content="Date of Exam" Grid.Column="1" FontSize="20" Grid.RowSpan="2"/>
-        <Label Margin="245,225,508,163" Content="Grade" Grid.Column="1" FontSize="20"/>
+        <Label Margin="245,317,430,330" Content="{ns:Loc DateOfExam}" Grid.Column="1" FontSize="20" Grid.RowSpan="2"/>
+        <Label Margin="245,225,508,163" Content="{ns:Loc Grade}" Grid.Column="1" FontSize="20"/>
         <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="195" Height="50" Text="{Binding Path=Grade.Grade,UpdateSourceTrigger=PropertyChanged,  ValidatesOnDataErrors=True}"  Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,230,0,0">
             <ComboBoxItem Content="6"/>
             <ComboBoxItem Content="7"/>
@@ -67,8 +68,8 @@
 
         <TextBox IsEnabled="False" Text="{Binding Path= Subject.SubjectId,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                  Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,45,237,339" Grid.Column="1"/>
-        <Label Margin="245,56,430,308" Content="Subject Id" Grid.Column="1" FontSize="20"/>
-        <Label Margin="245,139,430,225" Content="Subject Name" Grid.Column="1" FontSize="20"/>
+        <Label Margin="245,56,430,308" Content="{ns:Loc SubjectId}" Grid.Column="1" FontSize="20"/>
+        <Label Margin="245,139,430,225" Content="{ns:Loc SubjectName}" Grid.Column="1" FontSize="20"/>
         <DatePicker
      Grid.Column="1"
      Width="195"

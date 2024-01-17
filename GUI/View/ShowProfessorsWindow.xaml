@@ -3,13 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ns="clr-namespace:GUI.Localization"
         xmlns:local="clr-namespace:GUI.View"
         mc:Ignorable="d"
-        Title="Show Professors" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="{ns:Loc ShowProfessors}" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
 
         <TabControl SelectionChanged="TabControl_SelectionChanged">
-            <TabItem Header="Professors">
+            <TabItem Header="{ns:Loc Professors}">
                 <Grid HorizontalAlignment="Left" Margin="246,0,0,0">
                     <DataGrid
                     x:Name="SubjectsDataGrid"

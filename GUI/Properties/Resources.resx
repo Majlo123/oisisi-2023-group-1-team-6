@@ -117,14 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Abbrebavation" xml:space="preserve">
+    <value>Oznaka Smera</value>
+  </data>
   <data name="About" xml:space="preserve">
     <value>Informacije</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="AddProfessor" xml:space="preserve">
+    <value>Dodaj Profesora</value>
+  </data>
+  <data name="AddProfessorToSubject" xml:space="preserve">
+    <value>Dodaj Profesora Na Predmet</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresa</value>
+  </data>
+  <data name="AddressId" xml:space="preserve">
+    <value>Id Adrese</value>
+  </data>
+  <data name="AddStudent" xml:space="preserve">
+    <value>Dodaj Studenta</value>
+  </data>
+  <data name="AddSubject" xml:space="preserve">
+    <value>Dodaj Predmet</value>
+  </data>
+  <data name="AddSubjectToStudent" xml:space="preserve">
+    <value>Dodaj Predmet Studentu</value>
   </data>
   <data name="Average" xml:space="preserve">
     <value>Prosek</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Grad</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>Zatvori</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Datum rodjenja</value>
+  </data>
+  <data name="DateOfExam" xml:space="preserve">
+    <value>Datum Ispita</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Obrisi</value>
@@ -141,17 +183,47 @@
   <data name="File" xml:space="preserve">
     <value>Fajl</value>
   </data>
+  <data name="Grade" xml:space="preserve">
+    <value>Ocena</value>
+  </data>
   <data name="Help" xml:space="preserve">
     <value>Pomoc</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>Broj Licne Karte</value>
+  </data>
+  <data name="IdAddress" xml:space="preserve">
+    <value>ID Adrese</value>
+  </data>
+  <data name="IdIndex" xml:space="preserve">
+    <value>Id Indeksa</value>
   </data>
   <data name="Index" xml:space="preserve">
     <value>Indeks</value>
   </data>
+  <data name="Information" xml:space="preserve">
+    <value>Informacije</value>
+  </data>
   <data name="Localization" xml:space="preserve">
     <value>Lokalizacija</value>
   </data>
+  <data name="Mark" xml:space="preserve">
+    <value>Broj Upisa</value>
+  </data>
   <data name="New" xml:space="preserve">
     <value>Novi</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Broj</value>
+  </data>
+  <data name="Passed" xml:space="preserve">
+    <value>Polozeni Predmeti</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Broj Telefona</value>
+  </data>
+  <data name="Professor" xml:space="preserve">
+    <value>Profesor</value>
   </data>
   <data name="ProfessorEmail" xml:space="preserve">
     <value>Email</value>
@@ -165,14 +237,26 @@
   <data name="ProfessorSurname" xml:space="preserve">
     <value>Prezime</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Sacuvaj</value>
+  </data>
   <data name="Semestar" xml:space="preserve">
     <value>Semestar</value>
   </data>
   <data name="Serbian" xml:space="preserve">
     <value>Srpski</value>
   </data>
+  <data name="ShowProfessors" xml:space="preserve">
+    <value>Prikazi Profesore</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Drzava</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status(B ili S)</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Ulica</value>
   </data>
   <data name="StudentId" xml:space="preserve">
     <value>ID Studenta</value>
@@ -192,16 +276,37 @@
   <data name="SubjectName" xml:space="preserve">
     <value>Ime predmeta</value>
   </data>
+  <data name="TakeExam" xml:space="preserve">
+    <value>Polazi Ispit</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Zvanje</value>
+  </data>
+  <data name="Unpassed" xml:space="preserve">
+    <value>Nepolozeni Predmeti</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Azuriraj</value>
   </data>
+  <data name="UpdateProfessor" xml:space="preserve">
+    <value>Azuriraj Profesora</value>
+  </data>
+  <data name="UpdateStudent" xml:space="preserve">
+    <value>Azuriraj Studenta</value>
+  </data>
+  <data name="UpdateSubject" xml:space="preserve">
+    <value>Azuriraj Predmet</value>
+  </data>
   <data name="Year" xml:space="preserve">
     <value>Godina</value>
   </data>
+  <data name="YearOfEnrollment" xml:space="preserve">
+    <value>Godina Upisa</value>
+  </data>
   <data name="YearOfStudy" xml:space="preserve">
     <value>Godina studija</value>
+  </data>
+  <data name="YearsOfWork" xml:space="preserve">
+    <value>Godina Staza</value>
   </data>
 </root>

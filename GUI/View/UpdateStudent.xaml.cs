@@ -290,6 +290,11 @@ namespace GUI.View
         {
 
         }
+
+        private void UnpassedSubjectsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
 

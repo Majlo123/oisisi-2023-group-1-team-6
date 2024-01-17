@@ -5,7 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:GUI.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="Update professor"
+    xmlns:ns="clr-namespace:GUI.Localization"
+    Title="{ns:Loc UpdateProfessor}"
     Width="914"
     Height="697"
     ResizeMode="NoResize"
@@ -140,13 +141,13 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Click="Cancel_Click"
-                Content="Cancel"
+                Content="{ns:Loc Cancel}"
                 IsCancel="True" />
             <Button
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="Update_Click"
-                Content="Update"
+                Content="{ns:Loc Update}"
                 IsDefault="True" />
         </WrapPanel>
         <Label
@@ -156,47 +157,47 @@
         <Label
             Grid.Column="1"
             Margin="430,108,288,205"
-            Content="Title" />
+            Content="{ns:Loc Title}" />
         <Label
             Grid.Column="1"
             Margin="430,176,288,137"
-            Content="Years of working" />
+            Content="{ns:Loc YearsOfWork}" />
         <Label
             Grid.Column="1"
             Margin="430,16,288,296"
-            Content="Phone number" />
+            Content="{ns:Loc Phone}" />
         <Label
             Grid.Column="1"
             Margin="30,10,688,302"
-            Content="Surname" />
+            Content="{ns:Loc ProfessorName}" />
         <Label
             Grid.Column="1"
             Margin="30,54,688,258"
-            Content="Name" />
+            Content="{ns:Loc ProfessorSurname}" />
         <Label
             Grid.Column="1"
             Margin="30,98,688,214"
-            Content="Date of birth" />
+            Content="{ns:Loc DateOfBirth}" />
         <Label
             Grid.Column="1"
             Margin="30,142,688,170"
-            Content="Address:" />
+            Content="{ns:Loc Address}" />
         <Label
             Grid.Column="1"
             Margin="57,182,661,130"
-            Content="Street" />
+            Content="{ns:Loc Street}" />
         <Label
             Grid.Column="1"
             Margin="57,221,661,91"
-            Content="Number" />
+            Content="{ns:Loc Number}" />
         <Label
             Grid.Column="1"
             Margin="57,265,661,47"
-            Content="City" />
+            Content="{ns:Loc City}" />
         <Label
             Grid.Column="1"
             Margin="57,305,661,7"
-            Content="State" />
+            Content="{ns:Loc State}" />
 
 
 

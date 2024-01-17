@@ -5,7 +5,7 @@
     xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ns="clr-namespace:GUI.Localization"
-    Title="UpdateStudent"
+    Title="{ns:Loc UpdateStudent}"
     Width="914"
     Height="697"
     WindowStartupLocation="CenterScreen"
@@ -23,9 +23,13 @@
         </ControlTemplate>
     </Window.Resources>
     <Grid>
-        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="69*"/>
+            <ColumnDefinition Width="845*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="2">
             <TabControl x:Name="Tabcontrol" SelectionChanged="Tabcontrol_SelectionChanged">
-                <TabItem Header="Information">
+                <TabItem Header="{ns:Loc Information}">
                     <Grid Margin="0,0,0,-6">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="92*" />
@@ -90,7 +94,7 @@
                             Margin="7,7,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="Date of birth:" />
+                            Content="{ns:Loc DateOfBirth}" />
                         <DatePicker
                             Grid.Row="3"
                             Grid.Column="3"
@@ -109,7 +113,7 @@
                             Margin="7,7,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="Address:" />
+                            Content="{ns:Loc Address}" />
                         <Label
                             Grid.Row="5"
                             Grid.ColumnSpan="3"
@@ -118,7 +122,7 @@
                             Margin="79,10,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="Id of address:" />
+                            Content="{ns:Loc IdAddress}" />
                         <Label
                             Grid.Row="6"
                             Grid.ColumnSpan="3"
@@ -127,7 +131,7 @@
                             Margin="79,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="State:" />
+                            Content="{ns:Loc State}" />
                         <Label
                             Grid.Row="7"
                             Grid.ColumnSpan="3"
@@ -136,7 +140,7 @@
                             Margin="79,4,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="City:" />
+                            Content="{ns:Loc City}" />
                         <Label
                             Grid.Row="8"
                             Grid.ColumnSpan="3"
@@ -145,7 +149,7 @@
                             Margin="79,5,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="Street:" />
+                            Content="{ns:Loc Street}" />
                         <Label
                             Grid.Row="9"
                             Grid.ColumnSpan="3"
@@ -154,7 +158,7 @@
                             Margin="79,4,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="Name:" />
+                            Content="{ns:Loc Number}" />
                         <Label
                             Grid.Row="10"
                             Grid.ColumnSpan="3"
@@ -185,14 +189,14 @@
                             Margin="7,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Average:" />
+                            Content="{ns:Loc Average}" />
                         <Label
                             Grid.Column="4"
                             Width="213"
                             Height="26"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Content="Phone number:" />
+                            Content="{ns:Loc Phone}" />
                         <Label
                             Grid.Row="1"
                             Grid.Column="4"
@@ -210,7 +214,7 @@
                             Margin="0,7,0,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
-                            Content="Year of studying:" />
+                            Content="{ns:Loc YearOfStudy}" />
                         <Label
                             Grid.Row="3"
                             Grid.Column="4"
@@ -218,7 +222,7 @@
                             Height="26"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Content="Index:" />
+                            Content="{ns:Loc Index}" />
                         <Label
                             Grid.Row="4"
                             Grid.Column="4"
@@ -228,7 +232,7 @@
                             Margin="97,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Id of index:" />
+                            Content="{ns:Loc IdIndex}" />
                         <Label
                             Grid.Row="5"
                             Grid.Column="4"
@@ -238,7 +242,7 @@
                             Margin="97,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Abbreviation of major:" />
+                            Content="{ns:Loc Abbrebavation}" />
                         <Label
                             Grid.Row="6"
                             Grid.Column="4"
@@ -248,7 +252,7 @@
                             Margin="97,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Mark of major:" />
+                            Content="{ns:Loc Mark}" />
                         <Label
                             Grid.Row="7"
                             Grid.Column="4"
@@ -258,7 +262,7 @@
                             Margin="97,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Year of enrollment:" />
+                            Content="{ns:Loc YearOfEnrollment}" />
                         <Button
                             Grid.Row="11"
                             Grid.Column="4"
@@ -266,7 +270,7 @@
                             Margin="66,1,0,19"
                             HorizontalAlignment="Left"
                             Click="Update_Click"
-                            Content="Update"
+                            Content="{ns:Loc Update}"
                             IsDefault="True" />
                         <Button
                             Grid.Row="11"
@@ -277,7 +281,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
                             Click="Cancel_Click"
-                            Content="Cancel"
+                            Content="{ns:Loc Cancel}"
                             IsCancel="True" />
                         <TextBox
                             Grid.Row="5"
@@ -429,7 +433,7 @@
                             Margin="7,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Surname:" />
+                            Content="{ns:Loc StudentSurname}" />
                         <Label
                             Grid.Row="1"
                             Grid.ColumnSpan="3"
@@ -438,7 +442,7 @@
                             Margin="7,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Name" />
+                            Content="{ns:Loc StudentName}" />
                         <Label
                             Grid.ColumnSpan="3"
                             Width="213"
@@ -454,51 +458,50 @@
                             Margin="107,4,0,0"
                             HorizontalAlignment="Left"
                             Click="Show_Professors_Click"
-                            Content="Show Professors"
+                            Content="{ns:Loc ShowProfessors}"
                             IsDefault="True" Grid.ColumnSpan="2" FontSize="18" />
                     </Grid>
                 </TabItem>
-                <TabItem Header="Unpassed">
+                <TabItem Header="{ns:Loc Unpassed}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15*" />
-                            <ColumnDefinition Width="893*" />
+                            <ColumnDefinition Width="228*" />
+                            <ColumnDefinition Width="665*"/>
                         </Grid.ColumnDefinitions>
 
                         <DataGrid
                             x:Name="UnpassedSubjectsDataGrid"
-                            Grid.Column="1"
-                            Width="866"
-                            Height="350"
-                            Margin="6,152,0,151"
+                            Width="852"
+                            Margin="13,160,0,132"
                             HorizontalAlignment="Left"
                             AutoGenerateColumns="False"
                             IsReadOnly="True"
                             ItemsSource="{Binding UnpassedSubjects, UpdateSourceTrigger=PropertyChanged}"
                             RenderTransformOrigin="0.548,0.506"
                             SelectedItem="{Binding subject, UpdateSourceTrigger=PropertyChanged}"
-                            SelectionMode="Single">
+                            SelectionMode="Single" Grid.ColumnSpan="2" SelectionChanged="UnpassedSubjectsDataGrid_SelectionChanged" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
-                                    Width="150"
+                                    Width="100"
                                     Binding="{Binding SubjectId}"
-                                    Header="Subject Id" />
+                                    Header="{ns:Loc SubjectId}" />
                                 <DataGridTextColumn
-                                    Width="200"
+                                    Width="300"
                                     Binding="{Binding SubjectName}"
-                                    Header="Subject Name" />
+                                    Header="{ns:Loc SubjectName}" />
                                 <DataGridTextColumn
-                                    Width="200"
+                                    Width="150"
                                     Binding="{Binding EspbPoints}"
-                                    Header="Espb Points" />
+                                    Header="{ns:Loc EspbPoints}" />
                                 <DataGridTextColumn
-                                    Width="200"
+                                    Width="150"
                                     Binding="{Binding YearOfStudy}"
-                                    Header="Year" />
+                                    Header="{ns:Loc YearOfStudy}" />
                                 <DataGridTextColumn
-                                    Width="200"
+                                    Width="150"
                                     Binding="{Binding Semester}"
-                                    Header="Semester" />
+                                    Header="{ns:Loc Semestar}" />
                             </DataGrid.Columns>
                         </DataGrid>
                         <Button
@@ -507,27 +510,27 @@
                             Margin="61,62,0,533"
                             HorizontalAlignment="Left"
                             Click="AddSubject_Click"
-                            Content="Add"
+                            Content="{ns:Loc Add}"
                             IsDefault="True" />
                         <Button
-                            Grid.Column="1"
+                            Grid.Column="2"
                             Width="136"
-                            Margin="274,62,0,533"
+                            Margin="46,62,0,533"
                             HorizontalAlignment="Left"
                             Click="DeleteSubject_Click"
-                            Content="Delete"
+                            Content="{ns:Loc Delete}"
                             IsDefault="True" />
                         <Button
-                            Grid.Column="1"
+                            Grid.Column="2"
                             Width="138"
-                            Margin="506,62,0,533"
+                            Margin="278,62,0,533"
                             HorizontalAlignment="Left"
                             Click="Take_Exam_Click"
-                            Content="Take Exam"
+                            Content="{ns:Loc TakeExam}"
                             IsDefault="True" />
                     </Grid>
                 </TabItem>
-                <TabItem Header="Passed">
+                <TabItem Header="{ns:Loc Passed}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15*" />
@@ -550,25 +553,25 @@
                             SelectionMode="Single" Grid.ColumnSpan="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
-                                    Width="150"
+                                    Width="100"
                                     Binding="{Binding grade.Subject_Id}"
-                                    Header="Subject Id" />
+                                    Header="{ns:Loc SubjectId}" />
                                 <DataGridTextColumn
-                                    Width="200"
+                                    Width="300"
                                     Binding="{Binding grade.Subject_1.SubjectName}"
-                                    Header="Subject Name" />
+                                    Header="{ns:Loc SubjectName}" />
                                 <DataGridTextColumn
-                                    Width="200"
+                                    Width="150"
                                     Binding="{Binding grade.Subject_1.EspbPoints}"
-                                    Header="Espb Points" />
+                                    Header="{ns:Loc EspbPoints}" />
                                 <DataGridTextColumn
                                     Width="200"
                                     Binding="{Binding Grade}"
-                                    Header="Grade" />
+                                    Header="{ns:Loc Grade}" />
                                 <DataGridTextColumn
                                     Width="200"
                                     Binding="{Binding Date}"
-                                    Header="Date" />
+                                    Header="{ns:Loc Date}" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
