@@ -259,11 +259,10 @@
                             VerticalAlignment="Center"
                             Content="Year of enrollment:" />
                         <Button
-                            Grid.Row="10"
-                            Grid.RowSpan="2"
+                            Grid.Row="11"
                             Grid.Column="4"
-                            Width="136"
-                            Margin="70,55,0,21"
+                            Width="138"
+                            Margin="66,1,0,19"
                             HorizontalAlignment="Left"
                             Click="Update_Click"
                             Content="Update"
@@ -447,6 +446,15 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Content="Id of student:" />
+                        <Button
+                            Grid.Row="9"
+                            Grid.Column="4"
+                            Width="220"
+                            Margin="107,4,0,0"
+                            HorizontalAlignment="Left"
+                            Click="Show_Professors_Click"
+                            Content="Show Professors"
+                            IsDefault="True" Grid.ColumnSpan="2" FontSize="18" />
                     </Grid>
                 </TabItem>
                 <TabItem Header="Unpassed">

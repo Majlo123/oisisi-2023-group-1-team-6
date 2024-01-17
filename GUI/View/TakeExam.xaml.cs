@@ -73,6 +73,8 @@ namespace GUI.View
                     break;
             }
             Grade.Date = new DateOnly(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day);
+            Grade.Student_Id = Student.Id;
+            Grade.Subject_Id = Subject.subjectId;
             gradecontroller.Add(Grade.ToGrade());
             StudentSubjectController ssc= new StudentSubjectController();
             ssc.Delete(Subject.SubjectId);

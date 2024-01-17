@@ -24,12 +24,15 @@ namespace CLI.Controller
         {
             return _professors.GetAllProfessors();
         }
-       /* public void Create(string surname, string name, DateOnly date, string street, int number, string city, string state, string phonenumber, string email, string id, string title, int workyear) { 
-            
-            Address address1 = new Address(street,number,city,state);
-            Professor professor= new Professor(surname,name,date,address1,phonenumber,email,id,title,workyear);
-            _professors.addProfessor(professor);
-        }*/
+        /* public void Create(string surname, string name, DateOnly date, string street, int number, string city, string state, string phonenumber, string email, string id, string title, int workyear) { 
+
+             Address address1 = new Address(street,number,city,state);
+             Professor professor= new Professor(surname,name,date,address1,phonenumber,email,id,title,workyear);
+             _professors.addProfessor(professor);
+         }*/
+        public List<Professor> GetProfessorsById(string id) {
+            return _professors.GetProfessorsByID(id);
+        }
         public void Add(Professor professor)
         {
             _professors.addProfessor(professor);

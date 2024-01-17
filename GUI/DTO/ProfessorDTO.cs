@@ -401,6 +401,10 @@ namespace GUI.DTO
             title = professor.Title;
             workyear = professor.WorkYear;
         }
+        public static List<ProfessorDTO> ConvertList(List<Professor> professors)
+        {
+            return professors.Select(professor => new ProfessorDTO(professor)).ToList();
+        }
         public ProfessorDTO(Professor professor)
         {
             surname = professor.Surname;

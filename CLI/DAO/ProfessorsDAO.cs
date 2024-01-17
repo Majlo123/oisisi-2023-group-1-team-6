@@ -88,7 +88,18 @@ namespace StudentskaSluzba.DAO
         {
             return _professors;
         }
-
+        public List<Professor> GetProfessorsByID(string id)
+        {
+            List<Professor> professor_tmp = new List<Professor>();
+            foreach (Professor p in _professors)
+            {
+                if (p.Id == id)
+                {
+                    professor_tmp.Add(p);
+                }
+            }
+            return professor_tmp;
+        }
         public List<Professor> GetAllProfessors(int page, int pageSize)
         {
             IEnumerable < Professor > professor = _professors;

@@ -1,11 +1,11 @@
-﻿<Window x:Class="GUI.View.AddProfessorToSubject"
+﻿<Window x:Class="GUI.View.ShowProfessorsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI.View"
         mc:Ignorable="d"
-        Title="AddProfessorToSubject" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Show Professors" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
 
         <TabControl SelectionChanged="TabControl_SelectionChanged">
@@ -34,8 +34,7 @@
                         </DataGrid.Columns>
 
                     </DataGrid>
-                    <Button Content="Add" HorizontalAlignment="Left" Margin="41,326,0,0" VerticalAlignment="Top" Height="30" Width="61" Click="Add_Click"/>
-                    <Button Content="Cancel" HorizontalAlignment="Left" Margin="186,326,0,0" VerticalAlignment="Top" Height="30" Width="61" Click="Cancel_Click"/>
+                    <Button Content="Ok" HorizontalAlignment="Center" Margin="0,326,0,0" VerticalAlignment="Top" Height="30" Width="61" Click="Cancel_Click"/>
 
                 </Grid>
 

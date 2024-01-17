@@ -110,6 +110,7 @@ namespace GUI.View
             .ToList());
             subject = new SubjectDTO();
             studentSubject = new StudentSubject();
+            professorController=new ProfessorController();
             Update();
         }
 
@@ -126,6 +127,7 @@ namespace GUI.View
             else
             {
                 MessageBox.Show("Student can not be updated. Not all fields are valid.");
+                
             }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -210,6 +212,66 @@ namespace GUI.View
             }
 
         }
+        private void Show_Professors_Click(object sender, RoutedEventArgs e)
+        {
+            if (student != null)
+            {
+                // Get all subjects for the selected student
+                List<SubjectDTO> subjects = new List<SubjectDTO>();
+                foreach (CLI.Model.Subject subject in studentSubjectController.GetAllSubjectsById(student.id))
+                {
+                    subjects.Add(new SubjectDTO(subject));
+                }
+                
+
+
+                
+                List<string> professorIds = subjects
+                        .Select(subject => subject.professor)
+                        .Distinct()
+                        .ToList();
+
+                    if (professorIds.Count > 0)
+                    {
+                    List<ProfessorDTO> professors = new List<ProfessorDTO>();
+                    foreach (string professorId in professorIds)
+                    {
+                        List<Professor> professorList = professorController.GetProfessorsById(professorId);
+
+                        
+                        foreach (Professor professor in professorList)
+                        {
+                            professors.Add(new ProfessorDTO(professor));
+                        }
+                    }
+
+                    if (professors.Count > 0)
+                        {
+                            ShowProfessorsWindow showProfessorsWindow = new ShowProfessorsWindow(professors);
+                            showProfessorsWindow.ShowDialog();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No professors found for the subjects associated with this student.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No professors found for the subjects associated with this student.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This student is not enrolled in any subjects.");
+                }
+            
+            
+        }
+
+
+
+
+
         private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
         {
 
