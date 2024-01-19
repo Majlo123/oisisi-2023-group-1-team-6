@@ -351,7 +351,7 @@ namespace GUI
             professorsController.Save();
             subjectsController.Save();
 
-            MessageBox.Show("Files are saved successfully");
+            MessageBox.Show("Files are saved successfully ");
 
         }
         public void Search_Click(object sender, RoutedEventArgs e)
