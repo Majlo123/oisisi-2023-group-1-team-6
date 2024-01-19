@@ -78,13 +78,15 @@ namespace GUI.View
             SelectedSubject.professor = id_prof;
             subjectController.Update(SelectedSubject.ToSubject());
 
-            
-            
-            
+            // Ažuriranje professorid u UpdateSubject klasi
+            updateSubject.professorid = id_prof;
+            updateSubject.UpdateProfessorTextbox(id_prof);
+
             Close();
         }
 
-        
+
+
 
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)

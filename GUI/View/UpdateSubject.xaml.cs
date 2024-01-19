@@ -90,26 +90,22 @@ namespace GUI.View
         }
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            
             string message = "Are you sure that you want to delete professor from subject?";
             string title = "Deleting professor from subject";
 
-            MessageBoxResult result =
-             MessageBox.Show(message, title,
-   MessageBoxButton.OKCancel);
+            MessageBoxResult result = MessageBox.Show(message, title, MessageBoxButton.OKCancel);
+
             if (result == MessageBoxResult.OK)
             {
                 subjectcontroller.DeleteProfessor(subjectid);
-                Close();
-                
-               
+                ClearProfessorTextbox();  
                 
             }
             else { }
-
-
         }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+
+    
+    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
@@ -130,6 +126,46 @@ namespace GUI.View
                 }
             
         }
+        public void UpdateProfessorTextbox(string professorId)
+        {
+            professorid = professorId;
+
+            if (professorid == "")
+            {
+                Delete.IsEnabled = false;
+                Add.IsEnabled = true;
+            }
+            else
+            {
+                foreach (Professor professor in professorController.GetAllProfessors())
+                {
+                    if (professor.Id == professorid)
+                    {
+                        string name = professor.Name;
+                        string surname = professor.Surname;
+                        professor_textbox.Text = name + " " + surname;
+
+                        Add.IsEnabled = false;
+                        Delete.IsEnabled = true;
+
+                        professor_textbox.IsReadOnly = true;
+                    }
+                }
+            }
+
+            professor_textbox.GetBindingExpression(TextBox.TextProperty)?.UpdateTarget();
+        }
+        public void ClearProfessorTextbox()
+        {
+            professorid = "";
+
+            Delete.IsEnabled = false;
+            Add.IsEnabled = true;
+            professor_textbox.Text = "";  // Clear the textbox
+
+            professor_textbox.GetBindingExpression(TextBox.TextProperty)?.UpdateTarget();
+        }
+
         private void AddProfessor_Click(object sender, RoutedEventArgs e)
         {
             AddProfessorToSubject updateProfesor = new AddProfessorToSubject(professorController, subjectcontroller, subject,this);

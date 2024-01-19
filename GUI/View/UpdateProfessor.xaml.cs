@@ -116,7 +116,7 @@ namespace GUI.View
             // Vaša logika koja se izvršava kada se promeni tab
         }
 
-        private void DeletePassedSubject_Click(object sender, RoutedEventArgs e)
+        private void DeleteSubject_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -136,7 +136,7 @@ namespace GUI.View
             Update();
         }
 
-        private void AddSubject_Click(object sender, SelectedCellsChangedEventArgs e)
+        private void AddSubject_Click(object sender, EventArgs e)
         {
             AddSubjectToProfessor addProfessor = new AddSubjectToProfessor(professor);
             addProfessor.Closed += AddProfessor_Closed;

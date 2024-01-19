@@ -94,7 +94,7 @@
                         Grid.Column="1"
                         Margin="382,5,-402,11"
                         Text="{Binding Path=professor.Phone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                        TextChanged="TextBox_TextChanged_1"
+                        
                         Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                     <TextBox
                         Grid.Row="1"
