@@ -29,11 +29,12 @@ public class Student : ISerializable
 
     public string Status { get; set; }
 
-    public float AvarageGrade { get; set; }
+    public double AvarageGrade { get; set; }
 
     public List<Subject> PassedSubjects { get; set; }
 
     public List<Subject> FailedSubjects { get; set; }
+
 
     public Student(string surname, string name) {
         Surname = surname;
@@ -46,7 +47,7 @@ public class Student : ISerializable
         FailedSubjects = new List<Subject>();
     }
 
-    public Student(string surname, string name,int id, DateOnly date, Address address, string phonenumber, string email, Index index, int yearofstudy, string status, float avaragegrade)
+    public Student(string surname, string name,int id, DateOnly date, Address address, string phonenumber, string email, Index index, int yearofstudy, string status, double avaragegrade)
     {
         Surname = surname;
         Name = name;

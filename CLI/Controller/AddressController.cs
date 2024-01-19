@@ -46,5 +46,7 @@ namespace CLI.Controller
         {
             _adress.AddressSubject.Subscribe(observer);
         }
+
+
     }
 }

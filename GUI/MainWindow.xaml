@@ -6,14 +6,14 @@
     xmlns:local="clr-namespace:GUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ns="clr-namespace:GUI.Localization"
-    mc:Ignorable="d"
     Title="StudentskaSluzba"
     Width="1000"
     Height="500"
+    KeyDown="Window_KeyDown"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
-    KeyDown="Window_KeyDown">
-    
+    mc:Ignorable="d">
+
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Click="MenuItem_Click" Header="{ns:Loc File}">
@@ -60,9 +60,15 @@
             <MenuItem Header="{ns:Loc Help}">
                 <MenuItem Click="About_Click" Header="{ns:Loc About}" />
             </MenuItem>
-            <MenuItem Header="{ns:Loc Localization}" Name="Lokalizacija">
-                <MenuItem Header="{ns:Loc Serbian}" Click="MenuItem_Click_Serbian" InputGestureText="Ctrl + R"></MenuItem>
-                <MenuItem Header="{ns:Loc English}" Click="MenuItem_Click_English" InputGestureText="Ctrl + E"></MenuItem>
+            <MenuItem Name="Lokalizacija" Header="{ns:Loc Localization}">
+                <MenuItem
+                    Click="MenuItem_Click_Serbian"
+                    Header="{ns:Loc Serbian}"
+                    InputGestureText="Ctrl + R" />
+                <MenuItem
+                    Click="MenuItem_Click_English"
+                    Header="{ns:Loc English}"
+                    InputGestureText="Ctrl + E" />
             </MenuItem>
         </Menu>
         <ToolBar Height="36" DockPanel.Dock="Top">
@@ -87,25 +93,25 @@
                     Source="/trash.png"
                     Stretch="Fill" />
             </Button>
-            
+
             <TextBox
-                 Text="{Binding Path=SearchText}"
                 Grid.Row="3"
                 Grid.ColumnSpan="2"
-                Width="142" />
+                Width="142"
+                Text="{Binding Path=SearchText}" />
             <Button x:Name="ToolBar_search" Click="Search_Click">
                 <Image
-                Width="24"
-                Height="24"
-                Source="/8666693_search_icon.png"
-                Stretch="Fill" />
+                    Width="24"
+                    Height="24"
+                    Source="/8666693_search_icon.png"
+                    Stretch="Fill" />
             </Button>
             <Button x:Name="ToolBar_back" Click="Back_Click">
                 <Image
-                Width="24"
-                Height="24"
-                Source="/backbutton.png"
-                Stretch="Fill" />
+                    Width="24"
+                    Height="24"
+                    Source="/backbutton.png"
+                    Stretch="Fill" />
             </Button>
         </ToolBar>
         <StatusBar DockPanel.Dock="Bottom">
@@ -236,6 +242,37 @@
                             Width="200"
                             Binding="{Binding Semester}"
                             Header="{ns:Loc Semestar}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="{ns:Loc Departments}">
+                <DataGrid
+                    x:Name="DepartmentsDataGrid"
+                    Width="895"
+                    Height="350"
+                    HorizontalAlignment="Center"
+                    AutoGenerateColumns="False"
+                    IsReadOnly="True"
+                    ItemsSource="{Binding Departments, UpdateSourceTrigger=PropertyChanged}"
+                    SelectedItem="{Binding SelectedDepartment, UpdateSourceTrigger=PropertyChanged}"
+                    SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="200"
+                            Binding="{Binding DepartmentId}"
+                            Header="{ns:Loc DepartmentId}" />
+                        <DataGridTextColumn
+                            Width="250"
+                            Binding="{Binding Code}"
+                            Header="{ns:Loc Code}" />
+                        <DataGridTextColumn
+                            Width="300"
+                            Binding="{Binding DepartmentName}"
+                            Header="{ns:Loc DepartmentName}" />
+                        <DataGridTextColumn
+                            Width="200"
+                            Binding="{Binding ProfessorId}"
+                            Header="{ns:Loc ProfessorId}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>

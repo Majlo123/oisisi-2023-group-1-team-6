@@ -30,7 +30,7 @@ namespace GUI.View
         public MainWindow SelectedStudent { get; set; }
         public string Surname;
 
-        public string Name;
+        public string Namee;
 
         public DateOnly Date;
         public int addressid;
@@ -44,6 +44,7 @@ namespace GUI.View
         public String abb;
         public int mark;
         public int year;
+        public int espb;
         public DateTime dateTime { get; set; }
         public string Email;
         public Index index;
@@ -72,7 +73,7 @@ namespace GUI.View
             InitializeComponent();
             this.student = selectedStudent;
             Surname = this.student.Surname;
-            Name = this.student.Name;
+            Namee = this.student.Name;
             Date = (DateOnly)this.student.Date;
 
             addressid = this.student.IdAddress;
@@ -132,7 +133,7 @@ namespace GUI.View
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -211,6 +212,35 @@ namespace GUI.View
                 { }
             }
 
+        }
+
+        private void DeletePassedSubject_Click(object sender, RoutedEventArgs e)
+        {
+            if (subject == null)
+            {
+
+                MessageBox.Show("Please select subject that you want to delete from student.");
+            }
+            else
+            {
+                string message = "Are you sure that you want to delete a subject?";
+                string title = "Deleting subject from student";
+
+                MessageBoxResult result =
+                 MessageBox.Show(message, title,
+       MessageBoxButton.OKCancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+                    studentSubjectController.Add(student.id, grade.subjectId);
+                    gradeController.Delete(subject.subjectId);
+                    Update();
+
+                }
+
+                else
+                { }
+            }
         }
         private void Show_Professors_Click(object sender, RoutedEventArgs e)
         {
@@ -295,6 +325,7 @@ namespace GUI.View
         {
 
         }
+
     }
 }
 

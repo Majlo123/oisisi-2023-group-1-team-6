@@ -25,6 +25,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using Index = StudentskaSluzba.Model.Index;
+using System.Reflection;
+using System.Globalization;
+using System.Threading;
+using System.Windows.Markup;
 
 namespace GUI
 {
@@ -36,19 +40,22 @@ namespace GUI
         private App app;
         private const string SRB = "sr-RS";
         private const string ENG = "en-US";
+
+        CultureInfo currentCulture = CultureInfo.CurrentCulture;
         public string StatusBarString;
 
         public ObservableCollection<ProfessorDTO> Professors { get; set; }
         public ObservableCollection<SubjectDTO> Subjects { get; set; }
         public ObservableCollection<StudentDTO> Students { get; set; }
+        public ObservableCollection<DepartmentDTO> Departments { get; set; }
 
         public ProfessorDTO SelectedProfessor { get; set; }
         public StudentDTO SelectedStudent {  get; set; }
-
         public SubjectDTO SelectedSubject { get; set; }
-
+        public DepartmentDTO SelectedDepartment { get; set; }
         public IndexController indexController { get; set; }
         private ProfessorController professorsController { get; set; }
+        private DepartmentController departmentController {  get; set; }
         private SubjectController subjectsController { get; set; }
         private StudentController studentController {  get; set; }
         private AddressController addressController { get; set; }
@@ -72,16 +79,19 @@ namespace GUI
             Professors = new ObservableCollection<ProfessorDTO>();
             Students = new ObservableCollection<StudentDTO>();
             Subjects = new ObservableCollection<SubjectDTO>();
+            Departments = new ObservableCollection<DepartmentDTO>();
             indexController = new IndexController();
             professorsController = new ProfessorController();
             addressController = new AddressController();
             studentController = new StudentController();
             subjectsController = new SubjectController();
+            departmentController = new DepartmentController();
             addressController.Subscribe(this);
             professorsController.Subscribe(this);
             subjectsController.Subscribe(this);
             studentController.Subscribe(this);
             indexController.Subscribe(this);
+            departmentController.Subscribe(this);
             app = (App)Application.Current;
             app.ChangeLanguage(ENG);
             
@@ -106,20 +116,28 @@ namespace GUI
         private void MenuItem_Click_Serbian(object sender, RoutedEventArgs e)
         {
             app.ChangeLanguage(SRB);
+            CultureInfo newCulture = new CultureInfo("sr-RS");
+            CultureInfo.CurrentCulture = newCulture;
+            CultureInfo.CurrentUICulture = newCulture;
         }
 
         private void MenuItem_Click_English(object sender, RoutedEventArgs e)
         {
             app.ChangeLanguage(ENG);
+            CultureInfo newCulture = new CultureInfo("en-US");
+            CultureInfo.CurrentCulture = newCulture;
+            CultureInfo.CurrentUICulture = newCulture;
         }
         public void Update()
         {
             Subjects.Clear();
             Professors.Clear();
             Students.Clear();
+            Departments.Clear();
 
             var addresses = addressController.GetAllAddress();
             var professors = professorsController.GetAllProfessors();
+            var departments = departmentController.GetAllDepartments();
 
             foreach (Address address in addresses)
             {
@@ -140,6 +158,8 @@ namespace GUI
                 Students.Add(new StudentDTO(student, studentAddress, studentIndex));
             }
             foreach (CLI.Model.Subject subject in subjectsController.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
+
+            foreach (Department department in departmentController.GetAllDepartments()) Departments.Add(new DepartmentDTO(department));
 
             lblDateTime.Content = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
 
@@ -288,11 +308,29 @@ namespace GUI
         private void About_Click(object sender, RoutedEventArgs e)
         {
 
-            
-                MessageBox.Show("This application is made by two students from FTN Novi Sad\n" +
-                    "Mihajlo Bogdanovic RA64/2021\n" +
-                    "Nikola Paunovic RA87/2021");
-            
+            CultureInfo currentCulture = CultureInfo.CurrentCulture;
+            string message = string.Empty;
+            string title = string.Empty;
+
+            if (currentCulture.Name == "sr-RS")
+            {
+                message = "Ova aplikacija je napravljena od strane dva studenta sa FTN Novi Sad\nMihajlo Bogdanovic RA64/2021\nNikola Paunovic RA87/2021";
+                title = "O aplikaciji";
+            }
+            else if (currentCulture.Name == "en-US")
+            {
+                message = "This application is made by two students from FTN Novi Sad\nMihajlo Bogdanovic RA64/2021\nNikola Paunovic RA87/2021";
+                title = "About";
+            }
+            else
+            {
+                // Default to some language or display a message that the language is not supported.
+                message = "Language not supported";
+                title = "Error";
+            }
+
+            MessageBox.Show(message, title);
+
 
 
         }

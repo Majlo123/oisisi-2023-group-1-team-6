@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CLI.Observer;
 using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
 
@@ -16,34 +17,37 @@ namespace StudentskaSluzba.DAO
         private readonly List<Department> _departments;
         private readonly Storage<Department> _storage;
 
-
+        public Subject DepartmentSubject;
         public DepartmentsDAO()
         {
             _storage = new Storage<Department>("departments.txt");
             _departments = _storage.Load();
-
+            DepartmentSubject = new Subject();
         }
         
         public Department? GetDepartmentById(int id)
         {
             return _departments.Find(d => d.DepartmentID == id);
         }
-        public void addDepartment(Department department)
+        public Department? addDepartment(Department department)
         {
             bool exists = _departments.Contains(department);
-            if (exists) return;
+            if (exists) return null;
             //student.Id = GenerateId(); 
             _departments.Add(department);
             _storage.Save(_departments);
+            DepartmentSubject.NotifyObservers();
+            return department;
         }
 
-        public Department removeDepartment(int id)
+        public Department? removeDepartment(int id)
         {
             Department? department = GetDepartmentById(id);
             if (department == null) return null;
 
             _departments.Remove(department);
             _storage.Save(_departments);
+            DepartmentSubject.NotifyObservers();
             return department;
         }
 
@@ -59,6 +63,7 @@ namespace StudentskaSluzba.DAO
 
             
             _storage.Save(_departments);
+            DepartmentSubject.NotifyObservers();
             return oldDepartment;
 
         }

@@ -73,16 +73,14 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("Enter date of exam (in the format MM/dd/yyyy): ");
             DateOnly date = ConsoleViewUtils.SafeInputDateTime();
             System.Console.WriteLine("Enter grade(must be from 6 to 10): ");
-            string grade = System.Console.ReadLine();
-            while (grade != "6" && grade != "7" && grade != "8" && grade != "9" && grade != "10"
-                && grade.ToLower() != "six" && grade.ToLower() != "seven" && grade.ToLower() != "eight"
-                && grade.ToLower() != "nine" && grade.ToLower() != "ten")
+            double grade = int.Parse(System.Console.ReadLine());
+            while (grade != 6 && grade != 7 && grade != 8 && grade != 9 && grade != 10)
             {
                 System.Console.WriteLine("Enter valid grade: ");
-                grade = System.Console.ReadLine();
+                double grade1 = int.Parse(System.Console.ReadLine());
             }
 
-            return new Grade(id, student.Id, subject.subjectId, date, grade);
+            return new Grade(student.Id, subject.subjectId, date, grade);
         }
 
         public int InputId()

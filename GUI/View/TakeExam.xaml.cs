@@ -56,28 +56,30 @@ namespace GUI.View
             
             switch (Grade.Grade)
             {
-                case "10":
-                    Grade.Grade= "10";
+                case 10:
+                    Grade.Grade= 10;
                     break;
-                case "9":
-                    Grade.Grade = "9";
+                case 9:
+                    Grade.Grade = 9;
                     break;
-                case "8":
-                    Grade.Grade = "8";
+                case 8:
+                    Grade.Grade = 8;
                     break;
-                case "7":
-                    Grade.Grade = "7";
+                case 7:
+                    Grade.Grade = 7;
                     break;
-                case "6":
-                    Grade.Grade = "6";
+                case 6:
+                    Grade.Grade = 6;
                     break;
             }
-            Grade.Date = new DateOnly(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day);
-            Grade.Student_Id = Student.Id;
-            Grade.Subject_Id = Subject.subjectId;
+            Date = new DateOnly(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day);
+            Grade.date = Date;
+            Grade.StudentId = Student.Id;
+            Grade.SubjectId = Subject.subjectId;
             gradecontroller.Add(Grade.ToGrade());
             StudentSubjectController ssc= new StudentSubjectController();
-            ssc.Delete(Subject.SubjectId);
+            ssc.Delete(Grade.SubjectId);
+            
             Close();
         }
     }

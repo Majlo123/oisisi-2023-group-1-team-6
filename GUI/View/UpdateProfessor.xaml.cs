@@ -3,6 +3,7 @@ using GUI.DTO;
 using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace GUI.View
         
         public string Surname;
 
-        public string Name;
+        public string Namee;
 
         public DateOnly Date;
         public int addressid;
@@ -44,18 +45,22 @@ namespace GUI.View
         public string Id;
 
 
-        public string Title;
+        public string Titlee;
         public int WorkYear;
         public ProfessorDTO professor { get; set; }
+        public SubjectDTO subject {  get; set; }
 
         private ProfessorController professorController;
         private AddressController addressController;
+        private ProfessorSubjectController professorSubjectController;
+
+        public ObservableCollection<SubjectDTO> Subjects { get; set; }
         public UpdateProfessor(ProfessorController professorcontroller,ProfessorDTO selectedProfessor,AddressController addressController)
         {
             InitializeComponent();
             this.professor = selectedProfessor;
             Surname = this.professor.Surname;
-            Name = this.professor.Name;
+            Namee = this.professor.Name;
             Date = (DateOnly)this.professor.Date;
 
             addressid = this.professor.AddressId;
@@ -70,12 +75,17 @@ namespace GUI.View
 
             Email = this.professor.Email;
             Id = this.professor.Id;
-            Title = this.professor.Title;
+            Titlee = this.professor.Title;
             WorkYear = this.professor.Workyear;
             DataContext = this;
             //Professor professor=new Professor(Surname,Name,Date,address,PhoneNumber,Email,Id,Title,WorkYear);
 
             //this.professor = new ProfessorDTO(professor, address);
+            professorSubjectController = new ProfessorSubjectController();
+            Subjects = new ObservableCollection<SubjectDTO>(
+            professorSubjectController.GetAllSubjectsById(professor.Id)
+            .Select(subject => new SubjectDTO(subject))
+            .ToList());
             this.professorController = professorcontroller;
             this.addressController = addressController;
 
@@ -99,14 +109,38 @@ namespace GUI.View
         {
             Close();
         }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+
+
+        private void Tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Vaša logika koja se izvršava kada se promeni tab
+        }
+
+        private void DeletePassedSubject_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        private void Update()
         {
 
+            Subjects.Clear();
+            foreach (CLI.Model.Subject subject in professorSubjectController.GetAllSubjectsById(professor.Id))
+                Subjects.Add(new SubjectDTO(subject));
+            
+
+        }
+
+        private void AddProfessor_Closed(object sender, EventArgs e)
+        {
+            Update();
+        }
+
+        private void AddSubject_Click(object sender, SelectedCellsChangedEventArgs e)
+        {
+            AddSubjectToProfessor addProfessor = new AddSubjectToProfessor(professor);
+            addProfessor.Closed += AddProfessor_Closed;
+            addProfessor.Show();
         }
     }
 }

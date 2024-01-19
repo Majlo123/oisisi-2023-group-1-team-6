@@ -156,6 +156,9 @@
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>
@@ -167,6 +170,15 @@
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="DepartmentId" xml:space="preserve">
+    <value>DepartmentId</value>
+  </data>
+  <data name="DepartmentName" xml:space="preserve">
+    <value>DepartmentName</value>
+  </data>
+  <data name="Departments" xml:space="preserve">
+    <value>Departments</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
@@ -227,6 +239,9 @@
   </data>
   <data name="ProfessorEmail" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="ProfessorId" xml:space="preserve">
+    <value>ProfessorId</value>
   </data>
   <data name="ProfessorName" xml:space="preserve">
     <value>Name</value>

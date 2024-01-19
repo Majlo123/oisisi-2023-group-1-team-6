@@ -5,7 +5,7 @@
     xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ns="clr-namespace:GUI.Localization"
-    Title="{ns:Loc UpdateStudent}"
+    Title="{ns:Loc Student}"
     Width="914"
     Height="697"
     WindowStartupLocation="CenterScreen"
@@ -24,8 +24,8 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="69*"/>
-            <ColumnDefinition Width="845*"/>
+            <ColumnDefinition Width="69*" />
+            <ColumnDefinition Width="845*" />
         </Grid.ColumnDefinitions>
         <Grid Grid.ColumnSpan="2">
             <TabControl x:Name="Tabcontrol" SelectionChanged="Tabcontrol_SelectionChanged">
@@ -454,12 +454,14 @@
                         <Button
                             Grid.Row="9"
                             Grid.Column="4"
+                            Grid.ColumnSpan="2"
                             Width="220"
                             Margin="107,4,0,0"
                             HorizontalAlignment="Left"
                             Click="Show_Professors_Click"
                             Content="{ns:Loc ShowProfessors}"
-                            IsDefault="True" Grid.ColumnSpan="2" FontSize="18" />
+                            FontSize="18"
+                            IsDefault="True" />
                     </Grid>
                 </TabItem>
                 <TabItem Header="{ns:Loc Unpassed}">
@@ -467,11 +469,13 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15*" />
                             <ColumnDefinition Width="228*" />
-                            <ColumnDefinition Width="665*"/>
+                            <ColumnDefinition Width="665*" />
                         </Grid.ColumnDefinitions>
 
                         <DataGrid
                             x:Name="UnpassedSubjectsDataGrid"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
                             Width="852"
                             Margin="13,160,0,132"
                             HorizontalAlignment="Left"
@@ -480,7 +484,8 @@
                             ItemsSource="{Binding UnpassedSubjects, UpdateSourceTrigger=PropertyChanged}"
                             RenderTransformOrigin="0.548,0.506"
                             SelectedItem="{Binding subject, UpdateSourceTrigger=PropertyChanged}"
-                            SelectionMode="Single" Grid.ColumnSpan="2" SelectionChanged="UnpassedSubjectsDataGrid_SelectionChanged" Grid.Column="1">
+                            SelectionChanged="UnpassedSubjectsDataGrid_SelectionChanged"
+                            SelectionMode="Single">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                     Width="100"
@@ -534,13 +539,16 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15*" />
-                            <ColumnDefinition Width="96*" />
-                            <ColumnDefinition Width="797*"/>
+                            <ColumnDefinition Width="75*" />
+                            <ColumnDefinition Width="21*" />
+                            <ColumnDefinition Width="59*" />
+                            <ColumnDefinition Width="738*" />
                         </Grid.ColumnDefinitions>
 
                         <DataGrid
                             x:Name="PassedSubjectsDataGrid"
                             Grid.Column="1"
+                            Grid.ColumnSpan="4"
                             Width="866"
                             Height="350"
                             Margin="6,152,0,151"
@@ -550,19 +558,19 @@
                             ItemsSource="{Binding PassedSubjects, UpdateSourceTrigger=PropertyChanged}"
                             RenderTransformOrigin="0.548,0.506"
                             SelectedItem="{Binding grade, UpdateSourceTrigger=PropertyChanged}"
-                            SelectionMode="Single" Grid.ColumnSpan="2">
+                            SelectionMode="Single">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                     Width="100"
-                                    Binding="{Binding grade.Subject_Id}"
+                                    Binding="{Binding SubjectId}"
                                     Header="{ns:Loc SubjectId}" />
                                 <DataGridTextColumn
                                     Width="300"
-                                    Binding="{Binding grade.Subject_1.SubjectName}"
+                                    Binding="{Binding SubjectName}"
                                     Header="{ns:Loc SubjectName}" />
                                 <DataGridTextColumn
                                     Width="150"
-                                    Binding="{Binding grade.Subject_1.EspbPoints}"
+                                    Binding="{Binding ESPBPoints}"
                                     Header="{ns:Loc EspbPoints}" />
                                 <DataGridTextColumn
                                     Width="200"
@@ -574,6 +582,49 @@
                                     Header="{ns:Loc Date}" />
                             </DataGrid.Columns>
                         </DataGrid>
+                        <Button
+                            Grid.Column="3"
+                            Grid.ColumnSpan="2"
+                            Width="116"
+                            Height="38"
+                            Margin="0,42,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="DeletePassedSubject_Click"
+                            Content="Delete" />
+                        <Label
+                            Grid.Column="4"
+                            Width="112"
+                            Margin="418,18,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Content="Average grade:" />
+                        <Label
+                            Grid.Column="4"
+                            Width="112"
+                            Margin="418,62,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Content="ESPBPoints:"
+                            RenderTransformOrigin="0.495,0.596" />
+                        <TextBox
+                            Grid.Column="4"
+                            Width="128"
+                            Height="22"
+                            Margin="535,22,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Text="{Binding student.Average, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            TextWrapping="Wrap" />
+                        <TextBox
+                            Grid.Column="4"
+                            Width="128"
+                            Height="22"
+                            Margin="535,66,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Text="{Binding student.Espbpoints, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            TextWrapping="Wrap" />
                     </Grid>
                 </TabItem>
             </TabControl>

@@ -22,188 +22,270 @@
 
         </ControlTemplate>
     </Window.Resources>
-    <Grid Margin="0,0,0,-6" RenderTransformOrigin="0.499,0.501">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*" />
-            <ColumnDefinition Width="437*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="351" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+    <TabControl x:Name="Tabcontrol" SelectionChanged="Tabcontrol_SelectionChanged">
+        <TabItem Header="{ns:Loc Information}">
+            <Grid Margin="0,0,0,-6" RenderTransformOrigin="0.499,0.501">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*" />
+                    <ColumnDefinition Width="91*" />
+                    <ColumnDefinition Width="777*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="351" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
 
-        <Grid
-            Grid.Row="0"
-            Grid.RowSpan="2"
-            Grid.Column="1"
-            Margin="2,16,504,261">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="83*" />
-                <ColumnDefinition Width="90*" />
-            </Grid.ColumnDefinitions>
-
-
-
-            <TextBox
-                Grid.Column="1"
-                Margin="0,0,0,16"
-                Text="{Binding Path=professor.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
-            <TextBox
-                Grid.RowSpan="2"
-                Grid.Column="1"
-                Margin="0,41,0,13"
-                RenderTransformOrigin="0.504,0.577"
-                Text="{Binding Path=professor.Surname, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
-            <TextBox
-                Grid.Row="4"
-                Grid.Column="1"
-                Margin="0,7,0,11"
-                Text="{Binding Path=professor.Street, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
-            <TextBox
-                Grid.Row="5"
-                Grid.ColumnSpan="2"
-                Margin="176,7,1,9"
-                Text="{Binding Path=professor.Number, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
-            <TextBox
-                Grid.Row="6"
-                Grid.Column="1"
-                Margin="1,8,-1,8"
-                Text="{Binding Path=professor.City, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
-            <TextBox
-                Grid.Column="1"
-                Margin="382,5,-402,11"
-                Text="{Binding Path=professor.Phone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                TextChanged="TextBox_TextChanged_1"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
-            <TextBox
-                Grid.Row="1"
-                Grid.Column="1"
-                Margin="382,3,-402,9"
-                Text="{Binding Path=professor.Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
-            <TextBox
-                Grid.Row="2"
-                Grid.Column="1"
-                Margin="382,19,-402,39"
-                Text="{Binding Path=professor.Title, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Grid.RowSpan="2" />
-            <TextBox
-                Grid.Row="3"
-                Grid.Column="1"
-                Margin="382,36,-402,22"
-                Text="{Binding Path=professor.Workyear, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Grid.RowSpan="2" />
-            <TextBox
-                Grid.Row="7"
-                Grid.ColumnSpan="2"
-                Margin="175,6,-1,10"
-                Text="{Binding Path=professor.State, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
-            <DatePicker
-                Grid.Row="2"
-                Grid.Column="1"
-                Width="135"
-                Margin="0,7,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                SelectedDate="{Binding Path=dateTime, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                <Grid
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Margin="2,16,504,261">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="83*" />
+                        <ColumnDefinition Width="90*" />
+                    </Grid.ColumnDefinitions>
 
 
 
-        </Grid>
-        <WrapPanel
-            Grid.Row="1"
-            Grid.ColumnSpan="2"
-            Height="58"
-            Margin="0,254,0,0"
-            VerticalAlignment="Top"
-            FlowDirection="RightToLeft">
-            <Button
-                Margin="20,5,20,5"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Click="Cancel_Click"
-                Content="{ns:Loc Cancel}"
-                IsCancel="True" />
-            <Button
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Click="Update_Click"
-                Content="{ns:Loc Update}"
-                IsDefault="True" />
-        </WrapPanel>
-        <Label
-            Grid.Column="1"
-            Margin="430,64,288,248"
-            Content="Email" />
-        <Label
-            Grid.Column="1"
-            Margin="430,108,288,205"
-            Content="{ns:Loc Title}" />
-        <Label
-            Grid.Column="1"
-            Margin="430,176,288,137"
-            Content="{ns:Loc YearsOfWork}" />
-        <Label
-            Grid.Column="1"
-            Margin="430,16,288,296"
-            Content="{ns:Loc Phone}" />
-        <Label
-            Grid.Column="1"
-            Margin="30,10,688,302"
-            Content="{ns:Loc ProfessorName}" />
-        <Label
-            Grid.Column="1"
-            Margin="30,54,688,258"
-            Content="{ns:Loc ProfessorSurname}" />
-        <Label
-            Grid.Column="1"
-            Margin="30,98,688,214"
-            Content="{ns:Loc DateOfBirth}" />
-        <Label
-            Grid.Column="1"
-            Margin="30,142,688,170"
-            Content="{ns:Loc Address}" />
-        <Label
-            Grid.Column="1"
-            Margin="57,182,661,130"
-            Content="{ns:Loc Street}" />
-        <Label
-            Grid.Column="1"
-            Margin="57,221,661,91"
-            Content="{ns:Loc Number}" />
-        <Label
-            Grid.Column="1"
-            Margin="57,265,661,47"
-            Content="{ns:Loc City}" />
-        <Label
-            Grid.Column="1"
-            Margin="57,305,661,7"
-            Content="{ns:Loc State}" />
+                    <TextBox
+                        Grid.Column="1"
+                        Margin="0,0,0,16"
+                        Text="{Binding Path=professor.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                    <TextBox
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        Margin="0,41,0,13"
+                        RenderTransformOrigin="0.504,0.577"
+                        Text="{Binding Path=professor.Surname, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                    <TextBox
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Margin="0,7,0,11"
+                        Text="{Binding Path=professor.Street, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                    <TextBox
+                        Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                        Margin="176,7,1,9"
+                        Text="{Binding Path=professor.Number, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                    <TextBox
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Margin="1,8,-1,8"
+                        Text="{Binding Path=professor.City, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                    <TextBox
+                        Grid.Column="1"
+                        Margin="382,5,-402,11"
+                        Text="{Binding Path=professor.Phone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        TextChanged="TextBox_TextChanged_1"
+                        Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="382,3,-402,9"
+                        Text="{Binding Path=professor.Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                    <TextBox
+                        Grid.Row="2"
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        Margin="382,19,-402,39"
+                        Text="{Binding Path=professor.Title, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                    <TextBox
+                        Grid.Row="3"
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        Margin="382,36,-402,22"
+                        Text="{Binding Path=professor.Workyear, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                    <TextBox
+                        Grid.Row="7"
+                        Grid.ColumnSpan="2"
+                        Margin="175,6,-1,10"
+                        Text="{Binding Path=professor.State, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                    <DatePicker
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Width="135"
+                        Margin="0,7,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        SelectedDate="{Binding Path=dateTime, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+
+
+
+                </Grid>
+                <WrapPanel
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3"
+                    Height="58"
+                    Margin="0,254,0,0"
+                    VerticalAlignment="Top"
+                    FlowDirection="RightToLeft">
+                    <Button
+                        Margin="20,5,20,5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Cancel_Click"
+                        Content="{ns:Loc Cancel}"
+                        IsCancel="True" />
+                    <Button
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Click="Update_Click"
+                        Content="{ns:Loc Update}"
+                        IsDefault="True" />
+                </WrapPanel>
+                <Label
+                    Grid.Column="2"
+                    Margin="339,64,288,248"
+                    Content="Email" />
+                <Label
+                    Grid.Column="2"
+                    Margin="339,108,288,205"
+                    Content="{ns:Loc Title}" />
+                <Label
+                    Grid.Column="2"
+                    Margin="339,176,288,137"
+                    Content="{ns:Loc YearsOfWork}" />
+                <Label
+                    Grid.Column="2"
+                    Margin="339,16,288,296"
+                    Content="{ns:Loc Phone}" />
+                <Label
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Margin="30,10,688,302"
+                    Content="{ns:Loc ProfessorName}" />
+                <Label
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Margin="30,54,688,258"
+                    Content="{ns:Loc ProfessorSurname}" />
+                <Label
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Margin="30,98,688,214"
+                    Content="{ns:Loc DateOfBirth}" />
+                <Label
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Margin="30,142,688,170"
+                    Content="{ns:Loc Address}" />
+                <Label
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Margin="57,182,661,130"
+                    Content="{ns:Loc Street}" />
+                <Label
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Margin="57,221,661,91"
+                    Content="{ns:Loc Number}" />
+                <Label
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Margin="57,265,661,47"
+                    Content="{ns:Loc City}" />
+                <Label
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Margin="57,305,661,7"
+                    Content="{ns:Loc State}" />
+            </Grid>
+        </TabItem>
+        <TabItem Header="{ns:Loc Subjects}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="75*" />
+                    <ColumnDefinition Width="21*" />
+                    <ColumnDefinition Width="59*" />
+                    <ColumnDefinition Width="738*" />
+                </Grid.ColumnDefinitions>
+
+                <DataGrid
+                    x:Name="SubjectsTeachingDataGrid"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="4"
+                    Width="866"
+                    Height="350"
+                    Margin="6,152,0,151"
+                    HorizontalAlignment="Left"
+                    AutoGenerateColumns="False"
+                    IsReadOnly="True"
+                    ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}"
+                    RenderTransformOrigin="0.548,0.506"
+                    SelectedItem="{Binding subject, UpdateSourceTrigger=PropertyChanged}"
+                    SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="100"
+                            Binding="{Binding SubjectId}"
+                            Header="{ns:Loc SubjectId}" />
+                        <DataGridTextColumn
+                            Width="300"
+                            Binding="{Binding SubjectName}"
+                            Header="{ns:Loc SubjectName}" />
+                        <DataGridTextColumn
+                            Width="150"
+                            Binding="{Binding ESPBPoints}"
+                            Header="{ns:Loc EspbPoints}" />
+                        <DataGridTextColumn
+                            Width="200"
+                            Binding="{Binding YearOfStudy}"
+                            Header="{ns:Loc YearOfStudy}" />
+                        <DataGridTextColumn
+                            Width="200"
+                            Binding="{Binding Semester}"
+                            Header="{ns:Loc Semester}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button
+                    Grid.Column="3"
+                    Grid.ColumnSpan="2"
+                    Width="116"
+                    Height="38"
+                    Margin="0,42,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="AddSubject_Click"
+                    Content="Add" />
+                <Button
+                    Grid.Column="4"
+                    Width="116"
+                    Height="38"
+                    Margin="114,42,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="DeleteSubject_Click"
+                    Content="Delete" />
+            </Grid>
+        </TabItem>
+    </TabControl>
 
 
 
 
 
-
-
-    </Grid>
 </Window>

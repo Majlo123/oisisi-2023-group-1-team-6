@@ -15,26 +15,25 @@ namespace StudentskaSluzba.Model;
 
         public int subjectId { get; set; }
 
-        public string grades { get; set; }
+        public double grades { get; set; }
 
         public DateOnly date { get; set; }
 
         public Grade()
         {
-            grades= "";
+            grades= 0;
             Id = 0;
             studentId = 0;
             subjectId = 0;
         }
-        public Grade(int id,int studentid, int subjectid, DateOnly Date, string grade )
+        public Grade(int studentid, int subjectid, DateOnly Date, double grade )
         {
-            Id = id;
             studentId=studentid;
             subjectId = subjectid;
             date = Date;
             grades = grade;
         }
-    public Grade(DateOnly Date, string grade)
+    public Grade(DateOnly Date, double grade)
     {
 
         date = Date;
@@ -49,7 +48,7 @@ namespace StudentskaSluzba.Model;
                 studentId.ToString(),
                 subjectId.ToString(),
                 date.ToString(),
-                grades
+                grades.ToString()
 
             };
 
@@ -62,7 +61,7 @@ namespace StudentskaSluzba.Model;
             studentId = int.Parse(values[1]);
             subjectId = int.Parse(values[2]);
             date = DateOnly.ParseExact(values[3], "M/d/yyyy");
-            grades = values[4];
+            grades = int.Parse(values[4]);
 
         }
 

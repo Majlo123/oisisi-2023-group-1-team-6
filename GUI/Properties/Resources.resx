@@ -159,6 +159,9 @@
   <data name="Close" xml:space="preserve">
     <value>Zatvori</value>
   </data>
+  <data name="Code" xml:space="preserve">
+    <value>Sifra Katedre</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Datum</value>
   </data>
@@ -170,6 +173,15 @@
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Obrisi</value>
+  </data>
+  <data name="DepartmentId" xml:space="preserve">
+    <value>Id Katedre</value>
+  </data>
+  <data name="DepartmentName" xml:space="preserve">
+    <value>Ime Katedre</value>
+  </data>
+  <data name="Departments" xml:space="preserve">
+    <value>Katedre</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Uredi</value>
@@ -227,6 +239,9 @@
   </data>
   <data name="ProfessorEmail" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="ProfessorId" xml:space="preserve">
+    <value>ID Sefa Katedre</value>
   </data>
   <data name="ProfessorName" xml:space="preserve">
     <value>Ime</value>

@@ -1,4 +1,5 @@
 ﻿using CLI.Controller;
+using CLI.Model;
 using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,9 @@ namespace GUI.DTO
 {
     public class StudentDTO : INotifyPropertyChanged, IDataErrorInfo
     {
+
+        private GradeController controller;
+        private SubjectController subjectController;
         public String abbreviationOfMajor;
 
         public String AbbreviationOfMajor
@@ -154,13 +158,21 @@ namespace GUI.DTO
             }
         }
 
-        public float average;
+        public double average;
 
-        public float Average
+        public double Average
         {
             get
             {
-                return average;
+                controller = new GradeController();
+                double suma = 0;
+                int i = 0;
+                foreach(Grade g in controller.GetAllGradesByStudent(id))
+                {
+                    suma += g.grades;
+                    i++;
+                }
+                return suma / i;
             }
             set
             {
@@ -338,6 +350,34 @@ namespace GUI.DTO
                 {
                     printIndex = value;
                     OnPropertyChanged("PrintIndex");
+                }
+            }
+        }
+
+        public int espbpoints;
+
+        public int Espbpoints
+        {
+            get
+            {
+                int suma = 0;
+                List<Grade> grade = controller.GetAllGradesByStudent(id);
+                subjectController = new SubjectController();
+                if (grade == null)
+                    return 0;
+                foreach(Grade g in grade)
+                {
+                    Subject subject = subjectController.getSubjectById(g.subjectId);
+                    suma += subject.ESPBPoints;
+                }
+                return suma;
+            }
+            set
+            {
+                if( value != espbpoints)
+                {
+                    espbpoints = value;
+                    OnPropertyChanged("Espbpoints");
                 }
             }
         }
