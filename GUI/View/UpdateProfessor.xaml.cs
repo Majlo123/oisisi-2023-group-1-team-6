@@ -88,7 +88,7 @@ namespace GUI.View
             .ToList());
             this.professorController = professorcontroller;
             this.addressController = addressController;
-
+            Update();
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
@@ -118,7 +118,31 @@ namespace GUI.View
 
         private void DeleteSubject_Click(object sender, RoutedEventArgs e)
         {
+            if (subject == null)
+            {
 
+                MessageBox.Show("Please select subject that you want to delete from professor.");
+            }
+            else
+            {
+                string message = "Are you sure that you want to delete a subject?";
+                string title = "Deleting subject from student";
+
+                MessageBoxResult result =
+                 MessageBox.Show(message, title,
+       MessageBoxButton.OKCancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+
+                    professorSubjectController.Delete(subject.subjectId);
+                    Update();
+
+                }
+
+                else
+                { }
+            }
         }
 
         private void Update()

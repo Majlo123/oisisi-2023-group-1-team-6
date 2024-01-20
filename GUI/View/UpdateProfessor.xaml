@@ -13,25 +13,40 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Resources>
-        <ControlTemplate x:Key="ValidationTemplate">
+        <ControlTemplate
+            x:Key="ValidationTemplate">
             <StackPanel>
                 <!--  Placeholder for the TextBox itself  -->
-                <AdornedElementPlaceholder x:Name="textBox" />
-                <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
+                <AdornedElementPlaceholder
+                    x:Name="textBox" />
+                <TextBlock
+                    Foreground="Red"
+                    Text="{Binding [0].ErrorContent}" />
             </StackPanel>
 
         </ControlTemplate>
     </Window.Resources>
-    <TabControl x:Name="Tabcontrol" SelectionChanged="Tabcontrol_SelectionChanged">
-        <TabItem Header="{ns:Loc Information}">
-            <Grid Margin="0,0,0,-6" RenderTransformOrigin="0.499,0.501">
+    <TabControl
+        x:Name="Tabcontrol"
+        SelectionChanged="Tabcontrol_SelectionChanged">
+        <TabItem
+            Header="{ns:Loc Information}">
+            <Grid
+                Margin="0,0,0,-6"
+                RenderTransformOrigin="0.499,0.501">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40*" />
-                    <ColumnDefinition Width="91*" />
-                    <ColumnDefinition Width="777*" />
+                    <ColumnDefinition
+                        Width="40*" />
+                    <ColumnDefinition
+                        Width="71*" />
+                    <ColumnDefinition
+                        Width="20*" />
+                    <ColumnDefinition
+                        Width="777*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="351" />
+                    <RowDefinition
+                        Height="351" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
@@ -39,7 +54,7 @@
                     Grid.Row="0"
                     Grid.RowSpan="2"
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="3"
                     Margin="2,16,504,261">
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -54,8 +69,10 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="83*" />
-                        <ColumnDefinition Width="90*" />
+                        <ColumnDefinition
+                            Width="83*" />
+                        <ColumnDefinition
+                            Width="90*" />
                     </Grid.ColumnDefinitions>
 
 
@@ -94,7 +111,6 @@
                         Grid.Column="1"
                         Margin="382,5,-402,11"
                         Text="{Binding Path=professor.Phone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                        
                         Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                     <TextBox
                         Grid.Row="1"
@@ -137,7 +153,7 @@
                 </Grid>
                 <WrapPanel
                     Grid.Row="1"
-                    Grid.ColumnSpan="3"
+                    Grid.ColumnSpan="4"
                     Height="58"
                     Margin="0,254,0,0"
                     VerticalAlignment="Top"
@@ -157,71 +173,77 @@
                         IsDefault="True" />
                 </WrapPanel>
                 <Label
-                    Grid.Column="2"
+                    Grid.Column="3"
                     Margin="339,64,288,248"
                     Content="Email" />
                 <Label
-                    Grid.Column="2"
+                    Grid.Column="3"
                     Margin="339,108,288,205"
                     Content="{ns:Loc Title}" />
                 <Label
-                    Grid.Column="2"
+                    Grid.Column="3"
                     Margin="339,176,288,137"
                     Content="{ns:Loc YearsOfWork}" />
                 <Label
-                    Grid.Column="2"
+                    Grid.Column="3"
                     Margin="339,16,288,296"
                     Content="{ns:Loc Phone}" />
                 <Label
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="3"
                     Margin="30,10,688,302"
                     Content="{ns:Loc ProfessorName}" />
                 <Label
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="3"
                     Margin="30,54,688,258"
                     Content="{ns:Loc ProfessorSurname}" />
                 <Label
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="3"
                     Margin="30,98,688,214"
                     Content="{ns:Loc DateOfBirth}" />
                 <Label
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="3"
                     Margin="30,142,688,170"
                     Content="{ns:Loc Address}" />
                 <Label
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="3"
                     Margin="57,182,661,130"
                     Content="{ns:Loc Street}" />
                 <Label
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="3"
                     Margin="57,221,661,91"
                     Content="{ns:Loc Number}" />
                 <Label
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="3"
                     Margin="57,265,661,47"
                     Content="{ns:Loc City}" />
                 <Label
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="3"
                     Margin="57,305,661,7"
                     Content="{ns:Loc State}" />
             </Grid>
         </TabItem>
-        <TabItem Header="{ns:Loc Subjects}">
+        <TabItem
+            Header="{ns:Loc Subjects}">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="15*" />
-                    <ColumnDefinition Width="75*" />
-                    <ColumnDefinition Width="21*" />
-                    <ColumnDefinition Width="59*" />
-                    <ColumnDefinition Width="738*" />
+                    <ColumnDefinition
+                        Width="15*" />
+                    <ColumnDefinition
+                        Width="75*" />
+                    <ColumnDefinition
+                        Width="21*" />
+                    <ColumnDefinition
+                        Width="59*" />
+                    <ColumnDefinition
+                        Width="738*" />
                 </Grid.ColumnDefinitions>
 
                 <DataGrid

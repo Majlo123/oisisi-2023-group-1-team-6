@@ -39,6 +39,11 @@ namespace CLI.Controller
             return _department.GetDepartmentById(departmentid);
         }
 
+        public List<Professor> getProfessorsByDepartmentId(int id)
+        {
+            return _department.GetAllProfessorsByDepartmentId(id);
+        }
+
         public void Subscribe(IObserver observer)
         {
             _department.DepartmentSubject.Subscribe(observer);

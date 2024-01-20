@@ -18,3 +18,23 @@
 284423009|Banjalić|Stojmen|7/29/1973|37|4.JULA|96|SRNjE|Srbija|+3816103067|stojmen.banjalic@uns.ac.rs|redovni profesor|12
 999930819|Jojčić|Pauna|11/19/1960|38|DRINSKA|39|LEŠTANE|Bosna i Hercegovina|+38167157490|pauna.jojcic@uns.ac.rs|docent|19
 904283709|Serdarević|Miloje|7/16/1993|39|VOĆARSKA|40|TULEŠ|Bosna i Hercegovina|+38169893744|miloje.serdarevic@uns.ac.rs|redovni profesor|23
+39606943|Batrović|Dobrica|5/31/1977|23|IVE ANDRIĆA|15|DOBRA|Crna Gora|+38163651140|dobrica.batrovic@uns.ac.rs|docent|26
+884798807|Čaluković|Aćim|2/25/1991|31|MILOŠA OBILIĆA|65|SRPSKI MILETIĆ|Crna Gora|+38165602843|acim.calukovic@uns.ac.rs|docent|5
+39606943|Batrović|Dobrica|5/31/1977|23|IVE ANDRIĆA|15|DOBRA|Crna Gora|+38163651140|dobrica.batrovic@uns.ac.rs|docent|26
+800155523|Toskić|Jevrosima|10/17/1971|30|SVETOLIKA RANKOVIĆA|39|NOVI SAD|Srbija|+38165326720|jevrosima.toskic@uns.ac.rs|redovni profesor|11
+884798807|Čaluković|Aćim|2/25/1991|31|MILOŠA OBILIĆA|65|SRPSKI MILETIĆ|Crna Gora|+38165602843|acim.calukovic@uns.ac.rs|docent|5
+276681361|Raspopović|Dragoslava|4/1/1984|20|NIKOLE TESLE|100|KARAĐORĐEVO|Crna Gora|+38168734572|dragoslava.raspopovic@uns.ac.rs|docent|8
+392506493|Graonić|Stevanija|6/6/1962|33|KOVAČEVSKA|73|STREŠAK|Crna Gora|+38166834413|stevanija.graonic@uns.ac.rs|docent|5
+884798807|Čaluković|Aćim|2/25/1991|31|MILOŠA OBILIĆA|65|SRPSKI MILETIĆ|Crna Gora|+38165602843|acim.calukovic@uns.ac.rs|docent|5
+520064301|Bučevac|Rastko|8/31/1968|25|ĐURE JAKŠIĆA|10|GROCKA|Bosna i Hercegovina|+38166705409|rastko.bucevac@uns.ac.rs|vanredni profesor|6
+306180424|Ložnjaković|Bogdanka|11/26/1971|26|TALIJINA|62|DOBANOVCI|Bosna i Hercegovina|+38163904215|bogdanka.loznjakovic@uns.ac.rs|vanredni profesor|14
+176283015|Talović|Budimir|11/13/1993|22|BORISLAVA PEKIĆA|12|VETERNIK|Bosna i Hercegovina|+38163433336|budimir.talovic@uns.ac.rs|redovni profesor|25
+884798807|Čaluković|Aćim|2/25/1991|31|MILOŠA OBILIĆA|65|SRPSKI MILETIĆ|Crna Gora|+38165602843|acim.calukovic@uns.ac.rs|docent|5
+125955509|Miočinović|Veljko|6/24/1970|27|JABLANIČKA|85|STOJNIK|Crna Gora|+38169997020|veljko.miocinovic@uns.ac.rs|vanredni profesor|8
+306180424|Ložnjaković|Bogdanka|11/26/1971|26|TALIJINA|62|DOBANOVCI|Bosna i Hercegovina|+38163904215|bogdanka.loznjakovic@uns.ac.rs|vanredni profesor|14
+914012289|Iljanović|Steva|7/15/1973|29|LIPA|44|BRZA PALANKA|Srbija|+38164163699|steva.iljanovic@uns.ac.rs|vanredni profesor|9
+963528130|Oblaković|Spomenko|10/31/1980|34|DRINSKA|39|LEŠTANE|Bosna i Hercegovina|+3816757415|spomenko.oblakovic@uns.ac.rs|redovni profesor|15
+800155523|Toskić|Jevrosima|10/17/1971|30|SVETOLIKA RANKOVIĆA|39|NOVI SAD|Srbija|+38165326720|jevrosima.toskic@uns.ac.rs|redovni profesor|11
+955425450|Čvorkov|Jakov|8/8/1982|35|STEFANA DEČANSKOG|28|NOVI SAD|Crna Gora|+38169416210|jakov.cvorkov@uns.ac.rs|docent|10
+125955509|Miočinović|Veljko|6/24/1970|27|JABLANIČKA|85|STOJNIK|Crna Gora|+38169997020|veljko.miocinovic@uns.ac.rs|vanredni profesor|8
+392506493|Graonić|Stevanija|6/6/1962|33|KOVAČEVSKA|73|STREŠAK|Crna Gora|+38166834413|stevanija.graonic@uns.ac.rs|docent|5

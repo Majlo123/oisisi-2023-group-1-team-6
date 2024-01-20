@@ -51,8 +51,8 @@ namespace StudentskaSluzba.Model;
         public void FromCSV(string[] csvValues)
         {
             DepartmentID = int.Parse(csvValues[0]);
-            DepartmentName = csvValues[2];
-            DepartmentBoss = csvValues[3];
+            DepartmentName = csvValues[1];
+            DepartmentBoss = csvValues[2];
         }
 
         public override string ToString()

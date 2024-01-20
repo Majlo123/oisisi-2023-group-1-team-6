@@ -124,6 +124,10 @@ namespace GUI.DTO
             ProfessorId = d.DepartmentBoss;
         }
         
+        public Department toDepartment()
+        {
+            return new Department(departmentId, departmentName,professorId);
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         private void OnPropertyChanged(string name)

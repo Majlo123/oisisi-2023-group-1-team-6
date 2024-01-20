@@ -80,6 +80,14 @@ namespace StudentskaSluzba.DAO
 
             return department.ToList();
         }
+
+        public List<Professor> GetAllProfessorsByDepartmentId(int id)
+        {
+            Department dep = GetDepartmentById(id);
+            if (dep == null)
+                return null;
+            return dep.Professors;
+        }
        
     }
        

@@ -301,6 +301,17 @@ namespace GUI
                 {
                     MessageBox.Show("Please choose a subject to update!");
                 }
+            }else if(tabs.SelectedIndex == 3)
+            {
+                if(SelectedDepartment != null)
+                {
+                    UpdateDepartment updateDepartment = new UpdateDepartment(departmentController, SelectedDepartment);
+                    updateDepartment.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please choose a department to update!");
+                }
             }
 
         }

@@ -17,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CLI.Model;
 
 namespace GUI.View
 {
@@ -69,7 +70,16 @@ namespace GUI.View
 
             if (SelectedSubject != null)
             {
+                foreach (CLI.Model.Subject ps in professorsubject_controler.GetAllSubjectsById(SelectedProfessor.Id))
+                {
+                    if(SelectedSubject.SubjectId == ps.subjectId)
+                    {
+                        MessageBox.Show("Subject already exists!");
+                        return;
+                    }
+                }
                 professorsubject_controler.Add(SelectedProfessor.Id, SelectedSubject.subjectId);
+                SelectedProfessor.ToProfessor().Subjects.Add(SelectedSubject.ToSubject());
 
                 Close();
             }
