@@ -1,4 +1,4 @@
-0|Škrobović|Pantelija|1/12/2001|0|1. MAJ|22|BABUŠNICA|Crna Gora|+38161706971|skrobovic.ra.0.2021@uns.ac.rs|5|RA|0|2021|2|S|7
+0|Škrobović|Pantelija|1/12/2001|0|1. MAJ|22|BABUŠNICA|1. MAJ|+38161706971|skrobovic.ra.0.2021@uns.ac.rs|5|RA|0|2021|2|S|7
 1|Veselić|Caka|1/24/2001|1|MIRE ALEČKOVIĆ|67|VELIKA REMETA|Srbija|+38165391091|veselic.ra.1.2021@uns.ac.rs|14|RA|1|2021|1|B|6
 2|Kovrlija|Katarina|5/1/1998|2|DARINKE BOROVIĆ|40|LjUBINIĆ|Bosna i Hercegovina|+3816749564|kovrlija.ra.2.2021@uns.ac.rs|33|RA|2|2021|4|B|9
 3|Zarubica|Đura|7/21/1994|3|MIJE ALEKSIĆA|30|DONjA VREŽINA|Srbija|+38169584327|zarubica.ra.3.2021@uns.ac.rs|21|RA|3|2021|1|S|8

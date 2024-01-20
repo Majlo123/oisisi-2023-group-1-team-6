@@ -57,8 +57,8 @@
         <Label Margin="245,33,430,164" Content="{ns:Loc EspbPoints}" Grid.Column="1" FontSize="20" Grid.Row="1"/>
         <Label Margin="245,366,508,22" Content="{ns:Loc Semestar}" Grid.Column="1" FontSize="20"/>
         <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="195" Height="50" Text="{Binding Path=Subject.Semester, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,  ValidatesOnDataErrors=True}"  Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,366,0,0">
-            <ComboBoxItem Content="Summer"/>
-            <ComboBoxItem Content="Winter"/>
+            <ComboBoxItem Content="{ns:Loc Summer}"/>
+            <ComboBoxItem Content="{ns:Loc Winter}"/>
         </ComboBox>
         <TextBox Grid.Column="1" Text="{Binding Subject.YearOfStudy, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Margin="411,254,237,130"/>

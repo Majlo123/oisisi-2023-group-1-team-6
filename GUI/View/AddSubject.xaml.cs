@@ -17,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static GUI.MainWindow;
 
 namespace GUI.View
 {
@@ -46,8 +47,17 @@ namespace GUI.View
                 Subject subjectoAdd = subjectsController.getSubjectById(Subject.SubjectId);
                 if (subjectoAdd != null)
                 {
-                    MessageBox.Show("Subject with this id already exist.");
-                    return;
+
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        MessageBox.Show("Predmet vec postoji!");
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Subject already exists!");
+                        return;
+                    }
 
                 }
                 subjectsController.Add(Subject.ToSubject());
@@ -55,7 +65,15 @@ namespace GUI.View
             }
             else
             {
-                MessageBox.Show("Subject can not be created. Not all fields are valid.");
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Predmet ne moze da se doda. Nisu sva polja validno popunjena.");
+                }
+                else
+                {
+                    MessageBox.Show("Subject can not be created. Not all fields are valid.");
+                }
+                
             }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)

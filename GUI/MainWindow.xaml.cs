@@ -41,7 +41,7 @@ namespace GUI
         private const string SRB = "sr-RS";
         private const string ENG = "en-US";
 
-        CultureInfo currentCulture = CultureInfo.CurrentCulture;
+        
         public string StatusBarString;
 
         public ObservableCollection<ProfessorDTO> Professors { get; set; }
@@ -71,6 +71,10 @@ namespace GUI
 
                 OnPropertyChanged("SearchText");
             }
+        }
+        public static class GlobalData
+        {
+            public static string SharedString = "";
         }
         public MainWindow()
         {
@@ -116,17 +120,15 @@ namespace GUI
         private void MenuItem_Click_Serbian(object sender, RoutedEventArgs e)
         {
             app.ChangeLanguage(SRB);
-            CultureInfo newCulture = new CultureInfo("sr-RS");
-            CultureInfo.CurrentCulture = newCulture;
-            CultureInfo.CurrentUICulture = newCulture;
+            GlobalData.SharedString = "sr-RS";
+            Update();
         }
 
         private void MenuItem_Click_English(object sender, RoutedEventArgs e)
         {
             app.ChangeLanguage(ENG);
-            CultureInfo newCulture = new CultureInfo("en-US");
-            CultureInfo.CurrentCulture = newCulture;
-            CultureInfo.CurrentUICulture = newCulture;
+            GlobalData.SharedString = "en-US";
+            Update();
         }
         public void Update()
         {
@@ -157,13 +159,50 @@ namespace GUI
                 Index studentIndex = indexController.getIndexById(student.Index.IdIndex);
                 Students.Add(new StudentDTO(student, studentAddress, studentIndex));
             }
-            foreach (CLI.Model.Subject subject in subjectsController.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
+            foreach (CLI.Model.Subject subject in subjectsController.GetAllSubjects())
+            {
+                CLI.Model.Subject subjecttmp = subjectsController.getSubjectById(subject.subjectId);
+                if (subjecttmp.semester == "Winter"|| subjecttmp.semester == "Zimski")
+                {
+
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        subjecttmp.semester = "Zimski";
+                    }
+                    else
+                    {
+                        subjecttmp.semester = "Winter";
+                    }
+                }
+                else
+                {
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        subjecttmp.semester = "Letnji";
+                    }
+                    else
+                    {
+                        subjecttmp.semester = "Summer";
+                    }
+                    
+                }
+                Subjects.Add(new SubjectDTO(subjecttmp));
+            }
 
             foreach (Department department in departmentController.GetAllDepartments()) Departments.Add(new DepartmentDTO(department));
 
             lblDateTime.Content = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
 
-            lblApplicationName.Content = "Studentska sluzba";
+            if (GlobalData.SharedString == "sr-RS")
+            {
+                lblApplicationName.Content = "Studentska sluzba";
+
+
+            }
+            else 
+            {
+                lblApplicationName.Content = "Student Service";
+            }
 
             if (tabs.SelectedItem != null && tabs.SelectedItem is TabItem selectedTab)
             {
@@ -179,14 +218,30 @@ namespace GUI
             {
                 if (SelectedProfessor == null)
                 {
-                    
-                    MessageBox.Show("Please choose profesor to delete!");
+
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        MessageBox.Show("Izaberite profesora kojeg cete da obrisete!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please choose a professor to delete!");
+                    }
                 }
                 else
                 {
-                    string messageprof = "Are you sure that you want to delete a professor?";
-                    string title = "Deleting professor";
-
+                    string messageprof = "";
+                    string title ="";
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        messageprof = "Da li ste sigurni da zelite da obrisete profesora?";
+                        title = "Brisanje profesora";
+                    }
+                    else
+                    {
+                        messageprof = "Are you sure that you want to delete a professor?";
+                        title = "Deleting professor";
+                    }
                     MessageBoxResult result =
                      MessageBox.Show(messageprof, title,
            MessageBoxButton.OKCancel);
@@ -206,15 +261,31 @@ namespace GUI
             {
                 if (SelectedStudent == null)
                 {
-                    MessageBox.Show("Please choose student to delete!");
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        MessageBox.Show("Izaberite studenta kojeg cete da obrisete!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please choose a student to delete!");
+                    }
                 }
                
                    else
                     {
-                        string message = "Are you sure that you want to delete a student?";
-                        string title = "Deleting student";
-
-                        MessageBoxResult result =
+                        string message = "";
+                        string title = "";
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        message = "Da li ste sigurni da zelite da obrisete studenta?";
+                        title = "Brisanje studenta";
+                    }
+                    else
+                    {
+                        message = "Are you sure that you want to delete a student?";
+                        title = "Deleting student";
+                    }
+                    MessageBoxResult result =
                          MessageBox.Show(message, title,
                MessageBoxButton.OKCancel);
 
@@ -232,12 +303,29 @@ namespace GUI
             {
                 if (SelectedSubject == null)
                 {
-                    MessageBox.Show("Please choose subject to delete!");
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        MessageBox.Show("Izaberite predmet koji cete da obrisete!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please choose a subject to delete!");
+                    }
                 }
                 else
                 {
-                    string message = "Are you sure that you want to delete a subject?";
-                    string title = "Deleting subject";
+                    string message = "";
+                    string title = "";
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        message = "Da li ste sigurni da zelite da obrisete predmet?";
+                        title = "Brisanje predmeta";
+                    }
+                    else
+                    {
+                        message = "Are you sure that you want to delete a subject?";
+                        title = "Deleting subject";
+                    }
 
                     MessageBoxResult result =
                      MessageBox.Show(message, title,
@@ -273,7 +361,14 @@ namespace GUI
                 }
                 else
                 {
-                    MessageBox.Show("Please choose a professor to update!");
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        MessageBox.Show("Izaberite profesora kojeg cete da azurirate!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please choose a professor to update!");
+                    }
                 }
             }
             else if(tabs.SelectedIndex == 1)
@@ -286,7 +381,14 @@ namespace GUI
                 }
                 else
                 {
-                    MessageBox.Show("Please choose a student to update!");
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        MessageBox.Show("Izaberite studenta kojeg cete da azurirate!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please choose a student to update!");
+                    }
                 }
             }
             else if(tabs.SelectedIndex == 2)
@@ -299,7 +401,14 @@ namespace GUI
                 }
                 else
                 {
-                    MessageBox.Show("Please choose a subject to update!");
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        MessageBox.Show("Izaberite predmet koji cete da azurirate!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please choose a subject to update!");
+                    }
                 }
             }else if(tabs.SelectedIndex == 3)
             {
@@ -310,7 +419,14 @@ namespace GUI
                 }
                 else
                 {
-                    MessageBox.Show("Please choose a department to update!");
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        MessageBox.Show("Izaberite katedru koju cete da azurirate!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please choose a department to update!");
+                    }
                 }
             }
 
@@ -319,26 +435,21 @@ namespace GUI
         private void About_Click(object sender, RoutedEventArgs e)
         {
 
-            CultureInfo currentCulture = CultureInfo.CurrentCulture;
+            
             string message = string.Empty;
             string title = string.Empty;
 
-            if (currentCulture.Name == "sr-RS")
+            if (GlobalData.SharedString == "sr-RS")
             {
                 message = "Ova aplikacija je napravljena od strane dva studenta sa FTN Novi Sad\nMihajlo Bogdanovic RA64/2021\nNikola Paunovic RA87/2021";
                 title = "O aplikaciji";
             }
-            else if (currentCulture.Name == "en-US")
+            else 
             {
                 message = "This application is made by two students from FTN Novi Sad\nMihajlo Bogdanovic RA64/2021\nNikola Paunovic RA87/2021";
                 title = "About";
             }
-            else
-            {
-                // Default to some language or display a message that the language is not supported.
-                message = "Language not supported";
-                title = "Error";
-            }
+            
 
             MessageBox.Show(message, title);
 
@@ -362,7 +473,14 @@ namespace GUI
             professorsController.Save();
             subjectsController.Save();
 
-            MessageBox.Show("Files are saved successfully ");
+            if (GlobalData.SharedString == "sr-RS")
+            {
+                MessageBox.Show("Fajlovi su uspesno sacuvani");
+            }
+            else
+            {
+                MessageBox.Show("Files are saved");
+            }
 
         }
         public void Search_Click(object sender, RoutedEventArgs e)

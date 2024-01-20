@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static GUI.MainWindow;
 
 namespace GUI.View
 {
@@ -74,15 +75,28 @@ namespace GUI.View
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            string id_prof = SelectedProfessor.Id;
-            SelectedSubject.professor = id_prof;
-            subjectController.Update(SelectedSubject.ToSubject());
+            if (SelectedProfessor != null)
+            {
+                string id_prof = SelectedProfessor.Id;
+                SelectedSubject.professor = id_prof;
+                subjectController.Update(SelectedSubject.ToSubject());
 
-            // Ažuriranje professorid u UpdateSubject klasi
-            updateSubject.professorid = id_prof;
-            updateSubject.UpdateProfessorTextbox(id_prof);
 
-            Close();
+                updateSubject.professorid = id_prof;
+                updateSubject.UpdateProfessorTextbox(id_prof);
+
+                Close();
+            }
+            else {
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Izaberite profesora kojeg zelite da dodate.");
+                }
+                else
+                {
+                    MessageBox.Show("Chose professor that you want to add.");
+                }
+            }
         }
 
 

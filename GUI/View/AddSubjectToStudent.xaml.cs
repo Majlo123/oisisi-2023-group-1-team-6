@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static GUI.MainWindow;
 
 namespace GUI.View
 {
@@ -77,7 +78,15 @@ namespace GUI.View
             }
             else
             {
-                MessageBox.Show("Chose subject that you want to add.");
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Izaberi predmet koji zelis da dodas.");
+                }
+                else
+                {
+                    MessageBox.Show("Chose subject that you want to add.");
+                }
+                
             }
 
         }

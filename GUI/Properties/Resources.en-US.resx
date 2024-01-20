@@ -294,6 +294,9 @@
   <data name="Subjects" xml:space="preserve">
     <value>Subjects</value>
   </data>
+  <data name="Summer" xml:space="preserve">
+    <value>Summer</value>
+  </data>
   <data name="TakeExam" xml:space="preserve">
     <value>Take Exam</value>
   </data>
@@ -314,6 +317,9 @@
   </data>
   <data name="UpdateSubject" xml:space="preserve">
     <value>UpdateSubject</value>
+  </data>
+  <data name="Winter" xml:space="preserve">
+    <value>Winter</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Year</value>

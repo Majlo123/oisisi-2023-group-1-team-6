@@ -277,23 +277,6 @@
                     Grid.Column="0"
                     Margin="37,3,156,6"
                     Content="{ns:Loc AddressId}" Grid.ColumnSpan="2" />
-                <Label
-                    Grid.Row="11"
-                    Width="156"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Content="{ns:Loc Average}" />
-                <TextBox
-                    Grid.Row="11"
-                    Grid.Column="1"
-                    Width="174"
-                    Height="26"
-                    Margin="7,0,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Text="{Binding Student.Average, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                    TextWrapping="Wrap"
-                    Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                 <DatePicker
                     Grid.Row="3"
                     Grid.Column="1"

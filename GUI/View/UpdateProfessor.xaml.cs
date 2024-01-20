@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static GUI.MainWindow;
 
 namespace GUI.View
 {
@@ -102,7 +103,15 @@ namespace GUI.View
             }
             else
             {
-                MessageBox.Show("Professor can not be updated. Not all fields are valid.");
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Profesor ne moze da se azurira. Nisu sva polja validno populjena.");
+                }
+                else
+                {
+                    MessageBox.Show("Professor can not be updated. Not all fields are valid.");
+                }
+                
             }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -113,20 +122,37 @@ namespace GUI.View
 
         private void Tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Vaša logika koja se izvršava kada se promeni tab
+            
         }
 
         private void DeleteSubject_Click(object sender, RoutedEventArgs e)
         {
             if (subject == null)
             {
-
-                MessageBox.Show("Please select subject that you want to delete from professor.");
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Izaberite predmet koji zelite da obrise od profesora.");
+                }
+                else
+                {
+                    MessageBox.Show("Please select subject that you want to delete from professor.");
+                }
+                
             }
             else
             {
-                string message = "Are you sure that you want to delete a subject?";
-                string title = "Deleting subject from student";
+                string message = "";
+                string title = "";
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    message = "Da li ste sigurni da zelite da obrisete predmet?";
+                    title = "Brisanje predmeta sa profesora";
+                }
+                else
+                {
+                    message = "Are you sure that you want to delete a subject?";
+                    title = "Deleting subject from professor";
+                }
 
                 MessageBoxResult result =
                  MessageBox.Show(message, title,

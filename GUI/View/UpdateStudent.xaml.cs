@@ -17,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static GUI.MainWindow;
 using Index = StudentskaSluzba.Model.Index;
 
 namespace GUI.View
@@ -127,7 +128,16 @@ namespace GUI.View
             }
             else
             {
-                MessageBox.Show("Student can not be updated. Not all fields are valid.");
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Student ne moze da se azurira. Nisu sva polja dobro popunjena");
+                }
+                else
+                {
+                    MessageBox.Show("Student can not be updated. Not all fields are valid.");
+                }
+
+                
                 
             }
         }
@@ -175,7 +185,15 @@ namespace GUI.View
             }
             else
             {
-                MessageBox.Show("Please select subject that you want to take exam.");
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Izaberite predmet koji zelite da polazete.");
+                }
+                else
+                {
+                    MessageBox.Show("Please select subject that you want to take exam.");
+                }
+                
             }
 
 
@@ -189,12 +207,29 @@ namespace GUI.View
             if (subject == null)
             {
 
-                MessageBox.Show("Please select subject that you want to delete from student.");
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Izaberite predmet koji zelite da obrisete studentu");
+                }
+                else
+                {
+                    MessageBox.Show("Please select subject that you want to delete from student.");
+                }
             }
             else
             {
-                string message = "Are you sure that you want to delete a subject?";
-                string title = "Deleting subject from student";
+                string message = "";
+                string title = "";
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    message = "Da li ste sigurni da hocete da obrisete predmet?";
+                    title = "Brisanje predmeta sa studenta";
+                }
+                else
+                {
+                    message = "Are you sure that you want to delete a subject?";
+                    title = "Deleting subject from student";
+                }
 
                 MessageBoxResult result =
                  MessageBox.Show(message, title,
@@ -218,14 +253,30 @@ namespace GUI.View
         {
             if (subject == null)
             {
-
-                MessageBox.Show("Please select subject that you want to delete from student.");
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Izaberite predmet koji zelite da obrisete studentu");
+                }
+                else
+                {
+                    MessageBox.Show("Please select subject that you want to delete from student.");
+                }
+               
             }
             else
             {
-                string message = "Are you sure that you want to delete a subject?";
-                string title = "Deleting subject from student";
-
+                string message = "";
+                string title = "";
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    message = "Da li ste sigurni da hocete da obrisete predmet?";
+                    title = "Brisanje predmeta sa studenta";
+                }
+                else
+                {
+                    message = "Are you sure that you want to delete a subject?";
+                    title = "Deleting subject from student";
+                }
                 MessageBoxResult result =
                  MessageBox.Show(message, title,
        MessageBoxButton.OKCancel);
@@ -282,17 +333,40 @@ namespace GUI.View
                         }
                         else
                         {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            MessageBox.Show("Ni jedan profesor nije nadjen za predmet koji ima student");
+                        }
+                        else
+                        {
                             MessageBox.Show("No professors found for the subjects associated with this student.");
                         }
+                    }
+                    }
+                    else
+                    {
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        MessageBox.Show("Ni jedan profesor nije nadjen za predmet koji ima student");
                     }
                     else
                     {
                         MessageBox.Show("No professors found for the subjects associated with this student.");
                     }
                 }
+                }
+                else
+                {
+                
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Student nema ni jedan predmet.");
+                }
                 else
                 {
                     MessageBox.Show("This student is not enrolled in any subjects.");
+                }
+                
                 }
             
             

@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static GUI.MainWindow;
 using Index = StudentskaSluzba.Model.Index;
 
 namespace GUI.DTO
@@ -171,6 +172,10 @@ namespace GUI.DTO
                 {
                     suma += g.grades;
                     i++;
+                }
+                if (suma == 0)
+                {
+                    return 0;
                 }
                 return suma / i;
             }
@@ -382,18 +387,18 @@ namespace GUI.DTO
             }
         }
 
-        
 
-        private Regex _nameRegex = new Regex("[A-Z][a-z0-9]+");
-        private Regex _addressRegex = new Regex("[A-Z][a-z]*");
-        private Regex _surnameRegex = new Regex("[A-Z][a-z0-9]+");
+
+        private Regex _nameRegex = new Regex("[A-Za-zČčĆćŠšĐđŽž]+");
+        private Regex _addressRegex = new Regex("[A-Za-zČčĆćŠšĐđŽž]+");
+        private Regex _surnameRegex = new Regex("[A-Za-zČčĆćŠšĐđŽž]+");
         private Regex _idRegex = new Regex("[0-9]+");
         private Regex _PhoneNumberRegex = new Regex("[+][0-9]{7,15}");
         private Regex _StatusRegex = new Regex("[BS]");
         private Regex _dateRegex = new Regex("[0-9]{1,2}[/][0-9]{1,2}[/][0-9]{4}");
-        private Regex _emailRegex = new Regex("[a-zA-Z]+[@][a-zA-Z]+[.][a-zA-Z]+");
+        private Regex _emailRegex = new Regex("[a-zA-Z]+[.][a-zA-Z]+[.][0-9]+[.][0-9]+[@][a-zA-Z]+[.][a-zA-Z]+");
         private Regex _naturalNumberRegex = new Regex("[1-9][0-9]*[A-Za-z]*");
-        private Regex _abbreviationRegex = new Regex("[a-z]{2}");
+        private Regex _abbreviationRegex = new Regex("[A-Z]{2}");
 
         public string Error => null;
 
@@ -403,84 +408,243 @@ namespace GUI.DTO
             {
                 if (columnName == "Name")
                 {
+
                     if (string.IsNullOrEmpty(Name))
-                        return "Name is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Ime ne sme biti prazno";
+                        }
+                        else
+                        {
+                            return "Name is required";
+                        }
+                    }
 
                     Match match = _nameRegex.Match(Name);
                     if (!match.Success)
-                        return "Format isn't good. Try again.";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo.";
+                        }
+                        else
+                        {
+                            return "Format isn't good. Try again.";
+                        }
+                    }
+                    
+                        
                 }
                 else if (columnName == "Surname")
                 {
                     if (string.IsNullOrEmpty(Surname))
-                        return "Surname is required";
-
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Prezime ne sme biti prazno";
+                        }
+                        else
+                        {
+                            return "Surname is required";
+                        }
+                    }
                     Match match = _surnameRegex.Match(Surname);
                     if (!match.Success)
-                        return "Format isn't good. Try again.";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo.";
+                        }
+                        else
+                        {
+                            return "Format isn't good. Try again.";
+                        }
+                    }
                 }
                 else if (columnName == "Date")
                 {
-                    if (string.IsNullOrEmpty(Date.ToString())) 
-                        return "Date is required";
+                    if (string.IsNullOrEmpty(Date.ToString()))
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Datum ne sme biti prazan";
+                        }
+                        else
+                        {
+                            return "Date is required";
+                        }
+                    }
+                    
 
                     Match match = _dateRegex.Match(Date.ToString());
                     if (!match.Success)
-                        return "Format isn't good. Try again.";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo.";
+                        }
+                        else
+                        {
+                            return "Format isn't good. Try again.";
+                        }
+                    }
                 }
                 else if (columnName == "Street")
                 {
                     if (string.IsNullOrEmpty(Street))
-                        return "Street is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Ulica ne sme biti prazna";
+                        }
+                        else
+                        {
+                            return "Street is required";
+                        }
+                    }
 
                     Match match = _addressRegex.Match(Street);
                     if (!match.Success)
-                        return "Format not good. Try again. ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo.";
+                        }
+                        else
+                        {
+                            return "Format isn't good. Try again.";
+                        }
+                    }
                 }
                 else if (columnName == "Number")
                 {
                     if (Number == 0)
-                        return "Street is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Broj ulice ne sme biti prazan";
+                        }
+                        else
+                        {
+                            return "Number is required";
+                        }
+                    }
 
-                    Match match = _idRegex.Match(Id.ToString()); 
-                    if (!match.Success)
-                        return "Id must be in format of nine numbers ";
+                    
                 }
                 else if (columnName == "City")
                 {
                     if (string.IsNullOrEmpty(City))
-                        return "City is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Grad ne sme biti prazan";
+                        }
+                        else
+                        {
+                            return "City is required";
+                        }
+                    }
 
                     Match match = _addressRegex.Match(City);
                     if (!match.Success)
-                        return "Format not good. Try again. ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo";
+                        }
+                        else
+                        {
+                            return "Format not good. Try again. ";
+                        }
+                    }
+                   
                 }
                 else if (columnName == "State")
                 {
                     if (string.IsNullOrEmpty(State))
-                        return "State is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Drzava ne sme biti prazno";
+                        }
+                        else
+                        {
+                            return "State is required";
+                        }
+                    }
 
                     Match match = _addressRegex.Match(State);
                     if (!match.Success)
-                        return "Format not good. Try again. ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo. ";
+                        }
+                        else
+                        {
+                            return "Format not good. Try again. ";
+                        }
+                    }
+                    
                 }
                 else if (columnName == "Phonenumber")
                 {
                     if (string.IsNullOrEmpty(Phonenumber))
-                        return "Phone number is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Broj telefona ne sme biti prazan";
+                        }
+                        else
+                        {
+                            return "Phone is required";
+                        }
+                    }
 
                     Match match = _PhoneNumberRegex.Match(Phonenumber);
                     if (!match.Success)
-                        return "Number must begin with + then State area code and then your number ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Broj= '+' onda pozivni broj,onda broj telefona";
+                        }
+                        else
+                        {
+                            return "Number= '+' then State area code,then your number ";
+                        }
+                    }
+                    
                 }
                 else if (columnName == "Email")
                 {
                     if (string.IsNullOrEmpty(Email))
-                        return "Email is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Email ne sme biti prazno";
+                        }
+                        else
+                        {
+                            return "Email is required";
+                        }
+                    }
+                    
 
                     Match match = _emailRegex.Match(Email);
                     if (!match.Success)
-                        return "Email must be in format name@domain.domainextension ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Email=prezime.smer.god@domen.eksentzijadomena";
+                        }
+                        else
+                        {
+                            return "Email=surname.abb.year@domain.domainextension ";
+                        }
+                    }
+                    
                 }
                 else if (columnName == "Id")
                 {
@@ -498,11 +662,30 @@ namespace GUI.DTO
                 {
                     Match match = _naturalNumberRegex.Match(YearOfStudy.ToString());
                     if (!match.Success)
-                        return "Year of study must be in format of a number";
-                }else if(columnName == "Status")
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Godina mora biti u formatu broja";
+                        }
+                        else
+                        {
+                            return "Year must be in format off number";
+                        }
+                    }
+                }
+                else if(columnName == "Status")
                 {
                     if (string.IsNullOrEmpty(Status))
-                        return "Status is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Status ne sme biti prazan";
+                        }
+                        else
+                        {
+                            return "Status is required";
+                        }
+                    }
 
                     Match match = _StatusRegex.Match(Status);
                     if (!match.Success)
@@ -511,11 +694,30 @@ namespace GUI.DTO
                 else if(columnName == "AbbreviationOfMajor")
                 {
                     if (string.IsNullOrEmpty(AbbreviationOfMajor))
-                        return "Abbreviation is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Oznaka smera je obavezna";
+                        }
+                        else
+                        {
+                            return "Abbreviation is required";
+                        }
+                    }
+                    
 
                     Match match = _abbreviationRegex.Match(AbbreviationOfMajor);
                     if (!match.Success)
-                        return "Abbreviation must consist of two small letters";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Smer je u formatu 2 velika slova";
+                        }
+                        else
+                        {
+                            return "Abbreviation consist 2 big letters";
+                        }
+                    }
                 }
 
                 return null;

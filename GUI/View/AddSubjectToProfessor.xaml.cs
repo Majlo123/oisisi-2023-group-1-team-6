@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CLI.Model;
+using static GUI.MainWindow;
 
 namespace GUI.View
 {
@@ -74,8 +75,17 @@ namespace GUI.View
                 {
                     if(SelectedSubject.SubjectId == ps.subjectId)
                     {
-                        MessageBox.Show("Subject already exists!");
-                        return;
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            MessageBox.Show("Predmet vec postoji!");
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Subject already exists!");
+                            return;
+                        }
+                        
                     }
                 }
                 professorsubject_controler.Add(SelectedProfessor.Id, SelectedSubject.subjectId);
@@ -85,7 +95,15 @@ namespace GUI.View
             }
             else
             {
-                MessageBox.Show("Chose subject that you want to add.");
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Izaberi predmet koji zelis da dodas.");
+                }
+                else
+                {
+                    MessageBox.Show("Chose subject that you want to add.");
+                }
+                
             }
 
         }

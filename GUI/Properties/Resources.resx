@@ -294,6 +294,9 @@
   <data name="Subjects" xml:space="preserve">
     <value>Predmet</value>
   </data>
+  <data name="Summer" xml:space="preserve">
+    <value>Letnji</value>
+  </data>
   <data name="TakeExam" xml:space="preserve">
     <value>Polazi Ispit</value>
   </data>
@@ -314,6 +317,9 @@
   </data>
   <data name="UpdateSubject" xml:space="preserve">
     <value>Azuriraj Predmet</value>
+  </data>
+  <data name="Winter" xml:space="preserve">
+    <value>Zimski</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Godina</value>

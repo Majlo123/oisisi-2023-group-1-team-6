@@ -20,6 +20,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static GUI.MainWindow;
 
 namespace GUI.View
 {
@@ -54,11 +55,26 @@ namespace GUI.View
             
             if (this.subject.Semester == "Winter")
             {
-                semester = "Winter";
+
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    semester = "Zimski";
+                }
+                else
+                {
+                    semester = "Winter";
+                }
             }
             else
             {
-                semester = "Summer";
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    semester = "Letnji";
+                }
+                else
+                {
+                    semester = "Summer";
+                }
             };
             espbpoints = this.subject.EspbPoints;
             
@@ -68,8 +84,8 @@ namespace GUI.View
             subjectcontroller = subjectController;
             professorController = new ProfessorController();
             addressController = new AddressController();
-            
-            UpdateProfessors();
+
+            UpdateProfessorTextbox(professorid);
             DataContext = this;
         }
         private void Update_Click(object sender, RoutedEventArgs e)
@@ -81,7 +97,16 @@ namespace GUI.View
             }
             else
             {
-                MessageBox.Show("Subject can not be updated. Not all fields are valid.");
+                
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Predmet ne moze da se azurira. Nisu sva polja validno populjena");
+                }
+                else
+                {
+                    MessageBox.Show("Subject can not be updated. Not all fields are valid.");
+                }
+                
             }
         }
         public void Cancel_Click(object sender, RoutedEventArgs e)
@@ -90,13 +115,24 @@ namespace GUI.View
         }
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            string message = "Are you sure that you want to delete professor from subject?";
-            string title = "Deleting professor from subject";
+            string message = "";
+            string title = "";
+            if (GlobalData.SharedString == "sr-RS")
+            {
+                message = "Da li ste sigurni da zelite da obrisete profesora sa predmeta?";
+                title = "Brisanje profesora sa predmeta";
+            }
+            else
+            {
+                message = "Are you sure that you want to delete a professor from subject?";
+                title = "Deleting professor from subject";
+            }
 
             MessageBoxResult result = MessageBox.Show(message, title, MessageBoxButton.OKCancel);
 
             if (result == MessageBoxResult.OK)
             {
+                subject.Professor = "";
                 subjectcontroller.DeleteProfessor(subjectid);
                 ClearProfessorTextbox();  
                 
@@ -128,13 +164,14 @@ namespace GUI.View
         }
         public void UpdateProfessorTextbox(string professorId)
         {
-            professorid = professorId;
+
 
             if (professorid == "")
             {
                 Delete.IsEnabled = false;
                 Add.IsEnabled = true;
             }
+
             else
             {
                 foreach (Professor professor in professorController.GetAllProfessors())
@@ -145,14 +182,22 @@ namespace GUI.View
                         string surname = professor.Surname;
                         professor_textbox.Text = name + " " + surname;
 
-                        Add.IsEnabled = false;
-                        Delete.IsEnabled = true;
 
-                        professor_textbox.IsReadOnly = true;
+                        Delete.IsEnabled = true;
+                        Add.IsEnabled = false;
+
                     }
+                    else if (professor_textbox.Text == "")
+                    {
+                        Add.IsEnabled = true;
+                        Delete.IsEnabled = false;
+
+
+                    }
+
                 }
             }
-
+            professor_textbox.IsReadOnly = true;
             professor_textbox.GetBindingExpression(TextBox.TextProperty)?.UpdateTarget();
         }
         public void ClearProfessorTextbox()
@@ -161,7 +206,7 @@ namespace GUI.View
 
             Delete.IsEnabled = false;
             Add.IsEnabled = true;
-            professor_textbox.Text = "";  // Clear the textbox
+            professor_textbox.Text = ""; 
 
             professor_textbox.GetBindingExpression(TextBox.TextProperty)?.UpdateTarget();
         }
@@ -171,7 +216,7 @@ namespace GUI.View
             AddProfessorToSubject updateProfesor = new AddProfessorToSubject(professorController, subjectcontroller, subject,this);
 
 
-            updateProfesor.Closed += AddSubject_Closed;
+            
 
             updateProfesor.Show();
         }

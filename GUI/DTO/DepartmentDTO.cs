@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static GUI.MainWindow;
 
 namespace GUI.DTO
 {
@@ -94,11 +95,32 @@ namespace GUI.DTO
                 if(columnName == "DepartmentName")
                 {
                     if (string.IsNullOrEmpty(DepartmentName))
-                        return "Name is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Ime departmana ne sme biti prazno";
+                        }
+                        else
+                        {
+                            return "Name is required";
+
+                        }
+                    }
 
                     Match match = _nameRegex.Match(DepartmentName);
                     if (!match.Success)
-                        return "Format isn't good. Try again.";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo.";
+                        }
+                        else
+                        {
+                            return "Format isn't good. Try again.";
+
+                        }
+                    }
+                    
                 }
 
                 return null;

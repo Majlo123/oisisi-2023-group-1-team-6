@@ -223,15 +223,15 @@
                     SelectionMode="Single">
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                            Width="150"
+                            Width="100"
                             Binding="{Binding SubjectId}"
                             Header="{ns:Loc SubjectId}" />
                         <DataGridTextColumn
-                            Width="200"
+                            Width="300"
                             Binding="{Binding SubjectName}"
                             Header="{ns:Loc SubjectName}" />
                         <DataGridTextColumn
-                            Width="200"
+                            Width="150"
                             Binding="{Binding EspbPoints}"
                             Header="{ns:Loc EspbPoints}" />
                         <DataGridTextColumn

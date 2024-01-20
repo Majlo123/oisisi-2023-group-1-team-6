@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using CLI.Controller;
 using GUI.DTO;
 using StudentskaSluzba.Model;
-
+using static GUI.MainWindow;
 
 namespace GUI.View
 {
@@ -51,7 +51,17 @@ namespace GUI.View
                 Professor professortoadd = professorController.getProfessorById(Professor.Id);
                 if (adresstoadd != null)
                 {
-                    MessageBox.Show("Address with this id already exist.");
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        MessageBox.Show("Adresa vec postoji.");
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Address with this id already exist.");
+
+                    }
+                    
                     if (professortoadd != null)
                     {
                         MessageBox.Show("Proffesor with this id already exist.");
@@ -64,21 +74,40 @@ namespace GUI.View
                 }
                 if (professortoadd != null)
                 {
-                    MessageBox.Show("Proffesor with this id already exist.");
-                    return;
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        MessageBox.Show("Profesor sa ovim brojem licne karte vec postoji.");
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Proffesor with this id already exist.");
+                        return;
+                    }
+                    
+                    
                 }
                 
                 Professor.date = new DateOnly(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day);
                 addressController.Add(Professor.ToAddress());
                 professorController.Add(Professor.ToProfessor());
-                //string street, int number, string city, string state
+                
 
                 
                 Close();
             }
             else
             {
-                MessageBox.Show("Professor can not be created. Not all fields are valid.");
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Profesor ne moze da se kreira.");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Proffesor can't be created.");
+                    return;
+                }
             }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)

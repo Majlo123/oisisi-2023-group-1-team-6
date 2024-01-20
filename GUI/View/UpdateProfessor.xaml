@@ -122,14 +122,14 @@
                         Grid.Row="2"
                         Grid.RowSpan="2"
                         Grid.Column="1"
-                        Margin="382,19,-402,39"
+                        Margin="382,19,-402,32"
                         Text="{Binding Path=professor.Title, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                         Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                     <TextBox
                         Grid.Row="3"
                         Grid.RowSpan="2"
                         Grid.Column="1"
-                        Margin="382,36,-402,22"
+                        Margin="382,36,-402,11"
                         Text="{Binding Path=professor.Workyear, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                         Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                     <TextBox

@@ -592,6 +592,15 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Letnji.
+        /// </summary>
+        public static string Summer {
+            get {
+                return ResourceManager.GetString("Summer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Polazi Ispit.
         /// </summary>
         public static string TakeExam {
@@ -651,6 +660,15 @@ namespace GUI.Properties {
         public static string UpdateSubject {
             get {
                 return ResourceManager.GetString("UpdateSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zimski.
+        /// </summary>
+        public static string Winter {
+            get {
+                return ResourceManager.GetString("Winter", resourceCulture);
             }
         }
         

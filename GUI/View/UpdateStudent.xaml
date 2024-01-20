@@ -182,15 +182,6 @@
                             <ComboBoxItem Content="S" />
                         </ComboBox>
                         <Label
-                            Grid.Row="11"
-                            Grid.ColumnSpan="3"
-                            Width="213"
-                            Height="26"
-                            Margin="7,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Content="{ns:Loc Average}" />
-                        <Label
                             Grid.Column="4"
                             Width="213"
                             Height="26"
@@ -339,48 +330,37 @@
                             TextWrapping="Wrap"
                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
                         <TextBox
-                            Grid.Row="11"
-                            Grid.Column="3"
-                            Width="191"
-                            Height="22"
-                            Margin="38,6,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Text="{Binding student.Average, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                            TextWrapping="Wrap"
-                            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
-                        <TextBox
-                            Grid.Column="5"
+                            Grid.Column="4"
                             Width="203"
                             Height="26"
-                            Margin="15,0,0,0"
+                            Margin="127,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Text="{Binding student.Phonenumber, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                             TextWrapping="Wrap"
-                            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Grid.ColumnSpan="2" />
                         <TextBox
                             Grid.Row="1"
-                            Grid.Column="5"
+                            Grid.Column="4"
                             Width="203"
                             Height="26"
-                            Margin="15,0,0,0"
+                            Margin="127,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Text="{Binding student.Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                             TextWrapping="Wrap"
-                            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Grid.ColumnSpan="2" />
                         <TextBox
                             Grid.Row="2"
-                            Grid.Column="5"
+                            Grid.Column="4"
                             Width="203"
                             Height="26"
-                            Margin="15,7,0,0"
+                            Margin="124,6,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Text="{Binding student.YearOfStudy, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                             TextWrapping="Wrap"
-                            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" />
+                            Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Grid.ColumnSpan="2" />
                         <TextBox
                             Grid.Row="4"
                             Grid.Column="5"
@@ -579,7 +559,7 @@
                                 <DataGridTextColumn
                                     Width="200"
                                     Binding="{Binding Date}"
-                                    Header="{ns:Loc Date}" />
+                                    Header="{ns:Loc Delete}" />
                             </DataGrid.Columns>
                         </DataGrid>
                         <Button
@@ -598,14 +578,14 @@
                             Margin="418,18,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="Average grade:" />
+                            Content="{ns:Loc Average}" />
                         <Label
                             Grid.Column="4"
                             Width="112"
                             Margin="418,62,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Content="ESPBPoints:"
+                            Content="{ns:Loc EspbPoints}"
                             RenderTransformOrigin="0.495,0.596" />
                         <TextBox
                             Grid.Column="4"

@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static GUI.MainWindow;
 
 namespace GUI.View
 {
@@ -47,8 +48,16 @@ namespace GUI.View
                 Student studentToAdd = studentController.getStudentById(Student.Id);
                 if (studentToAdd != null)
                 {
-                    MessageBox.Show("Student with this id already exist.");
-                    return;
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        MessageBox.Show("Student vec postoji!");
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Student already exists!");
+                        return;
+                    }
 
                 }
                 
@@ -60,7 +69,14 @@ namespace GUI.View
             }
             else
             {
-                MessageBox.Show("Student can not be created. Not all fields are valid.");
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Student ne moze da se doda. Nisu sva polja validno popunjena.");
+                }
+                else
+                {
+                    MessageBox.Show("Student can not be created. Not all fields are valid.");
+                }
             }
         }
 

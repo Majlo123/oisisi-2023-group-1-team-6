@@ -9,6 +9,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static GUI.MainWindow;
+using System.Windows;
 
 namespace GUI.DTO
 {
@@ -131,11 +133,31 @@ namespace GUI.DTO
                 else if (columnName == "SubjectName")
                 {
                     if (string.IsNullOrEmpty(SubjectName))
-                        return "Subject name is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Ime predmeta ne sme biti prazno";
+                        }
+                        else
+                        {
+                            return "Subject name is required";
+                        }
+                    }
+                        
 
                     Match match = _NameRegex.Match(SubjectName);
                     if (!match.Success)
-                        return "Format not good. Try again. ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo. ";
+                        }
+                        else
+                        {
+                            return "Format not good. Try again. ";
+                        }
+                    }
+                    
                 }
                 else if (columnName == "YearOfStudy")
                 {
@@ -144,8 +166,16 @@ namespace GUI.DTO
                 else if (columnName == "Semester")
                 {
                     if (string.IsNullOrEmpty(Semester))
-                        return "Semester is required";
-
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Semestar ne smi biti prazan";
+                        }
+                        else
+                        {
+                            return "Semestar is required";
+                        }
+                    }
 
                 }
                 else if (columnName == "Professor")

@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static GUI.MainWindow;
 
 namespace GUI.View
 {
@@ -84,7 +85,15 @@ namespace GUI.View
             }
             else
             {
-                MessageBox.Show("Chose professor that you want to add.");
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Izaberite profesora kojeg zelite da dodate.");
+                }
+                else
+                {
+                    MessageBox.Show("Chose professor that you want to add.");
+                }
+                
             }
         }
 
@@ -103,7 +112,15 @@ namespace GUI.View
             }
             else
             {
-                MessageBox.Show("SelectedProfessor is null. Please choose a professor.");
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Profesor ne postoji. Izaberite profesora.");
+                }
+                else
+                {
+                    MessageBox.Show("SelectedProfessor is null. Please choose a professor.");
+                }
+                
             }
         }
 

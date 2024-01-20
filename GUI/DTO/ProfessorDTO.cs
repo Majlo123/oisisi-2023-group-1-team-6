@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static GUI.MainWindow;
 
 namespace GUI.DTO
 {
@@ -248,21 +249,59 @@ namespace GUI.DTO
                 if (columnName == "Surname")
                 {
                     if (string.IsNullOrEmpty(Surname))
-                        return "Surname is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Prezime ne sme biti prazno";
+                        }
+                        else
+                        {
+                            return "Surname is required";
+                        }
+                    }
+                    
 
                     Match match = _NameRegex.Match(Surname);
                     if (!match.Success)
-                        return "Format not good. Try again.";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo";
+                        }
+                        else
+                        {
+                            return "Format not good. Try again.";
 
+                        }
+                    }
+                    
                 }
                 else if (columnName == "Name")
                 {
                     if (string.IsNullOrEmpty(Name))
-                        return "Name is required";
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Ime ne sme biti prazno";
+                        }
+                        else
+                        {
+                            return "Name is required";
+
+                        }
 
                     Match match = _NameRegex.Match(Name);
                     if (!match.Success)
-                        return "Format not good. Try again. ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo";
+                        }
+                        else
+                        {
+                            return "Format not good. Try again.";
+
+                        }
+                    }
                 }
                 else if (columnName == "Date")
                 {
@@ -275,11 +314,31 @@ namespace GUI.DTO
                 else if (columnName == "Street")
                 {
                     if (string.IsNullOrEmpty(Street))
-                        return "Street is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Ime ulice ne sme biti prazno";
+                        }
+                        else
+                        {
+                            return "Street is required";
+
+                        }
+                    }
 
                     Match match = _NameRegex.Match(Street);
                     if (!match.Success)
-                        return "Format not good. Try again. ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo";
+                        }
+                        else
+                        {
+                            return "Format not good. Try again.";
+
+                        }
+                    }
                 }
                 else if (columnName == "Number")
                 {
@@ -288,56 +347,175 @@ namespace GUI.DTO
                 else if (columnName == "City")
                 {
                     if (string.IsNullOrEmpty(City))
-                        return "City is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Grad ne sme biti prazan";
+                        }
+                        else
+                        {
+                            return "City is required";
+
+                        }
+                    }
+                    
 
                     Match match = _NameRegex.Match(City);
                     if (!match.Success)
-                        return "Format not good. Try again. ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo";
+                        }
+                        else
+                        {
+                            return "Format not good. Try again.";
+
+                        }
+                    }
                 }
                 else if (columnName == "State")
                 {
                     if (string.IsNullOrEmpty(State))
-                        return "State is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Drazava ne sme biti prazna";
+                        }
+                        else
+                        {
+                            return "State is required";
+
+                        }
+                    }
 
                     Match match = _NameRegex.Match(State);
                     if (!match.Success)
-                        return "Format not good. Try again. ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo";
+                        }
+                        else
+                        {
+                            return "Format not good. Try again.";
+
+                        }
+                    }
                 }
                 else if (columnName == "Phone")
                 {
                     if (string.IsNullOrEmpty(Phone))
-                        return "Phone number is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Broj telefona ne sme biti prazan";
+                        }
+                        else
+                        {
+                            return "Phone is required";
+
+                        }
+                    }
 
                     Match match = _PhoneNumberRegex.Match(Phone);
                     if (!match.Success)
-                        return "+ then State area code and then your number ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Broj= '+' onda pozivni broj,onda broj telefona";
+                        }
+                        else
+                        {
+                            return "Number= '+' then State area code,then your number ";
+                        }
+                    }
                 }
                 else if (columnName == "Email")
                 {
                     if (string.IsNullOrEmpty(Email))
-                        return "Email is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Email ne sme biti prazan";
+                        }
+                        else
+                        {
+                            return "Email is required";
+
+                        }
+                    }
 
                     Match match = _EmailRegex.Match(Email);
                     if (!match.Success)
-                        return "Email must be in format name@domain.domainextension ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Email=ime.prezime@domen.eksentzijadomena";
+                        }
+                        else
+                        {
+                            return "Email=name.surname@domain.domainextension ";
+                        }
+                    }
                 }
                 else if (columnName == "Id")
                 {
                     if (string.IsNullOrEmpty(Id))
-                        return "Id is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Broj licne karte ne sme biti prazan";
+                        }
+                        else
+                        {
+                            return "Id is required";
+
+                        }
+                    }
 
                     Match match = _IdRegex.Match(Id);
                     if (!match.Success)
-                        return "Id must be in format of nine numbers ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Broj licne mora imate 9 brojeva";
+                        }
+                        else
+                        {
+                            return "Id must be in format of 9 numbers";
+
+                        }
+                    }
                 }
                 else if (columnName == "Title")
                 {
                     if (string.IsNullOrEmpty(Title))
-                        return "Title is required";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Zvanje ne sme biti prazno";
+                        }
+                        else
+                        {
+                            return "Title is required";
+
+                        }
+                    }
 
                     Match match = _NameRegex.Match(Title);
                     if (!match.Success)
-                        return "Format not good. Try again. ";
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Format nije dobar. Pokusaj ponovo";
+                        }
+                        else
+                        {
+                            return "Format not good. Try again.";
+
+                        }
+                    }
                 }
                 else if (columnName == "Workyear")
                 {
