@@ -113,6 +113,20 @@
                     Source="/backbutton.png"
                     Stretch="Fill" />
             </Button>
+            <Button x:Name="ToolBar_previousPage" Click="PreviousPage_Click">
+                <Image
+            Width="24"
+            Height="24"
+            
+            Stretch="Fill" Source="first-page.png" />
+            </Button>
+
+            <Button x:Name="ToolBar_nextPage" Click="NextPage_Click">
+                <Image
+            Width="24"
+            Height="24"
+            Stretch="Fill" Source="Icons8-Windows-8-Printing-Two-Pages.512.png" />
+            </Button>
         </ToolBar>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>

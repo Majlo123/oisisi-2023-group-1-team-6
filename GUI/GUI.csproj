@@ -12,6 +12,8 @@
     <None Remove="4243273_pen_basic_app_ux_icon.png" />
     <None Remove="8666693_search_icon.png" />
     <None Remove="backbutton.png" />
+    <None Remove="first-page.png" />
+    <None Remove="Icons8-Windows-8-Printing-Two-Pages.512.png" />
     <None Remove="new.png" />
     <None Remove="trash.png" />
     <None Remove="x_icon.png" />
@@ -22,6 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="first-page.png" />
+    <Resource Include="Icons8-Windows-8-Printing-Two-Pages.512.png" />
     <Resource Include="View\2044240_disk_save_save as_icon.png" />
     <Resource Include="8666693_search_icon.png" />
     <Resource Include="backbutton.png" />
