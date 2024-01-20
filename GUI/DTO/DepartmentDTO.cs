@@ -86,6 +86,25 @@ namespace GUI.DTO
             }
         }
 
+        public List<ProfessorDTO> professors;
+
+        public List<ProfessorDTO> Professors
+        {
+            get
+            {
+                return professors;
+            }
+            set
+            {
+                if(value != professors)
+                {
+                    professors = value;
+                    OnPropertyChanged("Professors");
+                }
+            }
+
+        }
+
         private Regex _nameRegex = new Regex("[A-Z][a-z0-9]+");
 
         public string this[string columnName]
@@ -144,6 +163,7 @@ namespace GUI.DTO
             departmentId = d.DepartmentID;
             departmentName = d.DepartmentName;
             ProfessorId = d.DepartmentBoss;
+            professors = new List<ProfessorDTO>();
         }
         
         public Department toDepartment()

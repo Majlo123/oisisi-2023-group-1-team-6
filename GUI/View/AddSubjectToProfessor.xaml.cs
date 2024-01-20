@@ -89,7 +89,6 @@ namespace GUI.View
                     }
                 }
                 professorsubject_controler.Add(SelectedProfessor.Id, SelectedSubject.subjectId);
-                SelectedProfessor.ToProfessor().Subjects.Add(SelectedSubject.ToSubject());
 
                 Close();
             }

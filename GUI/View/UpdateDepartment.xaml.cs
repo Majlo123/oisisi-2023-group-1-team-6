@@ -1,4 +1,6 @@
 ﻿using CLI.Controller;
+using CLI.Model;
+using CLI.Observer;
 using GUI.DTO;
 using StudentskaSluzba.Model;
 using System;
@@ -15,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static GUI.MainWindow;
 
 namespace GUI.View
 {
@@ -29,46 +32,46 @@ namespace GUI.View
         public string email;
         public string title;
         public string professorId;
+
+        public ProfessorDepartment professorDepartment;
+
+        public ProfessorDepartmentController professorDepartmentController;
         public ProfessorDTO professor { get; set; }
         public DepartmentDTO department { get; set; }
+        public List<ProfessorDTO> professors { get; set; }
 
         private ProfessorController professorController;
-        private ProfessorSubjectController professorSubjectController;
-        private AddressController addressController;
 
         private DepartmentController departmentController;
 
         public ObservableCollection<ProfessorDTO> Professors { get; set; }
-        public UpdateDepartment(DepartmentController dc, DepartmentDTO department)
+        public UpdateDepartment(DepartmentController dc, DepartmentDTO SelectedDepartment)
         {
             InitializeComponent();
-            this.department = department;
-            professor = new ProfessorDTO();
-            this.name = professor.Name;
-            this.surname = professor.Surname;
-            this.email = professor.Email;
-            this.title = professor.Title;
-            this.department = department;
+            this.department = SelectedDepartment;
             professorController = new ProfessorController();
-            professorSubjectController = new ProfessorSubjectController();
             this.departmentController = dc;
-            addressController = new AddressController();
             Professors = new ObservableCollection<ProfessorDTO>();
+            professorDepartmentController = new ProfessorDepartmentController();
+            professorDepartmentController.GetAllProfessorsById(department.departmentId)
+            .Select(prof => new ProfessorDTO(prof))
+            .ToList();
             DataContext = this;
             Update();
         }
 
-        public void Update()
+        private void Update()
         {
-             Professors.Clear();
-             foreach (Address address in addressController.GetAllAddress())
-                 foreach (Professor professor in departmentController.getProfessorsByDepartmentId(department.departmentId))
-                 {
-                     if (professor.Address.id == address.id)
-                            Professors.Add(new ProfessorDTO(professor, address));
-                 }
+
+            Professors.Clear();
+            foreach (Professor subject in professorDepartmentController.GetAllProfessorsById(department.departmentId))
+                Professors.Add(new ProfessorDTO(subject));
 
 
+        }
+        private void AddProfessor_Closed(object sender, EventArgs e)
+        {
+            Update();
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -76,25 +79,19 @@ namespace GUI.View
             Close();
         }
 
-        private void Update(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Professors.Clear();
-            foreach (Professor professor in departmentController.getProfessorsByDepartmentId(department.departmentId))
-                Professors.Add(new ProfessorDTO(professor));
+            Close();
         }
 
-        private void AddProfessor_Click(object sender, RoutedEventArgs e)
+        private void AddProfessor_Click(object sender, EventArgs e)
         {
-            AddProfessorToDepartment updateProfesor = new AddProfessorToDepartment(professorController,departmentController,department,this);
-            updateProfesor.Closed += AddProfessor_Closed;
-
-            updateProfesor.Show();
+            AddProfessorToDepartment addProfessor = new AddProfessorToDepartment(department,professor);
+            addProfessor.Closed += AddProfessor_Closed;
+            addProfessor.Show();
         }
 
-        private void AddProfessor_Closed(object sender, EventArgs e)
-        {
-            Update();
-        }
+
 
         private void GetProfesors()
         {
@@ -109,7 +106,7 @@ namespace GUI.View
 
         private void SetBoss_Click(object sender, RoutedEventArgs e)
         {
-            AddProfessorToDepartment updateProfesor = new AddProfessorToDepartment(professorController, departmentController, department, this);
+            AddProfessorToDepartment updateProfesor = new AddProfessorToDepartment(department,professor);
 
             updateProfesor.AddBoss_Click(sender, e);
             updateProfesor.Closed += AddProfessor_Closed;
@@ -119,7 +116,48 @@ namespace GUI.View
 
         private void DeleteProfessor_Click(object sender, RoutedEventArgs e)
         {
+            if (professor == null)
+            {
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Izaberite profesora kojeg zelite da obrisete sa katedre.");
+                }
+                else
+                {
+                    MessageBox.Show("Please select professor that you want to delete from department.");
+                }
 
+            }
+            else
+            {
+                string message = "";
+                string title = "";
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    message = "Da li ste sigurni da zelite da obrisete profesora?";
+                    title = "Brisanje profesora sa katedre";
+                }
+                else
+                {
+                    message = "Are you sure that you want to delete this professr?";
+                    title = "Deleting professor from department";
+                }
+
+                MessageBoxResult result =
+                 MessageBox.Show(message, title,
+       MessageBoxButton.OKCancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+
+                    professorDepartmentController.Delete(department.departmentId);
+                    Update();
+
+                }
+
+                else
+                { }
+            }
         }
 
 

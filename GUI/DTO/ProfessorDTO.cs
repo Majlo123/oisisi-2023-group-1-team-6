@@ -71,6 +71,24 @@ namespace GUI.DTO
             }
         }
 
+        public int departmentId;
+
+        public int DepartmentId
+        {
+            get
+            {
+                return departmentId;
+            }
+            set
+            {
+                if(value != departmentId)
+                {
+                    departmentId = value;
+                    OnPropertyChanged("DepartmentId");
+                }
+            }
+        }
+
         private int addresid;
         public int AddressId
         {
@@ -578,6 +596,7 @@ namespace GUI.DTO
             id = professor.Id;
             title = professor.Title;
             workyear = professor.WorkYear;
+
         }
         public static List<ProfessorDTO> ConvertList(List<Professor> professors)
         {

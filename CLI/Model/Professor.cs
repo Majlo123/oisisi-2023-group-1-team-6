@@ -30,6 +30,8 @@ namespace StudentskaSluzba.Model;
 
     public List<Subject> Subjects { get; set; }
 
+    public int DepartmentId;
+
     public Professor()
     {
         Subjects = new List<Subject>();
@@ -67,6 +69,7 @@ namespace StudentskaSluzba.Model;
             Email,
             Title,
             WorkYear.ToString(),
+            DepartmentId.ToString()
         };
         return csvValues;
     }
@@ -95,6 +98,7 @@ namespace StudentskaSluzba.Model;
         sb.Append($"EMAIL:{Email}|");
         sb.Append($"TITLE:{Title}|");
         sb.Append($"WORK YEAR:{WorkYear.ToString()}|");
+        sb.Append($"DEPARTMENT ID:{DepartmentId.ToString()}|");
         sb.Append("SUBJECTS:");
         sb.AppendJoin("|", Subjects.Select(subject => subject.subjectName));
 

@@ -26,46 +26,29 @@ namespace GUI.View
     {
 
         public ObservableCollection<ProfessorDTO> Professors { get; set; }
-        private ProfessorController professorController;
-        private AddressController addressController;
-        private DepartmentController departmentController;
+        public ProfessorController professor_controler;
+        public ProfessorDepartmentController professordepartment_controler;
         public DepartmentDTO SelectedDepartment { get; set; }
         public ProfessorDTO SelectedProfessor { get; set; }
-
-        public UpdateDepartment updateDepartment;
-        public AddProfessorToDepartment(ProfessorController ps, DepartmentController dc, DepartmentDTO selectedDepartment, UpdateDepartment updateDepartment)
+        public UpdateDepartment updateDepartment { get; set; }
+        public AddProfessorToDepartment(DepartmentDTO Department, ProfessorDTO Professor)
         {
             InitializeComponent();
-            this.professorController = ps;
-            addressController = new AddressController();
-            this.departmentController = dc;
-            this.SelectedDepartment = selectedDepartment;
-            this.updateDepartment = updateDepartment;
-            Professors = new ObservableCollection<ProfessorDTO>();
+            professor_controler = new ProfessorController();
+            professordepartment_controler = new ProfessorDepartmentController();
             DataContext = this;
+            SelectedDepartment = Department;
+            SelectedProfessor = Professor;
+            Professors = new ObservableCollection<ProfessorDTO>();
             Update();
         }
 
         private void Update()
         {
 
-            updateDepartment.Professors.Clear();
-            departmentController.Update(SelectedDepartment.toDepartment());
+            Professors.Clear();
 
-            var addresses = addressController.GetAllAddress();
-            var professors = professorController.GetAllProfessors();
-
-            foreach (Address address in addresses)
-            {
-
-                Professor professor = professors.FirstOrDefault(p => p.Address.id == address.id);
-
-                if (professor != null)
-                {
-                    Professors.Add(new ProfessorDTO(professor, address));
-                }
-
-            }
+            foreach (Professor subject in professor_controler.GetAllProfessors()) Professors.Add(new ProfessorDTO(subject));
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -74,13 +57,37 @@ namespace GUI.View
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            if (SelectedDepartment != null)
+            {
+                professordepartment_controler.Add(SelectedProfessor.Id, SelectedDepartment.departmentId);
+
+                Close();
+            }
+            else
+            {
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Izaberi predmet koji zelis da dodas.");
+                }
+                else
+                {
+                    MessageBox.Show("Chose subject that you want to add.");
+                }
+
+            }
+        }
+
+        public void AddBoss_Click(object sender, RoutedEventArgs e)
+        {
             if (SelectedProfessor != null)
             {
-                professorController.Add(SelectedProfessor.ToProfessor());
-                SelectedDepartment.toDepartment().Professors.Add(SelectedProfessor.ToProfessor());
-                departmentController.Update(SelectedDepartment.toDepartment());
+                string id_boss = SelectedProfessor.Id;
+                SelectedDepartment.professorId = id_boss;
+                professor_controler.Update(SelectedProfessor.ToProfessor());
 
-                updateDepartment.Update();
+
+                updateDepartment.department.professorId = id_boss;
+
                 Close();
             }
             else
@@ -93,34 +100,6 @@ namespace GUI.View
                 {
                     MessageBox.Show("Chose professor that you want to add.");
                 }
-                
-            }
-        }
-
-        public void AddBoss_Click(object sender, RoutedEventArgs e)
-        {
-            if (SelectedProfessor != null)
-            {
-                string id_prof = SelectedProfessor.Id;
-                SelectedDepartment.professorId = id_prof;
-                departmentController.Update(SelectedDepartment.toDepartment());
-
-                // Ažuriranje professorid u UpdateSubject klasi
-                updateDepartment.professorId = id_prof;
-
-                Close();
-            }
-            else
-            {
-                if (GlobalData.SharedString == "sr-RS")
-                {
-                    MessageBox.Show("Profesor ne postoji. Izaberite profesora.");
-                }
-                else
-                {
-                    MessageBox.Show("SelectedProfessor is null. Please choose a professor.");
-                }
-                
             }
         }
 
