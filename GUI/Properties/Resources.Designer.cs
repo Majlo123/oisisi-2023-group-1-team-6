@@ -493,11 +493,29 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stavi Sefa.
+        /// </summary>
+        public static string Set_Boss {
+            get {
+                return ResourceManager.GetString("Set Boss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prikazi Profesore.
         /// </summary>
         public static string ShowProfessors {
             get {
                 return ResourceManager.GetString("ShowProfessors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prikazi predmete.
+        /// </summary>
+        public static string ShowSubjects {
+            get {
+                return ResourceManager.GetString("ShowSubjects", resourceCulture);
             }
         }
         
@@ -642,6 +660,15 @@ namespace GUI.Properties {
         public static string Update {
             get {
                 return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azuriraj Departman.
+        /// </summary>
+        public static string UpdateDepartment {
+            get {
+                return ResourceManager.GetString("UpdateDepartment", resourceCulture);
             }
         }
         

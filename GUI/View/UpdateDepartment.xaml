@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:GUI.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ns="clr-namespace:GUI.Localization"
-    Title="UpdateDepartment"
+    Title="{ns:Loc UpdateDepartment}"
     Width="800"
     Height="450"
     mc:Ignorable="d">
@@ -60,7 +60,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="AddProfessor_Click"
-            Content="Add" />
+            Content="{ns:Loc Add}" />
         <Button
             Grid.Column="4"
             Width="116"
@@ -69,7 +69,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="DeleteProfessor_Click"
-            Content="Delete" />
+            Content="{ns:Loc Delete}" />
         <Button
             Grid.Column="4"
             Width="119"
@@ -78,7 +78,16 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="SetBoss_Click"
-            Content="Set Boss" />
+            Content="{ns:Loc Set Boss}" />
+        <Button
+            Grid.Column="4"
+            Width="116"
+            Height="38"
+            Margin="0,42,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Click="DeleteProfessor_Click"
+            Content="{ns:Loc ShowSubjects}" />
 
     </Grid>
 </Window>

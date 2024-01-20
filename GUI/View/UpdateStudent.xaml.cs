@@ -341,18 +341,22 @@ namespace GUI.View
                         .Select(subject => subject.professor)
                         .Distinct()
                         .ToList();
-
-                    if (professorIds.Count > 0)
+                HashSet<string> uniqueProfessorIds = new HashSet<string>();
+                
+                if (professorIds.Count > 0)
                     {
                     List<ProfessorDTO> professors = new List<ProfessorDTO>();
                     foreach (string professorId in professorIds)
                     {
-                        List<Professor> professorList = professorController.GetProfessorsById(professorId);
-
-                        
-                        foreach (Professor professor in professorList)
+                        if (uniqueProfessorIds.Add(professorId))
                         {
-                            professors.Add(new ProfessorDTO(professor));
+                            // If the professor ID is added to the HashSet (i.e., it's unique), get the professor
+                            List<Professor> professorList = professorController.GetProfessorsById(professorId);
+
+                            foreach (Professor professor in professorList)
+                            {
+                                professors.Add(new ProfessorDTO(professor));
+                            }
                         }
                     }
 
