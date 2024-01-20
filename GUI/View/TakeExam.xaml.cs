@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static GUI.MainWindow;
 
 namespace GUI.View
 {
@@ -72,7 +73,37 @@ namespace GUI.View
                     Grade.Grade = 6;
                     break;
             }
-            Date = new DateOnly(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day);
+            if (dateTime.HasValue)
+            {
+                Date = new DateOnly(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day);
+                
+            }
+            else
+            {
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Niste popunili sve podatke za polaganje ispita");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("You have not filled in all the data for taking the exam");
+                    return;
+                }
+            }
+            if (Grade.Grade == 0)
+            {
+                if (GlobalData.SharedString == "sr-RS")
+                {
+                    MessageBox.Show("Niste popunili sve podatke za polaganje ispita");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("You have not filled in all the data for taking the exam");
+                    return;
+                }
+            }
             Grade.date = Date;
             Grade.StudentId = Student.Id;
             Grade.SubjectId = Subject.subjectId;

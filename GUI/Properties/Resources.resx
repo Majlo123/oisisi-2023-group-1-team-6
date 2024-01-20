@@ -282,6 +282,9 @@
   <data name="Students" xml:space="preserve">
     <value>Studenti</value>
   </data>
+  <data name="Studentska sluzba" xml:space="preserve">
+    <value>Studentska sluzba</value>
+  </data>
   <data name="StudentSurname" xml:space="preserve">
     <value>Prezime</value>
   </data>

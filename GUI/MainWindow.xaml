@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:GUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ns="clr-namespace:GUI.Localization"
-    Title="StudentskaSluzba"
+    Title="{ns:Loc Studentska sluzba}"
     Width="1000"
     Height="500"
     KeyDown="Window_KeyDown"

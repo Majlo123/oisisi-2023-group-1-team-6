@@ -556,6 +556,15 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Studentska sluzba.
+        /// </summary>
+        public static string Studentska_sluzba {
+            get {
+                return ResourceManager.GetString("Studentska sluzba", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prezime.
         /// </summary>
         public static string StudentSurname {

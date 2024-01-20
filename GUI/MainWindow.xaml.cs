@@ -628,7 +628,7 @@ namespace GUI
                     {
                         foreach (SubjectDTO sb in Subjects)
                         {
-                            if (sb.subjectId.ToString().Contains(query[0]))
+                            if (sb.subjectName.ToLower().Contains(query[0]))
                             {
                                 subjectTemp.Add(sb);
                             }
@@ -638,9 +638,9 @@ namespace GUI
                     {
                         foreach (SubjectDTO sb in Subjects)
                         {
-                            if (sb.subjectId.ToString().Contains(query[0]))
+                            if (sb.subjectName.ToLower().Contains(query[0]))
                             {
-                                if (sb.subjectName.ToLower().Contains(query[1]))
+                                if (sb.subjectId.ToString().Contains(query[1]))
                                 {
                                     subjectTemp.Add(sb);
                                 }

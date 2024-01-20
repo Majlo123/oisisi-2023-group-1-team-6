@@ -35,8 +35,8 @@
                         </DataGrid.Columns>
 
                     </DataGrid>
-                    <Button Content="Add" HorizontalAlignment="Left" Margin="41,326,0,0" VerticalAlignment="Top" Height="30" Width="61" Click="Add_Click"/>
-                    <Button Content="Cancel" HorizontalAlignment="Left" Margin="186,326,0,0" VerticalAlignment="Top" Height="30" Width="61" Click="Cancel_Click"/>
+                    <Button Content="{ns:Loc Add}" HorizontalAlignment="Left" Margin="41,326,0,0" VerticalAlignment="Top" Height="30" Width="61" Click="Add_Click"/>
+                    <Button Content="{ns:Loc Cancel}" HorizontalAlignment="Left" Margin="186,326,0,0" VerticalAlignment="Top" Height="30" Width="61" Click="Cancel_Click"/>
 
                 </Grid>
 

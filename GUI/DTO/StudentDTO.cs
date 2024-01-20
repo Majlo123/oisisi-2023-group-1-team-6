@@ -480,6 +480,7 @@ namespace GUI.DTO
                     Match match = _dateRegex.Match(Date.ToString());
                     if (!match.Success)
                     {
+                        
                         if (GlobalData.SharedString == "sr-RS")
                         {
                             return "Format nije dobar. Pokusaj ponovo.";
@@ -648,6 +649,7 @@ namespace GUI.DTO
                 }
                 else if (columnName == "Id")
                 {
+                    
                     Match match = _idRegex.Match(Id.ToString());
                     if (!match.Success)
                         return "Id must be in format of nine numbers ";
@@ -660,6 +662,17 @@ namespace GUI.DTO
                 }
                 else if (columnName == "YearOfStudy")
                 {
+                    if (YearOfStudy == 0)
+                    {
+                        if (GlobalData.SharedString == "sr-RS")
+                        {
+                            return "Godina studija ne sme biti prazno";
+                        }
+                        else
+                        {
+                            return "Year of study is required";
+                        }
+                    }
                     Match match = _naturalNumberRegex.Match(YearOfStudy.ToString());
                     if (!match.Success)
                     {

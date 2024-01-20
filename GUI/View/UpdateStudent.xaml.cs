@@ -102,6 +102,7 @@ namespace GUI.View
             this.indexController = indexController;
             studentSubjectController = new StudentSubjectController();
             gradeController = new GradeController();
+            subjectController= new SubjectController();
             UnpassedSubjects = new ObservableCollection<SubjectDTO>(
             studentSubjectController.GetAllSubjectsById(student.id)
             .Select(subject => new SubjectDTO(subject))
@@ -155,8 +156,36 @@ namespace GUI.View
 
             UnpassedSubjects.Clear();
             foreach (CLI.Model.Subject subject in studentSubjectController.GetAllSubjectsById(student.id))
+            {
+                CLI.Model.Subject subjecttmp = subjectController.getSubjectById(subject.subjectId);
+                if (subjecttmp.semester == "Winter" || subjecttmp.semester == "Zimski")
+                {
 
-                UnpassedSubjects.Add(new SubjectDTO(subject));
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        subjecttmp.semester = "Zimski";
+                    }
+                    else
+                    {
+                        subjecttmp.semester = "Winter";
+                    }
+                }
+                else
+                {
+                    if (GlobalData.SharedString == "sr-RS")
+                    {
+                        subjecttmp.semester = "Letnji";
+                    }
+                    else
+                    {
+                        subjecttmp.semester = "Summer";
+                    }
+
+                }
+                UnpassedSubjects.Add(new SubjectDTO(subjecttmp));
+            }
+
+                
             PassedSubjects.Clear();
             foreach (Grade grade in gradeController.GetAllGradesByStudent(student.id)) { 
                 PassedSubjects.Add(new GradeDTO(grade));
@@ -177,13 +206,14 @@ namespace GUI.View
         }
         private void Take_Exam_Click(object sender, RoutedEventArgs e)
         {
-            if (subject != null)
+            if (subject.subjectName != null)
             {
                 TakeExam takeexam = new TakeExam(subject, student);
                 takeexam.Show();
 
             }
-            else
+            
+            else 
             {
                 if (GlobalData.SharedString == "sr-RS")
                 {
@@ -193,7 +223,7 @@ namespace GUI.View
                 {
                     MessageBox.Show("Please select subject that you want to take exam.");
                 }
-                
+
             }
 
 
