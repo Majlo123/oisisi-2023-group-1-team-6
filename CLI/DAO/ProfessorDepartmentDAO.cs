@@ -15,15 +15,13 @@ namespace CLI.DAO
     {
         private readonly Storage<ProfessorDepartment> _storage;
         private List<ProfessorDepartment> _professordepartment;
-        private DepartmentController subjectcontroller = new DepartmentController();
-        private ProfessorController professorController;
+        private ProfessorController professorController = new ProfessorController();
         private List<Professor> professor_temp;
         public CLI.Observer.Subject ProfessorDepartmentSubject;
         public ProfessorDepartmentDAO()
         {
             _storage = new Storage<ProfessorDepartment>("professordepartment.txt");
             _professordepartment = _storage.Load();
-            professorController = new ProfessorController();
             ProfessorDepartmentSubject = new CLI.Observer.Subject();
         }
 

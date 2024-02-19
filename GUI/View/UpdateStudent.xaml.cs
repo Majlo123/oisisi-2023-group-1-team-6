@@ -195,13 +195,9 @@ namespace GUI.View
         private void AddSubject_Click(object sender, RoutedEventArgs e)
         {
 
-
             AddSubjectToStudent addSubject = new AddSubjectToStudent(student);
             addSubject.Closed += AddSubject_Closed;
             addSubject.Show();
-
-
-
 
         }
         private void Take_Exam_Click(object sender, RoutedEventArgs e)

@@ -30,6 +30,9 @@ namespace GUI.View
         public ObservableCollection<SubjectDTO> Subjects { get; set; }
         public SubjectController subject_controler;
         public ProfessorSubjectController professorsubject_controler;
+        public UpdateProfessor updateProfessor;
+        public ProfessorController professorController;
+        public AddressController addressController;
         public SubjectDTO SelectedSubject { get; set; }
         public ProfessorDTO SelectedProfessor { get; set; }
         public AddSubjectToProfessor(ProfessorDTO professor)
@@ -41,6 +44,9 @@ namespace GUI.View
             subject_controler.Subscribe(this);
             professorsubject_controler.Subscribe(this);
             SelectedProfessor = professor;
+            professorController = new ProfessorController();
+            addressController = new AddressController();
+            updateProfessor = new UpdateProfessor(professorController, SelectedProfessor, addressController);
             Subjects = new ObservableCollection<SubjectDTO>();
             Update();
         }
@@ -49,7 +55,14 @@ namespace GUI.View
         {
             Subjects.Clear();
 
-            foreach (CLI.Model.Subject subject in subject_controler.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
+            foreach (CLI.Model.Subject subject in subject_controler.GetAllSubjects()){
+                SubjectDTO subject1 = updateProfessor.Subjects.FirstOrDefault(s => s.SubjectId == subject.subjectId);
+
+                if(subject1 == null)
+                {
+                    Subjects.Add(new SubjectDTO(subject));
+                }
+            }
 
 
 

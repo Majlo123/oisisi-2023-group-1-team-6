@@ -140,15 +140,6 @@ namespace GUI.View
             else { }
         }
 
-    
-    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
         private void GetProfesors()
         {
 
@@ -215,9 +206,6 @@ namespace GUI.View
         {
             AddProfessorToSubject updateProfesor = new AddProfessorToSubject(professorController, subjectcontroller, subject,this);
 
-
-            
-
             updateProfesor.Show();
         }
         private void AddSubject_Closed(object sender, EventArgs e)
@@ -253,11 +241,6 @@ namespace GUI.View
 
            
             professor_textbox.GetBindingExpression(TextBox.TextProperty)?.UpdateTarget();
-        }
-
-        private void Tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
     

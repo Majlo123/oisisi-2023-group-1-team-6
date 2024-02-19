@@ -28,7 +28,6 @@ namespace GUI.View
         private ProfessorController professorController;
         private AddressController addressController;
         private SubjectController subjectController;
-       
         public SubjectDTO SelectedSubject { get; set; }
         public ProfessorDTO SelectedProfessor { get; set; }
         private UpdateSubject updateSubject;

@@ -6,7 +6,7 @@
 5|Tehnologije i sistemi eUprave|1|Winter|403390402|4
 6|Klijentske web tehnologije|3|Winter|520064301|5
 7|Internet mreže|1|Summer|306180424|7
-8|XML i veb servisi|2|Summer|403390402|10
+8|XML i veb servisi|2|Summer||10
 9|Metodologije razvoja softvera|3|Winter|914012289|4
 10|Uvod u informacione tehnologije u geomatici|3|Winter|39606943|8
 11|Poslovna informatika|3|Summer|3296960|10

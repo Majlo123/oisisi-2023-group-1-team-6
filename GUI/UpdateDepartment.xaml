@@ -79,15 +79,7 @@
             VerticalAlignment="Top"
             Click="SetBoss_Click"
             Content="{ns:Loc Set Boss}" />
-        <Button
-            Grid.Column="4"
-            Width="116"
-            Height="38"
-            Margin="0,42,0,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Click="DeleteProfessor_Click"
-            Content="{ns:Loc ShowSubjects}" />
 
     </Grid>
 </Window>
+

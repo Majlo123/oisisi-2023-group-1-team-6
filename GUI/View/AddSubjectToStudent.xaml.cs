@@ -29,8 +29,13 @@ namespace GUI.View
 
         public ObservableCollection<SubjectDTO> Subjects { get; set; }
         public SubjectController subject_controler;
+        public StudentController studentController;
         public StudentSubjectController studentsubject_controler;
-        public SubjectDTO SelectedSubject { get; set; }
+        public AddressController addressController;
+        public IndexController indexController;
+
+        public UpdateStudent updateStudent;
+        public SubjectDTO selectedSubject { get; set; }
         public StudentDTO selectedStudent { get; set; }
         public AddSubjectToStudent(StudentDTO student)
         {
@@ -38,9 +43,13 @@ namespace GUI.View
             subject_controler = new SubjectController();
             studentsubject_controler = new StudentSubjectController();
             DataContext = this;
+            studentController = new StudentController();
+            addressController = new AddressController();
+            indexController = new IndexController();
+            selectedStudent = student;
+            updateStudent = new UpdateStudent(studentController, selectedStudent, addressController, indexController);
             subject_controler.Subscribe(this);
             studentsubject_controler.Subscribe(this);
-            selectedStudent = student;
             Subjects = new ObservableCollection<SubjectDTO>();
             Update();
         }
@@ -50,8 +59,16 @@ namespace GUI.View
         {
             Subjects.Clear();
 
-            foreach (CLI.Model.Subject subject in subject_controler.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
+            foreach (CLI.Model.Subject subject in subject_controler.GetAllSubjects())
+            {
+                GradeDTO grade = updateStudent.PassedSubjects.FirstOrDefault(g => g.subjectId == subject.subjectId);
+                SubjectDTO subject1 = updateStudent.UnpassedSubjects.FirstOrDefault(s => s.SubjectId == subject.subjectId);
 
+                if (grade == null && subject1 == null && selectedStudent.yearOfStudy >= subject.yearOfStudy)
+                {
+                    Subjects.Add(new SubjectDTO(subject));
+                }
+            }
 
 
         }
@@ -69,10 +86,10 @@ namespace GUI.View
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-
-            if (SelectedSubject != null)
+            
+            if (selectedSubject != null)
             {
-                studentsubject_controler.Add(selectedStudent.id, SelectedSubject.subjectId);
+                studentsubject_controler.Add(selectedStudent.id, selectedSubject.subjectId);
                 
                 Close();
             }
@@ -92,13 +109,3 @@ namespace GUI.View
         }
     }
 }
-    
-
-            
-        
-    
-
-
-
-
-

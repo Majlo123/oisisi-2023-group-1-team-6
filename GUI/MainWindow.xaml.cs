@@ -524,8 +524,8 @@ namespace GUI
             {
                 if (SelectedDepartment != null)
                 {
-                    UpdateDepartment updateDepartment = new UpdateDepartment(departmentController, SelectedDepartment);
-                    updateDepartment.Show();
+                    //UpdateDepartment updateDepartment = new UpdateDepartment(departmentController, SelectedDepartment);
+                    //updateDepartment.Show();
                 }
                 else
                 {

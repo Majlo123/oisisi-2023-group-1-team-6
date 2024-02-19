@@ -13,40 +13,26 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Resources>
-        <ControlTemplate
-            x:Key="ValidationTemplate">
+        <ControlTemplate x:Key="ValidationTemplate">
             <StackPanel>
                 <!--  Placeholder for the TextBox itself  -->
-                <AdornedElementPlaceholder
-                    x:Name="textBox" />
-                <TextBlock
-                    Foreground="Red"
-                    Text="{Binding [0].ErrorContent}" />
+                <AdornedElementPlaceholder x:Name="textBox" />
+                <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
             </StackPanel>
 
         </ControlTemplate>
     </Window.Resources>
-    <TabControl
-        x:Name="Tabcontrol"
-        SelectionChanged="Tabcontrol_SelectionChanged">
-        <TabItem
-            Header="{ns:Loc Information}">
-            <Grid
-                Margin="0,0,0,-6"
-                RenderTransformOrigin="0.499,0.501">
+    <TabControl x:Name="Tabcontrol" SelectionChanged="Tabcontrol_SelectionChanged">
+        <TabItem Header="{ns:Loc Information}">
+            <Grid Margin="0,0,0,-6" RenderTransformOrigin="0.499,0.501">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition
-                        Width="40*" />
-                    <ColumnDefinition
-                        Width="71*" />
-                    <ColumnDefinition
-                        Width="20*" />
-                    <ColumnDefinition
-                        Width="777*" />
+                    <ColumnDefinition Width="40*" />
+                    <ColumnDefinition Width="71*" />
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="777*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition
-                        Height="351" />
+                    <RowDefinition Height="351" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
@@ -69,10 +55,8 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            Width="83*" />
-                        <ColumnDefinition
-                            Width="90*" />
+                        <ColumnDefinition Width="83*" />
+                        <ColumnDefinition Width="90*" />
                     </Grid.ColumnDefinitions>
 
 
@@ -230,20 +214,14 @@
                     Content="{ns:Loc State}" />
             </Grid>
         </TabItem>
-        <TabItem
-            Header="{ns:Loc Subjects}">
+        <TabItem Header="{ns:Loc Subjects}">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition
-                        Width="15*" />
-                    <ColumnDefinition
-                        Width="75*" />
-                    <ColumnDefinition
-                        Width="21*" />
-                    <ColumnDefinition
-                        Width="59*" />
-                    <ColumnDefinition
-                        Width="738*" />
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="75*" />
+                    <ColumnDefinition Width="21*" />
+                    <ColumnDefinition Width="59*" />
+                    <ColumnDefinition Width="738*" />
                 </Grid.ColumnDefinitions>
 
                 <DataGrid
@@ -271,7 +249,7 @@
                             Header="{ns:Loc SubjectName}" />
                         <DataGridTextColumn
                             Width="150"
-                            Binding="{Binding ESPBPoints}"
+                            Binding="{Binding espbPoints}"
                             Header="{ns:Loc EspbPoints}" />
                         <DataGridTextColumn
                             Width="200"
