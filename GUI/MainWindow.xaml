@@ -115,17 +115,26 @@
             </Button>
             <Button x:Name="ToolBar_previousPage" Click="PreviousPage_Click">
                 <Image
-            Width="24"
-            Height="24"
-            
-            Stretch="Fill" Source="first-page.png" />
+                    Width="24"
+                    Height="24"
+                    Source="first-page.png"
+                    Stretch="Fill" />
             </Button>
 
             <Button x:Name="ToolBar_nextPage" Click="NextPage_Click">
                 <Image
-            Width="24"
-            Height="24"
-            Stretch="Fill" Source="Icons8-Windows-8-Printing-Two-Pages.512.png" />
+                    Width="24"
+                    Height="24"
+                    Source="Icons8-Windows-8-Printing-Two-Pages.512.png"
+                    Stretch="Fill" />
+            </Button>
+            <Button x:Name="ChooseTwo" Click="ChooseTwo_Click">
+                <Image
+                    Width="30"
+                    Height="31"
+                    HorizontalAlignment="Center"
+                    Source="C:\Users\Korisnik\Desktop\Nikola\Programi\5.semestar\OISISI\Projekat\oisisi-2023-group-1-team-6\GUI\Icons\8068073.png"
+                    Stretch="Fill" />
             </Button>
         </ToolBar>
         <StatusBar DockPanel.Dock="Bottom">

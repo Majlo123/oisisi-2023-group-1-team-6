@@ -1,16 +1,6 @@
-﻿using StudentskaSluzba.DAO;
-using StudentskaSluzba.Console;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CLI.Model;
+using StudentskaSluzba.DAO;
 using StudentskaSluzba.Model;
-using StudentskaSluzba.Storage;
-using System.Globalization;
-using System.Security.Cryptography.X509Certificates;
-using System.IO;
-using CLI.Model;
 
 namespace StudentskaSluzba.Console
 {

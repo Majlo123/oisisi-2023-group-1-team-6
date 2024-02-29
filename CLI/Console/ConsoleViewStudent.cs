@@ -1,12 +1,5 @@
-﻿using StudentskaSluzba.Console;
-using StudentskaSluzba.DAO;
+﻿using StudentskaSluzba.DAO;
 using StudentskaSluzba.Model;
-using CLI.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StudentskaSluzba.Console
 {
@@ -64,7 +57,7 @@ namespace StudentskaSluzba.Console
             string street = System.Console.ReadLine();
             System.Console.WriteLine("Enter address(number): ");
             int number = ConsoleViewUtils.SafeInputInt();
-            Address address = new Address(id1,street, number, city, state);
+            Address address = new Address(id1, street, number, city, state);
 
             System.Console.WriteLine("Enter phone number: ");
             string phone = System.Console.ReadLine();

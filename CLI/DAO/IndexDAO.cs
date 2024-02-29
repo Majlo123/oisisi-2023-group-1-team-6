@@ -1,11 +1,5 @@
-﻿using StudentskaSluzba.Model;
+﻿using CLI.Observer;
 using StudentskaSluzba.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CLI.Observer;
 
 namespace StudentskaSluzba.DAO
 {
@@ -21,7 +15,7 @@ namespace StudentskaSluzba.DAO
             _storage = new Storage<Model.Index>("index.txt");
             _index = _storage.Load();
             IndexSubject = new Subject();
-    }
+        }
 
         public Model.Index? GetIndexById(int id)
         {

@@ -1,13 +1,7 @@
 ﻿using StudentskaSluzba.Model;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Security.Permissions;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using static GUI.MainWindow;
 
 namespace GUI.DTO
@@ -60,7 +54,7 @@ namespace GUI.DTO
             }
             set
             {
-                if(departmentName != value)
+                if (departmentName != value)
                 {
                     departmentName = value;
                     OnPropertyChanged("DepartmentName");
@@ -72,13 +66,13 @@ namespace GUI.DTO
 
         public string ProfessorId
         {
-            get 
-            { 
+            get
+            {
                 return professorId;
             }
             set
             {
-                if(professorId != value)
+                if (professorId != value)
                 {
                     professorId = value;
                     OnPropertyChanged("ProfessorId");
@@ -96,7 +90,7 @@ namespace GUI.DTO
             }
             set
             {
-                if(value != professors)
+                if (value != professors)
                 {
                     professors = value;
                     OnPropertyChanged("Professors");
@@ -111,7 +105,7 @@ namespace GUI.DTO
         {
             get
             {
-                if(columnName == "DepartmentName")
+                if (columnName == "DepartmentName")
                 {
                     if (string.IsNullOrEmpty(DepartmentName))
                     {
@@ -139,7 +133,7 @@ namespace GUI.DTO
 
                         }
                     }
-                    
+
                 }
 
                 return null;
@@ -165,10 +159,10 @@ namespace GUI.DTO
             ProfessorId = d.DepartmentBoss;
             professors = new List<ProfessorDTO>();
         }
-        
+
         public Department toDepartment()
         {
-            return new Department(departmentId, departmentName,professorId);
+            return new Department(departmentId, departmentName, professorId);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

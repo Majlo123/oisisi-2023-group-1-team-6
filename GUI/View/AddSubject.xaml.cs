@@ -1,22 +1,8 @@
 ﻿using CLI.Controller;
 using CLI.Model;
 using GUI.DTO;
-using StudentskaSluzba.DAO;
-using StudentskaSluzba.Model;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using static GUI.MainWindow;
 
 namespace GUI.View
@@ -30,7 +16,7 @@ namespace GUI.View
 
         private SubjectController subjectsController;
 
-        
+
         public AddSubject(SubjectController subjectsController)
         {
             InitializeComponent();
@@ -73,7 +59,7 @@ namespace GUI.View
                 {
                     MessageBox.Show("Subject can not be created. Not all fields are valid.");
                 }
-                
+
             }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)

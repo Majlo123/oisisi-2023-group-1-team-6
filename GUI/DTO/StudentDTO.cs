@@ -4,11 +4,7 @@ using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using static GUI.MainWindow;
 using Index = StudentskaSluzba.Model.Index;
 
@@ -168,7 +164,7 @@ namespace GUI.DTO
                 controller = new GradeController();
                 double suma = 0;
                 int i = 0;
-                foreach(Grade g in controller.GetAllGradesByStudent(id))
+                foreach (Grade g in controller.GetAllGradesByStudent(id))
                 {
                     suma += g.grades;
                     i++;
@@ -324,7 +320,7 @@ namespace GUI.DTO
         }
 
         public int idAddress;
-        
+
         public int IdAddress
         {
             get
@@ -333,7 +329,7 @@ namespace GUI.DTO
             }
             set
             {
-                if(value != idAddress)
+                if (value != idAddress)
                 {
                     idAddress = value;
                     OnPropertyChanged("IdAddress");
@@ -370,7 +366,7 @@ namespace GUI.DTO
                 subjectController = new SubjectController();
                 if (grade == null)
                     return 0;
-                foreach(Grade g in grade)
+                foreach (Grade g in grade)
                 {
                     Subject subject = subjectController.getSubjectById(g.subjectId);
                     suma += subject.ESPBPoints;
@@ -379,7 +375,7 @@ namespace GUI.DTO
             }
             set
             {
-                if( value != espbpoints)
+                if (value != espbpoints)
                 {
                     espbpoints = value;
                     OnPropertyChanged("Espbpoints");
@@ -433,8 +429,8 @@ namespace GUI.DTO
                             return "Format isn't good. Try again.";
                         }
                     }
-                    
-                        
+
+
                 }
                 else if (columnName == "Surname")
                 {
@@ -475,12 +471,12 @@ namespace GUI.DTO
                             return "Date is required";
                         }
                     }
-                    
+
 
                     Match match = _dateRegex.Match(Date.ToString());
                     if (!match.Success)
                     {
-                        
+
                         if (GlobalData.SharedString == "sr-RS")
                         {
                             return "Format nije dobar. Pokusaj ponovo.";
@@ -532,7 +528,7 @@ namespace GUI.DTO
                         }
                     }
 
-                    
+
                 }
                 else if (columnName == "City")
                 {
@@ -560,7 +556,7 @@ namespace GUI.DTO
                             return "Format not good. Try again. ";
                         }
                     }
-                   
+
                 }
                 else if (columnName == "State")
                 {
@@ -588,7 +584,7 @@ namespace GUI.DTO
                             return "Format not good. Try again. ";
                         }
                     }
-                    
+
                 }
                 else if (columnName == "Phonenumber")
                 {
@@ -616,7 +612,7 @@ namespace GUI.DTO
                             return "Number= '+' then State area code,then your number ";
                         }
                     }
-                    
+
                 }
                 else if (columnName == "Email")
                 {
@@ -631,7 +627,7 @@ namespace GUI.DTO
                             return "Email is required";
                         }
                     }
-                    
+
 
                     Match match = _emailRegex.Match(Email);
                     if (!match.Success)
@@ -645,11 +641,11 @@ namespace GUI.DTO
                             return "Email=surname.abb.year@domain.domainextension ";
                         }
                     }
-                    
+
                 }
                 else if (columnName == "Id")
                 {
-                    
+
                     Match match = _idRegex.Match(Id.ToString());
                     if (!match.Success)
                         return "Id must be in format of nine numbers ";
@@ -686,7 +682,7 @@ namespace GUI.DTO
                         }
                     }
                 }
-                else if(columnName == "Status")
+                else if (columnName == "Status")
                 {
                     if (string.IsNullOrEmpty(Status))
                     {
@@ -704,7 +700,7 @@ namespace GUI.DTO
                     if (!match.Success)
                         return "Status must be 'B' or 'S'";
                 }
-                else if(columnName == "AbbreviationOfMajor")
+                else if (columnName == "AbbreviationOfMajor")
                 {
                     if (string.IsNullOrEmpty(AbbreviationOfMajor))
                     {
@@ -717,7 +713,7 @@ namespace GUI.DTO
                             return "Abbreviation is required";
                         }
                     }
-                    
+
 
                     Match match = _abbreviationRegex.Match(AbbreviationOfMajor);
                     if (!match.Success)
@@ -738,7 +734,7 @@ namespace GUI.DTO
         }
 
         private readonly string[] _validatedProperties = {"Name", "Surname","Date", "Street", "Number", "City", "State",
-                                                           "PhoneNumber", "Email", "Id", "Average", "Email", "YearOfStudy", "Status", 
+                                                           "PhoneNumber", "Email", "Id", "Average", "Email", "YearOfStudy", "Status",
                                                           "AbbreviationOfMajor", "MarkOfMajor", "YearOfEnrollment", "IdIndex"};
 
         public bool IsValid
@@ -763,12 +759,12 @@ namespace GUI.DTO
         public Student toStudent()
         {
             Address adresa = new Address(idAddress, street, number, city, street);
-            Index index = new Index(idIndex,abbreviationOfMajor,markOfMajor,yearOfEnrollment);
+            Index index = new Index(idIndex, abbreviationOfMajor, markOfMajor, yearOfEnrollment);
             Student student = new Student(surname, name, id, date, adresa, phonenumber, email, index, yearOfStudy, status, average);
             return student;
         }
 
-       
+
         public StudentDTO(Student s, Address a, Index i)
         {
             a = s.Address;

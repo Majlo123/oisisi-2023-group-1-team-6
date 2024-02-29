@@ -1,13 +1,7 @@
 ﻿
+using CLI.Observer;
 using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using CLI.Observer;
 namespace StudentskaSluzba.DAO
 {
     public class AddressDAO
@@ -59,9 +53,10 @@ namespace StudentskaSluzba.DAO
         public Address? UpdateAddress(Address address)
         {
             Address oldAddress = GetAddressById(address.id);
-            if (oldAddress is null) {
+            if (oldAddress is null)
+            {
                 System.Console.WriteLine("There is no address with that id. Enter another one!");
-                return null; 
+                return null;
             }
             oldAddress.id = address.id;
             oldAddress.Street = address.Street;

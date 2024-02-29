@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using CLI.Model;
+﻿using CLI.Model;
 using StudentskaSluzba.Serialization;
+using System.Text;
 namespace StudentskaSluzba.Model;
 public class Student : ISerializable
 {
@@ -13,7 +8,7 @@ public class Student : ISerializable
 
     public string Name { get; set; }
 
-    public int Id {  get; set; }
+    public int Id { get; set; }
 
     public DateOnly Date { get; set; }
 
@@ -36,10 +31,11 @@ public class Student : ISerializable
     public List<Subject> FailedSubjects { get; set; }
 
 
-    public Student(string surname, string name) {
+    public Student(string surname, string name)
+    {
         Surname = surname;
-        Name = name;    
-    
+        Name = name;
+
     }
     public Student()
     {
@@ -47,7 +43,7 @@ public class Student : ISerializable
         FailedSubjects = new List<Subject>();
     }
 
-    public Student(string surname, string name,int id, DateOnly date, Address address, string phonenumber, string email, Index index, int yearofstudy, string status, double avaragegrade)
+    public Student(string surname, string name, int id, DateOnly date, Address address, string phonenumber, string email, Index index, int yearofstudy, string status, double avaragegrade)
     {
         Surname = surname;
         Name = name;
@@ -119,5 +115,5 @@ public class Student : ISerializable
         return sb.ToString();
     }
 
-    
+
 }

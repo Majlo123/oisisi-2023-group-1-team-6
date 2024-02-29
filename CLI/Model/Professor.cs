@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CLI.Model;
 using StudentskaSluzba.Serialization;
+using System.Text;
 namespace StudentskaSluzba.Model;
 
-    public  class Professor : ISerializable
-    {
+public class Professor : ISerializable
+{
     public string Surname { get; set; }
 
     public string Name { get; set; }
@@ -37,11 +33,12 @@ namespace StudentskaSluzba.Model;
         Subjects = new List<Subject>();
     }
 
-    public Professor(string name, string surname) {
+    public Professor(string name, string surname)
+    {
         Name = name;
         Surname = surname;
-        
-        
+
+
     }
     public Professor(string surname, string name, DateOnly date, Address address, string phonenumber, string email, string id, string title, int workyear)
     {
@@ -84,7 +81,7 @@ namespace StudentskaSluzba.Model;
         PhoneNumber = values[9];
         Email = values[10];
         Title = values[11];
-        WorkYear=int.Parse(values[12]);
+        WorkYear = int.Parse(values[12]);
     }
     public override string ToString()
     {

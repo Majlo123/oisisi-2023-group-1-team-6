@@ -2,11 +2,6 @@
 using CLI.Model;
 using CLI.Observer;
 using StudentskaSluzba.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CLI.Controller
 {
@@ -21,7 +16,7 @@ namespace CLI.Controller
 
 
         }
-        public List<ProfessorDepartment> GetAllProfessorsByDepartment()
+        public List<ProfessorDepartment> GetAllProfessorDepartments()
         {
             return _professors.GetAll();
         }
@@ -44,7 +39,7 @@ namespace CLI.Controller
             _professors.ProfessorDepartmentSubject.Subscribe(observer);
         }
 
-        public ProfessorDepartment? getAllProfessorsById(int departmentid)
+        public ProfessorDepartment? getProfessorDepartmentById(int departmentid)
         {
             return _professors.GetProfessorDepartmentById(departmentid);
 

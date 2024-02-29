@@ -1,11 +1,6 @@
 ﻿using CLI.Observer;
 using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StudentskaSluzba.DAO
 {
@@ -19,7 +14,7 @@ namespace StudentskaSluzba.DAO
         {
             _storage = new Storage<Grade>("grades.txt");
             _grade = _storage.Load();
-            Subject=new Subject();
+            Subject = new Subject();
         }
         public void Save()
         {
@@ -27,14 +22,14 @@ namespace StudentskaSluzba.DAO
         }
         public Grade? GetGradeById(int id)
         {
-            return _grade.Find(g=> g.Id == id);
+            return _grade.Find(g => g.Id == id);
         }
         public void addGrade(Grade grade)
         {
             bool exists = _grade.Contains(grade);
             if (exists) return;
-            
-            
+
+
             _grade.Add(grade);
             _storage.Save(_grade);
             Subject.NotifyObservers();
@@ -76,8 +71,8 @@ namespace StudentskaSluzba.DAO
             oldGrade.studentId = grade.studentId;
             oldGrade.subjectId = grade.subjectId;
             oldGrade.grades = grade.grades;
-            oldGrade.date  = grade.date;
-           
+            oldGrade.date = grade.date;
+
 
 
             _storage.Save(_grade);

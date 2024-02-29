@@ -1,20 +1,9 @@
-﻿using StudentskaSluzba.DAO;
-using StudentskaSluzba.Console;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using StudentskaSluzba.Model;
-using StudentskaSluzba.Storage;
-using System.Globalization;
-using System.Security.Cryptography.X509Certificates;
-using CLI.Console;
-using System.Runtime.CompilerServices;
+﻿using CLI.Console;
+using StudentskaSluzba.DAO;
 
 namespace StudentskaSluzba.Console
 {
-    public class ConsoleView 
+    public class ConsoleView
     {
         ConsoleViewStudent cvs;
         ConsoleViewProfessor cvp;
@@ -28,7 +17,7 @@ namespace StudentskaSluzba.Console
             cvs = new ConsoleViewStudent(new StudentsDAO());
             cvp = new ConsoleViewProfessor(new ProfessorsDAO());
             cvd = new ConsoleViewDepartment(new DepartmentsDAO());
-            cvsub= new ConsoleViewSubject(new SubjectsDAO());
+            cvsub = new ConsoleViewSubject(new SubjectsDAO());
             cvi = new ConsoleViewIndex(new IndexDAO());
             cva = new ConsoleViewAddress(new AddressDAO());
             cvg = new ConsoleViewGrade(new GradesDAO());
@@ -44,7 +33,7 @@ namespace StudentskaSluzba.Console
             }
         }
 
-        
+
         private void HandleMenuInput(int input)
         {
             switch (input)
@@ -96,7 +85,7 @@ namespace StudentskaSluzba.Console
 
         private void StudentHandleMenuInput(int input)
         {
-            switch(input)
+            switch (input)
             {
                 case 1:
                     cvs.ShowAllStudents();
@@ -205,7 +194,7 @@ namespace StudentskaSluzba.Console
                     RunMenu();
                     break;
             }
- 
+
         }
 
         private void AddressHandleMenuInput(int input)
@@ -259,7 +248,7 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("4: Remove professor: ");
             System.Console.WriteLine("5: Go back");
         }
-       
+
         private void StudentsShowMenu()
         {
             System.Console.WriteLine("\nChoose an option: ");

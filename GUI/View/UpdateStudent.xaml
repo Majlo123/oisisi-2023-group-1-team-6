@@ -464,7 +464,6 @@
                             ItemsSource="{Binding UnpassedSubjects, UpdateSourceTrigger=PropertyChanged}"
                             RenderTransformOrigin="0.548,0.506"
                             SelectedItem="{Binding subject, UpdateSourceTrigger=PropertyChanged}"
-                            SelectionChanged="UnpassedSubjectsDataGrid_SelectionChanged"
                             SelectionMode="Single">
                             <DataGrid.Columns>
                                 <DataGridTextColumn

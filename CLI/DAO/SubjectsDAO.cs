@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CLI.Model;
-using StudentskaSluzba.Model;
-using StudentskaSluzba.Storage;
-using CLI.Observer;
+﻿using StudentskaSluzba.Storage;
 
 
 namespace StudentskaSluzba.DAO
@@ -62,8 +54,8 @@ namespace StudentskaSluzba.DAO
             CLI.Model.Subject? subject = GetSubjectById(subjectId);
             if (subject == null) return null;
 
-            
-            subject.professor_Id =""; 
+
+            subject.professor_Id = "";
 
             _storage.Save(_subjects);
             SubjectSubject.NotifyObservers();

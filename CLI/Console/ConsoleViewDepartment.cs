@@ -1,15 +1,5 @@
 ﻿using StudentskaSluzba.DAO;
-using StudentskaSluzba.Console;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using StudentskaSluzba.Model;
-using StudentskaSluzba.Storage;
-using System.Globalization;
-using System.Security.Cryptography.X509Certificates;
-using System.IO;
 
 
 namespace StudentskaSluzba.Console
@@ -32,9 +22,9 @@ namespace StudentskaSluzba.Console
             {
                 System.Console.WriteLine(d);
             }
-            
+
         }
-        
+
         public Department InputDepartment()
         {
             System.Console.WriteLine("Enter Department ID: ");
@@ -48,7 +38,7 @@ namespace StudentskaSluzba.Console
                 name = System.Console.ReadLine();
             }
             System.Console.WriteLine("Enter Department Boss");
-            string boss= System.Console.ReadLine();
+            string boss = System.Console.ReadLine();
 
 
             return new Department(id, name, boss);
@@ -124,7 +114,7 @@ namespace StudentskaSluzba.Console
                 }
                 else
                 {
-                    
+
                     departmentsToAdd.Professors.Add(professorToAdd);
                     System.Console.WriteLine($"Professor {professorToAdd.Name} added to the department.");
                 }

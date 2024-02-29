@@ -1,23 +1,10 @@
 ﻿using CLI.Controller;
 using CLI.Observer;
 using GUI.DTO;
-using StudentskaSluzba.Serialization;
-using StudentskaSluzba.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using CLI.Model;
 using static GUI.MainWindow;
 
 namespace GUI.View
@@ -55,10 +42,11 @@ namespace GUI.View
         {
             Subjects.Clear();
 
-            foreach (CLI.Model.Subject subject in subject_controler.GetAllSubjects()){
+            foreach (CLI.Model.Subject subject in subject_controler.GetAllSubjects())
+            {
                 SubjectDTO subject1 = updateProfessor.Subjects.FirstOrDefault(s => s.SubjectId == subject.subjectId);
 
-                if(subject1 == null)
+                if (subject1 == null)
                 {
                     Subjects.Add(new SubjectDTO(subject));
                 }
@@ -86,7 +74,7 @@ namespace GUI.View
             {
                 foreach (CLI.Model.Subject ps in professorsubject_controler.GetAllSubjectsById(SelectedProfessor.Id))
                 {
-                    if(SelectedSubject.SubjectId == ps.subjectId)
+                    if (SelectedSubject.SubjectId == ps.subjectId)
                     {
                         if (GlobalData.SharedString == "sr-RS")
                         {
@@ -98,7 +86,7 @@ namespace GUI.View
                             MessageBox.Show("Subject already exists!");
                             return;
                         }
-                        
+
                     }
                 }
                 professorsubject_controler.Add(SelectedProfessor.Id, SelectedSubject.subjectId);
@@ -115,7 +103,7 @@ namespace GUI.View
                 {
                     MessageBox.Show("Chose subject that you want to add.");
                 }
-                
+
             }
 
         }

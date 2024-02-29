@@ -6,25 +6,31 @@
     xmlns:local="clr-namespace:GUI.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ns="clr-namespace:GUI.Localization"
-    Title="{ns:Loc UpdateDepartment}"
+    Title="UpdateDepartment"
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid>
+    <Grid
+        Width="800"
+        HorizontalAlignment="Center"
+        RenderTransformOrigin="0.5,0.492">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*" />
-            <ColumnDefinition Width="75*" />
-            <ColumnDefinition Width="21*" />
-            <ColumnDefinition Width="59*" />
-            <ColumnDefinition Width="738*" />
+            <ColumnDefinition Width="228*" />
+            <ColumnDefinition Width="665*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
         <DataGrid
-            x:Name="ProfessorsTeachingDataGrid"
+            x:Name="ProfessorsOnDepartmentDataGrid"
+            Grid.RowSpan="2"
             Grid.Column="1"
-            Grid.ColumnSpan="4"
-            Width="746"
-            Margin="6,152,0,38"
+            Grid.ColumnSpan="2"
+            Width="795"
+            Margin="10,148,0,20"
             HorizontalAlignment="Left"
             AutoGenerateColumns="False"
             IsReadOnly="True"
@@ -35,51 +41,50 @@
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="100"
-                    Binding="{Binding name}"
-                    Header="{ns:Loc ProfessorName}" />
+                    Binding="{Binding Id}"
+                    Header="Id" />
                 <DataGridTextColumn
                     Width="300"
-                    Binding="{Binding surname}"
-                    Header="{ns:Loc ProfessorSurname}" />
+                    Binding="{Binding Name}"
+                    Header="Name" />
                 <DataGridTextColumn
                     Width="150"
-                    Binding="{Binding email}"
-                    Header="{ns:Loc ProfessorEmail}" />
+                    Binding="{Binding Surname}"
+                    Header="Surname" />
                 <DataGridTextColumn
-                    Width="200"
-                    Binding="{Binding title}"
+                    Width="150"
+                    Binding="{Binding Title}"
                     Header="{ns:Loc Title}" />
             </DataGrid.Columns>
+
         </DataGrid>
         <Button
-            Grid.Column="3"
-            Grid.ColumnSpan="2"
-            Width="116"
-            Height="38"
-            Margin="0,42,0,0"
+            Grid.Column="1"
+            Width="88"
+            Height="32"
+            Margin="53,59,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Click="AddProfessor_Click"
-            Content="{ns:Loc Add}" />
+            Click="AddButton_Click"
+            Content="Add" />
         <Button
-            Grid.Column="4"
-            Width="116"
-            Height="38"
-            Margin="114,42,0,0"
+            Grid.Column="2"
+            Width="78"
+            Height="32"
+            Margin="108,59,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="DeleteProfessor_Click"
-            Content="{ns:Loc Delete}" />
+            Content="Delete" />
         <Button
-            Grid.Column="4"
-            Width="119"
-            Height="38"
-            Margin="423,42,0,0"
+            Grid.Column="2"
+            Width="81"
+            Height="32"
+            Margin="415,59,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="SetBoss_Click"
-            Content="{ns:Loc Set Boss}" />
-
+            Content="Set Boss"
+            RenderTransformOrigin="0.422,-0.369" />
     </Grid>
 </Window>
-

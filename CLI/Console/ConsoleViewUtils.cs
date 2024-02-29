@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StudentskaSluzba.Console
+﻿namespace StudentskaSluzba.Console
 {
     static class ConsoleViewUtils
     {
@@ -16,7 +9,7 @@ namespace StudentskaSluzba.Console
 
             string rawInput = System.Console.ReadLine();
 
-            while (!int.TryParse(rawInput, out input) || rawInput==null)
+            while (!int.TryParse(rawInput, out input) || rawInput == null)
             {
                 System.Console.WriteLine("Not a valid number, try again: ");
 
@@ -25,7 +18,7 @@ namespace StudentskaSluzba.Console
 
             return input;
         }
-        
+
         public static DateOnly SafeInputDateTime()
         {
             DateOnly input;
@@ -61,7 +54,7 @@ namespace StudentskaSluzba.Console
 
             string rawInput = System.Console.ReadLine();
 
-            while(rawInput == null)
+            while (rawInput == null)
             {
                 System.Console.WriteLine("Not a valid string, try again: ");
                 rawInput = System.Console.ReadLine();
@@ -69,6 +62,6 @@ namespace StudentskaSluzba.Console
 
             return rawInput;
         }
-        
+
     }
 }

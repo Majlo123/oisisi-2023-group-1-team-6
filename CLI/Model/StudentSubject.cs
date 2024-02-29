@@ -1,16 +1,11 @@
 ﻿using StudentskaSluzba.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CLI.Model
 {
     public class StudentSubject : ISerializable
     {
         public int id { get; set; }
-        public int id_student {  get; set; }
+        public int id_student { get; set; }
 
         public int id_subject { get; set; }
 

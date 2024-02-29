@@ -1,16 +1,7 @@
 ﻿using CLI.Model;
-using StudentskaSluzba.Model;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using static GUI.MainWindow;
-using System.Windows;
 
 namespace GUI.DTO
 {
@@ -143,7 +134,7 @@ namespace GUI.DTO
                             return "Subject name is required";
                         }
                     }
-                        
+
 
                     Match match = _NameRegex.Match(SubjectName);
                     if (!match.Success)
@@ -157,7 +148,7 @@ namespace GUI.DTO
                             return "Format not good. Try again. ";
                         }
                     }
-                    
+
                 }
                 else if (columnName == "YearOfStudy")
                 {

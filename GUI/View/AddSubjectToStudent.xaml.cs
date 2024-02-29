@@ -1,21 +1,9 @@
 ﻿using CLI.Controller;
 using CLI.Observer;
 using GUI.DTO;
-using StudentskaSluzba.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using static GUI.MainWindow;
 
 namespace GUI.View
@@ -73,12 +61,6 @@ namespace GUI.View
 
         }
 
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -86,11 +68,11 @@ namespace GUI.View
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if (selectedSubject != null)
             {
                 studentsubject_controler.Add(selectedStudent.id, selectedSubject.subjectId);
-                
+
                 Close();
             }
             else
@@ -103,7 +85,7 @@ namespace GUI.View
                 {
                     MessageBox.Show("Chose subject that you want to add.");
                 }
-                
+
             }
 
         }

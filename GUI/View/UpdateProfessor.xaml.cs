@@ -2,20 +2,10 @@
 using GUI.DTO;
 using StudentskaSluzba.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using static GUI.MainWindow;
 
 namespace GUI.View
@@ -25,8 +15,8 @@ namespace GUI.View
     /// </summary>
     public partial class UpdateProfessor : Window
     {
-    
-        
+
+
         public string Surname;
 
         public string Namee;
@@ -49,14 +39,14 @@ namespace GUI.View
         public string Titlee;
         public int WorkYear;
         public ProfessorDTO professor { get; set; }
-        public SubjectDTO subject {  get; set; }
+        public SubjectDTO subject { get; set; }
 
         private ProfessorController professorController;
         private AddressController addressController;
         private ProfessorSubjectController professorSubjectController;
 
         public ObservableCollection<SubjectDTO> Subjects { get; set; }
-        public UpdateProfessor(ProfessorController professorcontroller,ProfessorDTO selectedProfessor,AddressController addressController)
+        public UpdateProfessor(ProfessorController professorcontroller, ProfessorDTO selectedProfessor, AddressController addressController)
         {
             InitializeComponent();
             this.professor = selectedProfessor;
@@ -69,7 +59,7 @@ namespace GUI.View
             number = this.professor.Number;
             city = this.professor.City;
             state = this.professor.State;
-            Address address = new Address(addressid,street, number, city, state);
+            Address address = new Address(addressid, street, number, city, state);
             this.dateTime = new DateTime(Date.Year, Date.Month, Date.Day);
 
             PhoneNumber = this.professor.Phone;
@@ -111,7 +101,7 @@ namespace GUI.View
                 {
                     MessageBox.Show("Professor can not be updated. Not all fields are valid.");
                 }
-                
+
             }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -122,7 +112,7 @@ namespace GUI.View
 
         private void Tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
         private void DeleteSubject_Click(object sender, RoutedEventArgs e)
@@ -137,7 +127,7 @@ namespace GUI.View
                 {
                     MessageBox.Show("Please select subject that you want to delete from professor.");
                 }
-                
+
             }
             else
             {
@@ -177,7 +167,7 @@ namespace GUI.View
             Subjects.Clear();
             foreach (CLI.Model.Subject subject in professorSubjectController.GetAllSubjectsById(professor.Id))
                 Subjects.Add(new SubjectDTO(subject));
-            
+
 
         }
 

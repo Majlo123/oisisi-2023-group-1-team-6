@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using StudentskaSluzba.Serialization;
 using System.Text;
-using System.Threading.Tasks;
-using CLI.Model;
-using StudentskaSluzba.Serialization;
 
 namespace StudentskaSluzba.Model
 {

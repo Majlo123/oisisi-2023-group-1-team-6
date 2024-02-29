@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CLI.Observer;
 using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
-using CLI.Observer;
 
 
 namespace StudentskaSluzba.DAO
@@ -70,7 +64,7 @@ namespace StudentskaSluzba.DAO
             oldProfessor.Address = professor.Address;
             oldProfessor.PhoneNumber = professor.PhoneNumber;
             oldProfessor.Email = professor.Email;
-            oldProfessor.Id=professor.Id;
+            oldProfessor.Id = professor.Id;
             oldProfessor.Title = professor.Title;
             oldProfessor.WorkYear = professor.WorkYear;
             oldProfessor.Subjects = professor.Subjects;
@@ -81,7 +75,8 @@ namespace StudentskaSluzba.DAO
             return professor;
 
         }
-        public void Save() {
+        public void Save()
+        {
             _storage.Save(_professors);
         }
         public List<Professor> GetAllProfessors()
@@ -102,7 +97,7 @@ namespace StudentskaSluzba.DAO
         }
         public List<Professor> GetAllProfessors(int page, int pageSize)
         {
-            IEnumerable < Professor > professor = _professors;
+            IEnumerable<Professor> professor = _professors;
 
             professor = _professors.Skip((page - 1) * pageSize).Take(pageSize);
 

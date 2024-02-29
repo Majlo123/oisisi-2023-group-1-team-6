@@ -3,23 +3,9 @@ using CLI.Model;
 using GUI.DTO;
 using StudentskaSluzba.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using static GUI.MainWindow;
 
 namespace GUI.View
@@ -36,23 +22,23 @@ namespace GUI.View
         int espbpoints;
         public string professorid;
         public ProfessorDTO professor { get; set; }
-        public SubjectDTO subject {  get; set; }
+        public SubjectDTO subject { get; set; }
 
-        
+
         private AddressController addressController;
         private ProfessorController professorController;
         public SubjectController subjectcontroller;
         public ObservableCollection<ProfessorDTO> professors { get; set; }
-        public UpdateSubject(SubjectController subjectController,SubjectDTO selectedSubject)
+        public UpdateSubject(SubjectController subjectController, SubjectDTO selectedSubject)
         {
             InitializeComponent();
-            this.subject= selectedSubject;
+            this.subject = selectedSubject;
             subjectid = this.subject.SubjectId;
             subjectname = this.subject.SubjectName;
             yearofstudy = this.subject.YearOfStudy;
-            
-            professorid =this.subject.Professor;
-            
+
+            professorid = this.subject.Professor;
+
             if (this.subject.Semester == "Winter")
             {
 
@@ -77,8 +63,8 @@ namespace GUI.View
                 }
             };
             espbpoints = this.subject.EspbPoints;
-            
-            Subject subject=new Subject(subjectid,subjectname,yearofstudy,semester,professorid,espbpoints);
+
+            Subject subject = new Subject(subjectid, subjectname, yearofstudy, semester, professorid, espbpoints);
 
             this.subject = new SubjectDTO(subject);
             subjectcontroller = subjectController;
@@ -97,7 +83,7 @@ namespace GUI.View
             }
             else
             {
-                
+
                 if (GlobalData.SharedString == "sr-RS")
                 {
                     MessageBox.Show("Predmet ne moze da se azurira. Nisu sva polja validno populjena");
@@ -106,7 +92,7 @@ namespace GUI.View
                 {
                     MessageBox.Show("Subject can not be updated. Not all fields are valid.");
                 }
-                
+
             }
         }
         public void Cancel_Click(object sender, RoutedEventArgs e)
@@ -134,8 +120,8 @@ namespace GUI.View
             {
                 subject.Professor = "";
                 subjectcontroller.DeleteProfessor(subjectid);
-                ClearProfessorTextbox();  
-                
+                ClearProfessorTextbox();
+
             }
             else { }
         }
@@ -148,10 +134,10 @@ namespace GUI.View
             professors = new ObservableCollection<ProfessorDTO>();
 
             foreach (Professor professor in professorController.GetAllProfessors())
-                {
-                    professors.Add(new ProfessorDTO(professor));
-                }
-            
+            {
+                professors.Add(new ProfessorDTO(professor));
+            }
+
         }
         public void UpdateProfessorTextbox(string professorId)
         {
@@ -197,14 +183,14 @@ namespace GUI.View
 
             Delete.IsEnabled = false;
             Add.IsEnabled = true;
-            professor_textbox.Text = ""; 
+            professor_textbox.Text = "";
 
             professor_textbox.GetBindingExpression(TextBox.TextProperty)?.UpdateTarget();
         }
 
         private void AddProfessor_Click(object sender, RoutedEventArgs e)
         {
-            AddProfessorToSubject updateProfesor = new AddProfessorToSubject(professorController, subjectcontroller, subject,this);
+            AddProfessorToSubject updateProfesor = new AddProfessorToSubject(professorController, subjectcontroller, subject, this);
 
             updateProfesor.Show();
         }
@@ -239,9 +225,9 @@ namespace GUI.View
                 }
             }
 
-           
+
             professor_textbox.GetBindingExpression(TextBox.TextProperty)?.UpdateTarget();
         }
     }
-    
+
 }

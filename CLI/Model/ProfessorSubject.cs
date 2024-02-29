@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using StudentskaSluzba.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CLI.Model
+﻿namespace CLI.Model
 {
     public class ProfessorSubject : StudentskaSluzba.Serialization.ISerializable
     {

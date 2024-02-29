@@ -1,11 +1,6 @@
 ﻿using CLI.Observer;
 using StudentskaSluzba.DAO;
 using StudentskaSluzba.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CLI.Controller
 {
@@ -16,7 +11,7 @@ namespace CLI.Controller
 
         public AddressController()
         {
-            
+
             _adress = new AddressDAO();
 
         }
@@ -24,7 +19,7 @@ namespace CLI.Controller
         {
             return _adress.getAllAddresses();
         }
-        
+
         public void Add(Address address)
         {
             _adress.addAddress(address);

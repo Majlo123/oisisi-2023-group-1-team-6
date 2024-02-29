@@ -12,7 +12,7 @@
     mc:Ignorable="d">
     <Grid>
 
-        <TabControl SelectionChanged="TabControl_SelectionChanged">
+        <TabControl>
             <TabItem Header="{ns:Loc Subjects}">
                 <Grid Margin="246,0,0,0" HorizontalAlignment="Left">
                     <DataGrid

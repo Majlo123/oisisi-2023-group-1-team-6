@@ -1,13 +1,6 @@
-﻿using CLI.Model;
-using StudentskaSluzba;
-using StudentskaSluzba.Console;
+﻿using StudentskaSluzba.Console;
 using StudentskaSluzba.DAO;
 using StudentskaSluzba.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CLI.Console
 {
@@ -61,7 +54,7 @@ namespace CLI.Console
             string street = ConsoleViewUtils.SafeInputString(); ;
             System.Console.WriteLine("Enter address(number): ");
             int number = ConsoleViewUtils.SafeInputInt();
-            Address address = new Address(id, street,number,city,state);
+            Address address = new Address(id, street, number, city, state);
 
             System.Console.WriteLine("Enter phone number: ");
             string phone = ConsoleViewUtils.SafeInputString(); ;
@@ -82,7 +75,7 @@ namespace CLI.Console
 
             System.Console.WriteLine("Enter subjects he teaches.When done, press 0: ");
             string subjectName = "";
-            while(subjectName != "")
+            while (subjectName != "")
             {
                 subjectName = ConsoleViewUtils.SafeInputString();
             }
@@ -155,5 +148,5 @@ namespace CLI.Console
         }
     }
 }
-    
+
 

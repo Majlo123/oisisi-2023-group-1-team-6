@@ -1,16 +1,12 @@
 ﻿using CLI.Controller;
 using StudentskaSluzba.Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace GUI.DTO
 {
-    
+
 
     public class GradeDTO
     {
@@ -27,7 +23,7 @@ namespace GUI.DTO
             }
             set
             {
-                if(subjectId != value)
+                if (subjectId != value)
                 {
                     subjectId = value;
                     OnPropertyChanged("SubjectId");
@@ -45,7 +41,7 @@ namespace GUI.DTO
             }
             set
             {
-                if(subjectName != value)
+                if (subjectName != value)
                 {
                     subjectName = value;
                     OnPropertyChanged("SubjectName");
@@ -62,7 +58,7 @@ namespace GUI.DTO
             }
             set
             {
-                if(studentId != value)
+                if (studentId != value)
                 {
                     studentId = value;
                     OnPropertyChanged("StudentId");
@@ -80,7 +76,7 @@ namespace GUI.DTO
             }
             set
             {
-                if(ESPBpoints != value)
+                if (ESPBpoints != value)
                 {
                     ESPBpoints = value;
                     OnPropertyChanged("ESPBPoints");
@@ -131,15 +127,15 @@ namespace GUI.DTO
                 }
                 else if (columnName == "Date")
                 {
-                    
+
                 }
-                
+
 
 
                 return null;
             }
         }
-        private readonly string[] _validatedProperties = { "Grade", "Date"};
+        private readonly string[] _validatedProperties = { "Grade", "Date" };
         public bool IsValid
         {
             get
@@ -156,7 +152,7 @@ namespace GUI.DTO
         public Grade ToGrade()
         {
 
-            return new Grade(studentId,subjectId,date,grades);
+            return new Grade(studentId, subjectId, date, grades);
         }
         public GradeDTO()
         {

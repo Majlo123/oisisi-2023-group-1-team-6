@@ -1,5 +1,5 @@
-﻿using StudentskaSluzba.DAO;
-using StudentskaSluzba.Console;
+﻿using StudentskaSluzba.Console;
+using StudentskaSluzba.DAO;
 
 
 namespace StudentskaSluzba;
@@ -11,6 +11,6 @@ class Program
         StudentsDAO students = new StudentsDAO();
         ConsoleView view = new ConsoleView();
         view.RunMenu();
-       
+
     }
 }

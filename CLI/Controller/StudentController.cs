@@ -1,12 +1,6 @@
-﻿using CLI.Model;
-using CLI.Observer;
+﻿using CLI.Observer;
 using StudentskaSluzba.DAO;
 using StudentskaSluzba.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CLI.Controller
 {
@@ -19,7 +13,7 @@ namespace CLI.Controller
         {
             _students = new StudentsDAO();
 
-            _subjects=new SubjectsDAO();
+            _subjects = new SubjectsDAO();
         }
         public List<Student> GetAllStudents()
         {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CLI.Observer;
+﻿using CLI.Observer;
 using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
 
@@ -24,7 +19,7 @@ namespace StudentskaSluzba.DAO
             _departments = _storage.Load();
             DepartmentSubject = new Subject();
         }
-        
+
         public Department? GetDepartmentById(int id)
         {
             return _departments.Find(d => d.DepartmentID == id);
@@ -61,7 +56,7 @@ namespace StudentskaSluzba.DAO
             oldDepartment.Professors = department.Professors;
 
 
-            
+
             _storage.Save(_departments);
             DepartmentSubject.NotifyObservers();
             return oldDepartment;
@@ -88,7 +83,7 @@ namespace StudentskaSluzba.DAO
                 return null;
             return dep.Professors;
         }
-       
+
     }
-       
+
 }

@@ -1,19 +1,12 @@
 ﻿using CLI.Controller;
 using CLI.Model;
-using CLI.Observer;
-using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CLI.DAO
 {
     public class StudentSubjectDAO
     {
-       
+
 
         private readonly Storage<StudentSubject> _storage;
         private List<StudentSubject> _studentsubject;
@@ -24,7 +17,7 @@ namespace CLI.DAO
         {
             _storage = new Storage<StudentSubject>("studentsubject.txt");
             _studentsubject = _storage.Load();
-           StudentSubject=new CLI.Observer.Subject();
+            StudentSubject = new CLI.Observer.Subject();
         }
 
         public int NextId()
@@ -54,7 +47,7 @@ namespace CLI.DAO
         }
         public StudentSubject RemoveStudentSubject(int id)
         {
-           StudentSubject? studentsubject=GetStudentSubjectById(id);
+            StudentSubject? studentsubject = GetStudentSubjectById(id);
             if (studentsubject == null) return null;
             _studentsubject.Remove(studentsubject);
             _storage.Save(_studentsubject);
@@ -101,6 +94,6 @@ namespace CLI.DAO
             }
             return subjectlist;
         }
-        
+
     }
 }

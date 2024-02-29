@@ -4,11 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using static GUI.MainWindow;
 
 namespace GUI.DTO
@@ -81,7 +77,7 @@ namespace GUI.DTO
             }
             set
             {
-                if(value != departmentId)
+                if (value != departmentId)
                 {
                     departmentId = value;
                     OnPropertyChanged("DepartmentId");
@@ -277,7 +273,7 @@ namespace GUI.DTO
                             return "Surname is required";
                         }
                     }
-                    
+
 
                     Match match = _NameRegex.Match(Surname);
                     if (!match.Success)
@@ -292,7 +288,7 @@ namespace GUI.DTO
 
                         }
                     }
-                    
+
                 }
                 else if (columnName == "Name")
                 {
@@ -376,7 +372,7 @@ namespace GUI.DTO
 
                         }
                     }
-                    
+
 
                     Match match = _NameRegex.Match(City);
                     if (!match.Success)

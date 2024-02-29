@@ -6,17 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using static GUI.MainWindow;
 using Index = StudentskaSluzba.Model.Index;
 
@@ -102,7 +93,7 @@ namespace GUI.View
             this.indexController = indexController;
             studentSubjectController = new StudentSubjectController();
             gradeController = new GradeController();
-            subjectController= new SubjectController();
+            subjectController = new SubjectController();
             UnpassedSubjects = new ObservableCollection<SubjectDTO>(
             studentSubjectController.GetAllSubjectsById(student.id)
             .Select(subject => new SubjectDTO(subject))
@@ -113,7 +104,7 @@ namespace GUI.View
             .ToList());
             subject = new SubjectDTO();
             studentSubject = new StudentSubject();
-            professorController=new ProfessorController();
+            professorController = new ProfessorController();
             Update();
         }
 
@@ -138,13 +129,13 @@ namespace GUI.View
                     MessageBox.Show("Student can not be updated. Not all fields are valid.");
                 }
 
-                
-                
+
+
             }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -185,9 +176,10 @@ namespace GUI.View
                 UnpassedSubjects.Add(new SubjectDTO(subjecttmp));
             }
 
-                
+
             PassedSubjects.Clear();
-            foreach (Grade grade in gradeController.GetAllGradesByStudent(student.id)) { 
+            foreach (Grade grade in gradeController.GetAllGradesByStudent(student.id))
+            {
                 PassedSubjects.Add(new GradeDTO(grade));
             }
 
@@ -208,8 +200,8 @@ namespace GUI.View
                 takeexam.Show();
 
             }
-            
-            else 
+
+            else
             {
                 if (GlobalData.SharedString == "sr-RS")
                 {
@@ -287,7 +279,7 @@ namespace GUI.View
                 {
                     MessageBox.Show("Please select subject that you want to delete from student.");
                 }
-               
+
             }
             else
             {
@@ -329,18 +321,18 @@ namespace GUI.View
                 {
                     subjects.Add(new SubjectDTO(subject));
                 }
-                
 
 
-                
+
+
                 List<string> professorIds = subjects
                         .Select(subject => subject.professor)
                         .Distinct()
                         .ToList();
                 HashSet<string> uniqueProfessorIds = new HashSet<string>();
-                
+
                 if (professorIds.Count > 0)
-                    {
+                {
                     List<ProfessorDTO> professors = new List<ProfessorDTO>();
                     foreach (string professorId in professorIds)
                     {
@@ -357,12 +349,12 @@ namespace GUI.View
                     }
 
                     if (professors.Count > 0)
-                        {
-                            ShowProfessorsWindow showProfessorsWindow = new ShowProfessorsWindow(professors);
-                            showProfessorsWindow.ShowDialog();
-                        }
-                        else
-                        {
+                    {
+                        ShowProfessorsWindow showProfessorsWindow = new ShowProfessorsWindow(professors);
+                        showProfessorsWindow.ShowDialog();
+                    }
+                    else
+                    {
                         if (GlobalData.SharedString == "sr-RS")
                         {
                             MessageBox.Show("Ni jedan profesor nije nadjen za predmet koji ima student");
@@ -372,9 +364,9 @@ namespace GUI.View
                             MessageBox.Show("No professors found for the subjects associated with this student.");
                         }
                     }
-                    }
-                    else
-                    {
+                }
+                else
+                {
                     if (GlobalData.SharedString == "sr-RS")
                     {
                         MessageBox.Show("Ni jedan profesor nije nadjen za predmet koji ima student");
@@ -384,10 +376,10 @@ namespace GUI.View
                         MessageBox.Show("No professors found for the subjects associated with this student.");
                     }
                 }
-                }
-                else
-                {
-                
+            }
+            else
+            {
+
                 if (GlobalData.SharedString == "sr-RS")
                 {
                     MessageBox.Show("Student nema ni jedan predmet.");
@@ -396,39 +388,17 @@ namespace GUI.View
                 {
                     MessageBox.Show("This student is not enrolled in any subjects.");
                 }
-                
-                }
-            
-            
+
+            }
+
+
         }
 
-
-
-
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        private void DeleteSubjectPassed_Click(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        
         private void Tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
-        private void SubjectsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void UnpassedSubjectsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
     }
 }
