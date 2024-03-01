@@ -1,2 +1,2 @@
-1|Katedra za informatiku|884798807
-2|Katedra za matematiku|963528130
+1|Katedra za informatiku|284423009
+2|Katedra za matematiku|904283709

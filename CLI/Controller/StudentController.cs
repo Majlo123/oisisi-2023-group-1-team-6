@@ -29,7 +29,7 @@ namespace CLI.Controller
         {
             _students.addStudent(student);
         }
-        public void AddSubject(CLI.Model.Subject subject)
+        public void AddSubject(StudentskaSluzba.Model.Subject subject)
         {
             _subjects.addSubject(subject);
         }

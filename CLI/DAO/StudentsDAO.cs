@@ -12,13 +12,13 @@ namespace StudentskaSluzba.DAO
         private readonly List<Student> _students;
         private readonly Storage<Student> _storage;
 
-        public Subject StudentSubject;
+        public CLI.Observer.Subject StudentSubject;
 
         public StudentsDAO()
         {
             _storage = new Storage<Student>("students.txt");
             _students = _storage.Load();
-            StudentSubject = new Subject();
+            StudentSubject = new CLI.Observer.Subject();
         }
         private int GenerateId()
         {

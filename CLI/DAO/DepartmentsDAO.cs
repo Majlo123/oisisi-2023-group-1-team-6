@@ -12,12 +12,12 @@ namespace StudentskaSluzba.DAO
         private readonly List<Department> _departments;
         private readonly Storage<Department> _storage;
 
-        public Subject DepartmentSubject;
+        public CLI.Observer.Subject DepartmentSubject;
         public DepartmentsDAO()
         {
             _storage = new Storage<Department>("departments.txt");
             _departments = _storage.Load();
-            DepartmentSubject = new Subject();
+            DepartmentSubject = new CLI.Observer.Subject();
         }
 
         public Department? GetDepartmentById(int id)

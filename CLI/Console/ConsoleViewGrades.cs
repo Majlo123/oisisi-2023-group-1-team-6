@@ -39,7 +39,7 @@ namespace StudentskaSluzba.Console
                 System.Console.WriteLine("Enter student id: ");
                 id1 = ConsoleViewUtils.SafeInputInt();
                 StudentsDAO studentsDAO1 = new StudentsDAO();
-                studentToAdd = studentsDAO.GetStudentById(id);
+                studentToAdd = studentsDAO.GetStudentById(id1);
             }
 
 

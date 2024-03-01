@@ -2,6 +2,7 @@
 using GUI.DTO;
 using StudentskaSluzba.Model;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -44,6 +45,8 @@ namespace GUI.View
         private ProfessorController professorController;
         private AddressController addressController;
         private ProfessorSubjectController professorSubjectController;
+        private StudentSubjectController studentSubjectController;
+        private IndexController indexController;
 
         public ObservableCollection<SubjectDTO> Subjects { get; set; }
         public UpdateProfessor(ProfessorController professorcontroller, ProfessorDTO selectedProfessor, AddressController addressController)
@@ -79,6 +82,8 @@ namespace GUI.View
             .ToList());
             this.professorController = professorcontroller;
             this.addressController = addressController;
+            studentSubjectController = new StudentSubjectController();
+            indexController = new IndexController();
             Update();
         }
 
@@ -160,12 +165,36 @@ namespace GUI.View
                 { }
             }
         }
+        
+        private void ShowStudents_Click(object sender, RoutedEventArgs e)
+        {
+            List<StudentDTO> Students = new List<StudentDTO>();
+
+            var subjectsProfessorTeaches = professorSubjectController.GetAllSubjectsById(professor.Id);
+            foreach(Subject sub in subjectsProfessorTeaches)
+            {
+                var studentsWhoListenTheseSubjects = studentSubjectController.getAllStudentsBySubjectId(sub.subjectId);
+                foreach(Student stud in studentsWhoListenTheseSubjects)
+                { 
+                    StudentDTO stud2 = Students.FirstOrDefault(ss => ss.id == stud.Id);
+                    if(stud2 == null)
+                    {
+                        Address studentAddress = addressController.getAddressById(stud.Address.id);
+                        StudentskaSluzba.Model.Index studentIndex = indexController.getIndexById(stud.Index.IdIndex);
+                        Students.Add(new StudentDTO(stud, studentAddress, studentIndex));
+                    }
+                }
+            }
+
+            ShowStudentsWindow showStudents = new ShowStudentsWindow(Students);
+            showStudents.Show();
+        }
 
         private void Update()
         {
 
             Subjects.Clear();
-            foreach (CLI.Model.Subject subject in professorSubjectController.GetAllSubjectsById(professor.Id))
+            foreach (StudentskaSluzba.Model.Subject subject in professorSubjectController.GetAllSubjectsById(professor.Id))
                 Subjects.Add(new SubjectDTO(subject));
 
 

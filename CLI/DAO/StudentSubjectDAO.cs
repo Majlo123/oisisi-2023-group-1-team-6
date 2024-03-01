@@ -1,5 +1,6 @@
 ﻿using CLI.Controller;
 using CLI.Model;
+using StudentskaSluzba.Model;
 using StudentskaSluzba.Storage;
 
 namespace CLI.DAO
@@ -11,7 +12,9 @@ namespace CLI.DAO
         private readonly Storage<StudentSubject> _storage;
         private List<StudentSubject> _studentsubject;
         private SubjectController subjectcontroller = new SubjectController();
-        private List<CLI.Model.Subject> subject_temp;
+        private StudentController studentController = new StudentController();
+        private List<Subject> subject_temp;
+        private List<Student> student_temp;
         public CLI.Observer.Subject StudentSubject;
         public StudentSubjectDAO()
         {
@@ -76,18 +79,37 @@ namespace CLI.DAO
             return _studentsubject;
         }
 
-        public List<CLI.Model.Subject> GetAllById(int studentid)
+        public List<Student> GetAllStudentsBySubjectId(int subjectId)
+        {
+            _studentsubject.Clear();
+            _studentsubject = _storage.Load();
+            student_temp = studentController.GetAllStudents();
+            List<Student> studentList = new List<Student>();
+            List<StudentSubject> studentSubject1 = GetAll();
+            foreach(StudentSubject st in studentSubject1)
+            {
+                if(st.id_subject == subjectId)
+                {
+                    Student temp;
+                    temp = student_temp.Find(ss => ss.Id == st.id_student);
+                    studentList.Add(temp);
+                }
+            }
+            return studentList;
+        }
+
+        public List<Subject> GetAllById(int studentid)
         {
             _studentsubject.Clear();
             _studentsubject = _storage.Load();
             subject_temp = subjectcontroller.GetAllSubjects();
-            List<CLI.Model.Subject> subjectlist = new List<CLI.Model.Subject>();
+            List<Subject> subjectlist = new List<Subject>();
             List<StudentSubject> studentsubject1 = GetAll();
             foreach (StudentSubject st in studentsubject1)
             {
                 if (st.id_student == studentid)
                 {
-                    CLI.Model.Subject temp;
+                    Subject temp;
                     temp = subject_temp.Find(ss => ss.subjectId == st.id_subject);
                     subjectlist.Add(temp);
                 }

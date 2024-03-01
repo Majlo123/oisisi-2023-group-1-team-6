@@ -8,13 +8,15 @@ namespace StudentskaSluzba.DAO
     {
         private readonly List<Grade> _grade;
         private readonly Storage<Grade> _storage;
-        public Subject Subject;
+        public CLI.Observer.Subject Subject;
+        public StudentsDAO studentsDao;
 
         public GradesDAO()
         {
             _storage = new Storage<Grade>("grades.txt");
             _grade = _storage.Load();
-            Subject = new Subject();
+            Subject = new CLI.Observer.Subject();
+            studentsDao = new StudentsDAO();
         }
         public void Save()
         {
@@ -33,6 +35,20 @@ namespace StudentskaSluzba.DAO
             _grade.Add(grade);
             _storage.Save(_grade);
             Subject.NotifyObservers();
+        }
+
+        public List<Student> GetStudentBySubjectId(int subjectId)
+        {
+            List<Student> student_tmp = new List<Student>();
+            foreach(Grade g in GetAllGrade())
+            {
+                if(g.subjectId == subjectId)
+                {
+                    Student stud = studentsDao.GetStudentById(g.studentId);
+                    student_tmp.Add(stud);
+                }
+            }
+            return student_tmp;
         }
         public List<Grade> GetGradesByIdStudent(int id)
         {

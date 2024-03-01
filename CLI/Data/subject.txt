@@ -1,7 +1,7 @@
-0|Tehnologije i alati u mašinskom učenju|4|Summer|973133377|8
+0|Tehnologije i alati u mašinskom učenju|4|Summer||8
 1|Napredni algoritmi i strukture podataka|4|Winter|276681361|6
 2|Testiranje softvera|1|Summer|276681361|9
-3|Specifikacija i modeliranje softvera|3|Summer|39606943|4
+3|Specifikacija i modeliranje softvera|3|Summer|3296960|4
 4|Uvod u informacione tehnologije u geomatici|3|Summer|276681361|8
 5|Tehnologije i sistemi eUprave|1|Winter|403390402|4
 6|Klijentske web tehnologije|3|Winter|520064301|5

@@ -9,7 +9,7 @@ namespace CLI.DAO
         private readonly Storage<ProfessorSubject> _storage;
         private List<ProfessorSubject> _professorsubject;
         private SubjectController subjectcontroller = new SubjectController();
-        private List<CLI.Model.Subject> subject_temp;
+        private List<StudentskaSluzba.Model.Subject> subject_temp;
         public CLI.Observer.Subject ProfessorSubject;
         public ProfessorSubjectDAO()
         {
@@ -74,18 +74,18 @@ namespace CLI.DAO
             return _professorsubject;
         }
 
-        public List<CLI.Model.Subject> GetAllById(string professorid)
+        public List<StudentskaSluzba.Model.Subject> GetAllById(string professorid)
         {
             _professorsubject.Clear();
             _professorsubject = _storage.Load();
             subject_temp = subjectcontroller.GetAllSubjects();
-            List<CLI.Model.Subject> subjectlist = new List<CLI.Model.Subject>();
+            List<StudentskaSluzba.Model.Subject> subjectlist = new List<StudentskaSluzba.Model.Subject>();
             List<ProfessorSubject> professorsubject1 = GetAll();
             foreach (ProfessorSubject st in professorsubject1)
             {
                 if (st.id_professor == professorid)
                 {
-                    CLI.Model.Subject temp;
+                    StudentskaSluzba.Model.Subject temp;
                     temp = subject_temp.Find(ss => ss.subjectId == st.id_subject);
                     subjectlist.Add(temp);
                 }

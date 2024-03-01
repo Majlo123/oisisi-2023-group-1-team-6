@@ -47,7 +47,7 @@ namespace GUI.View
         {
             Subjects.Clear();
 
-            foreach (CLI.Model.Subject subject in subject_controler.GetAllSubjects())
+            foreach (StudentskaSluzba.Model.Subject subject in subject_controler.GetAllSubjects())
             {
                 GradeDTO grade = updateStudent.PassedSubjects.FirstOrDefault(g => g.subjectId == subject.subjectId);
                 SubjectDTO subject1 = updateStudent.UnpassedSubjects.FirstOrDefault(s => s.SubjectId == subject.subjectId);

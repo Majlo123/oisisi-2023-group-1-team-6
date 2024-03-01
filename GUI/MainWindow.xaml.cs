@@ -149,9 +149,9 @@ namespace GUI
                 Index studentIndex = indexController.getIndexById(student.Index.IdIndex);
                 Students.Add(new StudentDTO(student, studentAddress, studentIndex));
             }
-            foreach (CLI.Model.Subject subject in subjectsController.GetAllSubjects())
+            foreach (StudentskaSluzba.Model.Subject subject in subjectsController.GetAllSubjects())
             {
-                CLI.Model.Subject subjecttmp = subjectsController.getSubjectById(subject.subjectId);
+                StudentskaSluzba.Model.Subject subjecttmp = subjectsController.getSubjectById(subject.subjectId);
                 if (subjecttmp.semester == "Winter" || subjecttmp.semester == "Zimski")
                 {
 
@@ -274,6 +274,12 @@ namespace GUI
                     FetchEntitiesForCurrentPageSubjects();
                 }
             }
+        }
+
+        private void ChooseTwo_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseTwoSubjects chooseTwoSubjects = new ChooseTwoSubjects();
+            chooseTwoSubjects.Show();
         }
 
         private void NextPage_Click(object sender, RoutedEventArgs e)
@@ -750,7 +756,7 @@ namespace GUI
                 else
                 {
                     Subjects.Clear();
-                    foreach (CLI.Model.Subject subject in subjectsController.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
+                    foreach (StudentskaSluzba.Model.Subject subject in subjectsController.GetAllSubjects()) Subjects.Add(new SubjectDTO(subject));
 
                     SubjectsDataGrid.ItemsSource = Subjects;
 
@@ -788,9 +794,9 @@ namespace GUI
             else if (tabs.SelectedIndex == 2)
             {
                 Subjects.Clear();
-                foreach (CLI.Model.Subject subject in subjectsController.GetAllSubjects())
+                foreach (StudentskaSluzba.Model.Subject subject in subjectsController.GetAllSubjects())
                 {
-                    CLI.Model.Subject subjecttmp = subjectsController.getSubjectById(subject.subjectId);
+                    StudentskaSluzba.Model.Subject subjecttmp = subjectsController.getSubjectById(subject.subjectId);
                     if (subjecttmp.semester == "Winter" || subjecttmp.semester == "Zimski")
                     {
                         if (GlobalData.SharedString == "sr-RS")

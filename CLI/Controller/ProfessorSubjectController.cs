@@ -43,7 +43,7 @@ namespace CLI.Controller
             return _professors.GetProfessorSubjectById(professorid);
 
         }
-        public List<CLI.Model.Subject> GetAllSubjectsById(string id_professor)
+        public List<StudentskaSluzba.Model.Subject> GetAllSubjectsById(string id_professor)
         {
             return _professors.GetAllById(id_professor);
         }

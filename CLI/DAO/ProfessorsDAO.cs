@@ -11,12 +11,12 @@ namespace StudentskaSluzba.DAO
 
         private readonly List<Professor> _professors;
         private readonly Storage<Professor> _storage;
-        public Subject ProfessorSubject;
+        public CLI.Observer.Subject ProfessorSubject;
         public ProfessorsDAO()
         {
             _storage = new Storage<Professor>("professors.txt");
             _professors = _storage.Load();
-            ProfessorSubject = new Subject();
+            ProfessorSubject = new CLI.Observer.Subject();
 
         }
         public Professor? GetProfessorById(string id)

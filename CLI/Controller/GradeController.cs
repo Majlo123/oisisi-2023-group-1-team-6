@@ -38,6 +38,11 @@ namespace CLI.Controller
         {
             _grades.Subject.Subscribe(observer);
         }
+
+        public List<Student> getStudentsBySubjectId(int subjectid)
+        {
+            return _grades.GetStudentBySubjectId(subjectid);
+        }
         public Grade? getSubjectById(int subjectid)
         {
             return _grades.GetGradeById(subjectid);

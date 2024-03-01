@@ -14,14 +14,14 @@ namespace GUI.View
     {
 
         private GradeController gradecontroller;
-        public ObservableCollection<CLI.Model.Subject> Subjects { get; set; }
+        public ObservableCollection<StudentskaSluzba.Model.Subject> Subjects { get; set; }
         public SubjectDTO Subject { get; set; }
         public StudentSubjectController studentSubjectController;
         public StudentDTO Student { get; set; }
         public GradeDTO Grade { get; set; }
         public DateTime? dateTime { get; set; }
         public DateOnly Date;
-        public TakeExam(SubjectDTO selectedsubject, StudentDTO selectedstudent)
+        public TakeExam(SubjectDTO selectedsubject, StudentDTO selectedstudent, StudentSubjectController ssc)
         {
             InitializeComponent();
 
@@ -32,6 +32,7 @@ namespace GUI.View
             gradecontroller = new GradeController();
             Subject = selectedsubject;
             Student = selectedstudent;
+            studentSubjectController = ssc;
 
 
         }
@@ -95,8 +96,7 @@ namespace GUI.View
             Grade.StudentId = Student.Id;
             Grade.SubjectId = Subject.subjectId;
             gradecontroller.Add(Grade.ToGrade());
-            StudentSubjectController ssc = new StudentSubjectController();
-            ssc.Delete(Grade.SubjectId);
+            studentSubjectController.Delete(Grade.studentId);
 
             Close();
         }

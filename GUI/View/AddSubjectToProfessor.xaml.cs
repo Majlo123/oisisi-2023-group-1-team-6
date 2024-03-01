@@ -42,7 +42,7 @@ namespace GUI.View
         {
             Subjects.Clear();
 
-            foreach (CLI.Model.Subject subject in subject_controler.GetAllSubjects())
+            foreach (StudentskaSluzba.Model.Subject subject in subject_controler.GetAllSubjects())
             {
                 SubjectDTO subject1 = updateProfessor.Subjects.FirstOrDefault(s => s.SubjectId == subject.subjectId);
 
@@ -72,7 +72,7 @@ namespace GUI.View
 
             if (SelectedSubject != null)
             {
-                foreach (CLI.Model.Subject ps in professorsubject_controler.GetAllSubjectsById(SelectedProfessor.Id))
+                foreach (StudentskaSluzba.Model.Subject ps in professorsubject_controler.GetAllSubjectsById(SelectedProfessor.Id))
                 {
                     if (SelectedSubject.SubjectId == ps.subjectId)
                     {

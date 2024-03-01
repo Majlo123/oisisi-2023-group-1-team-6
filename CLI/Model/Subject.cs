@@ -4,7 +4,7 @@ using System.Text;
 
 
 
-namespace CLI.Model
+namespace StudentskaSluzba.Model
 {
 
     public class Subject : ISerializable

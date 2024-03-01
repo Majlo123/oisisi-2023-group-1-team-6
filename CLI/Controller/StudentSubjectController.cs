@@ -1,6 +1,7 @@
 ﻿using CLI.DAO;
 using CLI.Model;
 using CLI.Observer;
+using StudentskaSluzba.Model;
 
 namespace CLI.Controller
 {
@@ -15,7 +16,7 @@ namespace CLI.Controller
 
 
         }
-        public List<StudentSubject> GetAllSubjectByStudent()
+        public List<StudentSubject> GetAllStudentSubject()
         {
             return _students.GetAll();
         }
@@ -38,12 +39,17 @@ namespace CLI.Controller
             _students.StudentSubject.Subscribe(observer);
         }
 
-        public StudentSubject? getAllSubjectsById(int studentid)
+        public StudentSubject? getStudentSubjectsById(int studentid)
         {
             return _students.GetStudentSubjectById(studentid);
 
         }
-        public List<CLI.Model.Subject> GetAllSubjectsById(int id_student)
+
+        public List<Student> getAllStudentsBySubjectId(int subjectid)
+        {
+            return _students.GetAllStudentsBySubjectId(subjectid);
+        }
+        public List<StudentskaSluzba.Model.Subject> GetAllSubjectsById(int id_student)
         {
             return _students.GetAllById(id_student);
         }

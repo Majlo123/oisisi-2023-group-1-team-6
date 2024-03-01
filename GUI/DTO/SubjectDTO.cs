@@ -1,4 +1,5 @@
 ﻿using CLI.Model;
+using StudentskaSluzba.Model;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using static GUI.MainWindow;

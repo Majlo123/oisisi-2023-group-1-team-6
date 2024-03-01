@@ -9,12 +9,12 @@ namespace StudentskaSluzba.DAO
         private readonly List<Address> _address;
         private readonly Storage<Address> _storage;
 
-        public Subject AddressSubject;
+        public CLI.Observer.Subject AddressSubject;
         public AddressDAO()
         {
             _storage = new Storage<Address>("address.txt");
             _address = _storage.Load();
-            AddressSubject = new Subject();
+            AddressSubject = new CLI.Observer.Subject();
         }
 
         public Address? GetAddressById(int id)

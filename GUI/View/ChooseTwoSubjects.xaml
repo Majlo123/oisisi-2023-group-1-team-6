@@ -18,20 +18,23 @@
             VerticalAlignment="Top"
             Content="Subject 1:" />
         <TextBox
+            x:Name="subjectNumberOne_textbox"
             Width="122"
             Height="30"
             Margin="135,78,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Text="TextBox"
             TextWrapping="Wrap" />
         <Button
+            x:Name="AddOne"
             Width="18"
             Height="21"
             Margin="284,83,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="+" />
+            Click="AddSubjectOne_Click"
+            Content="+"
+            IsDefault="True" />
         <Label
             Width="92"
             Margin="38,133,0,0"
@@ -39,19 +42,21 @@
             VerticalAlignment="Top"
             Content="Subject 2:" />
         <TextBox
+            x:Name="subjectNumberTwo_textbox"
             Width="120"
             Height="26"
             Margin="137,133,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Text="TextBox"
             TextWrapping="Wrap" />
         <Button
+            x:Name="AddTwo"
             Width="18"
             Height="21"
             Margin="284,135,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            Click="AddSubjectTwo_Click"
             Content="+" />
         <Button
             Width="215"
@@ -71,6 +76,26 @@
             Click="PassedFailedButton_Click"
             Content="Passed/Failed"
             RenderTransformOrigin="0.505,0.563" />
+        <Button
+            x:Name="DeleteOne"
+            Width="18"
+            Height="21"
+            Margin="321,83,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="DeleteSubjectOne_Click"
+            Content="-"
+            IsDefault="False" />
+        <Button
+            x:Name="DeleteTwo"
+            Width="18"
+            Height="21"
+            Margin="321,135,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="DeleteSubjectTwo_Click"
+            Content="-"
+            IsDefault="False" />
 
     </Grid>
 </Window>

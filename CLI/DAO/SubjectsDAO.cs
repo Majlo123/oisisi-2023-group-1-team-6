@@ -1,4 +1,5 @@
-﻿using StudentskaSluzba.Storage;
+﻿using StudentskaSluzba.Model;
+using StudentskaSluzba.Storage;
 
 
 namespace StudentskaSluzba.DAO
@@ -6,12 +7,12 @@ namespace StudentskaSluzba.DAO
 {
     public class SubjectsDAO
     {
-        private readonly List<CLI.Model.Subject> _subjects;
-        private readonly Storage<CLI.Model.Subject> _storage;
+        private readonly List<Subject> _subjects;
+        private readonly Storage<Subject> _storage;
         public CLI.Observer.Subject SubjectSubject;
         public SubjectsDAO()
         {
-            _storage = new Storage<CLI.Model.Subject>("subject.txt");
+            _storage = new Storage<Subject>("subject.txt");
             _subjects = _storage.Load();
             SubjectSubject = new CLI.Observer.Subject();
         }
@@ -25,11 +26,16 @@ namespace StudentskaSluzba.DAO
         {
             _storage.Save(_subjects);
         }
-        public CLI.Model.Subject? GetSubjectById(int id)
+        public Subject? GetSubjectById(int id)
         {
             return _subjects.Find(s => s.subjectId == id);
         }
-        public void addSubject(CLI.Model.Subject subject)
+
+        public StudentskaSluzba.Model.Subject? GetSubjectByName(string name)
+        {
+            return _subjects.Find(s => s.subjectName == name);
+        }
+        public void addSubject(Subject subject)
         {
             bool exists = _subjects.Contains(subject);
             if (exists) return;
@@ -39,9 +45,9 @@ namespace StudentskaSluzba.DAO
             SubjectSubject.NotifyObservers();
         }
 
-        public CLI.Model.Subject removeSubject(int id)
+        public Subject removeSubject(int id)
         {
-            CLI.Model.Subject? subject = GetSubjectById(id);
+            Subject? subject = GetSubjectById(id);
             if (subject == null) return null;
 
             _subjects.Remove(subject);
@@ -49,9 +55,9 @@ namespace StudentskaSluzba.DAO
             SubjectSubject.NotifyObservers();
             return subject;
         }
-        public CLI.Model.Subject removeProfessorfromSubject(int subjectId)
+        public Subject removeProfessorfromSubject(int subjectId)
         {
-            CLI.Model.Subject? subject = GetSubjectById(subjectId);
+            Subject? subject = GetSubjectById(subjectId);
             if (subject == null) return null;
 
 
@@ -63,9 +69,9 @@ namespace StudentskaSluzba.DAO
             return subject;
         }
 
-        public CLI.Model.Subject? UpdateSubject(CLI.Model.Subject subject)
+        public Subject? UpdateSubject(Subject subject)
         {
-            CLI.Model.Subject? oldSubject = GetSubjectById(subject.subjectId);
+            Subject? oldSubject = GetSubjectById(subject.subjectId);
             if (oldSubject == null) { return null; }
             oldSubject.subjectId = subject.subjectId;
             oldSubject.subjectName = subject.subjectName;
@@ -82,13 +88,13 @@ namespace StudentskaSluzba.DAO
 
         }
 
-        public List<CLI.Model.Subject> getAllSubjects()
+        public List<Subject> getAllSubjects()
         {
             return _subjects;
         }
-        public List<CLI.Model.Subject> GetAllSubjects(int page, int pageSize)
+        public List<Subject> GetAllSubjects(int page, int pageSize)
         {
-            IEnumerable<CLI.Model.Subject> subject = _subjects;
+            IEnumerable<Subject> subject = _subjects;
 
             subject = _subjects.Skip((page - 1) * pageSize).Take(pageSize);
 

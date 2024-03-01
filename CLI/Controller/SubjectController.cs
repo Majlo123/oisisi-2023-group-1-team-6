@@ -1,5 +1,7 @@
 ﻿using CLI.Observer;
+using CLI.Model;
 using StudentskaSluzba.DAO;
+using Subject = StudentskaSluzba.Model.Subject;
 namespace CLI.Controller
 {
     public class SubjectController
@@ -13,16 +15,16 @@ namespace CLI.Controller
             _subjects = new SubjectsDAO();
 
         }
-        public List<CLI.Model.Subject> GetAllSubjects()
+        public List<Subject> GetAllSubjects()
         {
             return _subjects.getAllSubjects();
         }
 
-        public void Add(CLI.Model.Subject subject)
+        public void Add(Subject subject)
         {
             _subjects.addSubject(subject);
         }
-        public void Update(CLI.Model.Subject subject)
+        public void Update(Subject subject)
         {
             _subjects.UpdateSubject(subject);
         }
@@ -34,9 +36,14 @@ namespace CLI.Controller
         {
             _subjects.SubjectSubject.Subscribe(observer);
         }
-        public CLI.Model.Subject? getSubjectById(int subjectid)
+        public Subject? getSubjectById(int subjectid)
         {
             return _subjects.GetSubjectById(subjectid);
+        }
+
+        public Subject? GetSubjectByName(string name)
+        {
+            return _subjects.GetSubjectByName(name);
         }
         public void Save()
         {

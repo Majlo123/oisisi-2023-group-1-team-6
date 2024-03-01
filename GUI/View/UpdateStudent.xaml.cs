@@ -146,9 +146,9 @@ namespace GUI.View
         {
 
             UnpassedSubjects.Clear();
-            foreach (CLI.Model.Subject subject in studentSubjectController.GetAllSubjectsById(student.id))
+            foreach (StudentskaSluzba.Model.Subject subject in studentSubjectController.GetAllSubjectsById(student.id))
             {
-                CLI.Model.Subject subjecttmp = subjectController.getSubjectById(subject.subjectId);
+                StudentskaSluzba.Model.Subject subjecttmp = subjectController.getSubjectById(subject.subjectId);
                 if (subjecttmp.semester == "Winter" || subjecttmp.semester == "Zimski")
                 {
 
@@ -196,7 +196,7 @@ namespace GUI.View
         {
             if (subject.subjectName != null)
             {
-                TakeExam takeexam = new TakeExam(subject, student);
+                TakeExam takeexam = new TakeExam(subject, student, studentSubjectController);
                 takeexam.Show();
 
             }
@@ -317,7 +317,7 @@ namespace GUI.View
             {
                 // Get all subjects for the selected student
                 List<SubjectDTO> subjects = new List<SubjectDTO>();
-                foreach (CLI.Model.Subject subject in studentSubjectController.GetAllSubjectsById(student.id))
+                foreach (StudentskaSluzba.Model.Subject subject in studentSubjectController.GetAllSubjectsById(student.id))
                 {
                     subjects.Add(new SubjectDTO(subject));
                 }

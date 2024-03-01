@@ -1,6 +1,7 @@
 ﻿using CLI.Controller;
 using CLI.Model;
 using GUI.DTO;
+using StudentskaSluzba.Model;
 using System.Windows;
 using System.Windows.Controls;
 using static GUI.MainWindow;
