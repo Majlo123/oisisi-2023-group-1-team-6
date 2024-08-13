@@ -302,7 +302,7 @@ namespace GUI.View
                 if (result == MessageBoxResult.OK)
                 {
                     studentSubjectController.Add(student.id, grade.subjectId);
-                    gradeController.Delete(subject.subjectId);
+                    gradeController.Delete(student.id);
                     Update();
 
                 }

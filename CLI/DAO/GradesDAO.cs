@@ -26,6 +26,11 @@ namespace StudentskaSluzba.DAO
         {
             return _grade.Find(g => g.Id == id);
         }
+
+        public Grade? GetGradeByStudentId(int studentId)
+        {
+            return _grade.Find(g => g.studentId == studentId);
+        }
         public void addGrade(Grade grade)
         {
             bool exists = _grade.Contains(grade);
@@ -62,9 +67,9 @@ namespace StudentskaSluzba.DAO
             }
             return grades_tmp;
         }
-        public Grade removeGrade(int id)
+        public Grade? removeGrade(int id)
         {
-            Grade grade = GetGradeById(id);
+            Grade grade = GetGradeByStudentId(id);
             if (grade == null)
             {
                 System.Console.WriteLine("There is no grade for this subject, select another one!");

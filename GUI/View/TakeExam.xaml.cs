@@ -96,7 +96,7 @@ namespace GUI.View
             Grade.StudentId = Student.Id;
             Grade.SubjectId = Subject.subjectId;
             gradecontroller.Add(Grade.ToGrade());
-            studentSubjectController.Delete(Grade.studentId);
+            studentSubjectController.Delete(Grade.subjectId);
 
             Close();
         }

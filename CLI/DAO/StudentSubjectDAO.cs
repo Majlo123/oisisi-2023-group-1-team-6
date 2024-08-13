@@ -48,7 +48,7 @@ namespace CLI.DAO
             _storage.Save(_studentsubject);
             StudentSubject.NotifyObservers();
         }
-        public StudentSubject RemoveStudentSubject(int id)
+        public StudentSubject? RemoveStudentSubject(int id)
         {
             StudentSubject? studentsubject = GetStudentSubjectById(id);
             if (studentsubject == null) return null;

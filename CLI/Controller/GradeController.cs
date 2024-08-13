@@ -30,9 +30,9 @@ namespace CLI.Controller
         {
             _grades.UpdateGrade(subject);
         }
-        public void Delete(int subjectid)
+        public void Delete(int studentid)
         {
-            _grades.removeGrade(subjectid);
+            _grades.removeGrade(studentid);
         }
         public void Subscribe(IObserver observer)
         {
